@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: back
+server:
+  port: 3000
+
+logging:
+  file:
+    name: logs/back.log
+  logback:
+    rollingpolicy:
+      file-name-pattern: logs/back-%d{yyyy-MM-dd}.%i.log

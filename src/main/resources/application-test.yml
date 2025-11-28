@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: ${DB_TEST_URL}
+    username: ${DB_TEST_USR}
+    password: ${DB__TEST_PWD}
+    driver-class-name: org.h2.Driver
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+  data:
+    redis:
+      host: { REDIS_TEST_PWD }
+      port: { REDIS_TEST_PWD }
+      password: { REDIS_TEST_PWD }
+      ssl:
+        enabled: false
+
+logging:
+  level:
+    dev:
+      jos:
+        back: INFO

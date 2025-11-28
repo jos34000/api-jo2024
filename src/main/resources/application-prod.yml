@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: ${DB_PROD_URL}
+    username: ${DB_PROD_USR}
+    password: ${DB__PROD_PWD}
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+  data:
+    redis:
+      host: { REDIS_PROD_PWD }
+      port: { REDIS_PROD_PWD }
+      password: { REDIS_PROD_PWD }
+      ssl:
+        enabled: true
+
+logging:
+  level:
+    dev:
+      jos:
+        back: INFO
