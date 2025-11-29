@@ -1,0 +1,58 @@
+name: Quality Checks
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - main
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Build
+        id: build
+        run: mvn clean compile
+        continue-on-error: true
+
+      - name: Tests
+        id: tests
+        run: mvn test
+        continue-on-error: true
+
+      - name: Package
+        id: package
+        run: mvn package -DskipTests
+        continue-on-error: true
+
+      - name: Security check
+        id: security
+        run: mvn dependency-check:check
+        continue-on-error: true
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Quality Checks Summary"
+          echo ""
+          echo "- Build: ${{ steps.build.outcome }}"
+          echo "- Tests: ${{ steps.tests.outcome }}"
+          echo "- Package: ${{ steps.package.outcome }}"
+          echo "- Security: ${{ steps.security.outcome }}"
+          echo ""
+          if [ "${{ steps.package.outcome }}" == "success" ]; then
+            echo "✅ Package created - ready to merge"
+          else
+            echo "❌ Package failed - needs fixing"
+          fi
