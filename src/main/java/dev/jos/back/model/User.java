@@ -47,4 +47,7 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private Set<Cart> carts;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Ticket> tickets;
 }

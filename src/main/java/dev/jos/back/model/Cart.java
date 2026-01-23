@@ -40,4 +40,7 @@ public class Cart {
 
     @OneToMany(mappedBy = "cart")
     private Set<CartItems> cartItems;
+
+    @OneToOne(mappedBy = "cart")
+    private Transaction transaction;
 }
