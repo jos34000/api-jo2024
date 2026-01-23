@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -33,7 +33,7 @@ public class Transaction {
     @Column(unique = true, nullable = false)
     private String paymentReference;
 
-    @CreatedDate
+    @CreationTimestamp
     private LocalDateTime createdDate;
     private LocalDateTime payedDate;
     private LocalDateTime cancelledDate;

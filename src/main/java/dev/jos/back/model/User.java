@@ -4,9 +4,9 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.Length;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -19,6 +19,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(unique = true, nullable = false)
     @Length(min = 3, max = 25)
     private String username;
@@ -34,12 +35,16 @@ public class User {
     private boolean mfaEnabled;
     @Column(length = 32)
     private String mfaSecret;
-    @CreatedDate
+
+    @CreationTimestamp
     private LocalDateTime createdDate;
-    @LastModifiedDate
+    @UpdateTimestamp
     private LocalDateTime lastModifiedDate;
 
 
     @OneToMany(mappedBy = "user")
     private Set<Transaction> transactions;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Cart> carts;
 }
