@@ -1,8 +1,11 @@
+server:
+  port: ${SERVER_PORT}
+
 spring:
   datasource:
-    url: ${DB_DEV_URL}
-    username: ${DB_DEV_USR}
-    password: ${DB_DEV_PWD}
+    url: ${DATABASE_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
   jpa:
     show-sql: true
@@ -11,7 +14,17 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        
+cors:
+  allowed-origins: ${ALLOWED_ORIGINS}
 
+jwt:
+  access-token:
+    secret: ${JWT_ACCESS_SECRET}
+    expiration: 900000
+  refresh-token:
+    secret: ${JWT_REFRESH_SECRET}
+    expiration: 2592000000
 
 logging:
   level:
