@@ -6,10 +6,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
 public record CreateUserDTO(
-    @NotBlank(message = "Le nom d'utilisateur est obligatoire")
-    @Size(min = 3, max = 25, message = "Le nom d'utilisateur doit contenir entre 3 et 25 caractères")
-    String username,
-
     @NotBlank(message = "L'email est obligatoire")
     @Email(message = "L'email doit être valide")
     String email,
@@ -26,7 +22,6 @@ public record CreateUserDTO(
 ) {
     public User toEntity() {
         return User.builder()
-                .username(this.username)
                 .email(this.email)
                 .firstName(this.firstName)
                 .lastName(this.lastName)

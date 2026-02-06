@@ -20,10 +20,6 @@ public class UserService {
             throw new UserAlreadyExistsException("Cet email est déjà utilisé");
         }
 
-        if(userRepository.existsByUsername(dto.username())){
-            throw new UserAlreadyExistsException("Nom d'utilisateur déjà utilisé");
-        }
-
         User user = dto.toEntity();
         user.setPasswordHash(passwordEncoder.encode(dto.password()));
         User savedUser = userRepository.save(user);

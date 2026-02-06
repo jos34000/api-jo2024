@@ -22,9 +22,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
-    @Length(min = 3, max = 25)
-    private String username;
     @Length(min =  60, max = 60)
     private String passwordHash;
     @Length(min = 2, max = 30)
