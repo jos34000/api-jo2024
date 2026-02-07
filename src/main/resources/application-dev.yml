@@ -14,17 +14,25 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
-        
-cors:
-  allowed-origins: ${ALLOWED_ORIGINS}
 
 jwt:
+  secret: ${JWT_SECRET}
   access-token:
-    secret: ${JWT_ACCESS_SECRET}
     expiration: 900000
+    cookie-name: access_token
   refresh-token:
-    secret: ${JWT_REFRESH_SECRET}
-    expiration: 2592000000
+    expiration: 604800000
+    cookie-name: refresh_token
+cookie:
+  domain: ${COOKIE_DOMAIN}
+  secure: ${COOKIE_SECURE}
+  same-site: ${COOKIE_SAME_SITE}
+
+cors:
+  allowed-origins: ${CORS_ORIGINS}
+  allowed-methods: GET,POST,PUT,DELETE,OPTIONS
+  allowed-headers: Content-Type,Authorization
+  allow-credentials: true
 
 logging:
   level:
