@@ -6,6 +6,7 @@ import dev.jos.back.exceptions.auth.UserAlreadyExistsException;
 import dev.jos.back.model.User;
 import dev.jos.back.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,7 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
     public UserResponseDTO createUser(CreateUserDTO dto) {
-        if(userRepository.existsByEmail(dto.email())){
+        if (userRepository.existsByEmail(dto.email())) {
             throw new UserAlreadyExistsException("Cet email est déjà utilisé");
         }
 
@@ -24,5 +25,12 @@ public class UserService {
         user.setPasswordHash(passwordEncoder.encode(dto.password()));
         User savedUser = userRepository.save(user);
         return UserResponseDTO.from(savedUser);
+    }
+    
+    public UserResponseDTO getUserResponseDto(String email) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found: " + email));
+
+        return UserResponseDTO.from(user);
     }
 }
