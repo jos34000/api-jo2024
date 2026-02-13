@@ -1,5 +1,6 @@
 package dev.jos.back.controller;
 
+import dev.jos.back.dto.user.CreateUserDTO;
 import dev.jos.back.dto.user.LoginRequestDTO;
 import dev.jos.back.dto.user.LoginResponseDTO;
 import dev.jos.back.dto.user.UserResponseDTO;
@@ -8,6 +9,7 @@ import dev.jos.back.service.CookieService;
 import dev.jos.back.service.CustomUserDetailsService;
 import dev.jos.back.service.JwtService;
 import dev.jos.back.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -32,6 +34,28 @@ public class AuthController {
     private final UserService userService;
     private final CustomUserDetailsService userDetailsService;
     private final JwtProperties jwtProperties;
+
+    @PostMapping("/register")
+    public ResponseEntity<LoginResponseDTO> register(@Valid @RequestBody CreateUserDTO request) {
+        UserResponseDTO userResponse = userService.createUser(request);
+
+        UserDetails userDetails = userDetailsService.loadUserByUsername(request.email());
+        List<String> roles = userDetails.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .toList();
+
+        String accessToken = jwtService.generateAccessToken(request.email(), roles);
+        String refreshToken = jwtService.generateRefreshToken(request.email());
+
+        LoginResponseDTO response = new LoginResponseDTO(userResponse);
+
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .header(HttpHeaders.SET_COOKIE,
+                        cookieService.createAccessTokenCookie(accessToken).toString())
+                .header(HttpHeaders.SET_COOKIE,
+                        cookieService.createRefreshTokenCookie(refreshToken).toString())
+                .body(response);
+    }
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDTO> login(@RequestBody LoginRequestDTO request) {
