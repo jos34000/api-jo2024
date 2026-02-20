@@ -29,4 +29,6 @@ logs/
 .env.test
 .env
 
+http
+
 TODO.md
