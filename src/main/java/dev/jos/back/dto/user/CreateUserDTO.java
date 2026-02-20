@@ -1,11 +1,12 @@
 package dev.jos.back.dto.user;
 
-import dev.jos.back.model.User;
 import dev.jos.back.util.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.Builder;
 
+@Builder
 public record CreateUserDTO(
         @NotBlank(message = "L'email est obligatoire")
         @Email(message = "L'email doit être valide")
@@ -19,15 +20,8 @@ public record CreateUserDTO(
         String firstName,
 
         @Size(min = 2, max = 30, message = "Le nom doit contenir entre 2 et 30 caractères")
-        String lastName
+        String lastName,
+
+        Role role
 ) {
-    public User toEntity() {
-        return User.builder()
-                .email(this.email)
-                .firstName(this.firstName)
-                .lastName(this.lastName)
-                .mfaEnabled(false)
-                .role(Role.ROLE_USER)
-                .build();
-    }
 }
