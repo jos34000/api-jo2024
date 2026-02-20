@@ -68,11 +68,14 @@ public class AuthController {
         );
 
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        String email = userDetails.getUsername();
+        String email = userDetails != null ? userDetails.getUsername() : null;
 
-        List<String> roles = userDetails.getAuthorities().stream()
-                .map(GrantedAuthority::getAuthority)
-                .toList();
+        List<String> roles = null;
+        if (userDetails != null) {
+            roles = userDetails.getAuthorities().stream()
+                    .map(GrantedAuthority::getAuthority)
+                    .toList();
+        }
 
         String accessToken = jwtService.generateAccessToken(email, roles);
         String refreshToken = jwtService.generateRefreshToken(email);
@@ -118,7 +121,7 @@ public class AuthController {
 
     @PostMapping("/logout")
     public ResponseEntity<Void> logout() {
-        return ResponseEntity.ok()
+        return ResponseEntity.noContent()
                 .header(HttpHeaders.SET_COOKIE,
                         cookieService.createDeleteCookie(
                                 jwtProperties.getAccessToken().getCookieName()).toString())

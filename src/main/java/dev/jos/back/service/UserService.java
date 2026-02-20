@@ -25,7 +25,7 @@ public class UserService {
         User user = dto.toEntity();
         user.setPasswordHash(passwordEncoder.encode(dto.password()));
         user.setRole(Role.ROLE_USER);
-        
+
         User savedUser = userRepository.save(user);
         return UserResponseDTO.from(savedUser);
     }
@@ -35,9 +35,5 @@ public class UserService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + email));
 
         return UserResponseDTO.from(user);
-    }
-
-    public boolean existsByEmail(String email) {
-        return userRepository.existsByEmail(email);
     }
 }
