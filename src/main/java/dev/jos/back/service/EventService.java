@@ -2,6 +2,7 @@ package dev.jos.back.service;
 
 import dev.jos.back.dto.event.CreateEventDTO;
 import dev.jos.back.dto.event.EventResponseDTO;
+import dev.jos.back.mapper.EventMapper;
 import dev.jos.back.model.Event;
 import dev.jos.back.repository.EventRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +19,7 @@ import java.util.Optional;
 public class EventService {
 
     private final EventRepository eventRepository;
+    private final EventMapper eventMapper;
 
     @Transactional
     public List<EventResponseDTO> createEventsBulk(List<CreateEventDTO> eventsDto) {
@@ -50,7 +52,7 @@ public class EventService {
 
         List<Event> savedEvents = eventRepository.saveAll(eventsToSave);
         return savedEvents.stream()
-                .map(this::mapToResponseDto)
+                .map(eventMapper::toResponseDTO)
                 .toList();
     }
 
@@ -85,27 +87,27 @@ public class EventService {
         event.setIsActive(dto.isActive() == null || dto.isActive());
 
         Event saved = eventRepository.save(event);
-        return mapToResponseDto(saved);
+        return eventMapper.toResponseDTO(saved);
     }
 
     @Transactional(readOnly = true)
     public List<EventResponseDTO> getAllEvents() {
         return eventRepository.findAll().stream()
-                .map(this::mapToResponseDto)
+                .map(eventMapper::toResponseDTO)
                 .toList();
     }
 
     @Transactional(readOnly = true)
     public List<EventResponseDTO> getActiveEvents() {
         return eventRepository.findByIsActiveTrue().stream()
-                .map(this::mapToResponseDto)
+                .map(eventMapper::toResponseDTO)
                 .toList();
     }
 
     @Transactional(readOnly = true)
     public List<EventResponseDTO> getAvailableEvents() {
         return eventRepository.findAvailableEvents().stream()
-                .map(this::mapToResponseDto)
+                .map(eventMapper::toResponseDTO)
                 .toList();
     }
 
@@ -113,28 +115,13 @@ public class EventService {
     public EventResponseDTO getEventById(Long id) {
         Event event = eventRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Événement non trouvé"));
-        return mapToResponseDto(event);
+        return eventMapper.toResponseDTO(event);
     }
 
     @Transactional(readOnly = true)
     public List<EventResponseDTO> getAll() {
         return eventRepository.findAll().stream()
-                .map(this::mapToResponseDto)
+                .map(eventMapper::toResponseDTO)
                 .toList();
-    }
-
-    private EventResponseDTO mapToResponseDto(Event event) {
-        return new EventResponseDTO(
-                event.getId(),
-                event.getName(),
-                event.getDescription(),
-                event.getLocation(),
-                event.getEventDate(),
-                event.getCapacity(),
-                event.getAvailableSlots(),
-                event.getIsActive(),
-                event.getCreatedAt(),
-                event.getUpdatedAt()
-        );
     }
 }
