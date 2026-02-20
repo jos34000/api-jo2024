@@ -1,5 +1,6 @@
 package dev.jos.back.model;
 
+import dev.jos.back.util.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.*;
@@ -22,10 +23,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
-    @Length(min = 3, max = 25)
-    private String username;
-    @Length(min =  60, max = 60)
+    @Length(min = 60, max = 60)
     private String passwordHash;
     @Length(min = 2, max = 30)
     private String firstName;
@@ -37,6 +35,8 @@ public class User {
     private boolean mfaEnabled;
     @Column(length = 32)
     private String mfaSecret;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @CreationTimestamp
     private LocalDateTime createdDate;
