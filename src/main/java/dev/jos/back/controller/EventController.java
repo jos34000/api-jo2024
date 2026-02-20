@@ -63,19 +63,6 @@ public class EventController {
     }
 
     /**
-     * Récupère tous les événements (incluant les inactifs et non disponibles).
-     * Réservé aux administrateurs.
-     *
-     * @return ResponseEntity contenant la liste de tous les événements (200 OK)
-     */
-    @GetMapping
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<List<EventResponseDTO>> getAllEvents() {
-        List<EventResponseDTO> events = eventService.getAllEvents();
-        return ResponseEntity.ok(events);
-    }
-
-    /**
      * Récupère tous les événements pour les utilisateurs publics.
      *
      * @return ResponseEntity contenant la liste de tous les événements (200 OK)
@@ -107,7 +94,7 @@ public class EventController {
         List<EventResponseDTO> events = eventService.getAvailableEvents();
         return ResponseEntity.ok(events);
     }
-    
+
     /**
      * Récupère un événement par son identifiant.
      *
