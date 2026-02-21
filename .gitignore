@@ -29,4 +29,7 @@ logs/
 .env.test
 .env
 
+http
+
 TODO.md
+RESPONSABILITIES.md

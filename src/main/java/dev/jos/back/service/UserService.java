@@ -3,6 +3,7 @@ package dev.jos.back.service;
 import dev.jos.back.dto.user.CreateUserDTO;
 import dev.jos.back.dto.user.UserResponseDTO;
 import dev.jos.back.exceptions.auth.UserAlreadyExistsException;
+import dev.jos.back.mapper.UserMapper;
 import dev.jos.back.model.User;
 import dev.jos.back.repository.UserRepository;
 import dev.jos.back.util.Role;
@@ -16,28 +17,25 @@ import org.springframework.stereotype.Service;
 public class UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final UserMapper userMapper;
 
     public UserResponseDTO createUser(CreateUserDTO dto) {
         if (userRepository.existsByEmail(dto.email())) {
             throw new UserAlreadyExistsException("Cet email est déjà utilisé");
         }
 
-        User user = dto.toEntity();
+        User user = userMapper.toEntity(dto);
         user.setPasswordHash(passwordEncoder.encode(dto.password()));
         user.setRole(Role.ROLE_USER);
-        
+
         User savedUser = userRepository.save(user);
-        return UserResponseDTO.from(savedUser);
+        return userMapper.toResponseDTO(savedUser);
     }
 
     public UserResponseDTO getUserResponseDto(String email) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + email));
 
-        return UserResponseDTO.from(user);
-    }
-
-    public boolean existsByEmail(String email) {
-        return userRepository.existsByEmail(email);
+        return userMapper.toResponseDTO(user);
     }
 }

@@ -23,6 +23,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * Contrôleur REST pour la gestion de l'authentification.
+ * Gère l'inscription, la connexion, le rafraîchissement des tokens et la déconnexion.
+ * Utilise des cookies HTTP-only pour stocker les tokens JWT.
+ */
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
@@ -35,6 +40,12 @@ public class AuthController {
     private final CustomUserDetailsService userDetailsService;
     private final JwtProperties jwtProperties;
 
+    /**
+     * Inscrit un nouvel utilisateur et retourne des tokens d'authentification.
+     *
+     * @param request les informations d'inscription de l'utilisateur
+     * @return ResponseEntity contenant les informations de l'utilisateur et les cookies de tokens (201 Created)
+     */
     @PostMapping("/register")
     public ResponseEntity<LoginResponseDTO> register(@Valid @RequestBody CreateUserDTO request) {
         UserResponseDTO userResponse = userService.createUser(request);
@@ -57,6 +68,12 @@ public class AuthController {
                 .body(response);
     }
 
+    /**
+     * Authentifie un utilisateur existant.
+     *
+     * @param request les identifiants de connexion (email et mot de passe)
+     * @return ResponseEntity contenant les informations de l'utilisateur et les cookies de tokens (200 OK)
+     */
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDTO> login(@RequestBody LoginRequestDTO request) {
 
@@ -68,11 +85,14 @@ public class AuthController {
         );
 
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        String email = userDetails.getUsername();
+        String email = userDetails != null ? userDetails.getUsername() : null;
 
-        List<String> roles = userDetails.getAuthorities().stream()
-                .map(GrantedAuthority::getAuthority)
-                .toList();
+        List<String> roles = null;
+        if (userDetails != null) {
+            roles = userDetails.getAuthorities().stream()
+                    .map(GrantedAuthority::getAuthority)
+                    .toList();
+        }
 
         String accessToken = jwtService.generateAccessToken(email, roles);
         String refreshToken = jwtService.generateRefreshToken(email);
@@ -89,6 +109,12 @@ public class AuthController {
                 .body(response);
     }
 
+    /**
+     * Rafraîchit l'access token en utilisant le refresh token.
+     *
+     * @param refreshToken le refresh token provenant du cookie
+     * @return ResponseEntity avec les nouveaux cookies de tokens (200 OK) ou 401 si le token est invalide
+     */
     @PostMapping("/refresh")
     public ResponseEntity<Void> refresh(
             @CookieValue(name = "${jwt.refresh-token.cookie-name}") String refreshToken) {
@@ -116,9 +142,14 @@ public class AuthController {
                 .build();
     }
 
+    /**
+     * Déconnecte l'utilisateur en supprimant les cookies de tokens.
+     *
+     * @return ResponseEntity vide avec des cookies de suppression (204 No Content)
+     */
     @PostMapping("/logout")
     public ResponseEntity<Void> logout() {
-        return ResponseEntity.ok()
+        return ResponseEntity.noContent()
                 .header(HttpHeaders.SET_COOKIE,
                         cookieService.createDeleteCookie(
                                 jwtProperties.getAccessToken().getCookieName()).toString())

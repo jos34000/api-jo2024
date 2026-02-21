@@ -18,8 +18,8 @@ public class CartItems {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Integer quantity;
-    private double price;
+    @Column(nullable = false)
+    private Double price;
 
     @CreationTimestamp
     private LocalDateTime createdDate;
@@ -29,6 +29,10 @@ public class CartItems {
     private Cart cart;
 
     @ManyToOne
-    @JoinColumn(name = "offer_id", nullable = false)
-    private Offer offer;
+    @JoinColumn(name = "offer_type_id", nullable = false)
+    private OfferType offerType;
+
+    @ManyToOne
+    @JoinColumn(name = "event_id", nullable = false)
+    private Event event;
 }
