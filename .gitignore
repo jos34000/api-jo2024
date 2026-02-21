@@ -28,3 +28,8 @@ logs/
 .env.dev
 .env.test
 .env
+
+http
+
+TODO.md
+RESPONSABILITIES.md

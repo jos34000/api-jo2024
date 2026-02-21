@@ -19,23 +19,39 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, unique = true)
     private String userKey;
+
+    @Column(nullable = false)
     private String transactionKey;
+
+    @Column(nullable = false, unique = true)
     private String ticketKey;
+
+    @Column(nullable = false, unique = true)
     private String combinedKey;
 
+    @Column(nullable = false, unique = true)
     private String barcode;
 
-    private Integer price;
+    @Column(nullable = false)
+    private Double price;
 
-    private Boolean isValid;
-    private Boolean isScanned;
+    @Column(nullable = false)
+    private Boolean isValid = true;
+
+    @Column(nullable = false)
+    private Boolean isScanned = false;
+
     private LocalDateTime scannedAt;
+
     private String scannedBy;
+
     private LocalDateTime expiryAt;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
+
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
@@ -46,4 +62,12 @@ public class Ticket {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "event_id", nullable = false)
+    private Event event;
+
+    @ManyToOne
+    @JoinColumn(name = "offer_type_id", nullable = false)
+    private OfferType offerType;
 }

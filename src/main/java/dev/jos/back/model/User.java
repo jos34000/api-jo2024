@@ -1,9 +1,9 @@
 package dev.jos.back.model;
 
+import dev.jos.back.util.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.Length;
@@ -12,18 +12,18 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-@Table(name = "users")
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true, nullable = false)
-    @Length(min = 3, max = 25)
-    private String username;
-    @Length(min =  60, max = 60)
+    @Length(min = 60, max = 60)
     private String passwordHash;
     @Length(min = 2, max = 30)
     private String firstName;
@@ -35,6 +35,8 @@ public class User {
     private boolean mfaEnabled;
     @Column(length = 32)
     private String mfaSecret;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @CreationTimestamp
     private LocalDateTime createdDate;
@@ -51,3 +53,5 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Set<Ticket> tickets;
 }
+
+

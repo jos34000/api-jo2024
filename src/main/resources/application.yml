@@ -1,9 +1,7 @@
 spring:
   application:
     name: back
-server:
-  port: ${SERVER_PORT}
-  address: ${SERVER_ADDRESS}
+
 
 logging:
   file:
@@ -11,6 +9,3 @@ logging:
   logback:
     rollingpolicy:
       file-name-pattern: logs/back-%d{yyyy-MM-dd}.%i.log
-
-cors:
-  allowed-origins: ${ALLOWED_ORIGINS}
