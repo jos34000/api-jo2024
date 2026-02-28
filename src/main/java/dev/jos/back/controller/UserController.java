@@ -1,13 +1,15 @@
 package dev.jos.back.controller;
 
+import dev.jos.back.dto.user.ChangePasswordRequestDTO;
 import dev.jos.back.dto.user.UserResponseDTO;
+import dev.jos.back.exceptions.user.UserNotFoundException;
+import dev.jos.back.service.InvalidPasswordException;
 import dev.jos.back.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Contrôleur REST pour la gestion des utilisateurs.
@@ -31,5 +33,24 @@ public class UserController {
         String email = authentication.getName();
         UserResponseDTO userDto = userService.getUserResponseDto(email);
         return ResponseEntity.ok(userDto);
+    }
+
+    /**
+     * Met à jour le mot de passe de l'utilisateur authentifié
+     *
+     * @param auth    l'objet d'authentification Spring Security contenant les informations de l'utilisateur
+     * @param request l'objet contenant l'ancien et le nouveau mot de passe
+     * @return ResponseEntity vide (204 No Content) en cas de succès
+     * @throws InvalidPasswordException si l'ancien mot de passe est incorrect
+     * @throws UserNotFoundException    si l'utilisateur n'existe pas
+     */
+    @PutMapping("/password")
+    public ResponseEntity<Void> updatePassword(Authentication auth, @Valid @RequestBody ChangePasswordRequestDTO request) {
+        String email = auth.getName();
+        String oldPassword = request.oldPassword();
+        String newPassword = request.newPassword();
+
+        userService.updatePassword(email, oldPassword, newPassword);
+        return ResponseEntity.noContent().build();
     }
 }

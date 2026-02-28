@@ -2,11 +2,12 @@ package dev.jos.back.service;
 
 import dev.jos.back.dto.user.CreateUserDTO;
 import dev.jos.back.dto.user.UserResponseDTO;
-import dev.jos.back.exceptions.auth.UserAlreadyExistsException;
+import dev.jos.back.exceptions.user.UserAlreadyExistsException;
 import dev.jos.back.mapper.UserMapper;
 import dev.jos.back.model.User;
 import dev.jos.back.repository.UserRepository;
 import dev.jos.back.util.Role;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -37,5 +38,18 @@ public class UserService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + email));
 
         return userMapper.toResponseDTO(user);
+    }
+
+    @Transactional
+    public void updatePassword(String email, String oldPassword, String newPassword) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Utilisateur non trouvé"));
+        if (!passwordEncoder.matches(oldPassword, user.getPasswordHash())) {
+            throw new InvalidPasswordException("Mot de passe actuel incorrect");
+        }
+
+        String encodedPassword = passwordEncoder.encode(newPassword);
+        user.setPasswordHash(encodedPassword);
+        userRepository.saveAndFlush(user);
     }
 }

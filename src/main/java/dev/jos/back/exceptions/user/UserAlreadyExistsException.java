@@ -1,4 +1,4 @@
-package dev.jos.back.exceptions.auth;
+package dev.jos.back.exceptions.user;
 
 public class UserAlreadyExistsException extends RuntimeException {
     public UserAlreadyExistsException(String message) {

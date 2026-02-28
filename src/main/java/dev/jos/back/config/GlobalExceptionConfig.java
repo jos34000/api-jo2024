@@ -1,7 +1,7 @@
 package dev.jos.back.config;
 
 import dev.jos.back.dto.ErrorResponseDTO;
-import dev.jos.back.exceptions.auth.UserAlreadyExistsException;
+import dev.jos.back.exceptions.user.UserAlreadyExistsException;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtException;
 import org.springframework.http.HttpStatus;

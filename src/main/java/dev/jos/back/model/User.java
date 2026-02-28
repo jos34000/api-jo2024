@@ -22,8 +22,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Length(min = 60, max = 60)
+    
     private String passwordHash;
     @Length(min = 2, max = 30)
     private String firstName;
