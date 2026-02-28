@@ -28,6 +28,9 @@ cookie:
   secure: ${COOKIE_SECURE}
   same-site: ${COOKIE_SAME_SITE}
 
+resend:
+  api-key: ${RESEND_KEY}
+
 cors:
   allowed-origins: ${CORS_ORIGINS}
   allowed-methods: GET,POST,PUT,DELETE,OPTIONS

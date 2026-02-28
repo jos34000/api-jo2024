@@ -1,12 +1,15 @@
 package dev.jos.back.controller;
 
 import dev.jos.back.dto.user.ChangePasswordRequestDTO;
+import dev.jos.back.dto.user.ForgetPasswordRequestDTO;
 import dev.jos.back.dto.user.UserResponseDTO;
+import dev.jos.back.exceptions.user.InvalidPasswordException;
 import dev.jos.back.exceptions.user.UserNotFoundException;
-import dev.jos.back.service.InvalidPasswordException;
 import dev.jos.back.service.UserService;
+import dev.jos.back.util.TokenValidationResult;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -52,5 +55,21 @@ public class UserController {
 
         userService.updatePassword(email, oldPassword, newPassword);
         return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping("/forget-password")
+    public ResponseEntity<?> forgotPassword(@RequestBody ForgetPasswordRequestDTO request) {
+        userService.resetPassword(request.email());
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/validate-reset-token")
+    public ResponseEntity<?> validateResetToken(@RequestParam String token) {
+        TokenValidationResult result = userService.validateResetToken(token);
+        return switch (result) {
+            case VALID -> ResponseEntity.ok().build();
+            case EXPIRED -> ResponseEntity.status(HttpStatus.GONE).build();
+            case NOT_FOUND -> ResponseEntity.badRequest().build();
+        };
     }
 }
