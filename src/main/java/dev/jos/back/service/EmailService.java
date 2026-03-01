@@ -29,9 +29,31 @@ public class EmailService {
 
         Resend resend = new Resend(apiKey);
         CreateEmailOptions params = CreateEmailOptions.builder()
-                .from("jo@jossainson.dev")
+                .from("jo2024@jossainson.dev")
                 .to(List.of(to))
                 .subject("Réinitialisation de mot de passe")
+                .html(html)
+                .build();
+        try {
+            resend.emails().send(params);
+        } catch (ResendException e) {
+            e.printStackTrace();
+            throw new EmailNotSentException("Échec de l'envoi d'email");
+        }
+    }
+
+    public void sendTwoFactorEmail(String email, String name, String code, int expirationMinutes) {
+        Context context = new Context();
+        context.setVariable("name", name);
+        context.setVariable("code", code);
+        context.setVariable("expirationMinutes", expirationMinutes);
+        String html = templateEngine.process("email/otp-code", context);
+
+        Resend resend = new Resend(apiKey);
+        CreateEmailOptions params = CreateEmailOptions.builder()
+                .from("jo2024@jossainson.dev")
+                .to(List.of(email))
+                .subject("Votre compte JO - Code de sécurité")
                 .html(html)
                 .build();
         try {

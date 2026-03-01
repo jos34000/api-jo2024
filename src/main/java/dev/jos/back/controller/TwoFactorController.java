@@ -14,7 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/auth/2fa")
+@RequestMapping("/api/2fa")
 @RequiredArgsConstructor
 public class TwoFactorController {
 

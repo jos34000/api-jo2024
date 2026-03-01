@@ -43,7 +43,7 @@ public class TwoFactorService {
 
         repository.save(twoFactorCode);
 
-        emailService.sendTwoFactorEmail(user.getEmail(), twoFactorCode.getCode());
+        emailService.sendTwoFactorEmail(user.getEmail(), user.getFirstName(), twoFactorCode.getCode(), expiration);
     }
 
     @Transactional
