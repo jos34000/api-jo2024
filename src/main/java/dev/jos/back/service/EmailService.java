@@ -3,6 +3,7 @@ package dev.jos.back.service;
 import com.resend.Resend;
 import com.resend.core.exception.ResendException;
 import com.resend.services.emails.model.CreateEmailOptions;
+import dev.jos.back.exceptions.email.EmailNotSentException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,7 @@ public class EmailService {
             resend.emails().send(params);
         } catch (ResendException e) {
             e.printStackTrace();
+            throw new EmailNotSentException("Échec de l'envoi d'email");
         }
     }
 }

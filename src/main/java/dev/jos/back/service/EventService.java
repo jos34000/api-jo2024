@@ -2,6 +2,8 @@ package dev.jos.back.service;
 
 import dev.jos.back.dto.event.CreateEventDTO;
 import dev.jos.back.dto.event.EventResponseDTO;
+import dev.jos.back.exceptions.event.EventAlreadyExistsException;
+import dev.jos.back.exceptions.event.EventNotFoundException;
 import dev.jos.back.mapper.EventMapper;
 import dev.jos.back.model.Event;
 import dev.jos.back.repository.EventRepository;
@@ -72,7 +74,7 @@ public class EventService {
         );
 
         if (existing.isPresent()) {
-            throw new IllegalArgumentException("Cet événement existe déjà");
+            throw new EventAlreadyExistsException("Cet événement existe déjà");
         }
 
         Event event = new Event();
@@ -114,7 +116,7 @@ public class EventService {
     @Transactional(readOnly = true)
     public EventResponseDTO getEventById(Long id) {
         Event event = eventRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Événement non trouvé"));
+                .orElseThrow(() -> new EventNotFoundException("Événement non trouvé"));
         return eventMapper.toResponseDTO(event);
     }
 

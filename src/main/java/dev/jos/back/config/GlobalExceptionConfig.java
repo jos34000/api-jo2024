@@ -1,12 +1,17 @@
 package dev.jos.back.config;
 
 import dev.jos.back.dto.ErrorResponseDTO;
+import dev.jos.back.exceptions.email.EmailNotSentException;
+import dev.jos.back.exceptions.event.EventAlreadyExistsException;
+import dev.jos.back.exceptions.event.EventNotFoundException;
+import dev.jos.back.exceptions.user.InvalidPasswordException;
 import dev.jos.back.exceptions.user.UserAlreadyExistsException;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -22,6 +27,12 @@ public class GlobalExceptionConfig {
     public ResponseEntity<ErrorResponseDTO> handleUserAlreadyExists(UserAlreadyExistsException ex) {
         return ResponseEntity.status(HttpStatus.CONFLICT)
                 .body(ErrorResponseDTO.of(409, ex.getMessage()));
+    }
+
+    @ExceptionHandler(UsernameNotFoundException.class)
+    public ResponseEntity<ErrorResponseDTO> handleUserNotFound(UsernameNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(ErrorResponseDTO.of(404, ex.getMessage()));
     }
 
     @ExceptionHandler(BadCredentialsException.class)
@@ -50,6 +61,36 @@ public class GlobalExceptionConfig {
             errors.put(fieldName, error.getDefaultMessage());
         });
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
+    }
+
+    @ExceptionHandler(InvalidPasswordException.class)
+    public ResponseEntity<ErrorResponseDTO> handleInvalidPassword(InvalidPasswordException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(ErrorResponseDTO.of(400, ex.getMessage()));
+    }
+
+    @ExceptionHandler(EventNotFoundException.class)
+    public ResponseEntity<ErrorResponseDTO> handleEventNotFound(EventNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(ErrorResponseDTO.of(400, ex.getMessage()));
+    }
+
+    @ExceptionHandler(EventAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponseDTO> handleEventAlreadyExists(EventAlreadyExistsException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(ErrorResponseDTO.of(400, ex.getMessage()));
+    }
+
+    @ExceptionHandler(EmailNotSentException.class)
+    public ResponseEntity<ErrorResponseDTO> handleEmailNotSent(EmailNotSentException ex) {
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(ErrorResponseDTO.of(500, ex.getMessage()));
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<ErrorResponseDTO> handleIllegalArgument(IllegalArgumentException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(ErrorResponseDTO.of(400, ex.getMessage()));
     }
 
     @ExceptionHandler(Exception.class)
