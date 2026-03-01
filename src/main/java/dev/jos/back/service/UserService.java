@@ -47,7 +47,7 @@ public class UserService {
 
     @Transactional
     public UserResponseDTO updateUser(String authEmail, String newEmail, String newFirstName, String newLastName) {
-        if (newEmail.equals(authEmail) && userRepository.existsByEmail(authEmail)) {
+        if (!newEmail.equals(authEmail) && userRepository.existsByEmail(authEmail)) {
             throw new UserAlreadyExistsException("Cet email est déjà utilisé");
         }
 
