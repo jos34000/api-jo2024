@@ -14,18 +14,18 @@ import java.util.Optional;
 public interface TwoFactorCodeRepository extends JpaRepository<TwoFactorCode, Long> {
     @Query("""
             SELECT t FROM TwoFactorCode t
-            WHERE t.user.id = :userId
+            WHERE t.user.email = :userEmail
               AND t.used = false
               AND t.expiresAt > :now
             ORDER BY t.createdAt DESC
             LIMIT 1
             """)
-    Optional<TwoFactorCode> findLatestValid(@Param("userId") Long userId,
+    Optional<TwoFactorCode> findLatestValid(@Param("userEmail") String userEmail,
                                             @Param("now") LocalDateTime now);
 
     @Modifying
-    @Query("UPDATE TwoFactorCode t SET t.used = true WHERE t.user.id = :userId AND t.used = false")
-    void invalidateAll(@Param("userId") Long userId);
+    @Query("UPDATE TwoFactorCode t SET t.used = true WHERE t.user.email = :userEmail AND t.used = false")
+    void invalidateAll(@Param("userEmail") String userEmail);
 
     @Modifying
     @Query("DELETE FROM TwoFactorCode t WHERE t.expiresAt < :threshold OR t.used = true")
