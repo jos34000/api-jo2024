@@ -29,7 +29,7 @@ public class SecurityConfig {
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/auth/**", "/v3/api-docs/**", "/actuator/**", "/swagger-ui/**", "/api/events/all").permitAll()
+                        .requestMatchers("/api/auth/**", "/v3/api-docs/**", "/actuator/**", "/swagger-ui/**", "/api/events/all", "/api/users/forget-password", "/api/users/validate-reset-token").permitAll()
                         .anyRequest().authenticated()
                 ).addFilterBefore(jwtAuthenticationFilter,
                         UsernamePasswordAuthenticationFilter.class);
