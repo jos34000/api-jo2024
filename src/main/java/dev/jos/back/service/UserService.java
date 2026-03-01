@@ -45,6 +45,21 @@ public class UserService {
         return userMapper.toResponseDTO(savedUser);
     }
 
+    @Transactional
+    public UserResponseDTO updateUser(String authEmail, String newEmail, String newFirstName, String newLastName) {
+        if (newEmail.equals(authEmail) && userRepository.existsByEmail(authEmail)) {
+            throw new UserAlreadyExistsException("Cet email est déjà utilisé");
+        }
+
+        User user = userRepository.findByEmail(authEmail)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found: " + authEmail));
+        user.setEmail(newEmail);
+        user.setFirstName(newFirstName);
+        user.setLastName(newLastName);
+        User modifiedUser = userRepository.saveAndFlush(user);
+        return userMapper.toResponseDTO(modifiedUser);
+    }
+
     public UserResponseDTO getUserResponseDto(String email) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + email));
