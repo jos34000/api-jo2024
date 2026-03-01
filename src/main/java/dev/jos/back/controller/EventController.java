@@ -16,6 +16,9 @@ import java.util.List;
 /**
  * Contrôleur REST pour la gestion des événements.
  * Fournit des endpoints pour créer, consulter et filtrer les événements.
+ *
+ * @see EventService
+ * @see EventResponseDTO
  */
 @RestController
 @RequestMapping("/api/events")
@@ -29,7 +32,12 @@ public class EventController {
      * Réservé aux administrateurs.
      *
      * @param events liste des événements à créer
-     * @return ResponseEntity contenant le résumé de la création (nombre et liste des événements créés) (201 Created)
+     * @return {@code ResponseEntity<BulkEventResponseDTO>} contenant le résumé de la création
+     * (nombre total d'événements créés et liste détaillée des événements)
+     * @throws jakarta.validation.ConstraintViolationException           si un ou plusieurs événements
+     *                                                                   contiennent des données invalides
+     * @throws org.springframework.security.access.AccessDeniedException si l'utilisateur
+     *                                                                   n'a pas le rôle ADMIN
      */
     @PostMapping("/bulk")
     @PreAuthorize("hasRole('ADMIN')")
@@ -50,8 +58,11 @@ public class EventController {
      * Crée un nouvel événement.
      * Réservé aux administrateurs.
      *
-     * @param event les informations de l'événement à créer
-     * @return ResponseEntity contenant l'événement créé (201 Created)
+     * @param event les informations de l'événement à créer (titre, description, dates, etc.)
+     * @return {@code ResponseEntity<EventResponseDTO>} contenant l'événement créé avec son identifiant généré
+     * @throws jakarta.validation.ConstraintViolationException           si les données de l'événement sont invalides
+     * @throws org.springframework.security.access.AccessDeniedException si l'utilisateur
+     *                                                                   n'a pas le rôle ADMIN
      */
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
@@ -65,7 +76,8 @@ public class EventController {
     /**
      * Récupère tous les événements pour les utilisateurs publics.
      *
-     * @return ResponseEntity contenant la liste de tous les événements (200 OK)
+     * @return {@code ResponseEntity<List<EventResponseDTO>>} contenant la liste complète
+     * de tous les événements
      */
     @GetMapping("/all")
     public ResponseEntity<List<EventResponseDTO>> getAll() {
@@ -76,7 +88,8 @@ public class EventController {
     /**
      * Récupère uniquement les événements actifs.
      *
-     * @return ResponseEntity contenant la liste des événements actifs (200 OK)
+     * @return {@code ResponseEntity<List<EventResponseDTO>>} contenant la liste des événements actifs
+     *
      */
     @GetMapping("/active")
     public ResponseEntity<List<EventResponseDTO>> getActiveEvents() {
@@ -87,7 +100,8 @@ public class EventController {
     /**
      * Récupère uniquement les événements disponibles.
      *
-     * @return ResponseEntity contenant la liste des événements disponibles (200 OK)
+     * @return {@code ResponseEntity<List<EventResponseDTO>>} contenant la liste des événements disponibles
+     *
      */
     @GetMapping("/available")
     public ResponseEntity<List<EventResponseDTO>> getAvailableEvents() {
@@ -98,8 +112,10 @@ public class EventController {
     /**
      * Récupère un événement par son identifiant.
      *
-     * @param id l'identifiant de l'événement
-     * @return ResponseEntity contenant l'événement trouvé (200 OK)
+     * @param id l'identifiant unique de l'événement
+     * @return {@code ResponseEntity<EventResponseDTO>} contenant les détails complets de l'événement
+     * @throws dev.jos.back.exceptions.event.EventNotFoundException si aucun événement
+     *                                                              ne correspond à cet identifiant
      */
     @GetMapping("/{id}")
     public ResponseEntity<EventResponseDTO> getEventById(@PathVariable Long id) {
