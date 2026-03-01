@@ -1,6 +1,6 @@
 package dev.jos.back.model;
 
-import dev.jos.back.util.CartStatus;
+import dev.jos.back.util.enums.CartStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

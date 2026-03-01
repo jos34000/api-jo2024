@@ -4,6 +4,8 @@ import dev.jos.back.dto.ErrorResponseDTO;
 import dev.jos.back.exceptions.email.EmailNotSentException;
 import dev.jos.back.exceptions.event.EventAlreadyExistsException;
 import dev.jos.back.exceptions.event.EventNotFoundException;
+import dev.jos.back.exceptions.twofactor.TwoFactorCodeNotFoundException;
+import dev.jos.back.exceptions.twofactor.TwoFactorMaxAttemptsException;
 import dev.jos.back.exceptions.user.InvalidPasswordException;
 import dev.jos.back.exceptions.user.UserAlreadyExistsException;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -75,10 +77,22 @@ public class GlobalExceptionConfig {
                 .body(ErrorResponseDTO.of(400, ex.getMessage()));
     }
 
-    @ExceptionHandler(EventAlreadyExistsException.class)
-    public ResponseEntity<ErrorResponseDTO> handleEventAlreadyExists(EventAlreadyExistsException ex) {
+    @ExceptionHandler(TwoFactorCodeNotFoundException.class)
+    public ResponseEntity<ErrorResponseDTO> handleTwoFactorCodeNotFound(TwoFactorCodeNotFoundException ex) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(ErrorResponseDTO.of(400, ex.getMessage()));
+    }
+
+    @ExceptionHandler(TwoFactorMaxAttemptsException.class)
+    public ResponseEntity<ErrorResponseDTO> handleTwoFactorMaxAttemptsFound(TwoFactorMaxAttemptsException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(ErrorResponseDTO.of(400, ex.getMessage()));
+    }
+
+    @ExceptionHandler(EventAlreadyExistsException.class)
+    public ResponseEntity<ErrorResponseDTO> handleEventAlreadyExists(EventAlreadyExistsException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE)
+                .body(ErrorResponseDTO.of(406, ex.getMessage()));
     }
 
     @ExceptionHandler(EmailNotSentException.class)

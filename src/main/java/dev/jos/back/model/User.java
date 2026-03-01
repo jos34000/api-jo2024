@@ -1,6 +1,6 @@
 package dev.jos.back.model;
 
-import dev.jos.back.util.Role;
+import dev.jos.back.util.enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import lombok.*;
@@ -22,7 +22,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String passwordHash;
     @Length(min = 2, max = 30)
     private String firstName;

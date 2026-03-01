@@ -7,7 +7,7 @@ import dev.jos.back.dto.user.UserResponseDTO;
 import dev.jos.back.exceptions.user.InvalidPasswordException;
 import dev.jos.back.exceptions.user.UserNotFoundException;
 import dev.jos.back.service.UserService;
-import dev.jos.back.util.TokenValidationResult;
+import dev.jos.back.util.enums.TokenValidationResult;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

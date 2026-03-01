@@ -1,7 +1,7 @@
 package dev.jos.back.model;
 
-import dev.jos.back.util.PaymentMethod;
-import dev.jos.back.util.TransactionStatus;
+import dev.jos.back.util.enums.PaymentMethod;
+import dev.jos.back.util.enums.TransactionStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
