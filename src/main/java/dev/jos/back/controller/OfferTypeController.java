@@ -15,6 +15,9 @@ import java.util.List;
 /**
  * Contrôleur REST pour la gestion des types d'offres.
  * Permet de créer et consulter les différents types d'offres disponibles.
+ *
+ * @see OfferTypeService
+ * @see OfferTypeResponseDTO
  */
 @RestController
 @RequestMapping("/api/offer-types")
@@ -26,8 +29,14 @@ public class OfferTypeController {
      * Crée un nouveau type d'offre.
      * Réservé aux administrateurs.
      *
-     * @param dtoRequest les informations du type d'offre à créer
-     * @return ResponseEntity contenant le type d'offre créé (201 Created)
+     * @param dtoRequest les informations du type d'offre à créer (nom, description, caractéristiques)
+     * @return {@code ResponseEntity<OfferTypeResponseDTO>} contenant le type d'offre créé
+     * avec son identifiant généré
+     * @throws jakarta.validation.ConstraintViolationException                   si les données du type d'offre sont invalides
+     * @throws dev.jos.back.exceptions.offertype.OfferTypeAlreadyExistsException si un type d'offre
+     *                                                                           avec le même nom existe déjà
+     * @throws org.springframework.security.access.AccessDeniedException         si l'utilisateur
+     *                                                                           n'a pas le rôle ADMIN
      */
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
@@ -41,7 +50,8 @@ public class OfferTypeController {
     /**
      * Récupère tous les types d'offres.
      *
-     * @return ResponseEntity contenant la liste de tous les types d'offres (200 OK)
+     * @return {@code ResponseEntity<List<OfferTypeResponseDTO>>} contenant la liste complète
+     * de tous les types d'offres
      */
     @GetMapping("/all")
     public ResponseEntity<List<OfferTypeResponseDTO>> getAllOfferTypes() {

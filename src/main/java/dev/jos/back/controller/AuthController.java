@@ -27,6 +27,10 @@ import java.util.List;
  * Contrôleur REST pour la gestion de l'authentification.
  * Gère l'inscription, la connexion, le rafraîchissement des tokens et la déconnexion.
  * Utilise des cookies HTTP-only pour stocker les tokens JWT.
+ *
+ * @see JwtService
+ * @see CookieService
+ * @see UserService
  */
 @RestController
 @RequestMapping("/api/auth")
@@ -43,8 +47,11 @@ public class AuthController {
     /**
      * Inscrit un nouvel utilisateur et retourne des tokens d'authentification.
      *
-     * @param request les informations d'inscription de l'utilisateur
-     * @return ResponseEntity contenant les informations de l'utilisateur et les cookies de tokens (201 Created)
+     * @param request les informations d'inscription de l'utilisateur (email, mot de passe, etc.)
+     * @return {@code ResponseEntity<LoginResponseDTO>} contenant les informations de l'utilisateur
+     * nouvellement créé avec les cookies JWT (access token et refresh token)
+     * @throws dev.jos.back.exceptions.user.UserAlreadyExistsException si un utilisateur avec cet email existe déjà
+     * @throws jakarta.validation.ConstraintViolationException         si les données de la requête sont invalides
      */
     @PostMapping("/register")
     public ResponseEntity<LoginResponseDTO> register(@Valid @RequestBody CreateUserDTO request) {
@@ -72,7 +79,10 @@ public class AuthController {
      * Authentifie un utilisateur existant.
      *
      * @param request les identifiants de connexion (email et mot de passe)
-     * @return ResponseEntity contenant les informations de l'utilisateur et les cookies de tokens (200 OK)
+     * @return {@code ResponseEntity<LoginResponseDTO>} contenant les informations de l'utilisateur
+     * avec les cookies JWT (access token et refresh token)
+     * @throws org.springframework.security.authentication.BadCredentialsException     si les identifiants sont incorrects
+     * @throws org.springframework.security.core.userdetails.UsernameNotFoundException si l'utilisateur n'existe pas
      */
     @PostMapping("/login")
     public ResponseEntity<LoginResponseDTO> login(@RequestBody LoginRequestDTO request) {
@@ -112,8 +122,12 @@ public class AuthController {
     /**
      * Rafraîchit l'access token en utilisant le refresh token.
      *
-     * @param refreshToken le refresh token provenant du cookie
-     * @return ResponseEntity avec les nouveaux cookies de tokens (200 OK) ou 401 si le token est invalide
+     * @param refreshToken le refresh token provenant du cookie HTTP-only
+     * @return {@code ResponseEntity<Void>} avec les nouveaux cookies JWT
+     * (nouvel access token et nouveau refresh token)
+     * @throws io.jsonwebtoken.ExpiredJwtException si le refresh token a expiré
+     * @throws io.jsonwebtoken.JwtException        si le refresh token est invalide ou corrompu
+     *
      */
     @PostMapping("/refresh")
     public ResponseEntity<Void> refresh(
@@ -145,7 +159,7 @@ public class AuthController {
     /**
      * Déconnecte l'utilisateur en supprimant les cookies de tokens.
      *
-     * @return ResponseEntity vide avec des cookies de suppression (204 No Content)
+     * @return {@code ResponseEntity<Void>} vide avec les cookies de suppression
      */
     @PostMapping("/logout")
     public ResponseEntity<Void> logout() {
