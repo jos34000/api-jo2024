@@ -12,7 +12,7 @@ public class UserMapper {
                 .email(dto.email())
                 .firstName(dto.firstName())
                 .lastName(dto.lastName())
-                .mfaEnabled(false)
+                .mfaEnabled(dto.enableTwoFactor())
                 .role(dto.role())
                 .build();
     }

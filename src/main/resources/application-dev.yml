@@ -30,6 +30,7 @@ cookie:
 
 resend:
   api-key: ${RESEND_KEY}
+  from: ${FROM_EMAIL}
 
 two-factor:
   expiration: 10
@@ -46,3 +47,5 @@ logging:
     dev:
       jos:
         back: DEBUG
+  file:
+    name: logs/app.log

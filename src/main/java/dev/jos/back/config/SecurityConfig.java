@@ -25,6 +25,8 @@ public class SecurityConfig {
             "/api/events/all",
             "/api/users/forget-password",
             "/api/users/validate-reset-token",
+            "/api/2fa/send",
+            "/api/2fa/verify",
             "/v3/api-docs/**",
             "/swagger-ui/**",
             "/actuator/**"

@@ -2,13 +2,12 @@ package dev.jos.back.controller;
 
 import dev.jos.back.dto.user.CreateUserDTO;
 import dev.jos.back.dto.user.LoginRequestDTO;
-import dev.jos.back.dto.user.LoginResponseDTO;
 import dev.jos.back.dto.user.UserResponseDTO;
+import dev.jos.back.mapper.UserMapper;
+import dev.jos.back.model.User;
 import dev.jos.back.properties.JwtProperties;
-import dev.jos.back.service.CookieService;
-import dev.jos.back.service.CustomUserDetailsService;
-import dev.jos.back.service.JwtService;
-import dev.jos.back.service.UserService;
+import dev.jos.back.repository.UserRepository;
+import dev.jos.back.service.*;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -19,6 +18,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -43,6 +43,9 @@ public class AuthController {
     private final UserService userService;
     private final CustomUserDetailsService userDetailsService;
     private final JwtProperties jwtProperties;
+    private final UserRepository userRepository;
+    private final TwoFactorService twoFactorService;
+    private final UserMapper userMapper;
 
     /**
      * Inscrit un nouvel utilisateur et retourne des tokens d'authentification.
@@ -54,8 +57,8 @@ public class AuthController {
      * @throws jakarta.validation.ConstraintViolationException         si les données de la requête sont invalides
      */
     @PostMapping("/register")
-    public ResponseEntity<LoginResponseDTO> register(@Valid @RequestBody CreateUserDTO request) {
-        UserResponseDTO userResponse = userService.createUser(request);
+    public ResponseEntity<UserResponseDTO> register(@Valid @RequestBody CreateUserDTO request) {
+        UserResponseDTO user = userService.createUser(request);
 
         UserDetails userDetails = userDetailsService.loadUserByUsername(request.email());
         List<String> roles = userDetails.getAuthorities().stream()
@@ -65,14 +68,12 @@ public class AuthController {
         String accessToken = jwtService.generateAccessToken(request.email(), roles);
         String refreshToken = jwtService.generateRefreshToken(request.email());
 
-        LoginResponseDTO response = new LoginResponseDTO(userResponse);
-
         return ResponseEntity.status(HttpStatus.CREATED)
                 .header(HttpHeaders.SET_COOKIE,
                         cookieService.createAccessTokenCookie(accessToken).toString())
                 .header(HttpHeaders.SET_COOKIE,
                         cookieService.createRefreshTokenCookie(refreshToken).toString())
-                .body(response);
+                .body(user);
     }
 
     /**
@@ -85,7 +86,7 @@ public class AuthController {
      * @throws org.springframework.security.core.userdetails.UsernameNotFoundException si l'utilisateur n'existe pas
      */
     @PostMapping("/login")
-    public ResponseEntity<LoginResponseDTO> login(@RequestBody LoginRequestDTO request) {
+    public ResponseEntity<UserResponseDTO> login(@RequestBody LoginRequestDTO request) {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -96,6 +97,17 @@ public class AuthController {
 
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         String email = userDetails != null ? userDetails.getUsername() : null;
+
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+
+        if (user.isMfaEnabled()) {
+            twoFactorService.sendCode(email);
+            return ResponseEntity
+                    .accepted()
+                    .body(userMapper.toResponseDTO(user));
+        }
+
 
         List<String> roles = null;
         if (userDetails != null) {
@@ -109,14 +121,12 @@ public class AuthController {
 
         UserResponseDTO userResponse = userService.getUserResponseDto(email);
 
-        LoginResponseDTO response = new LoginResponseDTO(userResponse);
-
         return ResponseEntity.ok()
                 .header(HttpHeaders.SET_COOKIE,
                         cookieService.createAccessTokenCookie(accessToken).toString())
                 .header(HttpHeaders.SET_COOKIE,
                         cookieService.createRefreshTokenCookie(refreshToken).toString())
-                .body(response);
+                .body(userResponse);
     }
 
     /**

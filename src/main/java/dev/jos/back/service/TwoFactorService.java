@@ -1,5 +1,6 @@
 package dev.jos.back.service;
 
+import dev.jos.back.exceptions.twofactor.BadTwoFactorCodeException;
 import dev.jos.back.exceptions.twofactor.TwoFactorCodeNotFoundException;
 import dev.jos.back.exceptions.twofactor.TwoFactorMaxAttemptsException;
 import dev.jos.back.exceptions.user.UserNotFoundException;
@@ -32,7 +33,7 @@ public class TwoFactorService {
     @Transactional
     public void sendCode(String userEmail) {
         User user = userRepository.findByEmail(userEmail)
-                .orElseThrow(() -> new UserNotFoundException("User not found"));
+                .orElseThrow(() -> new UserNotFoundException("L'utilisateur n'existe pas"));
 
         repository.invalidateAll(userEmail);
 
@@ -46,32 +47,34 @@ public class TwoFactorService {
         emailService.sendTwoFactorEmail(user.getEmail(), user.getFirstName(), twoFactorCode.getCode(), expiration);
     }
 
-    @Transactional
-    public boolean verifyCode(String userEmail, String submittedCode) {
+    public void verifyCode(String userEmail, String submittedCode) {
         TwoFactorCode twoFactorCode = repository.findLatestValid(userEmail, LocalDateTime.now())
-                .orElseThrow(() -> new TwoFactorCodeNotFoundException("No valid code found"));
-
-        if (twoFactorCode.getFailedAttempts() >= maxAttempts) {
-            twoFactorCode.setUsed(true);
-            repository.save(twoFactorCode);
-            throw new TwoFactorMaxAttemptsException("Max attempts reached");
-        }
+                .orElseThrow(() -> new TwoFactorCodeNotFoundException("Pas de code valide."));
 
         if (!twoFactorCode.getCode().equals(submittedCode)) {
-            twoFactorCode.setFailedAttempts(twoFactorCode.getFailedAttempts() + 1);
-            repository.save(twoFactorCode);
-            return false;
+            int attempts = twoFactorCode.getFailedAttempts() + 1;
+            twoFactorCode.setFailedAttempts(attempts);
+
+            if (attempts >= maxAttempts) {
+                twoFactorCode.setUsed(true);
+            }
+
+            repository.saveAndFlush(twoFactorCode);
+
+            if (attempts >= maxAttempts) {
+                throw new TwoFactorMaxAttemptsException("Tentatives maximales atteintes pour ce code.");
+            }
+            throw new BadTwoFactorCodeException("Code invalide.");
         }
 
         twoFactorCode.setUsed(true);
-        repository.save(twoFactorCode);
-        return true;
+        repository.saveAndFlush(twoFactorCode);
     }
 
     @Transactional
     public void toggle(String userEmail, boolean enabled) {
         User user = userRepository.findByEmail(userEmail)
-                .orElseThrow(() -> new UserNotFoundException("User not found"));
+                .orElseThrow(() -> new UserNotFoundException("L'utilisateur n'existe pas"));
 
         user.setMfaEnabled(enabled);
         userRepository.save(user);

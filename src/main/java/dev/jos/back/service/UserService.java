@@ -46,7 +46,7 @@ public class UserService {
     }
 
     @Transactional
-    public UserResponseDTO updateUser(String authEmail, String newEmail, String newFirstName, String newLastName) {
+    public UserResponseDTO updateUser(String authEmail, String newEmail, String newFirstName, String newLastName, boolean twoFactor) {
         if (!newEmail.equals(authEmail) && userRepository.existsByEmail(authEmail)) {
             throw new UserAlreadyExistsException("Cet email est déjà utilisé");
         }
@@ -56,6 +56,7 @@ public class UserService {
         user.setEmail(newEmail);
         user.setFirstName(newFirstName);
         user.setLastName(newLastName);
+        user.setMfaEnabled(twoFactor);
         User modifiedUser = userRepository.saveAndFlush(user);
         return userMapper.toResponseDTO(modifiedUser);
     }

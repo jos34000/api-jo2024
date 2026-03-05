@@ -5,9 +5,11 @@ import dev.jos.back.dto.user.ForgetPasswordRequestDTO;
 import dev.jos.back.dto.user.UpdateUserRequestDTO;
 import dev.jos.back.dto.user.UserResponseDTO;
 import dev.jos.back.exceptions.user.InvalidPasswordException;
+import dev.jos.back.exceptions.user.UserAlreadyExistsException;
 import dev.jos.back.exceptions.user.UserNotFoundException;
 import dev.jos.back.service.UserService;
 import dev.jos.back.util.enums.TokenValidationResult;
+import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,7 +25,7 @@ import org.springframework.web.bind.annotation.*;
  * @see Authentication
  */
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api/user")
 @RequiredArgsConstructor
 public class UserController {
 
@@ -120,11 +122,11 @@ public class UserController {
      * @param request l'objet contenant les nouvelles informations à mettre à jour (email, prénom, nom)
      * @return {@code ResponseEntity<UserResponseDTO>} contenant les informations utilisateur
      * mises à jour avec les nouvelles valeurs
-     * @throws UserNotFoundException                                   si l'utilisateur n'existe pas ou a été supprimé
-     * @throws dev.jos.back.exceptions.user.UserAlreadyExistsException si le nouvel email
-     *                                                                 est déjà utilisé par un autre utilisateur
-     * @throws jakarta.validation.ConstraintViolationException         si les données fournies
-     *                                                                 ne respectent pas les critères de validation (format email, longueur des champs, etc.)
+     * @throws UserNotFoundException        si l'utilisateur n'existe pas ou a été supprimé
+     * @throws UserAlreadyExistsException   si le nouvel email
+     *                                      est déjà utilisé par un autre utilisateur
+     * @throws ConstraintViolationException si les données fournies
+     *                                      ne respectent pas les critères de validation (format email, longueur des champs, etc.)
      * @see UpdateUserRequestDTO pour les règles de validation des champs
      * @see UserResponseDTO pour la structure des données retournées
      */
@@ -134,7 +136,8 @@ public class UserController {
         String newEmail = request.email();
         String newFirstName = request.firstName();
         String newLastName = request.lastName();
-        UserResponseDTO response = userService.updateUser(email, newEmail, newFirstName, newLastName);
+        boolean twoFactor = request.twoFactor();
+        UserResponseDTO response = userService.updateUser(email, newEmail, newFirstName, newLastName, twoFactor);
         return ResponseEntity.ok(response);
     }
 }

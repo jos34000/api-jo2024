@@ -8,14 +8,15 @@ import dev.jos.back.mapper.EventMapper;
 import dev.jos.back.model.Event;
 import dev.jos.back.repository.EventRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class EventService {
@@ -29,7 +30,14 @@ public class EventService {
         List<Event> eventsToSave = new ArrayList<>();
 
         eventsDto.forEach(dto -> {
+            if (dto.name() == null || dto.name().isBlank()) {
+                throw new IllegalArgumentException("Le nom de l'événement est requis");
+            }
+            if (dto.location() == null || dto.location().isBlank()) {
+                throw new IllegalArgumentException("Le lieu de l'événement est requis");
+            }
             if (dto.capacity() == null || dto.capacity() <= 0) {
+                log.warn("Événement ignoré - capacité invalide : {}", dto.name());
                 return;
             }
             Optional<Event> existing = eventRepository.findByNameAndEventDate(
@@ -37,6 +45,7 @@ public class EventService {
                     dto.eventDate()
             );
             if (existing.isPresent()) {
+                log.warn("Événement ignoré - déjà existant : {} le {}", dto.name(), dto.eventDate());
                 return;
             }
             Event event = new Event();
@@ -60,14 +69,6 @@ public class EventService {
 
     @Transactional
     public EventResponseDTO createEvent(CreateEventDTO dto) {
-        if (dto.capacity() == null || dto.capacity() <= 0) {
-            throw new IllegalArgumentException("La capacité doit être positive");
-        }
-
-        if (dto.eventDate() == null || dto.eventDate().isBefore(LocalDateTime.now())) {
-            throw new IllegalArgumentException("La date de l'événement doit être dans le futur");
-        }
-
         Optional<Event> existing = eventRepository.findByNameAndEventDate(
                 dto.name(),
                 dto.eventDate()

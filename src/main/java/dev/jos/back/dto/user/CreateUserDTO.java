@@ -22,6 +22,9 @@ public record CreateUserDTO(
         @Size(min = 2, max = 30, message = "Le nom doit contenir entre 2 et 30 caractères")
         String lastName,
 
+        @NotBlank
+        boolean enableTwoFactor,
+
         Role role
 ) {
 }

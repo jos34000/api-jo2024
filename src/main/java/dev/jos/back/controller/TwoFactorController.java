@@ -8,7 +8,6 @@ import dev.jos.back.exceptions.user.UserNotFoundException;
 import dev.jos.back.service.TwoFactorService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -36,19 +35,16 @@ public class TwoFactorController {
     /**
      * Vérifie le code OTP soumis par l'utilisateur.
      *
-     * @param auth    l'objet d'authentification Spring Security de l'utilisateur courant
      * @param request le corps de la requête contenant le code OTP à vérifier
      * @return 204 No Content si le code est valide, 401 Unauthorized sinon
      * @throws TwoFactorCodeNotFoundException si aucun code valide n'existe pour cet utilisateur
      * @throws TwoFactorMaxAttemptsException  si le nombre maximum de tentatives est atteint
      */
     @PostMapping("/verify")
-    public ResponseEntity<Void> verifyCode(Authentication auth,
-                                           @RequestBody @Valid VerifyCodeRequestDTO request) {
-        boolean valid = twoFactorService.verifyCode(auth.getName(), request.code());
-        return valid
-                ? ResponseEntity.noContent().build()
-                : ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    public ResponseEntity<Void> verifyCode(
+            @RequestBody @Valid VerifyCodeRequestDTO request) {
+        twoFactorService.verifyCode(request.email(), request.code());
+        return ResponseEntity.noContent().build();
     }
 
     /**
