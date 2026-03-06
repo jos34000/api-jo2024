@@ -18,4 +18,6 @@ public interface EventRepository extends JpaRepository<Event, Long> {
     List<Event> findAvailableEvents();
 
     Optional<Event> findByNameAndEventDate(String name, LocalDateTime eventDate);
+
+    List<Event> findBySport(String sport);
 }

@@ -13,6 +13,14 @@ public record CreateEventDTO(
         @Size(min = 10, max = 2000, message = "La description doit contenir entre 10 et 2000 caractères")
         String description,
 
+        @NotBlank(message = "La catégorie est obligatoire")
+        @Size(min = 2, max = 2000, message = "La catégorie doit contenir entre 2 et 30 caractères")
+        String category,
+
+        @NotBlank(message = "Le sport est obligatoire")
+        @Size(min = 2, max = 2000, message = "Le sport doit contenir entre 2 et 30 caractères")
+        String sport,
+
         @NotBlank(message = "Le lieu est obligatoire")
         @Size(min = 3, max = 200, message = "Le lieu doit contenir entre 3 et 200 caractères")
         String location,
