@@ -9,8 +9,11 @@ import org.springframework.stereotype.Component;
 public class EventMapper {
     public EventResponseDTO toResponseDTO(Event event) {
         return EventResponseDTO.builder()
+                .id(event.getId())
                 .name(event.getName())
                 .description(event.getDescription())
+                .category(event.getCategory())
+                .sport(event.getSport())
                 .location(event.getLocation())
                 .eventDate(event.getEventDate())
                 .capacity(event.getCapacity())
@@ -23,6 +26,8 @@ public class EventMapper {
         return Event.builder()
                 .name(dto.name())
                 .description(dto.description())
+                .category(dto.category())
+                .sport(dto.sport())
                 .location(dto.location())
                 .eventDate(dto.eventDate())
                 .capacity(dto.capacity())

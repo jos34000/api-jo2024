@@ -6,8 +6,11 @@ import java.time.LocalDateTime;
 
 @Builder
 public record EventResponseDTO(
+        Long id,
         String name,
         String description,
+        String category,
+        String sport,
         String location,
         LocalDateTime eventDate,
         Integer capacity,

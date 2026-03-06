@@ -122,4 +122,16 @@ public class EventController {
         EventResponseDTO event = eventService.getEventById(id);
         return ResponseEntity.ok(event);
     }
+
+    /**
+     * Récupère la liste des événements du même sport.
+     *
+     * @param sport le sport recherché
+     * @return {@code ResponseEntity<List<EventResponseDTO>>} contenant les détails complets de l'événement
+     */
+    @GetMapping("/sport/{sport}")
+    public ResponseEntity<List<EventResponseDTO>> getEventsBySport(@PathVariable String sport) {
+        List<EventResponseDTO> events = eventService.getEventsBySport(sport);
+        return ResponseEntity.ok(events);
+    }
 }

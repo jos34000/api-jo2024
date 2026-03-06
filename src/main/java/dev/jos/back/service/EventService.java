@@ -74,37 +74,38 @@ public class EventService {
         return eventMapper.toResponseDTO(saved);
     }
 
-    @Transactional(readOnly = true)
     public List<EventResponseDTO> getAllEvents() {
         return eventRepository.findAll().stream()
                 .map(eventMapper::toResponseDTO)
                 .toList();
     }
 
-    @Transactional(readOnly = true)
     public List<EventResponseDTO> getActiveEvents() {
         return eventRepository.findByIsActiveTrue().stream()
                 .map(eventMapper::toResponseDTO)
                 .toList();
     }
 
-    @Transactional(readOnly = true)
     public List<EventResponseDTO> getAvailableEvents() {
         return eventRepository.findAvailableEvents().stream()
                 .map(eventMapper::toResponseDTO)
                 .toList();
     }
 
-    @Transactional(readOnly = true)
     public EventResponseDTO getEventById(Long id) {
         Event event = eventRepository.findById(id)
                 .orElseThrow(() -> new EventNotFoundException("Événement non trouvé"));
         return eventMapper.toResponseDTO(event);
     }
 
-    @Transactional(readOnly = true)
     public List<EventResponseDTO> getAll() {
         return eventRepository.findAll().stream()
+                .map(eventMapper::toResponseDTO)
+                .toList();
+    }
+
+    public List<EventResponseDTO> getEventsBySport(String sport) {
+        return eventRepository.findBySport(sport).stream()
                 .map(eventMapper::toResponseDTO)
                 .toList();
     }

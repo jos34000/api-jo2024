@@ -29,6 +29,12 @@ public class Event {
     private String description;
 
     @Column(nullable = false)
+    private String category;
+
+    @Column(nullable = false)
+    private String sport;
+
+    @Column(nullable = false)
     private String location;
 
     @Column(nullable = false)
