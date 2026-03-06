@@ -30,16 +30,6 @@ public class EventService {
         List<Event> eventsToSave = new ArrayList<>();
 
         eventsDto.forEach(dto -> {
-            if (dto.name() == null || dto.name().isBlank()) {
-                throw new IllegalArgumentException("Le nom de l'événement est requis");
-            }
-            if (dto.location() == null || dto.location().isBlank()) {
-                throw new IllegalArgumentException("Le lieu de l'événement est requis");
-            }
-            if (dto.capacity() == null || dto.capacity() <= 0) {
-                log.warn("Événement ignoré - capacité invalide : {}", dto.name());
-                return;
-            }
             Optional<Event> existing = eventRepository.findByNameAndEventDate(
                     dto.name(),
                     dto.eventDate()
@@ -48,16 +38,7 @@ public class EventService {
                 log.warn("Événement ignoré - déjà existant : {} le {}", dto.name(), dto.eventDate());
                 return;
             }
-            Event event = new Event();
-            event.setName(dto.name());
-            event.setDescription(dto.description());
-            event.setLocation(dto.location());
-            event.setEventDate(dto.eventDate());
-            event.setCapacity(dto.capacity());
-            event.setAvailableSlots(
-                    dto.availableSlots() != null ? dto.availableSlots() : dto.capacity()
-            );
-            event.setIsActive(dto.isActive() == null || dto.isActive());
+            Event event = eventMapper.toEntity(dto);
             eventsToSave.add(event);
         });
 

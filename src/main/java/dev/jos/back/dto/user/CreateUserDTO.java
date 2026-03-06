@@ -3,6 +3,7 @@ package dev.jos.back.dto.user;
 import dev.jos.back.util.enums.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Builder;
 
@@ -22,7 +23,7 @@ public record CreateUserDTO(
         @Size(min = 2, max = 30, message = "Le nom doit contenir entre 2 et 30 caractères")
         String lastName,
 
-        @NotBlank
+        @NotNull
         boolean enableTwoFactor,
 
         Role role

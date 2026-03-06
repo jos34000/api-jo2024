@@ -1,5 +1,6 @@
 package dev.jos.back.controller;
 
+import dev.jos.back.dto.offertype.BulkOfferTypesResponseDTO;
 import dev.jos.back.dto.offertype.CreateOfferTypeDTO;
 import dev.jos.back.dto.offertype.OfferTypeResponseDTO;
 import dev.jos.back.service.OfferTypeService;
@@ -26,18 +27,32 @@ public class OfferTypeController {
     private final OfferTypeService offerTypeService;
 
     /**
-     * Crée un nouveau type d'offre.
+     * Créer en masse les types d'offres.
      * Réservé aux administrateurs.
      *
-     * @param dtoRequest les informations du type d'offre à créer (nom, description, caractéristiques)
-     * @return {@code ResponseEntity<OfferTypeResponseDTO>} contenant le type d'offre créé
-     * avec son identifiant généré
+     * @param dto une list des informations du type d'offre à créer (nom, description, caractéristiques)
+     * @return {@code ResponseEntity<BulkOfferTypesResponseDTO>} contenant les offres créees et le nombre d'offres
      * @throws jakarta.validation.ConstraintViolationException                   si les données du type d'offre sont invalides
      * @throws dev.jos.back.exceptions.offertype.OfferTypeAlreadyExistsException si un type d'offre
      *                                                                           avec le même nom existe déjà
      * @throws org.springframework.security.access.AccessDeniedException         si l'utilisateur
      *                                                                           n'a pas le rôle ADMIN
      */
+    @PostMapping("/bulk")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<BulkOfferTypesResponseDTO> createOfferType(
+            @Valid @RequestBody List<CreateOfferTypeDTO> dto) {
+
+        List<OfferTypeResponseDTO> created = offerTypeService.createOfferTypeBulk(dto);
+
+        BulkOfferTypesResponseDTO response = new BulkOfferTypesResponseDTO(
+                created.size(),
+                created
+        );
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<OfferTypeResponseDTO> createOfferType(
