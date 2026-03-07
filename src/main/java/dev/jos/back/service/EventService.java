@@ -2,10 +2,10 @@ package dev.jos.back.service;
 
 import dev.jos.back.dto.event.CreateEventDTO;
 import dev.jos.back.dto.event.EventResponseDTO;
+import dev.jos.back.entities.Event;
 import dev.jos.back.exceptions.event.EventAlreadyExistsException;
 import dev.jos.back.exceptions.event.EventNotFoundException;
 import dev.jos.back.mapper.EventMapper;
-import dev.jos.back.model.Event;
 import dev.jos.back.repository.EventRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -105,7 +105,7 @@ public class EventService {
     }
 
     public List<EventResponseDTO> getEventsBySport(String sport) {
-        return eventRepository.findBySport(sport).stream()
+        return eventRepository.findBySportName(sport).stream()
                 .map(eventMapper::toResponseDTO)
                 .toList();
     }

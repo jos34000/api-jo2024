@@ -1,11 +1,11 @@
 package dev.jos.back.service;
 
+import dev.jos.back.entities.TwoFactorCode;
+import dev.jos.back.entities.User;
 import dev.jos.back.exceptions.twofactor.BadTwoFactorCodeException;
 import dev.jos.back.exceptions.twofactor.TwoFactorCodeNotFoundException;
 import dev.jos.back.exceptions.twofactor.TwoFactorMaxAttemptsException;
 import dev.jos.back.exceptions.user.UserNotFoundException;
-import dev.jos.back.model.TwoFactorCode;
-import dev.jos.back.model.User;
 import dev.jos.back.repository.TwoFactorCodeRepository;
 import dev.jos.back.repository.UserRepository;
 import jakarta.transaction.Transactional;

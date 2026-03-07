@@ -2,7 +2,7 @@ package dev.jos.back.mapper;
 
 import dev.jos.back.dto.event.CreateEventDTO;
 import dev.jos.back.dto.event.EventResponseDTO;
-import dev.jos.back.model.Event;
+import dev.jos.back.entities.Event;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,7 +13,7 @@ public class EventMapper {
                 .name(event.getName())
                 .description(event.getDescription())
                 .category(event.getCategory())
-                .sport(event.getSport())
+                .phase(event.getPhase())
                 .location(event.getLocation())
                 .eventDate(event.getEventDate())
                 .capacity(event.getCapacity())
@@ -27,7 +27,7 @@ public class EventMapper {
                 .name(dto.name())
                 .description(dto.description())
                 .category(dto.category())
-                .sport(dto.sport())
+                .phase(dto.phase())
                 .location(dto.location())
                 .eventDate(dto.eventDate())
                 .capacity(dto.capacity())

@@ -2,9 +2,9 @@ package dev.jos.back.service;
 
 import dev.jos.back.dto.offertype.CreateOfferTypeDTO;
 import dev.jos.back.dto.offertype.OfferTypeResponseDTO;
+import dev.jos.back.entities.OfferType;
 import dev.jos.back.exceptions.offertype.OfferTypeAlreadyExistsException;
 import dev.jos.back.mapper.OfferTypeMapper;
-import dev.jos.back.model.OfferType;
 import dev.jos.back.repository.OfferTypeRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

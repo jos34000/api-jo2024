@@ -1,4 +1,4 @@
-package dev.jos.back.model;
+package dev.jos.back.entities;
 
 import dev.jos.back.util.enums.CartStatus;
 import jakarta.persistence.*;

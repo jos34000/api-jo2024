@@ -2,11 +2,11 @@ package dev.jos.back.service;
 
 import dev.jos.back.dto.user.CreateUserDTO;
 import dev.jos.back.dto.user.UserResponseDTO;
+import dev.jos.back.entities.PasswordResetToken;
+import dev.jos.back.entities.User;
 import dev.jos.back.exceptions.user.InvalidPasswordException;
 import dev.jos.back.exceptions.user.UserAlreadyExistsException;
 import dev.jos.back.mapper.UserMapper;
-import dev.jos.back.model.PasswordResetToken;
-import dev.jos.back.model.User;
 import dev.jos.back.repository.PasswordResetTokenRepository;
 import dev.jos.back.repository.UserRepository;
 import dev.jos.back.util.enums.Role;

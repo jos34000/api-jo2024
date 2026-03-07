@@ -1,6 +1,6 @@
 package dev.jos.back.service;
 
-import dev.jos.back.model.User;
+import dev.jos.back.entities.User;
 import dev.jos.back.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

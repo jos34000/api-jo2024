@@ -2,7 +2,7 @@ package dev.jos.back.mapper;
 
 import dev.jos.back.dto.offertype.CreateOfferTypeDTO;
 import dev.jos.back.dto.offertype.OfferTypeResponseDTO;
-import dev.jos.back.model.OfferType;
+import dev.jos.back.entities.OfferType;
 import org.springframework.stereotype.Component;
 
 @Component

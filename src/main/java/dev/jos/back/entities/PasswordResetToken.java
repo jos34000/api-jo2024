@@ -1,4 +1,4 @@
-package dev.jos.back.model;
+package dev.jos.back.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

@@ -1,5 +1,6 @@
 package dev.jos.back.dto.event;
 
+import dev.jos.back.util.enums.Phases;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
@@ -10,7 +11,7 @@ public record EventResponseDTO(
         String name,
         String description,
         String category,
-        String sport,
+        Phases phase,
         String location,
         LocalDateTime eventDate,
         Integer capacity,

@@ -1,5 +1,6 @@
-package dev.jos.back.model;
+package dev.jos.back.entities;
 
+import dev.jos.back.util.enums.Phases;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,8 +32,8 @@ public class Event {
     @Column(nullable = false)
     private String category;
 
-    @Column(nullable = false)
-    private String sport;
+    @Enumerated(EnumType.STRING)
+    private Phases phase;
 
     @Column(nullable = false)
     private String location;
@@ -54,6 +55,10 @@ public class Event {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+
+    @ManyToOne
+    @JoinColumn(name = "sport_id")
+    private Sport sport;
 
     @OneToMany(mappedBy = "event")
     private Set<CartItems> cartItems;

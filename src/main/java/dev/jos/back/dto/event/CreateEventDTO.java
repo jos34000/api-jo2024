@@ -1,5 +1,6 @@
 package dev.jos.back.dto.event;
 
+import dev.jos.back.util.enums.Phases;
 import jakarta.validation.constraints.*;
 
 import java.time.LocalDateTime;
@@ -17,9 +18,9 @@ public record CreateEventDTO(
         @Size(min = 2, max = 2000, message = "La catégorie doit contenir entre 2 et 30 caractères")
         String category,
 
-        @NotBlank(message = "Le sport est obligatoire")
-        @Size(min = 2, max = 2000, message = "Le sport doit contenir entre 2 et 30 caractères")
-        String sport,
+        @NotBlank(message = "La phase est obligatoire")
+        @Size(min = 2, max = 2000, message = "La phase doit contenir entre 2 et 30 caractères")
+        Phases phase,
 
         @NotBlank(message = "Le lieu est obligatoire")
         @Size(min = 3, max = 200, message = "Le lieu doit contenir entre 3 et 200 caractères")

@@ -1,6 +1,6 @@
 package dev.jos.back.repository;
 
-import dev.jos.back.model.TwoFactorCode;
+import dev.jos.back.entities.TwoFactorCode;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
