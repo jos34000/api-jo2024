@@ -16,6 +16,7 @@ public record EventResponseDTO(
         LocalDateTime eventDate,
         Integer capacity,
         Integer availableSlots,
-        Boolean isActive
+        Boolean isActive,
+        String sport
 ) {
 }

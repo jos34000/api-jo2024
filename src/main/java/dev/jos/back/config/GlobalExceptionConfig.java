@@ -5,6 +5,7 @@ import dev.jos.back.exceptions.email.EmailNotSentException;
 import dev.jos.back.exceptions.event.EventAlreadyExistsException;
 import dev.jos.back.exceptions.event.EventNotFoundException;
 import dev.jos.back.exceptions.offertype.OfferTypeAlreadyExistsException;
+import dev.jos.back.exceptions.sport.SportNotFoundException;
 import dev.jos.back.exceptions.twofactor.BadTwoFactorCodeException;
 import dev.jos.back.exceptions.twofactor.TwoFactorCodeNotFoundException;
 import dev.jos.back.exceptions.twofactor.TwoFactorMaxAttemptsException;
@@ -42,7 +43,8 @@ public class GlobalExceptionConfig {
             Map.entry(BadTwoFactorCodeException.class, HttpStatus.BAD_REQUEST),
             Map.entry(InvalidPasswordException.class, HttpStatus.BAD_REQUEST),
             Map.entry(EmailNotSentException.class, HttpStatus.INTERNAL_SERVER_ERROR),
-            Map.entry(OfferTypeAlreadyExistsException.class, HttpStatus.CONFLICT)
+            Map.entry(OfferTypeAlreadyExistsException.class, HttpStatus.CONFLICT),
+            Map.entry(SportNotFoundException.class, HttpStatus.NOT_FOUND)
     );
 
     @ExceptionHandler(Exception.class)

@@ -19,6 +19,7 @@ public class EventMapper {
                 .capacity(event.getCapacity())
                 .availableSlots(event.getAvailableSlots())
                 .isActive(event.getIsActive())
+                .sport(event.getSport().getName())
                 .build();
     }
 
