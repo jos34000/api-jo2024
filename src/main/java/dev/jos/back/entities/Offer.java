@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -15,8 +16,8 @@ import java.util.Set;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "offer_types")
-public class OfferType {
+@Table(name = "offers")
+public class Offer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -39,12 +40,19 @@ public class OfferType {
     @Column(nullable = false)
     private Integer displayOrder;
 
+    @ElementCollection
+    @CollectionTable(
+            name = "offer_features",
+            joinColumns = @JoinColumn(name = "offer_id")
+    )
+    private List<String> features;
+
     @CreationTimestamp
     private LocalDateTime createdAt;
 
-    @OneToMany(mappedBy = "offerType")
+    @OneToMany(mappedBy = "offer")
     private Set<CartItems> cartItems;
 
-    @OneToMany(mappedBy = "offerType")
+    @OneToMany(mappedBy = "offer")
     private Set<Ticket> tickets;
 }

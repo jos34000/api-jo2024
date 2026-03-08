@@ -3,7 +3,7 @@ package dev.jos.back.dto.offertype;
 import lombok.Builder;
 
 @Builder
-public record CreateOfferTypeDTO(
+public record CreateOfferDTO(
         String name,
         String description,
         Double price,

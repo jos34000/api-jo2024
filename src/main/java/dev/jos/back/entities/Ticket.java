@@ -68,6 +68,6 @@ public class Ticket {
     private Event event;
 
     @ManyToOne
-    @JoinColumn(name = "offer_type_id", nullable = false)
-    private OfferType offerType;
+    @JoinColumn(name = "offer_id", nullable = false)
+    private Offer offer;
 }

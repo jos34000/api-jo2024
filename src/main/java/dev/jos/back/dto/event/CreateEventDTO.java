@@ -14,6 +14,9 @@ public record CreateEventDTO(
         @Size(min = 10, max = 2000, message = "La description doit contenir entre 10 et 2000 caractères")
         String description,
 
+        @NotBlank(message = "L'icône est requise")
+        String icon,
+
         @NotBlank(message = "La catégorie est obligatoire")
         @Size(min = 2, max = 2000, message = "La catégorie doit contenir entre 2 et 30 caractères")
         String category,

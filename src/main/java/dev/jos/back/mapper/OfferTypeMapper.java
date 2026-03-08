@@ -1,14 +1,14 @@
 package dev.jos.back.mapper;
 
-import dev.jos.back.dto.offertype.CreateOfferTypeDTO;
-import dev.jos.back.dto.offertype.OfferTypeResponseDTO;
-import dev.jos.back.entities.OfferType;
+import dev.jos.back.dto.offertype.CreateOfferDTO;
+import dev.jos.back.dto.offertype.OfferResponseDTO;
+import dev.jos.back.entities.Offer;
 import org.springframework.stereotype.Component;
 
 @Component
 public class OfferTypeMapper {
-    public OfferType toEntity(CreateOfferTypeDTO dto) {
-        return OfferType.builder()
+    public Offer toEntity(CreateOfferDTO dto) {
+        return Offer.builder()
                 .name(dto.name())
                 .description(dto.description())
                 .price(dto.price())
@@ -18,8 +18,8 @@ public class OfferTypeMapper {
                 .build();
     }
 
-    public OfferTypeResponseDTO toResponseDTO(OfferType entity) {
-        return OfferTypeResponseDTO.builder()
+    public OfferResponseDTO toResponseDTO(Offer entity) {
+        return OfferResponseDTO.builder()
                 .name(entity.getName())
                 .description(entity.getDescription())
                 .price(entity.getPrice())

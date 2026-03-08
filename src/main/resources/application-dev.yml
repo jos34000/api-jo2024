@@ -11,12 +11,9 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: validate
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
   liquibase:
     enabled: true
-    change-log: classpath:db/changelog/db.changelog-master.yaml
+    change-log: classpath:db/changelog/db.changelog-master.xml
     drop-first: false
 
 jwt:
@@ -48,8 +45,7 @@ cors:
 
 logging:
   level:
+    liquibase: DEBUG
     dev:
       jos:
         back: DEBUG
-  file:
-    name: logs/app.log

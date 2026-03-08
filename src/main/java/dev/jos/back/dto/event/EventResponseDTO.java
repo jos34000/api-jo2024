@@ -10,6 +10,7 @@ public record EventResponseDTO(
         Long id,
         String name,
         String description,
+        String icon,
         String category,
         Phases phase,
         String location,

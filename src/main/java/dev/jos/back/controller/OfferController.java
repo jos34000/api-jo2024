@@ -1,9 +1,9 @@
 package dev.jos.back.controller;
 
-import dev.jos.back.dto.offertype.BulkOfferTypesResponseDTO;
-import dev.jos.back.dto.offertype.CreateOfferTypeDTO;
-import dev.jos.back.dto.offertype.OfferTypeResponseDTO;
-import dev.jos.back.service.OfferTypeService;
+import dev.jos.back.dto.offertype.BulkOfferResponseDTO;
+import dev.jos.back.dto.offertype.CreateOfferDTO;
+import dev.jos.back.dto.offertype.OfferResponseDTO;
+import dev.jos.back.service.OfferService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,24 +14,24 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * Contrôleur REST pour la gestion des types d'offres.
- * Permet de créer et consulter les différents types d'offres disponibles.
+ * Contrôleur REST pour la gestion des offres.
+ * Permet de créer et consulter les différentes offres disponibles.
  *
- * @see OfferTypeService
- * @see OfferTypeResponseDTO
+ * @see OfferService
+ * @see OfferResponseDTO
  */
 @RestController
-@RequestMapping("/api/offer-types")
+@RequestMapping("/api/offer")
 @RequiredArgsConstructor
-public class OfferTypeController {
-    private final OfferTypeService offerTypeService;
+public class OfferController {
+    private final OfferService offerService;
 
     /**
-     * Créer en masse les types d'offres.
+     * Créer en masse les offres.
      * Réservé aux administrateurs.
      *
-     * @param dto une list des informations du type d'offre à créer (nom, description, caractéristiques)
-     * @return {@code ResponseEntity<BulkOfferTypesResponseDTO>} contenant les offres créees et le nombre d'offres
+     * @param dto une list des informations de l'offre à créer (nom, description, caractéristiques)
+     * @return {@code ResponseEntity<BulkOfferResponseDTO>} contenant les offres créees et le nombre d'offres
      * @throws jakarta.validation.ConstraintViolationException                   si les données du type d'offre sont invalides
      * @throws dev.jos.back.exceptions.offertype.OfferTypeAlreadyExistsException si un type d'offre
      *                                                                           avec le même nom existe déjà
@@ -40,12 +40,12 @@ public class OfferTypeController {
      */
     @PostMapping("/bulk")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<BulkOfferTypesResponseDTO> createOfferType(
-            @Valid @RequestBody List<CreateOfferTypeDTO> dto) {
+    public ResponseEntity<BulkOfferResponseDTO> createOfferType(
+            @Valid @RequestBody List<CreateOfferDTO> dto) {
 
-        List<OfferTypeResponseDTO> created = offerTypeService.createOfferTypeBulk(dto);
+        List<OfferResponseDTO> created = offerService.createOfferTypeBulk(dto);
 
-        BulkOfferTypesResponseDTO response = new BulkOfferTypesResponseDTO(
+        BulkOfferResponseDTO response = new BulkOfferResponseDTO(
                 created.size(),
                 created
         );
@@ -55,10 +55,10 @@ public class OfferTypeController {
 
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<OfferTypeResponseDTO> createOfferType(
-            @Valid @RequestBody CreateOfferTypeDTO dtoRequest) {
+    public ResponseEntity<OfferResponseDTO> createOfferType(
+            @Valid @RequestBody CreateOfferDTO dtoRequest) {
 
-        OfferTypeResponseDTO created = offerTypeService.createOfferType(dtoRequest);
+        OfferResponseDTO created = offerService.createOfferType(dtoRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
@@ -69,7 +69,7 @@ public class OfferTypeController {
      * de tous les types d'offres
      */
     @GetMapping("/all")
-    public ResponseEntity<List<OfferTypeResponseDTO>> getAllOfferTypes() {
-        return ResponseEntity.ok(offerTypeService.getAllOfferTypes());
+    public ResponseEntity<List<OfferResponseDTO>> getAllOfferTypes() {
+        return ResponseEntity.ok(offerService.getAllOfferTypes());
     }
 }

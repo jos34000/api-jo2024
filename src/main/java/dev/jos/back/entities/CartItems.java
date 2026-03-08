@@ -30,7 +30,7 @@ public class CartItems {
 
     @ManyToOne
     @JoinColumn(name = "offer_type_id", nullable = false)
-    private OfferType offerType;
+    private Offer offer;
 
     @ManyToOne
     @JoinColumn(name = "event_id", nullable = false)

@@ -24,6 +24,8 @@ public class Sport {
     private String name;
     @Column(nullable = false)
     private String description;
+    @Column(nullable = false)
+    private String icon;
 
     @ElementCollection
     @Enumerated(EnumType.STRING)
@@ -40,7 +42,7 @@ public class Sport {
             joinColumns = @JoinColumn(name = "sport_id")
     )
     @Column(name = "place")
-    private List<Phases> places;
+    private List<String> places;
 
     @OneToMany(mappedBy = "sport")
     private List<Event> events;

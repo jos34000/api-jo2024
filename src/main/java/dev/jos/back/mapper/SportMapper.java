@@ -23,6 +23,7 @@ public class SportMapper {
                 .id(sport.getId())
                 .name(sport.getName())
                 .description(sport.getDescription())
+                .icon(sport.getIcon())
                 .phases(sport.getPhases())
                 .eventCount(events.size())
                 .places(locations)
@@ -33,6 +34,7 @@ public class SportMapper {
         return Sport.builder()
                 .name(dto.name())
                 .description(dto.description())
+                .icon(dto.icon())
                 .phases(dto.phases())
                 .build();
     }
