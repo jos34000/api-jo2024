@@ -15,4 +15,7 @@ public enum Phases {
     FINALE,
     CONTRE_LA_MONTRE,
     CLASSEMENT,
+    RELAIS_MIXTE,
+    EPREUVE_PAR_EQUIPES,
+    MATCH_BRONZE
 }

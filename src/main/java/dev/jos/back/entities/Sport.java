@@ -34,6 +34,14 @@ public class Sport {
     @Column(name = "phase")
     private List<Phases> phases;
 
+    @ElementCollection
+    @CollectionTable(
+            name = "sport_places",
+            joinColumns = @JoinColumn(name = "sport_id")
+    )
+    @Column(name = "place")
+    private List<Phases> places;
+
     @OneToMany(mappedBy = "sport")
     private List<Event> events;
 }

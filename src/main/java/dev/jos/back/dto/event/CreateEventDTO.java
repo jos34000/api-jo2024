@@ -18,13 +18,19 @@ public record CreateEventDTO(
         @Size(min = 2, max = 2000, message = "La catégorie doit contenir entre 2 et 30 caractères")
         String category,
 
-        @NotBlank(message = "La phase est obligatoire")
-        @Size(min = 2, max = 2000, message = "La phase doit contenir entre 2 et 30 caractères")
         Phases phase,
 
         @NotBlank(message = "Le lieu est obligatoire")
         @Size(min = 3, max = 200, message = "Le lieu doit contenir entre 3 et 200 caractères")
         String location,
+
+        @NotBlank(message = "La ville est obligatoire")
+        @Size(min = 3, max = 200, message = "La ville doit contenir entre 3 et 50 caractères")
+        String city,
+
+        @NotBlank(message = "Le sport est obligatoire")
+        @Size(min = 3, max = 200, message = "Le sport doit contenir entre 3 et 200 caractères")
+        String sport,
 
         @NotNull(message = "La date de l'événement est obligatoire")
         LocalDateTime eventDate,

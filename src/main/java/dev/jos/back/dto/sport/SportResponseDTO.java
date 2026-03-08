@@ -6,5 +6,6 @@ import lombok.Builder;
 import java.util.List;
 
 @Builder
-public record SportResponseDTO(String name, String description, List<Phases> phases, Integer eventCount) {
+public record SportResponseDTO(Long id, String name, String description, List<Phases> phases, Integer eventCount,
+                               List<String> places) {
 }

@@ -39,6 +39,9 @@ public class Event {
     private String location;
 
     @Column(nullable = false)
+    private String city;
+
+    @Column(nullable = false)
     private LocalDateTime eventDate;
 
     @Column(nullable = false)

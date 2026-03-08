@@ -3,10 +3,13 @@ package dev.jos.back.service;
 import dev.jos.back.dto.event.CreateEventDTO;
 import dev.jos.back.dto.event.EventResponseDTO;
 import dev.jos.back.entities.Event;
+import dev.jos.back.entities.Sport;
 import dev.jos.back.exceptions.event.EventAlreadyExistsException;
 import dev.jos.back.exceptions.event.EventNotFoundException;
+import dev.jos.back.exceptions.sport.SportNotFoundException;
 import dev.jos.back.mapper.EventMapper;
 import dev.jos.back.repository.EventRepository;
+import dev.jos.back.repository.SportRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -14,7 +17,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -23,9 +28,14 @@ public class EventService {
 
     private final EventRepository eventRepository;
     private final EventMapper eventMapper;
+    private final SportRepository sportRepository;
 
     @Transactional
     public List<EventResponseDTO> createEventsBulk(List<CreateEventDTO> eventsDto) {
+
+        Map<String, Sport> sportsByName = sportRepository.findAll()
+                .stream()
+                .collect(Collectors.toMap(Sport::getName, s -> s));
 
         List<Event> eventsToSave = new ArrayList<>();
 
@@ -38,7 +48,12 @@ public class EventService {
                 log.warn("Événement ignoré - déjà existant : {} le {}", dto.name(), dto.eventDate());
                 return;
             }
+
+            Sport sport = Optional.ofNullable(sportsByName.get(dto.sport()))
+                    .orElseThrow(() -> new SportNotFoundException("Sport non trouvé : " + dto.sport()));
+
             Event event = eventMapper.toEntity(dto);
+            event.setSport(sport);
             eventsToSave.add(event);
         });
 

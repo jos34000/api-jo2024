@@ -23,6 +23,7 @@ public class SecurityConfig {
     String[] publicEndpoints = {
             "/api/auth/**",
             "/api/events/**",
+            "/api/sport/**",
             "/api/users/forget-password",
             "/api/users/validate-reset-token",
             "/api/2fa/send",

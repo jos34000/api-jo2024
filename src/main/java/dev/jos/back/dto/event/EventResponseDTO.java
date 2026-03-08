@@ -13,6 +13,7 @@ public record EventResponseDTO(
         String category,
         Phases phase,
         String location,
+        String city,
         LocalDateTime eventDate,
         Integer capacity,
         Integer availableSlots,
