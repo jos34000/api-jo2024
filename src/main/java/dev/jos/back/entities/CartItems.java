@@ -19,7 +19,10 @@ public class CartItems {
     private Long id;
 
     @Column(nullable = false)
-    private Double price;
+    private Double unitPrice;
+
+    @Column(nullable = false)
+    private Integer quantity;
 
     @CreationTimestamp
     private LocalDateTime createdDate;
