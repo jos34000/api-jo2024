@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-5.0.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1772970626611-1" author="jocelynsainson">
+        <createSequence incrementBy="1" sequenceName="cart_items_id_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1772970626611-2" author="jocelynsainson">
+        <createSequence incrementBy="1" sequenceName="cart_items_id_seq1" startValue="1"/>
+    </changeSet>
+    <changeSet id="1772970626611-3" author="jocelynsainson">
+        <createSequence incrementBy="1" sequenceName="carts_id_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1772970626611-4" author="jocelynsainson">
+        <createSequence incrementBy="1" sequenceName="carts_id_seq1" startValue="1"/>
+    </changeSet>
+    <changeSet id="1772970626611-5" author="jocelynsainson">
+        <createSequence incrementBy="1" sequenceName="events_id_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1772970626611-6" author="jocelynsainson">
+        <createSequence incrementBy="1" sequenceName="events_id_seq1" startValue="1"/>
+    </changeSet>
+    <changeSet id="1772970626611-7" author="jocelynsainson">
+        <createSequence incrementBy="1" sequenceName="offer_types_id_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1772970626611-8" author="jocelynsainson">
+        <createSequence incrementBy="1" sequenceName="offer_types_id_seq1" startValue="1"/>
+    </changeSet>
+    <changeSet id="1772970626611-9" author="jocelynsainson">
+        <createSequence incrementBy="50" sequenceName="password_reset_token_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1772970626611-10" author="jocelynsainson">
+        <createSequence incrementBy="1" sequenceName="sports_id_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1772970626611-11" author="jocelynsainson">
+        <createSequence incrementBy="1" sequenceName="sports_id_seq1" startValue="1"/>
+    </changeSet>
+    <changeSet id="1772970626611-12" author="jocelynsainson">
+        <createSequence incrementBy="1" sequenceName="tickets_id_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1772970626611-13" author="jocelynsainson">
+        <createSequence incrementBy="1" sequenceName="tickets_id_seq1" startValue="1"/>
+    </changeSet>
+    <changeSet id="1772970626611-14" author="jocelynsainson">
+        <createSequence incrementBy="1" sequenceName="transactions_id_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1772970626611-15" author="jocelynsainson">
+        <createSequence incrementBy="1" sequenceName="transactions_id_seq1" startValue="1"/>
+    </changeSet>
+    <changeSet id="1772970626611-16" author="jocelynsainson">
+        <createSequence incrementBy="1" sequenceName="two_factor_codes_id_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1772970626611-17" author="jocelynsainson">
+        <createSequence incrementBy="1" sequenceName="two_factor_codes_id_seq1" startValue="1"/>
+    </changeSet>
+    <changeSet id="1772970626611-18" author="jocelynsainson">
+        <createSequence incrementBy="1" sequenceName="users_id_seq" startValue="1"/>
+    </changeSet>
+    <changeSet id="1772970626611-19" author="jocelynsainson">
+        <createSequence incrementBy="1" sequenceName="users_id_seq1" startValue="1"/>
+    </changeSet>
+    <changeSet id="1772970626611-20" author="jocelynsainson">
+        <createTable tableName="cart_items">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="cart_items_pkey"/>
+            </column>
+            <column name="created_date" type="timestamp"/>
+            <column name="price" type="DOUBLE precision">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cart_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="event_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="offer_type_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1772970626611-21" author="jocelynsainson">
+        <createTable tableName="carts">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="carts_pkey"/>
+            </column>
+            <column name="created_date" type="timestamp"/>
+            <column name="expires_at" type="timestamp"/>
+            <column name="price" type="DOUBLE precision">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quantity" type="INT"/>
+            <column name="status" type="VARCHAR(255)"/>
+            <column name="updated_date" type="timestamp"/>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1772970626611-22" author="jocelynsainson">
+        <createTable tableName="events">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="events_pkey"/>
+            </column>
+            <column name="available_slots" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="capacity" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="category" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="timestamp"/>
+            <column name="description" type="VARCHAR(1000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="event_date" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="location" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phase" type="VARCHAR(255)"/>
+            <column name="updated_at" type="timestamp"/>
+            <column name="sport_id" type="BIGINT"/>
+            <column name="city" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1772970626611-23" author="jocelynsainson">
+        <createTable tableName="offer_types">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="offer_types_pkey"/>
+            </column>
+            <column name="created_at" type="timestamp"/>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="display_order" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_active" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="number_of_tickets" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="DOUBLE precision">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1772970626611-24" author="jocelynsainson">
+        <createTable tableName="password_reset_token">
+            <column name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="password_reset_token_pkey"/>
+            </column>
+            <column name="expiry" type="timestamp"/>
+            <column name="hashed_token" type="VARCHAR(255)"/>
+            <column name="user_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1772970626611-25" author="jocelynsainson">
+        <createTable tableName="sport_phases">
+            <column name="sport_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="phase" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1772970626611-26" author="jocelynsainson">
+        <createTable tableName="sport_places">
+            <column name="sport_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="place" type="SMALLINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1772970626611-27" author="jocelynsainson">
+        <createTable tableName="sports">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="sports_pkey"/>
+            </column>
+            <column name="description" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1772970626611-28" author="jocelynsainson">
+        <createTable tableName="tickets">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="tickets_pkey"/>
+            </column>
+            <column name="barcode" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="combined_key" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="timestamp"/>
+            <column name="expiry_at" type="timestamp"/>
+            <column name="is_scanned" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="is_valid" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="DOUBLE precision">
+                <constraints nullable="false"/>
+            </column>
+            <column name="scanned_at" type="timestamp"/>
+            <column name="scanned_by" type="VARCHAR(255)"/>
+            <column name="ticket_key" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="transaction_key" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated_at" type="timestamp"/>
+            <column name="user_key" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="event_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="offer_type_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="transaction_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1772970626611-29" author="jocelynsainson">
+        <createTable tableName="transactions">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="transactions_pkey"/>
+            </column>
+            <column name="amount" type="NUMBER(38, 2)"/>
+            <column name="cancelled_date" type="timestamp"/>
+            <column name="created_date" type="timestamp"/>
+            <column name="payed_date" type="timestamp"/>
+            <column name="payment_method" type="VARCHAR(255)"/>
+            <column name="payment_reference" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(255)"/>
+            <column name="transaction_key" type="VARCHAR(255)"/>
+            <column name="cart_id" type="BIGINT"/>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1772970626611-30" author="jocelynsainson">
+        <createTable tableName="two_factor_codes">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="two_factor_codes_pkey"/>
+            </column>
+            <column name="code" type="VARCHAR(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="expires_at" type="timestamp">
+                <constraints nullable="false"/>
+            </column>
+            <column name="failed_attempts" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="used" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1772970626611-31" author="jocelynsainson">
+        <createTable tableName="users">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="users_pkey"/>
+            </column>
+            <column name="created_date" type="timestamp"/>
+            <column name="email" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="first_name" type="VARCHAR(30)"/>
+            <column name="last_modified_date" type="timestamp"/>
+            <column name="last_name" type="VARCHAR(30)"/>
+            <column name="mfa_enabled" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mfa_secret" type="VARCHAR(32)"/>
+            <column name="password_hash" type="VARCHAR(255)"/>
+            <column name="role" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1772970626611-32" author="jocelynsainson">
+        <addUniqueConstraint columnNames="ticket_key" constraintName="uk3k4dhvw358bim3ii3wx2pf7op" tableName="tickets"/>
+    </changeSet>
+    <changeSet id="1772970626611-33" author="jocelynsainson">
+        <addUniqueConstraint columnNames="email" constraintName="uk6dotkott2kjsp8vw4d0m25fb7" tableName="users"/>
+    </changeSet>
+    <changeSet id="1772970626611-34" author="jocelynsainson">
+        <addUniqueConstraint columnNames="name" constraintName="uk7396cfqllml3rrq7t74m8b7mt" tableName="offer_types"/>
+    </changeSet>
+    <changeSet id="1772970626611-35" author="jocelynsainson">
+        <addUniqueConstraint columnNames="payment_reference" constraintName="ukk1pfadnglukqtyam9vipmylhc"
+                             tableName="transactions"/>
+    </changeSet>
+    <changeSet id="1772970626611-36" author="jocelynsainson">
+        <addUniqueConstraint columnNames="user_key" constraintName="ukna7n11lm3hfo0vm41h4si3uqo" tableName="tickets"/>
+    </changeSet>
+    <changeSet id="1772970626611-37" author="jocelynsainson">
+        <addUniqueConstraint columnNames="combined_key" constraintName="ukp61ovtk3hka2ohmtyqilf1t7f"
+                             tableName="tickets"/>
+    </changeSet>
+    <changeSet id="1772970626611-38" author="jocelynsainson">
+        <addUniqueConstraint columnNames="cart_id" constraintName="ukpvq7hga72ac42ihdd6xbq7o9f"
+                             tableName="transactions"/>
+    </changeSet>
+    <changeSet id="1772970626611-39" author="jocelynsainson">
+        <addUniqueConstraint columnNames="barcode" constraintName="ukrvypfwpoq17716qhgy92ynonw" tableName="tickets"/>
+    </changeSet>
+    <changeSet id="1772970626611-40" author="jocelynsainson">
+        <addUniqueConstraint columnNames="name" constraintName="uktj61or3k005spbrx0lgjpwtde" tableName="sports"/>
+    </changeSet>
+    <changeSet id="1772970626611-41" author="jocelynsainson">
+        <addForeignKeyConstraint baseColumnNames="event_id" baseTableName="tickets"
+                                 constraintName="fk3utafe14rupaypjocldjaj4ol" onDelete="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="events"/>
+    </changeSet>
+    <changeSet id="1772970626611-42" author="jocelynsainson">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="tickets"
+                                 constraintName="fk4eqsebpimnjen0q46ja6fl2hl" onDelete="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1772970626611-43" author="jocelynsainson">
+        <addForeignKeyConstraint baseColumnNames="event_id" baseTableName="cart_items"
+                                 constraintName="fk5lvto42ho2740x9o0hyol2mg5" onDelete="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="events"/>
+    </changeSet>
+    <changeSet id="1772970626611-44" author="jocelynsainson">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="two_factor_codes"
+                                 constraintName="fk5rfemgajmn6wibusanio5a8be" onDelete="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1772970626611-45" author="jocelynsainson">
+        <addForeignKeyConstraint baseColumnNames="transaction_id" baseTableName="tickets"
+                                 constraintName="fk7p6l8ys9u9wpvvtafgcagw7h3" onDelete="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="transactions"/>
+    </changeSet>
+    <changeSet id="1772970626611-46" author="jocelynsainson">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="password_reset_token"
+                                 constraintName="fk83nsrttkwkb6ym0anu051mtxn" onDelete="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1772970626611-47" author="jocelynsainson">
+        <addForeignKeyConstraint baseColumnNames="offer_type_id" baseTableName="tickets"
+                                 constraintName="fk937h7hknuc1ptaypyp6eikn03" onDelete="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="offer_types"/>
+    </changeSet>
+    <changeSet id="1772970626611-48" author="jocelynsainson">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="carts"
+                                 constraintName="fkb5o626f86h46m4s7ms6ginnop" onDelete="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1772970626611-49" author="jocelynsainson">
+        <addForeignKeyConstraint baseColumnNames="sport_id" baseTableName="sport_phases"
+                                 constraintName="fkhysk8h0wkn50utb1bn82j3mwt" onDelete="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="sports"/>
+    </changeSet>
+    <changeSet id="1772970626611-50" author="jocelynsainson">
+        <addForeignKeyConstraint baseColumnNames="sport_id" baseTableName="events"
+                                 constraintName="fklj14dyfl179s92hatm374588t" onDelete="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="sports"/>
+    </changeSet>
+    <changeSet id="1772970626611-51" author="jocelynsainson">
+        <addForeignKeyConstraint baseColumnNames="offer_type_id" baseTableName="cart_items"
+                                 constraintName="fkmmenamaor8jfy1btrw5ge79me" onDelete="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="offer_types"/>
+    </changeSet>
+    <changeSet id="1772970626611-52" author="jocelynsainson">
+        <addForeignKeyConstraint baseColumnNames="cart_id" baseTableName="transactions"
+                                 constraintName="fknkyl3pyaclxtxgcuo1fdy004d" onDelete="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="carts"/>
+    </changeSet>
+    <changeSet id="1772970626611-53" author="jocelynsainson">
+        <addForeignKeyConstraint baseColumnNames="sport_id" baseTableName="sport_places"
+                                 constraintName="fkojuopd232xo2tvgftqmt5q1y8" onDelete="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="sports"/>
+    </changeSet>
+    <changeSet id="1772970626611-54" author="jocelynsainson">
+        <addForeignKeyConstraint baseColumnNames="cart_id" baseTableName="cart_items"
+                                 constraintName="fkpcttvuq4mxppo8sxggjtn5i2c" onDelete="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="carts"/>
+    </changeSet>
+    <changeSet id="1772970626611-55" author="jocelynsainson">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="transactions"
+                                 constraintName="fkqwv7rmvc8va8rep7piikrojds" onDelete="NO ACTION"
+                                 referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+
+</databaseChangeLog>

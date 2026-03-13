@@ -1,12 +1,23 @@
 package dev.jos.back.config;
 
 import dev.jos.back.dto.ErrorResponseDTO;
-import dev.jos.back.exceptions.auth.UserAlreadyExistsException;
+import dev.jos.back.exceptions.email.EmailNotSentException;
+import dev.jos.back.exceptions.event.EventAlreadyExistsException;
+import dev.jos.back.exceptions.event.EventNotFoundException;
+import dev.jos.back.exceptions.offertype.OfferTypeAlreadyExistsException;
+import dev.jos.back.exceptions.sport.SportNotFoundException;
+import dev.jos.back.exceptions.twofactor.BadTwoFactorCodeException;
+import dev.jos.back.exceptions.twofactor.TwoFactorCodeNotFoundException;
+import dev.jos.back.exceptions.twofactor.TwoFactorMaxAttemptsException;
+import dev.jos.back.exceptions.user.InvalidPasswordException;
+import dev.jos.back.exceptions.user.UserAlreadyExistsException;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -15,31 +26,40 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.HashMap;
 import java.util.Map;
 
+@Slf4j
 @RestControllerAdvice
 public class GlobalExceptionConfig {
 
-    @ExceptionHandler(UserAlreadyExistsException.class)
-    public ResponseEntity<ErrorResponseDTO> handleUserAlreadyExists(UserAlreadyExistsException ex) {
-        return ResponseEntity.status(HttpStatus.CONFLICT)
-                .body(ErrorResponseDTO.of(409, ex.getMessage()));
-    }
+    private static final Map<Class<? extends Exception>, HttpStatus> EXCEPTION_STATUS_MAP = Map.ofEntries(
+            Map.entry(UserAlreadyExistsException.class, HttpStatus.CONFLICT),
+            Map.entry(EventAlreadyExistsException.class, HttpStatus.CONFLICT),
+            Map.entry(UsernameNotFoundException.class, HttpStatus.NOT_FOUND),
+            Map.entry(EventNotFoundException.class, HttpStatus.NOT_FOUND),
+            Map.entry(BadCredentialsException.class, HttpStatus.UNAUTHORIZED),
+            Map.entry(ExpiredJwtException.class, HttpStatus.UNAUTHORIZED),
+            Map.entry(JwtException.class, HttpStatus.UNAUTHORIZED),
+            Map.entry(TwoFactorCodeNotFoundException.class, HttpStatus.BAD_REQUEST),
+            Map.entry(TwoFactorMaxAttemptsException.class, HttpStatus.TOO_MANY_REQUESTS),
+            Map.entry(BadTwoFactorCodeException.class, HttpStatus.BAD_REQUEST),
+            Map.entry(InvalidPasswordException.class, HttpStatus.BAD_REQUEST),
+            Map.entry(EmailNotSentException.class, HttpStatus.INTERNAL_SERVER_ERROR),
+            Map.entry(OfferTypeAlreadyExistsException.class, HttpStatus.CONFLICT),
+            Map.entry(SportNotFoundException.class, HttpStatus.NOT_FOUND)
+    );
 
-    @ExceptionHandler(BadCredentialsException.class)
-    public ResponseEntity<ErrorResponseDTO> handleBadCredentials(BadCredentialsException ex) {
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                .body(ErrorResponseDTO.of(401, "Identifiants invalides"));
-    }
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorResponseDTO> handleAll(Exception ex) {
+        HttpStatus status = EXCEPTION_STATUS_MAP.entrySet().stream()
+                .filter(entry -> entry.getKey().isInstance(ex))
+                .map(Map.Entry::getValue)
+                .findFirst()
+                .orElse(HttpStatus.INTERNAL_SERVER_ERROR);
 
-    @ExceptionHandler(ExpiredJwtException.class)
-    public ResponseEntity<ErrorResponseDTO> handleExpiredToken(ExpiredJwtException ex) {
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                .body(ErrorResponseDTO.of(401, "Token expiré"));
-    }
-
-    @ExceptionHandler(JwtException.class)
-    public ResponseEntity<ErrorResponseDTO> handleInvalidToken(JwtException ex) {
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                .body(ErrorResponseDTO.of(401, "Token invalide"));
+        String message = status == HttpStatus.INTERNAL_SERVER_ERROR
+                ? "Une erreur est survenue"
+                : ex.getMessage();
+        log.error("Exception: {}", ex.getMessage(), ex);
+        return ResponseEntity.status(status).body(ErrorResponseDTO.of(status.value(), message));
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -50,11 +70,5 @@ public class GlobalExceptionConfig {
             errors.put(fieldName, error.getDefaultMessage());
         });
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
-    }
-
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResponseDTO> handleGenericException(Exception ex) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(ErrorResponseDTO.of(500, "Une erreur est survenue"));
     }
 }

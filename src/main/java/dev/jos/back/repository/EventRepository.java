@@ -1,6 +1,6 @@
 package dev.jos.back.repository;
 
-import dev.jos.back.model.Event;
+import dev.jos.back.entities.Event;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -18,4 +18,6 @@ public interface EventRepository extends JpaRepository<Event, Long> {
     List<Event> findAvailableEvents();
 
     Optional<Event> findByNameAndEventDate(String name, LocalDateTime eventDate);
+
+    List<Event> findBySportName(String name);
 }

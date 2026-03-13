@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-5.0.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1772979119254-4" author="jocelynsainson">
+        <createTable tableName="offer_features">
+            <column name="offer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="features" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1772979119254-5" author="jocelynsainson">
+        <addForeignKeyConstraint baseColumnNames="offer_id" baseTableName="offer_features"
+                                 constraintName="fk_offer_features_on_offer_type" referencedColumnNames="id"
+                                 referencedTableName="offer_types"/>
+    </changeSet>
+    <changeSet id="1772979119254-1" author="jocelynsainson">
+        <modifyDataType columnName="amount" newDataType="DECIMAL" tableName="transactions"/>
+    </changeSet>
+    <changeSet id="1772979119254-2" author="jocelynsainson">
+        <dropColumn columnName="place" tableName="sport_places"/>
+    </changeSet>
+    <changeSet id="1772979119254-3" author="jocelynsainson">
+        <addColumn tableName="sport_places">
+            <column name="place" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>

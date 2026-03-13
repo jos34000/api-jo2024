@@ -10,10 +10,11 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+      ddl-auto: validate
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.xml
+    drop-first: false
 
 jwt:
   secret: ${JWT_SECRET}
@@ -28,6 +29,14 @@ cookie:
   secure: ${COOKIE_SECURE}
   same-site: ${COOKIE_SAME_SITE}
 
+resend:
+  api-key: ${RESEND_KEY}
+  from: ${FROM_EMAIL}
+
+two-factor:
+  expiration: 10
+  max-attempts: 5
+
 cors:
   allowed-origins: ${CORS_ORIGINS}
   allowed-methods: GET,POST,PUT,DELETE,OPTIONS
@@ -36,6 +45,7 @@ cors:
 
 logging:
   level:
+    liquibase: DEBUG
     dev:
       jos:
         back: DEBUG

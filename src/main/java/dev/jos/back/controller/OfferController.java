@@ -1,0 +1,75 @@
+package dev.jos.back.controller;
+
+import dev.jos.back.dto.offertype.BulkOfferResponseDTO;
+import dev.jos.back.dto.offertype.CreateOfferDTO;
+import dev.jos.back.dto.offertype.OfferResponseDTO;
+import dev.jos.back.service.OfferService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+/**
+ * Contrôleur REST pour la gestion des offres.
+ * Permet de créer et consulter les différentes offres disponibles.
+ *
+ * @see OfferService
+ * @see OfferResponseDTO
+ */
+@RestController
+@RequestMapping("/api/offer")
+@RequiredArgsConstructor
+public class OfferController {
+    private final OfferService offerService;
+
+    /**
+     * Créer en masse les offres.
+     * Réservé aux administrateurs.
+     *
+     * @param dto une list des informations de l'offre à créer (nom, description, caractéristiques)
+     * @return {@code ResponseEntity<BulkOfferResponseDTO>} contenant les offres créees et le nombre d'offres
+     * @throws jakarta.validation.ConstraintViolationException                   si les données du type d'offre sont invalides
+     * @throws dev.jos.back.exceptions.offertype.OfferTypeAlreadyExistsException si un type d'offre
+     *                                                                           avec le même nom existe déjà
+     * @throws org.springframework.security.access.AccessDeniedException         si l'utilisateur
+     *                                                                           n'a pas le rôle ADMIN
+     */
+    @PostMapping("/bulk")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<BulkOfferResponseDTO> createOfferType(
+            @Valid @RequestBody List<CreateOfferDTO> dto) {
+
+        List<OfferResponseDTO> created = offerService.createOfferTypeBulk(dto);
+
+        BulkOfferResponseDTO response = new BulkOfferResponseDTO(
+                created.size(),
+                created
+        );
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<OfferResponseDTO> createOfferType(
+            @Valid @RequestBody CreateOfferDTO dtoRequest) {
+
+        OfferResponseDTO created = offerService.createOfferType(dtoRequest);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
+    }
+
+    /**
+     * Récupère tous les types d'offres.
+     *
+     * @return {@code ResponseEntity<List<OfferTypeResponseDTO>>} contenant la liste complète
+     * de tous les types d'offres
+     */
+    @GetMapping("/all")
+    public ResponseEntity<List<OfferResponseDTO>> getAllOfferTypes() {
+        return ResponseEntity.ok(offerService.getAllOfferTypes());
+    }
+}

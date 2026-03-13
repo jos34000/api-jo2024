@@ -1,6 +1,6 @@
 package dev.jos.back.repository;
 
-import dev.jos.back.model.User;
+import dev.jos.back.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

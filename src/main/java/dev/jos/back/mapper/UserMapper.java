@@ -2,7 +2,7 @@ package dev.jos.back.mapper;
 
 import dev.jos.back.dto.user.CreateUserDTO;
 import dev.jos.back.dto.user.UserResponseDTO;
-import dev.jos.back.model.User;
+import dev.jos.back.entities.User;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -12,7 +12,7 @@ public class UserMapper {
                 .email(dto.email())
                 .firstName(dto.firstName())
                 .lastName(dto.lastName())
-                .mfaEnabled(false)
+                .mfaEnabled(dto.enableTwoFactor())
                 .role(dto.role())
                 .build();
     }
