@@ -1,6 +1,8 @@
-package dev.jos.back.dto.offertype;
+package dev.jos.back.dto.offer;
 
 import lombok.Builder;
+
+import java.util.List;
 
 @Builder
 public record CreateOfferDTO(
@@ -9,6 +11,7 @@ public record CreateOfferDTO(
         Double price,
         Integer numberOfTickets,
         Boolean isActive,
-        Integer displayOrder
+        Integer displayOrder,
+        List<String> features
 ) {
 }

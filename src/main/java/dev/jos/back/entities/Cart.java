@@ -24,10 +24,6 @@ public class Cart {
     @Enumerated(EnumType.STRING)
     private CartStatus status;
 
-    private double price;
-    private Integer quantity;
-
-
     @CreationTimestamp
     private LocalDateTime createdDate;
     @UpdateTimestamp

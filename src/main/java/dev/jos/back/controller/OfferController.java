@@ -1,8 +1,8 @@
 package dev.jos.back.controller;
 
-import dev.jos.back.dto.offertype.BulkOfferResponseDTO;
-import dev.jos.back.dto.offertype.CreateOfferDTO;
-import dev.jos.back.dto.offertype.OfferResponseDTO;
+import dev.jos.back.dto.offer.BulkOfferResponseDTO;
+import dev.jos.back.dto.offer.CreateOfferDTO;
+import dev.jos.back.dto.offer.OfferResponseDTO;
 import dev.jos.back.service.OfferService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

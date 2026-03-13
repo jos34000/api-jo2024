@@ -1,4 +1,4 @@
-package dev.jos.back.dto.offertype;
+package dev.jos.back.dto.offer;
 
 import java.util.List;
 

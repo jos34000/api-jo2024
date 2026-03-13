@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-5.0.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+
+    <!-- cart_items: rename price → unit_price -->
+    <changeSet id="005-1" author="jocelynsainson">
+        <renameColumn tableName="cart_items" oldColumnName="price" newColumnName="unit_price" columnDataType="DOUBLE precision"/>
+    </changeSet>
+
+    <!-- cart_items: add quantity -->
+    <changeSet id="005-2" author="jocelynsainson">
+        <addColumn tableName="cart_items">
+            <column name="quantity" type="INT" defaultValueNumeric="1">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <!-- carts: drop computed columns price and quantity -->
+    <changeSet id="005-3" author="jocelynsainson">
+        <dropColumn tableName="carts" columnName="price"/>
+    </changeSet>
+
+    <changeSet id="005-4" author="jocelynsainson">
+        <dropColumn tableName="carts" columnName="quantity"/>
+    </changeSet>
+
+</databaseChangeLog>

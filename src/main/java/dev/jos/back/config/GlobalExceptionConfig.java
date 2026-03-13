@@ -1,6 +1,7 @@
 package dev.jos.back.config;
 
 import dev.jos.back.dto.ErrorResponseDTO;
+import dev.jos.back.exceptions.cart.CartNotFoundException;
 import dev.jos.back.exceptions.email.EmailNotSentException;
 import dev.jos.back.exceptions.event.EventAlreadyExistsException;
 import dev.jos.back.exceptions.event.EventNotFoundException;
@@ -44,7 +45,8 @@ public class GlobalExceptionConfig {
             Map.entry(InvalidPasswordException.class, HttpStatus.BAD_REQUEST),
             Map.entry(EmailNotSentException.class, HttpStatus.INTERNAL_SERVER_ERROR),
             Map.entry(OfferTypeAlreadyExistsException.class, HttpStatus.CONFLICT),
-            Map.entry(SportNotFoundException.class, HttpStatus.NOT_FOUND)
+            Map.entry(SportNotFoundException.class, HttpStatus.NOT_FOUND),
+            Map.entry(CartNotFoundException.class, HttpStatus.NOT_FOUND)
     );
 
     @ExceptionHandler(Exception.class)
