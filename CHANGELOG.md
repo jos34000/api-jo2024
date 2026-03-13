@@ -1,3 +1,10 @@
+# [0.3.0](https://github.com/jos34000/api-jo2024/compare/v0.2.0...v0.3.0) (2026-03-13)
+
+
+### Features
+
+* [Sprint 3] - Core features ([e2e51f9](https://github.com/jos34000/api-jo2024/commit/e2e51f94c3fe23310055a44bf4a6cbb51973fdb6))
+
 # [0.2.0](https://github.com/jos34000/api-jo2024/compare/v0.1.0...v0.2.0) (2026-02-21)
 
 
