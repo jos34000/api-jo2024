@@ -1,3 +1,11 @@
+# [0.4.0](https://github.com/jos34000/api-jo2024/compare/v0.3.0...v0.4.0) (2026-03-13)
+
+
+### Features
+
+* [DJ-93] - Add cart GET endpoint and refactor offer package ([0c6f59e](https://github.com/jos34000/api-jo2024/commit/0c6f59e69a6f5888b5d61330d5a6ca86dd47c750))
+* [DJ-93] - Add cart GET endpoint and refactor offer package ([830b87f](https://github.com/jos34000/api-jo2024/commit/830b87f2861aadc3c93df231f4aad36a2dccde2b))
+
 # [0.3.0](https://github.com/jos34000/api-jo2024/compare/v0.2.0...v0.3.0) (2026-03-13)
 
 
