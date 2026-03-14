@@ -5,6 +5,8 @@ import dev.jos.back.exceptions.cart.CartNotFoundException;
 import dev.jos.back.exceptions.email.EmailNotSentException;
 import dev.jos.back.exceptions.event.EventAlreadyExistsException;
 import dev.jos.back.exceptions.event.EventNotFoundException;
+import dev.jos.back.exceptions.event.EventSoldOutException;
+import dev.jos.back.exceptions.offertype.OfferNotFoundException;
 import dev.jos.back.exceptions.offertype.OfferTypeAlreadyExistsException;
 import dev.jos.back.exceptions.sport.SportNotFoundException;
 import dev.jos.back.exceptions.twofactor.BadTwoFactorCodeException;
@@ -46,7 +48,9 @@ public class GlobalExceptionConfig {
             Map.entry(EmailNotSentException.class, HttpStatus.INTERNAL_SERVER_ERROR),
             Map.entry(OfferTypeAlreadyExistsException.class, HttpStatus.CONFLICT),
             Map.entry(SportNotFoundException.class, HttpStatus.NOT_FOUND),
-            Map.entry(CartNotFoundException.class, HttpStatus.NOT_FOUND)
+            Map.entry(CartNotFoundException.class, HttpStatus.NOT_FOUND),
+            Map.entry(OfferNotFoundException.class, HttpStatus.NOT_FOUND),
+            Map.entry(EventSoldOutException.class, HttpStatus.BAD_REQUEST)
     );
 
     @ExceptionHandler(Exception.class)

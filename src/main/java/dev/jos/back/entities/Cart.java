@@ -9,6 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -35,7 +36,7 @@ public class Cart {
     private User user;
 
     @OneToMany(mappedBy = "cart")
-    private Set<CartItems> cartItems;
+    private Set<CartItems> cartItems = new HashSet<>();
 
     @OneToOne(mappedBy = "cart")
     private Transaction transaction;
