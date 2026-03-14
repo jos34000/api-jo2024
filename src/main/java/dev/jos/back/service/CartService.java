@@ -1,6 +1,7 @@
 package dev.jos.back.service;
 
 import dev.jos.back.dto.cart.CartItemRequestDTO;
+import dev.jos.back.dto.cart.CartItemUpdateDTO;
 import dev.jos.back.dto.cart.CartResponseDTO;
 import dev.jos.back.entities.*;
 import dev.jos.back.exceptions.cart.CartItemNotFoundException;
@@ -103,6 +104,32 @@ public class CartService {
 
         Cart cart = item.getCart();
         cartItemsRepository.delete(item);
+        entityManager.flush();
+        entityManager.refresh(cart);
+        return cartMapper.toCartResponseDTO(cart);
+    }
+
+    @Transactional
+    public CartResponseDTO updateItemQuantity(String email, Long itemId, CartItemUpdateDTO dto) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UserNotFoundException("Utilisateur introuvable"));
+
+        CartItems item = cartItemsRepository.findById(itemId)
+                .orElseThrow(() -> new CartItemNotFoundException("Article introuvable"));
+
+        if (!item.getCart().getUser().getId().equals(user.getId())) {
+            throw new CartItemNotFoundException("Article introuvable");
+        }
+
+        Cart cart = item.getCart();
+
+        if (dto.quantity() <= 0) {
+            cartItemsRepository.delete(item);
+        } else {
+            item.setQuantity(dto.quantity());
+            cartItemsRepository.save(item);
+        }
+
         entityManager.flush();
         entityManager.refresh(cart);
         return cartMapper.toCartResponseDTO(cart);
