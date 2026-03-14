@@ -52,7 +52,7 @@ public class UserService {
         }
 
         User user = userRepository.findByEmail(authEmail)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found: " + authEmail));
+                .orElseThrow(() -> new UsernameNotFoundException("Utilisateur introuvable"));
         user.setEmail(newEmail);
         user.setFirstName(newFirstName);
         user.setLastName(newLastName);

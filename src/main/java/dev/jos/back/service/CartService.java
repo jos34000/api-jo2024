@@ -38,15 +38,15 @@ public class CartService {
     @Transactional
     public CartResponseDTO getActiveCart(String email) {
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new UserNotFoundException("User not found: " + email));
+                .orElseThrow(() -> new UserNotFoundException("Utilisateur introuvable"));
 
         Cart cart = cartRepository.findByUserAndStatus(user, CartStatus.ACTIVE)
-                .orElseThrow(() -> new CartNotFoundException("No active cart found"));
+                .orElseThrow(() -> new CartNotFoundException("Aucun panier actif"));
 
         if (LocalDateTime.now().isAfter(cart.getExpiresAt())) {
             cart.setStatus(CartStatus.ABANDONED);
             cartRepository.save(cart);
-            throw new CartNotFoundException("Cart has expired");
+            throw new CartNotFoundException("Le panier a expiré");
         }
 
         return cartMapper.toCartResponseDTO(cart);

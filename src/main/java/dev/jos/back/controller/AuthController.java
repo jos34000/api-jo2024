@@ -99,7 +99,7 @@ public class AuthController {
         String email = userDetails != null ? userDetails.getUsername() : null;
 
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+                .orElseThrow(() -> new UsernameNotFoundException("Utilisateur introuvable"));
 
         if (user.isMfaEnabled()) {
             twoFactorService.sendCode(email);
