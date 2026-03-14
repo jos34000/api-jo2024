@@ -89,6 +89,20 @@ public class CartController {
     }
 
     /**
+     * Vide entièrement le panier de l'utilisateur authentifié en supprimant tous ses articles.
+     *
+     * @param authentication l'objet d'authentification Spring Security
+     * @return {@code ResponseEntity<CartResponseDTO>} contenant le panier vide
+     * @throws dev.jos.back.exceptions.cart.CartNotFoundException si l'utilisateur n'a pas de panier actif
+     */
+    @DeleteMapping("/items")
+    public ResponseEntity<CartResponseDTO> clearCart(Authentication authentication) {
+        String email = authentication.getName();
+        CartResponseDTO cart = cartService.clearCart(email);
+        return ResponseEntity.ok(cart);
+    }
+
+    /**
      * Supprime un article du panier de l'utilisateur authentifié.
      *
      * @param authentication l'objet d'authentification Spring Security

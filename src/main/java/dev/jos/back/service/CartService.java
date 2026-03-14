@@ -135,6 +135,20 @@ public class CartService {
         return cartMapper.toCartResponseDTO(cart);
     }
 
+    @Transactional
+    public CartResponseDTO clearCart(String email) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UserNotFoundException("Utilisateur introuvable"));
+
+        Cart cart = cartRepository.findByUserAndStatus(user, CartStatus.ACTIVE)
+                .orElseThrow(() -> new CartNotFoundException("Aucun panier actif"));
+
+        cartItemsRepository.deleteAll(cart.getCartItems());
+        entityManager.flush();
+        entityManager.refresh(cart);
+        return cartMapper.toCartResponseDTO(cart);
+    }
+
     private Cart getOrCreateActiveCart(User user) {
         Optional<Cart> existing = cartRepository.findByUserAndStatus(user, CartStatus.ACTIVE);
 
