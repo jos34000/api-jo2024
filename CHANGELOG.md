@@ -1,3 +1,16 @@
+# [0.5.0](https://github.com/jos34000/api-jo2024/compare/v0.4.0...v0.5.0) (2026-03-14)
+
+
+### Bug Fixes
+
+* **offers:** return ID in DTO for offers ([e1c7a1d](https://github.com/jos34000/api-jo2024/commit/e1c7a1d6fe5f515f5dadf4224ef88c33e0fcdc5a))
+
+
+### Features
+
+* [DJ-92] - Add items to cart ([090dc90](https://github.com/jos34000/api-jo2024/commit/090dc9081df4be5980f7f3258ff8d6121bb8441a))
+* [DJ-92] - Implement add to cart feature ([1d3e9cc](https://github.com/jos34000/api-jo2024/commit/1d3e9cc64f31f244cb915b3cf4ad3db00f3accb5))
+
 # [0.4.0](https://github.com/jos34000/api-jo2024/compare/v0.3.0...v0.4.0) (2026-03-13)
 
 
