@@ -3,6 +3,7 @@ package dev.jos.back.service;
 import dev.jos.back.dto.cart.CartItemRequestDTO;
 import dev.jos.back.dto.cart.CartResponseDTO;
 import dev.jos.back.entities.*;
+import dev.jos.back.exceptions.cart.CartItemNotFoundException;
 import dev.jos.back.exceptions.cart.CartNotFoundException;
 import dev.jos.back.exceptions.event.EventNotFoundException;
 import dev.jos.back.exceptions.event.EventSoldOutException;
@@ -11,6 +12,8 @@ import dev.jos.back.exceptions.user.UserNotFoundException;
 import dev.jos.back.mapper.CartMapper;
 import dev.jos.back.repository.*;
 import dev.jos.back.util.enums.CartStatus;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,6 +31,9 @@ public class CartService {
     private final EventRepository eventRepository;
     private final OfferRepository offerRepository;
     private final CartMapper cartMapper;
+
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Transactional
     public CartResponseDTO getActiveCart(String email) {
@@ -79,9 +85,27 @@ public class CartService {
             cartItemsRepository.save(item);
         }
 
-        Cart refreshed = cartRepository.findById(cart.getId())
-                .orElseThrow(() -> new CartNotFoundException("Cart not found"));
-        return cartMapper.toCartResponseDTO(refreshed);
+        entityManager.refresh(cart);
+        return cartMapper.toCartResponseDTO(cart);
+    }
+
+    @Transactional
+    public CartResponseDTO removeItem(String email, Long itemId) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UserNotFoundException("Aucun utilisateur avec ce mail: " + email));
+
+        CartItems item = cartItemsRepository.findById(itemId)
+                .orElseThrow(() -> new CartItemNotFoundException("Article introuvable : " + itemId));
+
+        if (!item.getCart().getUser().getId().equals(user.getId())) {
+            throw new CartItemNotFoundException("Article introuvable : " + itemId);
+        }
+
+        Cart cart = item.getCart();
+        cartItemsRepository.delete(item);
+        entityManager.flush();
+        entityManager.refresh(cart);
+        return cartMapper.toCartResponseDTO(cart);
     }
 
     private Cart getOrCreateActiveCart(User user) {
