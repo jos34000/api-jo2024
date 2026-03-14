@@ -21,6 +21,7 @@ public class OfferMapper {
 
     public OfferResponseDTO toResponseDTO(Offer entity) {
         return OfferResponseDTO.builder()
+                .id(entity.getId())
                 .name(entity.getName())
                 .description(entity.getDescription())
                 .price(entity.getPrice())
