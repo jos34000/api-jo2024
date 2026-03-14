@@ -27,6 +27,11 @@ public class SportController {
 
     private final SportService sportService;
 
+    /**
+     * Récupère la liste de tous les sports disponibles.
+     *
+     * @return {@code ResponseEntity<List<SportResponseDTO>>} contenant la liste complète des sports
+     */
     @GetMapping
     public ResponseEntity<List<SportResponseDTO>> getAllSports() {
         return ResponseEntity.ok(sportService.getAllSports());

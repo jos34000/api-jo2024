@@ -81,7 +81,7 @@ public class UserController {
      * (généralement 15-30 minutes).
      *
      * @param request l'objet contenant l'adresse email pour laquelle réinitialiser le mot de passe
-     * @return {@code ResponseEntity<?>} vide (200 OK) systématiquement, que l'email existe ou non
+     * @return {@code ResponseEntity<Void>} vide (200 OK) systématiquement, que l'email existe ou non
      * @throws jakarta.validation.ConstraintViolationException si l'email fourni a un format invalide
      *
      */
@@ -99,7 +99,8 @@ public class UserController {
      * le token est encore valide avant d'afficher le formulaire.
      *
      * @param token le token de réinitialisation à valider (reçu via l'URL du lien email)
-     * @return {@code ResponseEntity<?>} avec un statut HTTP indiquant le résultat de la validation
+     * @return {@code ResponseEntity<Void>} avec un statut HTTP indiquant le résultat de la validation :
+     * 200 OK si le token est valide, 410 Gone s'il est expiré, 400 Bad Request s'il est introuvable
      *
      */
     @GetMapping("/validate-reset-token")

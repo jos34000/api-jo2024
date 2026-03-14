@@ -1,6 +1,7 @@
 package dev.jos.back.controller;
 
 import dev.jos.back.dto.cart.CartItemRequestDTO;
+import dev.jos.back.dto.cart.CartItemUpdateDTO;
 import dev.jos.back.dto.cart.CartResponseDTO;
 import dev.jos.back.service.CartService;
 import jakarta.validation.Valid;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -64,6 +66,37 @@ public class CartController {
         return ResponseEntity.status(HttpStatus.CREATED).body(cart);
     }
 
+    /**
+     * Met à jour la quantité d'un article dans le panier de l'utilisateur authentifié.
+     * Si la quantité est inférieure ou égale à zéro, l'article est supprimé du panier.
+     *
+     * @param authentication l'objet d'authentification Spring Security
+     * @param itemId         l'identifiant de l'article à modifier
+     * @param dto            la nouvelle quantité souhaitée (doit être &gt;= 0 ; 0 = suppression)
+     * @return {@code ResponseEntity<CartResponseDTO>} contenant le panier mis à jour
+     * @throws dev.jos.back.exceptions.cart.CartItemNotFoundException si l'article n'existe pas
+     *                                                                ou n'appartient pas à l'utilisateur
+     */
+    @PatchMapping("/items/{itemId}")
+    public ResponseEntity<CartResponseDTO> updateItemQuantity(
+            Authentication authentication,
+            @PathVariable Long itemId,
+            @Valid @RequestBody CartItemUpdateDTO dto
+    ) {
+        String email = authentication.getName();
+        CartResponseDTO cart = cartService.updateItemQuantity(email, itemId, dto);
+        return ResponseEntity.ok(cart);
+    }
+
+    /**
+     * Supprime un article du panier de l'utilisateur authentifié.
+     *
+     * @param authentication l'objet d'authentification Spring Security
+     * @param itemId         l'identifiant de l'article à supprimer
+     * @return {@code ResponseEntity<CartResponseDTO>} contenant le panier mis à jour sans l'article supprimé
+     * @throws dev.jos.back.exceptions.cart.CartItemNotFoundException si l'article n'existe pas
+     *                                                                ou n'appartient pas à l'utilisateur
+     */
     @DeleteMapping("/items/{itemId}")
     public ResponseEntity<CartResponseDTO> removeItem(
             Authentication authentication,

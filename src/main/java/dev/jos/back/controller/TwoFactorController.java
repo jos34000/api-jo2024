@@ -12,6 +12,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Contrôleur REST pour la gestion de l'authentification à deux facteurs (2FA).
+ * Fournit des endpoints pour envoyer et vérifier des codes OTP, ainsi que pour
+ * activer ou désactiver le 2FA sur le compte d'un utilisateur.
+ *
+ * @see TwoFactorService
+ */
 @RestController
 @RequestMapping("/api/2fa")
 @RequiredArgsConstructor
@@ -36,7 +43,7 @@ public class TwoFactorController {
      * Vérifie le code OTP soumis par l'utilisateur.
      *
      * @param request le corps de la requête contenant le code OTP à vérifier
-     * @return 204 No Content si le code est valide, 401 Unauthorized sinon
+     * @return 204 No Content si le code est valide
      * @throws TwoFactorCodeNotFoundException si aucun code valide n'existe pour cet utilisateur
      * @throws TwoFactorMaxAttemptsException  si le nombre maximum de tentatives est atteint
      */
