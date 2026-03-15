@@ -1,3 +1,17 @@
+# [0.6.0](https://github.com/jos34000/api-jo2024/compare/v0.5.0...v0.6.0) (2026-03-15)
+
+
+### Bug Fixes
+
+* **error:** Clarify thrown error messages ([dd30d68](https://github.com/jos34000/api-jo2024/commit/dd30d68d9592898f8107ca556b4433878a177ca7))
+
+
+### Features
+
+* [DJ-92] - Possibility to remove cart items ([40a2fbd](https://github.com/jos34000/api-jo2024/commit/40a2fbdd835de0d9132e68de9ad56eddf7cbf39a))
+* [DJ-96] - Clear cartItems in a cart ([e3adc5c](https://github.com/jos34000/api-jo2024/commit/e3adc5cabf02f2844e8f68f2ed6139737794f536))
+* **cart:** Possibility to increase/decrease offer ([a5207d6](https://github.com/jos34000/api-jo2024/commit/a5207d6469ddcae55e3b7082de62ef74268e83f8))
+
 # [0.5.0](https://github.com/jos34000/api-jo2024/compare/v0.4.0...v0.5.0) (2026-03-14)
 
 
