@@ -1,6 +1,7 @@
 package dev.jos.back.config;
 
 import dev.jos.back.dto.ErrorResponseDTO;
+import dev.jos.back.exceptions.cart.CartItemNotFoundException;
 import dev.jos.back.exceptions.cart.CartNotFoundException;
 import dev.jos.back.exceptions.email.EmailNotSentException;
 import dev.jos.back.exceptions.event.EventAlreadyExistsException;
@@ -49,6 +50,7 @@ public class GlobalExceptionConfig {
             Map.entry(OfferTypeAlreadyExistsException.class, HttpStatus.CONFLICT),
             Map.entry(SportNotFoundException.class, HttpStatus.NOT_FOUND),
             Map.entry(CartNotFoundException.class, HttpStatus.NOT_FOUND),
+            Map.entry(CartItemNotFoundException.class, HttpStatus.NOT_FOUND),
             Map.entry(OfferNotFoundException.class, HttpStatus.NOT_FOUND),
             Map.entry(EventSoldOutException.class, HttpStatus.BAD_REQUEST)
     );

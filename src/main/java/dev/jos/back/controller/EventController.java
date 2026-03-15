@@ -126,8 +126,8 @@ public class EventController {
     /**
      * Récupère la liste des événements du même sport.
      *
-     * @param sport le sport recherché
-     * @return {@code ResponseEntity<List<EventResponseDTO>>} contenant les détails complets de l'événement
+     * @param sport le nom du sport recherché
+     * @return {@code ResponseEntity<List<EventResponseDTO>>} contenant la liste des événements correspondant au sport
      */
     @GetMapping("/sport/{sport}")
     public ResponseEntity<List<EventResponseDTO>> getEventsBySport(@PathVariable String sport) {

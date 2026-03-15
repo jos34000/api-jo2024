@@ -80,8 +80,10 @@ public class AuthController {
      * Authentifie un utilisateur existant.
      *
      * @param request les identifiants de connexion (email et mot de passe)
-     * @return {@code ResponseEntity<LoginResponseDTO>} contenant les informations de l'utilisateur
-     * avec les cookies JWT (access token et refresh token)
+     * @return {@code ResponseEntity<UserResponseDTO>} contenant les informations de l'utilisateur
+     * avec les cookies JWT (access token et refresh token) ; si le 2FA est activé, retourne
+     * 202 Accepted avec les informations utilisateur mais sans cookies JWT — le client doit
+     * alors appeler {@code POST /api/2fa/verify} pour finaliser l'authentification
      * @throws org.springframework.security.authentication.BadCredentialsException     si les identifiants sont incorrects
      * @throws org.springframework.security.core.userdetails.UsernameNotFoundException si l'utilisateur n'existe pas
      */
@@ -99,7 +101,7 @@ public class AuthController {
         String email = userDetails != null ? userDetails.getUsername() : null;
 
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+                .orElseThrow(() -> new UsernameNotFoundException("Utilisateur introuvable"));
 
         if (user.isMfaEnabled()) {
             twoFactorService.sendCode(email);

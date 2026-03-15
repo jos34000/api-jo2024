@@ -53,6 +53,15 @@ public class OfferController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
+    /**
+     * Crée une offre unique.
+     * Réservé aux administrateurs.
+     *
+     * @param dtoRequest les informations de l'offre à créer (nom, description, nombre de billets, prix)
+     * @return {@code ResponseEntity<OfferResponseDTO>} contenant l'offre créée avec son identifiant généré
+     * @throws jakarta.validation.ConstraintViolationException           si les données de l'offre sont invalides
+     * @throws org.springframework.security.access.AccessDeniedException si l'utilisateur n'a pas le rôle ADMIN
+     */
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<OfferResponseDTO> createOfferType(
@@ -65,8 +74,8 @@ public class OfferController {
     /**
      * Récupère tous les types d'offres.
      *
-     * @return {@code ResponseEntity<List<OfferTypeResponseDTO>>} contenant la liste complète
-     * de tous les types d'offres
+     * @return {@code ResponseEntity<List<OfferResponseDTO>>} contenant la liste complète
+     * de toutes les offres
      */
     @GetMapping("/all")
     public ResponseEntity<List<OfferResponseDTO>> getAllOfferTypes() {

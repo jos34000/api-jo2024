@@ -17,6 +17,9 @@ spring:
 
 cors:
   allowed-origins: ${ALLOWED_ORIGINS}
+  allowed-methods: GET,POST,PUT,PATCH,DELETE,OPTIONS
+  allowed-headers: Content-Type,Authorization
+  allow-credentials: true
 
 jwt:
   access-token:
