@@ -4,6 +4,10 @@ import dev.jos.back.dto.ErrorResponseDTO;
 import dev.jos.back.exceptions.cart.CartItemNotFoundException;
 import dev.jos.back.exceptions.cart.CartNotFoundException;
 import dev.jos.back.exceptions.email.EmailNotSentException;
+import dev.jos.back.exceptions.payment.CartAlreadyConvertedException;
+import dev.jos.back.exceptions.payment.CartEmptyException;
+import dev.jos.back.exceptions.payment.PaymentDeclinedException;
+import dev.jos.back.exceptions.payment.TransactionNotFoundException;
 import dev.jos.back.exceptions.event.EventAlreadyExistsException;
 import dev.jos.back.exceptions.event.EventNotFoundException;
 import dev.jos.back.exceptions.event.EventSoldOutException;
@@ -52,7 +56,11 @@ public class GlobalExceptionConfig {
             Map.entry(CartNotFoundException.class, HttpStatus.NOT_FOUND),
             Map.entry(CartItemNotFoundException.class, HttpStatus.NOT_FOUND),
             Map.entry(OfferNotFoundException.class, HttpStatus.NOT_FOUND),
-            Map.entry(EventSoldOutException.class, HttpStatus.BAD_REQUEST)
+            Map.entry(EventSoldOutException.class, HttpStatus.BAD_REQUEST),
+            Map.entry(PaymentDeclinedException.class, HttpStatus.PAYMENT_REQUIRED),
+            Map.entry(CartAlreadyConvertedException.class, HttpStatus.CONFLICT),
+            Map.entry(CartEmptyException.class, HttpStatus.BAD_REQUEST),
+            Map.entry(TransactionNotFoundException.class, HttpStatus.NOT_FOUND)
     );
 
     @ExceptionHandler(Exception.class)
