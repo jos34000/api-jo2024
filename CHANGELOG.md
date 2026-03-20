@@ -1,3 +1,13 @@
+# [0.7.0](https://github.com/jos34000/api-jo2024/compare/v0.6.0...v0.7.0) (2026-03-20)
+
+
+### Features
+
+* [DJ-101] - Download directly tickets ([726977c](https://github.com/jos34000/api-jo2024/commit/726977caca955e61441ef6058ffed03f9305960c))
+* [DJ-102] - Consult history of commands ([ff82a10](https://github.com/jos34000/api-jo2024/commit/ff82a10980041e5ff2f75d09b56dd162276ca14c))
+* [DJ-98] - Proceed to payment ([709f2df](https://github.com/jos34000/api-jo2024/commit/709f2df63342a664768b94798f01705ed9b5df38))
+* [DJ-99] - Reveice e-tickets by mail ([be557bf](https://github.com/jos34000/api-jo2024/commit/be557bf4c0bdfbcc27912f148df16609b663531a))
+
 # [0.6.0](https://github.com/jos34000/api-jo2024/compare/v0.5.0...v0.6.0) (2026-03-15)
 
 
