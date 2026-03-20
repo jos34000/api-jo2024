@@ -1,10 +1,9 @@
 package dev.jos.back.service;
 
-import dev.jos.back.dto.cart.CartEventSummaryDTO;
-import dev.jos.back.dto.cart.CartOfferSummaryDTO;
 import dev.jos.back.dto.payment.CheckoutRequestDTO;
-import dev.jos.back.dto.payment.TicketResponseDTO;
+import dev.jos.back.dto.payment.TicketGroupResponseDTO;
 import dev.jos.back.dto.payment.TransactionResponseDTO;
+import dev.jos.back.mapper.TicketMapper;
 import dev.jos.back.entities.*;
 import dev.jos.back.exceptions.cart.CartNotFoundException;
 import dev.jos.back.exceptions.payment.CartAlreadyConvertedException;
@@ -25,9 +24,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
+import java.util.stream.Collectors;
+
 
 @Slf4j
 @Service
@@ -41,6 +40,7 @@ public class TransactionService {
     private final PaymentMockService paymentMockService;
     private final PdfTicketService pdfTicketService;
     private final EmailService emailService;
+    private final TicketMapper ticketMapper;
 
     @Transactional
     public TransactionResponseDTO checkout(String email, CheckoutRequestDTO dto) {
@@ -94,7 +94,7 @@ public class TransactionService {
         cart.setStatus(CartStatus.CONVERTED);
         cartRepository.save(cart);
 
-        TransactionResponseDTO responseDTO = toTransactionResponseDTO(transaction, tickets);
+        TransactionResponseDTO responseDTO = ticketMapper.toTransactionResponseDTO(transaction, tickets);
 
         try {
             byte[] pdf = pdfTicketService.generate(responseDTO);
@@ -112,7 +112,24 @@ public class TransactionService {
                 .orElseThrow(() -> new TransactionNotFoundException("Transaction introuvable"));
 
         List<Ticket> tickets = new ArrayList<>(transaction.getTickets());
-        return toTransactionResponseDTO(transaction, tickets);
+        return ticketMapper.toTransactionResponseDTO(transaction, tickets);
+    }
+
+    @Transactional(readOnly = true)
+    public List<TicketGroupResponseDTO> getUserTicketGroups(String email) {
+        userRepository.findByEmail(email)
+                .orElseThrow(() -> new UserNotFoundException("Utilisateur introuvable"));
+
+        List<Ticket> tickets = ticketRepository.findAllByUser_EmailOrderByCreatedAtDesc(email);
+
+        Map<String, List<Ticket>> grouped = tickets.stream()
+                .collect(Collectors.groupingBy(t ->
+                        t.getTransaction().getId() + "-" + t.getEvent().getId() + "-" + t.getOffer().getId()));
+
+        return grouped.values().stream()
+                .map(ticketMapper::toTicketGroupResponseDTO)
+                .sorted(Comparator.comparing(TicketGroupResponseDTO::purchasedAt).reversed())
+                .toList();
     }
 
     private List<Ticket> generateTickets(Cart cart, Transaction transaction, User user) {
@@ -146,38 +163,4 @@ public class TransactionService {
         return tickets;
     }
 
-    private TransactionResponseDTO toTransactionResponseDTO(Transaction transaction, List<Ticket> tickets) {
-        List<TicketResponseDTO> ticketDTOs = tickets.stream()
-                .map(t -> TicketResponseDTO.builder()
-                        .id(t.getId())
-                        .ticketKey(t.getTicketKey())
-                        .barcode(t.getBarcode())
-                        .price(t.getPrice())
-                        .event(CartEventSummaryDTO.builder()
-                                .id(t.getEvent().getId())
-                                .name(t.getEvent().getName())
-                                .eventDate(t.getEvent().getEventDate())
-                                .location(t.getEvent().getLocation())
-                                .city(t.getEvent().getCity())
-                                .phase(t.getEvent().getPhase())
-                                .build())
-                        .offer(CartOfferSummaryDTO.builder()
-                                .id(t.getOffer().getId())
-                                .name(t.getOffer().getName())
-                                .numberOfTickets(t.getOffer().getNumberOfTickets())
-                                .price(t.getOffer().getPrice())
-                                .build())
-                        .build())
-                .toList();
-
-        return TransactionResponseDTO.builder()
-                .id(transaction.getId())
-                .transactionKey(transaction.getTransactionKey())
-                .status(transaction.getStatus().name())
-                .amount(transaction.getAmount())
-                .paymentReference(transaction.getPaymentReference())
-                .payedDate(transaction.getPayedDate())
-                .tickets(ticketDTOs)
-                .build();
-    }
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <!--
+        Normalisation de l'enum PaymentMethod.
+        DEBIT_CARD et PAYPAL ont été supprimés de l'enum Java ;
+        les lignes existantes sont ramenées vers CREDIT_CARD.
+    -->
+    <changeSet id="006-normalize-payment-method" author="jos">
+        <update tableName="transactions">
+            <column name="payment_method" value="CREDIT_CARD"/>
+            <where>payment_method IN ('DEBIT_CARD', 'PAYPAL')</where>
+        </update>
+    </changeSet>
+
+</databaseChangeLog>
