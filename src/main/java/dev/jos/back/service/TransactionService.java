@@ -19,6 +19,7 @@ import dev.jos.back.repository.UserRepository;
 import dev.jos.back.util.enums.CartStatus;
 import dev.jos.back.util.enums.TransactionStatus;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,13 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-/**
- * Service orchestrant le tunnel de paiement et la génération des billets.
- * <p>
- * Gère la validation du panier, l'appel au système de paiement simulé,
- * la création de la transaction, la génération des billets et la conversion du panier.
- * </p>
- */
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class TransactionService {
@@ -44,24 +39,9 @@ public class TransactionService {
     private final TransactionRepository transactionRepository;
     private final TicketRepository ticketRepository;
     private final PaymentMockService paymentMockService;
+    private final PdfTicketService pdfTicketService;
+    private final EmailService emailService;
 
-    /**
-     * Traite le paiement du panier actif de l'utilisateur.
-     * <p>
-     * Si le paiement est accepté, une transaction {@code COMPLETED} est créée,
-     * les billets sont générés et le panier est marqué {@code CONVERTED}.
-     * Si le paiement est refusé, une {@link PaymentDeclinedException} est levée.
-     * </p>
-     *
-     * @param email l'adresse email de l'utilisateur authentifié
-     * @param dto   les données de paiement (numéro de carte, expiry, CVV, méthode)
-     * @return la transaction créée avec la liste des billets générés
-     * @throws UserNotFoundException          si l'utilisateur est introuvable
-     * @throws CartNotFoundException          si aucun panier actif n'existe ou s'il a expiré
-     * @throws CartAlreadyConvertedException  si le panier a déjà été converti en commande
-     * @throws CartEmptyException             si le panier ne contient aucun article
-     * @throws PaymentDeclinedException       si le paiement est refusé par le système mock
-     */
     @Transactional
     public TransactionResponseDTO checkout(String email, CheckoutRequestDTO dto) {
         User user = userRepository.findByEmail(email)
@@ -114,17 +94,18 @@ public class TransactionService {
         cart.setStatus(CartStatus.CONVERTED);
         cartRepository.save(cart);
 
-        return toTransactionResponseDTO(transaction, tickets);
+        TransactionResponseDTO responseDTO = toTransactionResponseDTO(transaction, tickets);
+
+        try {
+            byte[] pdf = pdfTicketService.generate(responseDTO);
+            emailService.sendTicketsEmail(user.getEmail(), user.getFirstName(), responseDTO, pdf);
+        } catch (Exception e) {
+            log.warn("Envoi email billets échoué pour transaction {} : {}", responseDTO.id(), e.getMessage());
+        }
+
+        return responseDTO;
     }
 
-    /**
-     * Récupère le détail d'une transaction par son identifiant.
-     *
-     * @param email         l'adresse email de l'utilisateur authentifié
-     * @param transactionId l'identifiant de la transaction à récupérer
-     * @return la transaction avec ses billets
-     * @throws TransactionNotFoundException si la transaction est introuvable ou n'appartient pas à l'utilisateur
-     */
     @Transactional(readOnly = true)
     public TransactionResponseDTO getTransaction(String email, Long transactionId) {
         Transaction transaction = transactionRepository.findByIdAndUser_Email(transactionId, email)
