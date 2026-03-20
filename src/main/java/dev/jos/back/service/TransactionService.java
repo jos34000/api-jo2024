@@ -116,6 +116,23 @@ public class TransactionService {
     }
 
     @Transactional(readOnly = true)
+    public byte[] getTicketsPdf(String email, Long transactionId) {
+        Transaction transaction = transactionRepository.findByIdAndUser_Email(transactionId, email)
+                .orElseThrow(() -> new TransactionNotFoundException("Transaction introuvable"));
+
+        List<Ticket> validTickets = transaction.getTickets().stream()
+                .filter(t -> Boolean.TRUE.equals(t.getIsValid()) && !Boolean.TRUE.equals(t.getIsScanned()))
+                .toList();
+
+        if (validTickets.isEmpty()) {
+            throw new IllegalStateException("Aucun billet valide disponible pour cette transaction");
+        }
+
+        TransactionResponseDTO dto = ticketMapper.toTransactionResponseDTO(transaction, validTickets);
+        return pdfTicketService.generate(dto);
+    }
+
+    @Transactional(readOnly = true)
     public List<TicketGroupResponseDTO> getUserTicketGroups(String email) {
         userRepository.findByEmail(email)
                 .orElseThrow(() -> new UserNotFoundException("Utilisateur introuvable"));

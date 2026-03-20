@@ -11,7 +11,9 @@ import dev.jos.back.exceptions.payment.TransactionNotFoundException;
 import dev.jos.back.service.TransactionService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
@@ -80,6 +82,20 @@ public class CheckoutController {
      * @return {@code ResponseEntity<TransactionResponseDTO>} contenant la transaction et ses billets (200 OK)
      * @throws TransactionNotFoundException si la transaction est introuvable ou n'appartient pas à l'utilisateur
      */
+    @GetMapping("/{transactionId}/pdf")
+    public ResponseEntity<byte[]> downloadTicketsPdf(
+            Authentication authentication,
+            @PathVariable Long transactionId
+    ) {
+        String email = authentication.getName();
+        byte[] pdf = transactionService.getTicketsPdf(email, transactionId);
+        String filename = "billets-" + transactionId + ".pdf";
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + filename + "\"")
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(pdf);
+    }
+
     @GetMapping("/{transactionId}")
     public ResponseEntity<TransactionResponseDTO> getTransaction(
             Authentication authentication,
