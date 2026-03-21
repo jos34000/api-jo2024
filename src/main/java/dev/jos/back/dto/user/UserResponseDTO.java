@@ -10,6 +10,7 @@ public record UserResponseDTO(
         String firstName,
         String lastName,
         boolean mfaEnabled,
+        String locale,
         LocalDateTime createdDate
 ) {
 }

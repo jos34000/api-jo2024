@@ -21,4 +21,7 @@
     <include file="db/changelog/changes/013-seed-offers.xml"/>
     <include file="db/changelog/changes/014-seed-offer-translations.xml"/>
     <include file="db/changelog/changes/015-seed-sport-translations.xml"/>
+    <include file="db/changelog/changes/016-add-missing-sports.xml"/>
+    <include file="db/changelog/changes/017-seed-events.xml"/>
+    <include file="db/changelog/changes/018-seed-event-translations.xml"/>
 </databaseChangeLog>

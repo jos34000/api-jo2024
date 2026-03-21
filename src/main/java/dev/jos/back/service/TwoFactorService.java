@@ -44,7 +44,7 @@ public class TwoFactorService {
 
         repository.save(twoFactorCode);
 
-        emailService.sendTwoFactorEmail(user.getEmail(), user.getFirstName(), twoFactorCode.getCode(), expiration);
+        emailService.sendTwoFactorEmail(user.getEmail(), user.getFirstName(), twoFactorCode.getCode(), expiration, user.getLocale());
     }
 
     public void verifyCode(String userEmail, String submittedCode) {

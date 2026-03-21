@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <changeSet id="013-seed-offers" author="jos">
+        <sql>
+            INSERT INTO offers (name, description, price, number_of_tickets, is_active, display_order, created_at) VALUES
+            ('Solo',    'Parfait pour vivre votre passion en toute liberté.',       40,  1, true, 1, NOW()),
+            ('Duo',     'Partagez des moments uniques à deux, côte a côte.',        75,  2, true, 2, NOW()),
+            ('Famille', 'Vivez les Jeux en famille avec des places regroupées.',    135, 4, true, 3, NOW());
+        </sql>
+
+        <sql>
+            INSERT INTO offer_features (offer_id, features)
+            SELECT id, 'Accès a tous les évènements'   FROM offers WHERE name = 'Solo';
+            INSERT INTO offer_features (offer_id, features)
+            SELECT id, '1 place assise garantie'        FROM offers WHERE name = 'Solo';
+            INSERT INTO offer_features (offer_id, features)
+            SELECT id, 'E-billet sur mobile'            FROM offers WHERE name = 'Solo';
+            INSERT INTO offer_features (offer_id, features)
+            SELECT id, 'Accès aux zones communes'       FROM offers WHERE name = 'Solo';
+        </sql>
+
+        <sql>
+            INSERT INTO offer_features (offer_id, features)
+            SELECT id, 'Accès a tous les évènements'       FROM offers WHERE name = 'Duo';
+            INSERT INTO offer_features (offer_id, features)
+            SELECT id, '2 places côte à côte garanties'    FROM offers WHERE name = 'Duo';
+            INSERT INTO offer_features (offer_id, features)
+            SELECT id, 'E-billets sur mobile'              FROM offers WHERE name = 'Duo';
+            INSERT INTO offer_features (offer_id, features)
+            SELECT id, 'Accès aux zones communes'          FROM offers WHERE name = 'Duo';
+        </sql>
+
+        <sql>
+            INSERT INTO offer_features (offer_id, features)
+            SELECT id, 'Accès à tous les évènements'          FROM offers WHERE name = 'Famille';
+            INSERT INTO offer_features (offer_id, features)
+            SELECT id, '4 places regroupées garanties'         FROM offers WHERE name = 'Famille';
+            INSERT INTO offer_features (offer_id, features)
+            SELECT id, 'E-billets sur mobile'                  FROM offers WHERE name = 'Famille';
+            INSERT INTO offer_features (offer_id, features)
+            SELECT id, 'Accès aux zones communes'              FROM offers WHERE name = 'Famille';
+            INSERT INTO offer_features (offer_id, features)
+            SELECT id, 'Sac souvenir Paris 2024 offert'        FROM offers WHERE name = 'Famille';
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

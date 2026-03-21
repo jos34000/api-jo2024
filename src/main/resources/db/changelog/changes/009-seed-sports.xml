@@ -1,0 +1,1007 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="009-seed-sports" author="migration">
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Aucun"/>
+            <column name="description" value="Aucun sport associé."/>
+            <column name="icon" value="🎪"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Sprint"/>
+            <column name="description" value="Épreuves de course à pied sur courtes distances : 100m, 200m et 400m."/>
+            <column name="icon" value="🏃"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Sprint')"/>
+            <column name="phase" value="SERIES"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Sprint')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Sprint')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Marathon"/>
+            <column name="description" value="Course à pied longue distance de 42,195 km sur route."/>
+            <column name="icon" value="🏅"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Marathon')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Natation"/>
+            <column name="description"
+                    value="Épreuves en piscine couvrant nage libre, dos, brasse, papillon et relais."/>
+            <column name="icon" value="🏊"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Natation')"/>
+            <column name="phase" value="SERIES"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Natation')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Natation')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Natation en eau libre"/>
+            <column name="description" value="Course de 10 km en milieu naturel, ici dans la Seine."/>
+            <column name="icon" value="🌊"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Natation en eau libre')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Triathlon"/>
+            <column name="description" value="Enchaînement natation, cyclisme et course à pied en milieu urbain."/>
+            <column name="icon" value="🤸"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Triathlon')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Triathlon')"/>
+            <column name="phase" value="RELAIS_MIXTE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Aviron"/>
+            <column name="description"
+                    value="Épreuves sur plan d&apos;eau en embarcations individuelles et collectives."/>
+            <column name="icon" value="🚣"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Aviron')"/>
+            <column name="phase" value="SERIES"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Aviron')"/>
+            <column name="phase" value="REPECHAGE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Aviron')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Aviron')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Aviron')"/>
+            <column name="phase" value="CLASSEMENT"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Canoë-kayak sprint"/>
+            <column name="description" value="Courses de vitesse sur eau calme en canoë et kayak."/>
+            <column name="icon" value="🛶"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Canoë-kayak sprint')"/>
+            <column name="phase" value="SERIES"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Canoë-kayak sprint')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Canoë-kayak sprint')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Canoë-kayak slalom"/>
+            <column name="description"
+                    value="Descente de parcours artificiels avec portes, en kayak monoplace et canoë."/>
+            <column name="icon" value="🌀"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Canoë-kayak slalom')"/>
+            <column name="phase" value="QUALIFICATION"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Canoë-kayak slalom')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Canoë-kayak slalom')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Water-polo"/>
+            <column name="description" value="Sport collectif aquatique opposant deux équipes de sept joueurs."/>
+            <column name="icon" value="🤽"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Water-polo')"/>
+            <column name="phase" value="PHASE_DE_GROUPES"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Water-polo')"/>
+            <column name="phase" value="QUART_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Water-polo')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Water-polo')"/>
+            <column name="phase" value="MATCH_BRONZE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Water-polo')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Plongeon"/>
+            <column name="description"
+                    value="Épreuves depuis le tremplin 3m et la plateforme 10m, individuel et synchronisé."/>
+            <column name="icon" value="🤿"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Plongeon')"/>
+            <column name="phase" value="QUALIFICATION"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Plongeon')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Voile"/>
+            <column name="description"
+                    value="Régates olympiques en plusieurs classes de bateaux sur la rade de Marseille."/>
+            <column name="icon" value="⛵"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Voile')"/>
+            <column name="phase" value="SERIES"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Voile')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Surf"/>
+            <column name="description" value="Discipline sur vagues naturelles à Teahupo&apos;o, Tahiti."/>
+            <column name="icon" value="🏄"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Surf')"/>
+            <column name="phase" value="TOUR_PRELIMINAIRE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Surf')"/>
+            <column name="phase" value="SEIZIEME_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Surf')"/>
+            <column name="phase" value="QUART_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Surf')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Surf')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Gymnastique artistique"/>
+            <column name="description" value="Agilité, force et grâce sur agrès : sol, barres, poutre, saut."/>
+            <column name="icon" value="🤸"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Gymnastique artistique')"/>
+            <column name="phase" value="QUALIFICATION"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Gymnastique artistique')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Gymnastique artistique')"/>
+            <column name="phase" value="EPREUVE_PAR_EQUIPES"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Gymnastique rythmique"/>
+            <column name="description" value="Enchaînements avec engins (cerceau, ballon, massues, ruban)."/>
+            <column name="icon" value="🎀"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Gymnastique rythmique')"/>
+            <column name="phase" value="QUALIFICATION"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Gymnastique rythmique')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Trampoline"/>
+            <column name="description" value="Figures acrobatiques enchaînées sur trampoline."/>
+            <column name="icon" value="⬆️"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Trampoline')"/>
+            <column name="phase" value="QUALIFICATION"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Trampoline')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Basketball"/>
+            <column name="description" value="Sport collectif en salle opposant deux équipes de cinq joueurs."/>
+            <column name="icon" value="🏀"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Basketball')"/>
+            <column name="phase" value="PHASE_DE_GROUPES"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Basketball')"/>
+            <column name="phase" value="QUART_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Basketball')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Basketball')"/>
+            <column name="phase" value="MATCH_BRONZE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Basketball')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Basketball 3x3"/>
+            <column name="description"
+                    value="Format urbain du basketball sur demi-terrain, en équipes de trois joueurs."/>
+            <column name="icon" value="🏀"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Basketball 3x3')"/>
+            <column name="phase" value="PHASE_DE_GROUPES"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Basketball 3x3')"/>
+            <column name="phase" value="QUART_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Basketball 3x3')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Basketball 3x3')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Volleyball"/>
+            <column name="description" value="Sport collectif en salle opposant deux équipes de six joueurs."/>
+            <column name="icon" value="🏐"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Volleyball')"/>
+            <column name="phase" value="PHASE_DE_GROUPES"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Volleyball')"/>
+            <column name="phase" value="QUART_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Volleyball')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Volleyball')"/>
+            <column name="phase" value="MATCH_BRONZE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Volleyball')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Beach volley"/>
+            <column name="description" value="Volleyball pratiqué sur sable, en équipes de deux joueurs."/>
+            <column name="icon" value="🏖️"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Beach volley')"/>
+            <column name="phase" value="PHASE_DE_GROUPES"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Beach volley')"/>
+            <column name="phase" value="SEIZIEME_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Beach volley')"/>
+            <column name="phase" value="QUART_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Beach volley')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Beach volley')"/>
+            <column name="phase" value="MATCH_BRONZE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Beach volley')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Rugby à 7"/>
+            <column name="description" value="Format raccourci du rugby à XV, joué à 7 par équipe."/>
+            <column name="icon" value="🏉"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Rugby à 7')"/>
+            <column name="phase" value="PHASE_DE_GROUPES"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Rugby à 7')"/>
+            <column name="phase" value="QUART_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Rugby à 7')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Rugby à 7')"/>
+            <column name="phase" value="MATCH_BRONZE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Rugby à 7')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Tennis"/>
+            <column name="description" value="Sport de raquette sur terre battue à Roland-Garros."/>
+            <column name="icon" value="🎾"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Tennis')"/>
+            <column name="phase" value="TOUR_PRELIMINAIRE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Tennis')"/>
+            <column name="phase" value="SEIZIEME_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Tennis')"/>
+            <column name="phase" value="QUART_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Tennis')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Tennis')"/>
+            <column name="phase" value="MATCH_BRONZE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Tennis')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Badminton"/>
+            <column name="description" value="Sport de raquette au volant, en simple et double sur surface indoor."/>
+            <column name="icon" value="🏸"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Badminton')"/>
+            <column name="phase" value="PHASE_DE_GROUPES"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Badminton')"/>
+            <column name="phase" value="SEIZIEME_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Badminton')"/>
+            <column name="phase" value="QUART_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Badminton')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Badminton')"/>
+            <column name="phase" value="MATCH_BRONZE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Badminton')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Tennis de table"/>
+            <column name="description" value="Sport de raquette sur table, en simple et par équipes."/>
+            <column name="icon" value="🏓"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Tennis de table')"/>
+            <column name="phase" value="TOUR_PRELIMINAIRE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Tennis de table')"/>
+            <column name="phase" value="SEIZIEME_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Tennis de table')"/>
+            <column name="phase" value="QUART_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Tennis de table')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Tennis de table')"/>
+            <column name="phase" value="MATCH_BRONZE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Tennis de table')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Football"/>
+            <column name="description" value="Sport collectif opposant deux équipes de onze joueurs sur gazon."/>
+            <column name="icon" value="⚽"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Football')"/>
+            <column name="phase" value="PHASE_DE_GROUPES"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Football')"/>
+            <column name="phase" value="QUART_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Football')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Football')"/>
+            <column name="phase" value="MATCH_BRONZE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Football')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Handball"/>
+            <column name="description" value="Sport collectif en salle opposant deux équipes de sept joueurs."/>
+            <column name="icon" value="🤾"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Handball')"/>
+            <column name="phase" value="PHASE_DE_GROUPES"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Handball')"/>
+            <column name="phase" value="QUART_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Handball')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Handball')"/>
+            <column name="phase" value="MATCH_BRONZE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Handball')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Hockey sur gazon"/>
+            <column name="description" value="Sport collectif joué sur gazon synthétique avec crosses et balle."/>
+            <column name="icon" value="🏑"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Hockey sur gazon')"/>
+            <column name="phase" value="PHASE_DE_GROUPES"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Hockey sur gazon')"/>
+            <column name="phase" value="QUART_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Hockey sur gazon')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Hockey sur gazon')"/>
+            <column name="phase" value="MATCH_BRONZE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Hockey sur gazon')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Judo"/>
+            <column name="description" value="Art martial japonais basé sur les projections et les immobilisations."/>
+            <column name="icon" value="🥋"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Judo')"/>
+            <column name="phase" value="TOUR_PRELIMINAIRE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Judo')"/>
+            <column name="phase" value="REPECHAGE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Judo')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Judo')"/>
+            <column name="phase" value="MATCH_BRONZE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Judo')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Judo')"/>
+            <column name="phase" value="EPREUVE_PAR_EQUIPES"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Boxe"/>
+            <column name="description" value="Sport de combat en ring à coups de poings gantés."/>
+            <column name="icon" value="🥊"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Boxe')"/>
+            <column name="phase" value="TOUR_PRELIMINAIRE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Boxe')"/>
+            <column name="phase" value="SEIZIEME_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Boxe')"/>
+            <column name="phase" value="QUART_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Boxe')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Boxe')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Taekwondo"/>
+            <column name="description" value="Art martial coréen basé sur les techniques de pieds et de poings."/>
+            <column name="icon" value="🦵"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Taekwondo')"/>
+            <column name="phase" value="TOUR_PRELIMINAIRE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Taekwondo')"/>
+            <column name="phase" value="QUART_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Taekwondo')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Taekwondo')"/>
+            <column name="phase" value="MATCH_BRONZE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Taekwondo')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Lutte"/>
+            <column name="description" value="Discipline de combat en gréco-romaine et libre, hommes et femmes."/>
+            <column name="icon" value="🤼"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Lutte')"/>
+            <column name="phase" value="TOUR_PRELIMINAIRE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Lutte')"/>
+            <column name="phase" value="REPECHAGE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Lutte')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Lutte')"/>
+            <column name="phase" value="MATCH_BRONZE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Lutte')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Escrime"/>
+            <column name="description"
+                    value="Combat à l&apos;arme blanche : fleuret, épée et sabre, en individuel et par équipes."/>
+            <column name="icon" value="🤺"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Escrime')"/>
+            <column name="phase" value="TOUR_PRELIMINAIRE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Escrime')"/>
+            <column name="phase" value="TRENTE_DEUXIEME_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Escrime')"/>
+            <column name="phase" value="SEIZIEME_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Escrime')"/>
+            <column name="phase" value="QUART_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Escrime')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Escrime')"/>
+            <column name="phase" value="MATCH_BRONZE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Escrime')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Escrime')"/>
+            <column name="phase" value="EPREUVE_PAR_EQUIPES"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Tir à l'arc"/>
+            <column name="description" value="Précision sur cibles à 70m, en individuel et par équipes mixtes."/>
+            <column name="icon" value="🏹"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Tir à l''arc')"/>
+            <column name="phase" value="SOIXANTE_QUATRIEME_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Tir à l''arc')"/>
+            <column name="phase" value="TRENTE_DEUXIEME_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Tir à l''arc')"/>
+            <column name="phase" value="SEIZIEME_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Tir à l''arc')"/>
+            <column name="phase" value="QUART_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Tir à l''arc')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Tir à l''arc')"/>
+            <column name="phase" value="MATCH_BRONZE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Tir à l''arc')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Tir sportif"/>
+            <column name="description" value="Épreuves de précision au pistolet et à la carabine, à 10m, 25m et 50m."/>
+            <column name="icon" value="🎯"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Tir sportif')"/>
+            <column name="phase" value="QUALIFICATION"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Tir sportif')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Cyclisme sur route"/>
+            <column name="description"
+                    value="Course en ligne et contre-la-montre sur les routes d&apos;Île-de-France."/>
+            <column name="icon" value="🚴"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Cyclisme sur route')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Cyclisme sur route')"/>
+            <column name="phase" value="CONTRE_LA_MONTRE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Cyclisme sur piste"/>
+            <column name="description" value="Épreuves de vitesse et d&apos;endurance sur vélodrome."/>
+            <column name="icon" value="🚵"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Cyclisme sur piste')"/>
+            <column name="phase" value="QUALIFICATION"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Cyclisme sur piste')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Cyclisme sur piste')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="VTT"/>
+            <column name="description" value="Cross-country olympique sur parcours tout-terrain en forêt."/>
+            <column name="icon" value="🌲"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'VTT')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="BMX Racing"/>
+            <column name="description" value="Descente de piste en terre avec sauts et virages relevés."/>
+            <column name="icon" value="🏎️"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'BMX Racing')"/>
+            <column name="phase" value="SERIES"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'BMX Racing')"/>
+            <column name="phase" value="QUART_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'BMX Racing')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'BMX Racing')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="BMX Freestyle"/>
+            <column name="description" value="Figures acrobatiques sur rampe de skatepark."/>
+            <column name="icon" value="🛹"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'BMX Freestyle')"/>
+            <column name="phase" value="QUALIFICATION"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'BMX Freestyle')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Skateboard"/>
+            <column name="description" value="Disciplines street et park avec figures techniques et acrobatiques."/>
+            <column name="icon" value="🛹"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Skateboard')"/>
+            <column name="phase" value="QUALIFICATION"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Skateboard')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Breaking"/>
+            <column name="description"
+                    value="Danse hip-hop compétitive en battle, discipline olympique depuis Paris 2024."/>
+            <column name="icon" value="🕺"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Breaking')"/>
+            <column name="phase" value="QUALIFICATION"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Breaking')"/>
+            <column name="phase" value="QUART_DE_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Breaking')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Breaking')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Escalade sportive"/>
+            <column name="description" value="Combiné vitesse et bloc/difficulté sur mur artificiel."/>
+            <column name="icon" value="🧗"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Escalade sportive')"/>
+            <column name="phase" value="QUALIFICATION"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Escalade sportive')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Escalade sportive')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Équitation"/>
+            <column name="description"
+                    value="Dressage, saut d&apos;obstacles et concours complet dans le parc de Versailles."/>
+            <column name="icon" value="🏇"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Équitation')"/>
+            <column name="phase" value="QUALIFICATION"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Équitation')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Équitation')"/>
+            <column name="phase" value="EPREUVE_PAR_EQUIPES"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Golf"/>
+            <column name="description" value="Tournoi de 72 trous sur le parcours du Golf National."/>
+            <column name="icon" value="⛳"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Golf')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Haltérophilie"/>
+            <column name="description" value="Épreuves d&apos;arraché et d&apos;épaulé-jeté par catégories de poids."/>
+            <column name="icon" value="🏋️"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Haltérophilie')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Pentathlon moderne"/>
+            <column name="description"
+                    value="Combiné de cinq disciplines : escrime, natation, équitation, tir et course."/>
+            <column name="icon" value="🎖️"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Pentathlon moderne')"/>
+            <column name="phase" value="QUALIFICATION"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Pentathlon moderne')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+    </changeSet>
+</databaseChangeLog>

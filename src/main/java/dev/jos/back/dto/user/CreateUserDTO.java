@@ -26,6 +26,8 @@ public record CreateUserDTO(
         @NotNull
         boolean enableTwoFactor,
 
-        Role role
+        Role role,
+
+        String locale
 ) {
 }

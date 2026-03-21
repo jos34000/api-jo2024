@@ -93,7 +93,7 @@ public class UserService {
         passwordResetTokenRepository.save(resetToken);
 
         String resetLink = "http://localhost:3000/reset-password?token=" + token;
-        emailService.sendPasswordResetEmail(user.getEmail(), user.getFirstName(), resetLink);
+        emailService.sendPasswordResetEmail(user.getEmail(), user.getFirstName(), resetLink, user.getLocale());
     }
 
     @Transactional

@@ -14,6 +14,7 @@ public class UserMapper {
                 .lastName(dto.lastName())
                 .mfaEnabled(dto.enableTwoFactor())
                 .role(dto.role())
+                .locale(dto.locale())
                 .build();
     }
 
@@ -24,6 +25,7 @@ public class UserMapper {
                 .lastName(user.getLastName())
                 .mfaEnabled(user.isMfaEnabled())
                 .createdDate(user.getCreatedDate())
+                .locale(user.getLocale())
                 .build();
     }
 }

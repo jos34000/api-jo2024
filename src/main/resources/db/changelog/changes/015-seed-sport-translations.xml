@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <changeSet id="015-seed-sport-translations" author="jos">
+        <sql>
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'None', 'No associated sport.' FROM sports WHERE name = 'Aucun';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Kein', 'Kein zugehöriger Sport.' FROM sports WHERE name = 'Aucun';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Ninguno', 'Ningún deporte asociado.' FROM sports WHERE name = 'Aucun';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Sprint', 'Short-distance running events: 100m, 200m and 400m.' FROM sports WHERE name = 'Sprint';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Sprint', 'Kurzdistanz-Laufwettbewerbe: 100m, 200m und 400m.' FROM sports WHERE name = 'Sprint';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Sprint', 'Pruebas de carrera de corta distancia: 100m, 200m y 400m.' FROM sports WHERE name = 'Sprint';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Marathon', 'Long-distance road race of 42.195 km.' FROM sports WHERE name = 'Marathon';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Marathon', 'Langstreckenlauf über 42,195 km auf der Straße.' FROM sports WHERE name = 'Marathon';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Maratón', 'Carrera de larga distancia de 42,195 km en carretera.' FROM sports WHERE name = 'Marathon';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Swimming', 'Pool events covering freestyle, backstroke, breaststroke, butterfly and relays.' FROM sports WHERE name = 'Natation';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Schwimmen', 'Beckenwettbewerbe in Freistil, Rücken, Brust, Schmetterling und Staffeln.' FROM sports WHERE name = 'Natation';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Natación', 'Pruebas en piscina de estilo libre, espalda, braza, mariposa y relevos.' FROM sports WHERE name = 'Natation';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Open Water Swimming', '10 km race in open water, here in the Seine.' FROM sports WHERE name = 'Natation en eau libre';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Freiwasserschwimmen', '10-km-Rennen im natürlichen Gewässer, hier in der Seine.' FROM sports WHERE name = 'Natation en eau libre';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Natación en aguas abiertas', 'Carrera de 10 km en aguas abiertas, aquí en el Sena.' FROM sports WHERE name = 'Natation en eau libre';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Triathlon', 'Combined endurance sport: swimming, cycling and running.' FROM sports WHERE name = 'Triathlon';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Triathlon', 'Kombinierter Ausdauersport: Schwimmen, Radfahren und Laufen.' FROM sports WHERE name = 'Triathlon';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Triatlón', 'Deporte de resistencia combinado: natación, ciclismo y carrera.' FROM sports WHERE name = 'Triathlon';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Rowing', 'Olympic rowing events for single, double and team boats on a 2000m course.' FROM sports WHERE name = 'Aviron';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Rudern', 'Olympische Ruderwettbewerbe für Einzel-, Doppel- und Mannschaftsboote über 2000m.' FROM sports WHERE name = 'Aviron';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Remo', 'Pruebas olímpicas de remo individual, doble y de equipo en un recorrido de 2000m.' FROM sports WHERE name = 'Aviron';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Canoe Sprint', 'Sprint racing in canoe and kayak on a flat 200m or 1000m course.' FROM sports WHERE name = 'Canoë-kayak sprint';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Kanu-Sprint', 'Sprintrennen im Kanu und Kajak auf einer flachen 200-m- oder 1000-m-Strecke.' FROM sports WHERE name = 'Canoë-kayak sprint';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Piragüismo sprint', 'Carreras de sprint en canoa y kayak sobre un recorrido plano de 200m o 1000m.' FROM sports WHERE name = 'Canoë-kayak sprint';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Canoe Slalom', 'Technical disciplines navigating whitewater gates in canoe and kayak.' FROM sports WHERE name = 'Canoë-kayak slalom';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Kanu-Slalom', 'Technische Disziplinen im Wildwasser-Torfahren mit Kanu und Kajak.' FROM sports WHERE name = 'Canoë-kayak slalom';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Piragüismo slalom', 'Disciplinas técnicas navegando puertas de aguas bravas en canoa y kayak.' FROM sports WHERE name = 'Canoë-kayak slalom';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Water Polo', 'Team aquatic sport where two teams compete to score goals in each other''s net.' FROM sports WHERE name = 'Water-polo';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Wasserball', 'Mannschaftssport im Wasser, bei dem zwei Teams gegeneinander Tore erzielen.' FROM sports WHERE name = 'Water-polo';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Waterpolo', 'Deporte acuático de equipo en el que dos equipos compiten por marcar goles en la portería rival.' FROM sports WHERE name = 'Water-polo';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Diving', 'Artistic dives from springboard and platform, judged on technique and execution.' FROM sports WHERE name = 'Plongeon';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Kunstspringen', 'Kunststürze vom Sprungbrett und Plattform, bewertet nach Technik und Ausführung.' FROM sports WHERE name = 'Plongeon';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Saltos', 'Saltos artísticos desde trampolín y plataforma, juzgados por técnica y ejecución.' FROM sports WHERE name = 'Plongeon';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Sailing', 'Olympic sailing races in various boat classes on open water.' FROM sports WHERE name = 'Voile';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Segeln', 'Olympische Segelrennen in verschiedenen Bootsklassen auf dem offenen Wasser.' FROM sports WHERE name = 'Voile';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Vela', 'Regatas olímpicas de vela en varias clases de embarcaciones en aguas abiertas.' FROM sports WHERE name = 'Voile';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Surfing', 'Athletes compete on ocean waves, judged on maneuvers and wave reading.' FROM sports WHERE name = 'Surf';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Surfen', 'Athleten konkurrieren auf Meereswellen und werden nach Manövern und Wellenlesen bewertet.' FROM sports WHERE name = 'Surf';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Surf', 'Los atletas compiten en olas del océano, puntuados por maniobras y lectura de las olas.' FROM sports WHERE name = 'Surf';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Artistic Gymnastics', 'Events on various apparatus including floor, vault, rings, bars and beam.' FROM sports WHERE name = 'Gymnastique artistique';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Kunstturnen', 'Wettkämpfe an verschiedenen Geräten wie Boden, Sprung, Ringen, Barren und Balken.' FROM sports WHERE name = 'Gymnastique artistique';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Gimnasia artística', 'Pruebas en diversos aparatos como suelo, salto, anillas, barras y barra de equilibrio.' FROM sports WHERE name = 'Gymnastique artistique';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Rhythmic Gymnastics', 'Elegant choreography with apparatus: ribbon, hoop, ball, clubs and rope.' FROM sports WHERE name = 'Gymnastique rythmique';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Rhythmische Sportgymnastik', 'Elegante Choreografien mit Geräten: Band, Reifen, Ball, Keulen und Seil.' FROM sports WHERE name = 'Gymnastique rythmique';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Gimnasia rítmica', 'Coreografías elegantes con aparatos: cinta, aro, pelota, mazas y cuerda.' FROM sports WHERE name = 'Gymnastique rythmique';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Trampoline', 'Gymnasts perform acrobatic sequences in the air after bouncing on a trampoline.' FROM sports WHERE name = 'Trampoline';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Trampolinturnen', 'Turner führen akrobatische Sequenzen in der Luft nach Absprung vom Trampolin aus.' FROM sports WHERE name = 'Trampoline';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Trampolín', 'Los gimnastas realizan secuencias acrobáticas en el aire tras rebotar en el trampolín.' FROM sports WHERE name = 'Trampoline';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Basketball', 'Team sport where players score by shooting a ball through a hoop 3.05m high.' FROM sports WHERE name = 'Basketball';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Basketball', 'Mannschaftssport, bei dem Spieler durch Wurf des Balls in einen 3,05 m hohen Korb punkten.' FROM sports WHERE name = 'Basketball';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Baloncesto', 'Deporte de equipo donde los jugadores anotan lanzando un balón a una canasta a 3,05m de altura.' FROM sports WHERE name = 'Basketball';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', '3x3 Basketball', 'Fast-paced format played 3-on-3 on a half court with a single basket.' FROM sports WHERE name = 'Basketball 3x3';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', '3x3-Basketball', 'Schnelles Format, das 3 gegen 3 auf einem Halbfeld mit einem Korb gespielt wird.' FROM sports WHERE name = 'Basketball 3x3';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Baloncesto 3x3', 'Formato ágil jugado 3 contra 3 en medio campo con una sola canasta.' FROM sports WHERE name = 'Basketball 3x3';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Volleyball', 'Indoor team sport where two teams of six players compete to hit a ball over a net.' FROM sports WHERE name = 'Volleyball';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Volleyball', 'Hallenmannschaftssport, bei dem zwei Sechserteams um den Ball über ein Netz kämpfen.' FROM sports WHERE name = 'Volleyball';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Voleibol', 'Deporte de equipo en sala donde dos equipos de seis jugadores compiten golpeando un balón sobre una red.' FROM sports WHERE name = 'Volleyball';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Beach Volleyball', 'Volleyball played on sand by teams of two, combining athleticism and strategy.' FROM sports WHERE name = 'Beach volley';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Beach-Volleyball', 'Volleyball auf Sand, gespielt von Zweierteams, verbindet Athletik und Taktik.' FROM sports WHERE name = 'Beach volley';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Vóley playa', 'Voleibol jugado en la arena por equipos de dos, combinando atletismo y estrategia.' FROM sports WHERE name = 'Beach volley';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Rugby Sevens', 'Seven-a-side rugby played over two 7-minute halves, known for its speed and intensity.' FROM sports WHERE name = 'Rugby à 7';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Rugby Sevens', 'Rugby mit sieben Spielern pro Seite über zwei 7-Minuten-Hälften, bekannt für Tempo und Intensität.' FROM sports WHERE name = 'Rugby à 7';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Rugby 7', 'Rugby de siete jugadores disputado en dos tiempos de 7 minutos, conocido por su velocidad e intensidad.' FROM sports WHERE name = 'Rugby à 7';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Tennis', 'Individual and doubles tennis played on hard courts at Roland-Garros.' FROM sports WHERE name = 'Tennis';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Tennis', 'Einzel- und Doppeltennis auf Hartplätzen in Roland-Garros.' FROM sports WHERE name = 'Tennis';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Tenis', 'Tenis individual y de dobles en pistas duras en Roland-Garros.' FROM sports WHERE name = 'Tennis';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Badminton', 'Racquet sport where players hit a shuttlecock over a net in individual or doubles.' FROM sports WHERE name = 'Badminton';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Badminton', 'Rückschlagsport, bei dem ein Federball über ein Netz im Einzel oder Doppel gespielt wird.' FROM sports WHERE name = 'Badminton';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Bádminton', 'Deporte de raqueta donde los jugadores golpean un volante sobre una red en individual o dobles.' FROM sports WHERE name = 'Badminton';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Table Tennis', 'Indoor racquet sport played on a table, known for its speed and spin.' FROM sports WHERE name = 'Tennis de table';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Tischtennis', 'Rückschlagsport auf einem Tisch in der Halle, bekannt für Geschwindigkeit und Drall.' FROM sports WHERE name = 'Tennis de table';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Tenis de mesa', 'Deporte de raqueta en sala jugado sobre una mesa, conocido por su velocidad y efecto.' FROM sports WHERE name = 'Tennis de table';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Football', 'Olympic football tournament featuring under-23 national teams.' FROM sports WHERE name = 'Football';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Fußball', 'Olympisches Fußballturnier mit U23-Nationalmannschaften.' FROM sports WHERE name = 'Football';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Fútbol', 'Torneo olímpico de fútbol con selecciones sub-23.' FROM sports WHERE name = 'Football';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Handball', 'Fast-paced indoor team sport where two teams score by throwing a ball into a goal.' FROM sports WHERE name = 'Handball';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Handball', 'Schneller Hallenmannschaftssport, bei dem zwei Teams durch Einwurf des Balls ins Tor punkten.' FROM sports WHERE name = 'Handball';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Balonmano', 'Deporte de equipo en sala de ritmo rápido donde dos equipos anotan lanzando un balón a la portería.' FROM sports WHERE name = 'Handball';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Field Hockey', 'Team sport played on a synthetic grass pitch with sticks and a hard ball.' FROM sports WHERE name = 'Hockey sur gazon';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Feldhockey', 'Mannschaftssport auf Kunstrasen mit Schläger und Hartball.' FROM sports WHERE name = 'Hockey sur gazon';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Hockey hierba', 'Deporte de equipo jugado en césped artificial con palos y pelota dura.' FROM sports WHERE name = 'Hockey sur gazon';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Judo', 'Japanese martial art and Olympic combat sport focusing on throws and groundwork.' FROM sports WHERE name = 'Judo';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Judo', 'Japanische Kampfkunst und olympischer Kampfsport mit Schwerpunkt auf Würfen und Bodenarbeit.' FROM sports WHERE name = 'Judo';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Judo', 'Arte marcial japonés y deporte de combate olímpico centrado en proyecciones y trabajo en el suelo.' FROM sports WHERE name = 'Judo';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Boxing', 'Combat sport where two athletes compete by delivering punches in a ring.' FROM sports WHERE name = 'Boxe';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Boxen', 'Kampfsport, bei dem zwei Athleten sich durch Schläge im Ring messen.' FROM sports WHERE name = 'Boxe';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Boxeo', 'Deporte de combate en el que dos atletas compiten intercambiando golpes en un ring.' FROM sports WHERE name = 'Boxe';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Taekwondo', 'Korean martial art featuring high kicks and fast striking techniques.' FROM sports WHERE name = 'Taekwondo';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Taekwondo', 'Koreanische Kampfkunst mit hohen Tritten und schnellen Schlagtechniken.' FROM sports WHERE name = 'Taekwondo';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Taekwondo', 'Arte marcial coreano con patadas altas y técnicas de golpe rápidas.' FROM sports WHERE name = 'Taekwondo';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Wrestling', 'Combat sport including freestyle and Greco-Roman disciplines.' FROM sports WHERE name = 'Lutte';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Ringen', 'Kampfsport mit den Disziplinen Freistil und griechisch-römisch.' FROM sports WHERE name = 'Lutte';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Lucha', 'Deporte de combate que incluye las disciplinas de lucha libre y grecolatina.' FROM sports WHERE name = 'Lutte';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Fencing', 'Olympic combat sport using three weapons: foil, épée and sabre.' FROM sports WHERE name = 'Escrime';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Fechten', 'Olympischer Kampfsport mit drei Waffen: Florett, Degen und Säbel.' FROM sports WHERE name = 'Escrime';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Esgrima', 'Deporte de combate olímpico con tres armas: florete, espada y sable.' FROM sports WHERE name = 'Escrime';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Archery', 'Precision sport where archers shoot arrows at targets from 70 metres.' FROM sports WHERE name = 'Tir à l''arc';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Bogenschießen', 'Präzisionssport, bei dem Bogenschützen Pfeile aus 70 Metern auf Ziele schießen.' FROM sports WHERE name = 'Tir à l''arc';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Tiro con arco', 'Deporte de precisión donde los arqueros disparan flechas a dianas desde 70 metros.' FROM sports WHERE name = 'Tir à l''arc';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Shooting', 'Precision disciplines including rifle, pistol and shotgun events.' FROM sports WHERE name = 'Tir sportif';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Schießen', 'Präzisionsdisziplinen mit Gewehr, Pistole und Schrotflinte.' FROM sports WHERE name = 'Tir sportif';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Tiro deportivo', 'Disciplinas de precisión con rifle, pistola y escopeta.' FROM sports WHERE name = 'Tir sportif';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Road Cycling', 'Road race and time trial events through the streets of Paris and surroundings.' FROM sports WHERE name = 'Cyclisme sur route';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Straßenradsport', 'Straßenrennen und Zeitfahren durch die Straßen von Paris und Umgebung.' FROM sports WHERE name = 'Cyclisme sur route';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Ciclismo en ruta', 'Pruebas de carrera en ruta y contrarreloj por las calles de París y alrededores.' FROM sports WHERE name = 'Cyclisme sur route';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Track Cycling', 'Velodrome events including sprint, keirin, team pursuit and madison.' FROM sports WHERE name = 'Cyclisme sur piste';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Bahnradsport', 'Velodrom-Wettbewerbe wie Sprint, Keirin, Mannschaftsverfolgung und Madison.' FROM sports WHERE name = 'Cyclisme sur piste';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Ciclismo en pista', 'Pruebas en velódromo como sprint, keirin, persecución por equipos y madison.' FROM sports WHERE name = 'Cyclisme sur piste';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Mountain Bike', 'Cross-country and downhill races on rugged off-road terrain.' FROM sports WHERE name = 'VTT';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Mountainbike', 'Querfeldein- und Downhill-Rennen auf anspruchsvollem Geländekurs.' FROM sports WHERE name = 'VTT';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Mountain bike', 'Carreras de campo a través y descenso en terreno accidentado.' FROM sports WHERE name = 'VTT';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'BMX Racing', 'High-speed races on a purpose-built track with jumps and banked corners.' FROM sports WHERE name = 'BMX Racing';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'BMX Racing', 'Hochgeschwindigkeitsrennen auf einem speziell gebauten Kurs mit Sprüngen und Steilkurven.' FROM sports WHERE name = 'BMX Racing';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'BMX Racing', 'Carreras a alta velocidad en una pista diseñada con saltos y curvas peraltadas.' FROM sports WHERE name = 'BMX Racing';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'BMX Freestyle', 'Park and flatland disciplines showcasing tricks and creative riding on a BMX bike.' FROM sports WHERE name = 'BMX Freestyle';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'BMX Freestyle', 'Park- und Flatland-Disziplinen mit Tricks und kreativem Fahren auf einem BMX-Rad.' FROM sports WHERE name = 'BMX Freestyle';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'BMX Freestyle', 'Disciplinas de parque y flatland que muestran trucos y conducción creativa en bicicleta BMX.' FROM sports WHERE name = 'BMX Freestyle';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Skateboarding', 'Street and park disciplines where athletes perform technical tricks on a skateboard.' FROM sports WHERE name = 'Skateboard';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Skateboarden', 'Street- und Park-Disziplinen, bei denen Athleten technische Tricks auf einem Skateboard ausführen.' FROM sports WHERE name = 'Skateboard';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Skateboarding', 'Disciplinas de street y park donde los atletas realizan trucos técnicos en monopatín.' FROM sports WHERE name = 'Skateboard';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Breaking', 'Street dance discipline making its Olympic debut, judged on originality and technique.' FROM sports WHERE name = 'Breaking';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Breaking', 'Straßentanzdisziplin mit olympischem Debüt, bewertet nach Originalität und Technik.' FROM sports WHERE name = 'Breaking';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Breaking', 'Disciplina de danza urbana en su debut olímpico, juzgada por originalidad y técnica.' FROM sports WHERE name = 'Breaking';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Sport Climbing', 'Speed, bouldering and lead climbing disciplines on artificial walls.' FROM sports WHERE name = 'Escalade sportive';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Sportklettern', 'Speed-, Boulder- und Vorstieg-Disziplinen an Kunstwänden.' FROM sports WHERE name = 'Escalade sportive';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Escalada deportiva', 'Disciplinas de velocidad, boulder y dificultad en paredes artificiales.' FROM sports WHERE name = 'Escalade sportive';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Equestrian', 'Dressage, show jumping and eventing disciplines combining horse and rider.' FROM sports WHERE name = 'Équitation';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Reiten', 'Dressur, Springreiten und Vielseitigkeitsreiten als Verbindung von Pferd und Reiter.' FROM sports WHERE name = 'Équitation';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Equitación', 'Disciplinas de doma, salto y concurso completo que combinan caballo y jinete.' FROM sports WHERE name = 'Équitation';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Golf', 'Stroke play tournament on a championship course over 72 holes.' FROM sports WHERE name = 'Golf';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Golf', 'Zählspiel-Turnier auf einem Meisterschaftsplatz über 72 Löcher.' FROM sports WHERE name = 'Golf';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Golf', 'Torneo de stroke play en un campo de campeonato en 72 hoyos.' FROM sports WHERE name = 'Golf';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Weightlifting', 'Athletes compete in the snatch and clean &amp; jerk, aiming for maximum combined total.' FROM sports WHERE name = 'Haltérophilie';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Gewichtheben', 'Athleten wetteifern im Reißen und Stoßen und streben ein maximales Gesamtergebnis an.' FROM sports WHERE name = 'Haltérophilie';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Halterofilia', 'Los atletas compiten en arrancada y dos tiempos, buscando el máximo total combinado.' FROM sports WHERE name = 'Haltérophilie';
+
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Modern Pentathlon', 'Five-discipline event: fencing, swimming, equestrian, laser-run (shooting + running).' FROM sports WHERE name = 'Pentathlon moderne';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Moderner Fünfkampf', 'Fünf-Disziplin-Wettbewerb: Fechten, Schwimmen, Reiten, Laser-Run (Schießen + Laufen).' FROM sports WHERE name = 'Pentathlon moderne';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Pentatlón moderno', 'Competición de cinco disciplinas: esgrima, natación, equitación, laser-run (tiro + carrera).' FROM sports WHERE name = 'Pentathlon moderne';
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

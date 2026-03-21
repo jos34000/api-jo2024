@@ -31,6 +31,20 @@ public class EmailService {
             "es", DateTimeFormatter.ofPattern("d 'de' MMMM 'de' yyyy 'a las' HH:mm", new Locale("es"))
     );
 
+    private static final Map<String, String> RESET_SUBJECTS = Map.of(
+            "fr", "Réinitialisation de mot de passe",
+            "en", "Password reset",
+            "de", "Passwort zurücksetzen",
+            "es", "Restablecimiento de contraseña"
+    );
+
+    private static final Map<String, String> OTP_SUBJECTS = Map.of(
+            "fr", "Votre compte JO - Code de sécurité",
+            "en", "Your JO account - Security code",
+            "de", "Dein JO-Konto - Sicherheitscode",
+            "es", "Tu cuenta JO - Código de seguridad"
+    );
+
     private static final Map<String, String> TICKET_SUBJECTS = Map.of(
             "fr", "Vos billets Paris 2024 — ",
             "en", "Your Paris 2024 tickets — ",
@@ -60,6 +74,15 @@ public class EmailService {
     private String resolveLocale(String locale) {
         if (locale == null || locale.isBlank()) return "fr";
         return locale.split("[,;\\-]")[0].trim().toLowerCase();
+    }
+
+    private Locale toJavaLocale(String lang) {
+        return switch (lang) {
+            case "en" -> Locale.ENGLISH;
+            case "de" -> Locale.GERMAN;
+            case "es" -> new Locale("es");
+            default -> Locale.FRENCH;
+        };
     }
 
     private void sendEmail(String to, String subject, String html) {
@@ -99,21 +122,23 @@ public class EmailService {
     // Public API
     // -------------------------------------------------------------------------
 
-    public void sendPasswordResetEmail(String to, String name, String resetLink) {
-        Context context = new Context();
+    public void sendPasswordResetEmail(String to, String name, String resetLink, String locale) {
+        String lang = resolveLocale(locale);
+        Context context = new Context(toJavaLocale(lang));
         context.setVariable("name", name);
         context.setVariable("resetLink", resetLink);
-        sendEmail(to, "Réinitialisation de mot de passe",
-                templateEngine.process("email/forget-password", context));
+        String subject = RESET_SUBJECTS.getOrDefault(lang, RESET_SUBJECTS.get("fr"));
+        sendEmail(to, subject, templateEngine.process("email/forget-password", context));
     }
 
-    public void sendTwoFactorEmail(String email, String name, String code, int expirationMinutes) {
-        Context context = new Context();
+    public void sendTwoFactorEmail(String email, String name, String code, int expirationMinutes, String locale) {
+        String lang = resolveLocale(locale);
+        Context context = new Context(toJavaLocale(lang));
         context.setVariable("name", name);
         context.setVariable("code", code);
         context.setVariable("expirationMinutes", expirationMinutes);
-        sendEmail(email, "Votre compte JO - Code de sécurité",
-                templateEngine.process("email/otp-code", context));
+        String subject = OTP_SUBJECTS.getOrDefault(lang, OTP_SUBJECTS.get("fr"));
+        sendEmail(email, subject, templateEngine.process("email/otp-code", context));
     }
 
     public void sendTicketsEmail(String to, String name, TransactionResponseDTO transaction, byte[] pdfBytes) {
@@ -137,7 +162,7 @@ public class EmailService {
         };
         String formattedAmount = String.format(priceLocale, "%.2f\u00a0€", transaction.amount());
 
-        Context context = new Context();
+        Context context = new Context(toJavaLocale(lang));
         context.setVariable("name", name);
         context.setVariable("paymentReference", transaction.paymentReference());
         context.setVariable("payedDate", formattedDate);

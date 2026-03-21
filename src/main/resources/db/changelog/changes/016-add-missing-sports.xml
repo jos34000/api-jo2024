@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <changeSet id="016-add-missing-sports" author="jos">
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Athlétisme"/>
+            <column name="description" value="Épreuves de piste et de champ : courses, sauts, lancers et épreuves combinées."/>
+            <column name="icon" value="🏃‍♂️"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Athlétisme')"/>
+            <column name="phase" value="SERIES"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Athlétisme')"/>
+            <column name="phase" value="DEMI_FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Athlétisme')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Athlétisme')"/>
+            <column name="phase" value="CLASSEMENT"/>
+        </insert>
+
+        <insert tableName="sports">
+            <column name="id" valueComputed="nextval('sports_id_seq')"/>
+            <column name="name" value="Natation artistique"/>
+            <column name="description" value="Discipline aquatique alliant nage, danse et acrobaties, pratiquée en solo, duo et équipe."/>
+            <column name="icon" value="🤽"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Natation artistique')"/>
+            <column name="phase" value="QUALIFICATION"/>
+        </insert>
+        <insert tableName="sport_phases">
+            <column name="sport_id" valueComputed="(SELECT id FROM sports WHERE name = 'Natation artistique')"/>
+            <column name="phase" value="FINALE"/>
+        </insert>
+
+        <!-- Translations for Athlétisme -->
+        <sql>
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Athletics', 'Track and field events: races, jumps, throws and combined events.' FROM sports WHERE name = 'Athlétisme';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Leichtathletik', 'Leichtathletik-Wettkämpfe: Lauf-, Sprung-, Wurfdisziplinen und Mehrkampf.' FROM sports WHERE name = 'Athlétisme';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Atletismo', 'Pruebas de pista y campo: carreras, saltos, lanzamientos y pruebas combinadas.' FROM sports WHERE name = 'Athlétisme';
+        </sql>
+
+        <!-- Translations for Natation artistique -->
+        <sql>
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'en', 'Artistic Swimming', 'Aquatic discipline combining swimming, dance and acrobatics, performed in solo, duet and team.' FROM sports WHERE name = 'Natation artistique';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'de', 'Synchronschwimmen', 'Wasserdisziplin aus Schwimmen, Tanz und Akrobatik, ausgeführt als Solo, Duett und Mannschaft.' FROM sports WHERE name = 'Natation artistique';
+            INSERT INTO sport_translations (sport_id, locale, name, description) SELECT id, 'es', 'Natación artística', 'Disciplina acuática que combina natación, danza y acrobacias, en modalidad individual, dúo y equipo.' FROM sports WHERE name = 'Natation artistique';
+        </sql>
+
+    </changeSet>
+
+</databaseChangeLog>
