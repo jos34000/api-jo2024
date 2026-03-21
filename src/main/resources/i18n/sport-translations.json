@@ -1,0 +1,372 @@
+{
+  "sports": [
+    {
+      "name": "Aucun",
+      "translations": {
+        "en": { "name": "None", "description": "No associated sport." },
+        "de": { "name": "Kein", "description": "Kein zugehöriger Sport." },
+        "es": { "name": "Ninguno", "description": "Ningún deporte asociado." }
+      }
+    },
+    {
+      "name": "Sprint",
+      "translations": {
+        "en": { "name": "Sprint", "description": "Short-distance running events: 100m, 200m and 400m." },
+        "de": { "name": "Sprint", "description": "Kurzdistanz-Laufwettbewerbe: 100m, 200m und 400m." },
+        "es": { "name": "Sprint", "description": "Pruebas de carrera de corta distancia: 100m, 200m y 400m." }
+      }
+    },
+    {
+      "name": "Marathon",
+      "translations": {
+        "en": { "name": "Marathon", "description": "Long-distance road race of 42.195 km." },
+        "de": { "name": "Marathon", "description": "Langstreckenlauf über 42,195 km auf der Straße." },
+        "es": { "name": "Maratón", "description": "Carrera de larga distancia de 42,195 km en carretera." }
+      }
+    },
+    {
+      "name": "Natation",
+      "translations": {
+        "en": { "name": "Swimming", "description": "Pool events covering freestyle, backstroke, breaststroke, butterfly and relays." },
+        "de": { "name": "Schwimmen", "description": "Beckenwettbewerbe in Freistil, Rücken, Brust, Schmetterling und Staffeln." },
+        "es": { "name": "Natación", "description": "Pruebas en piscina de estilo libre, espalda, braza, mariposa y relevos." }
+      }
+    },
+    {
+      "name": "Natation en eau libre",
+      "translations": {
+        "en": { "name": "Open Water Swimming", "description": "10 km race in open water, here in the Seine." },
+        "de": { "name": "Freiwasserschwimmen", "description": "10-km-Rennen im natürlichen Gewässer, hier in der Seine." },
+        "es": { "name": "Natación en aguas abiertas", "description": "Carrera de 10 km en aguas abiertas, aquí en el Sena." }
+      }
+    },
+    {
+      "name": "Triathlon",
+      "translations": {
+        "en": { "name": "Triathlon", "description": "Combined endurance sport: swimming, cycling and running." },
+        "de": { "name": "Triathlon", "description": "Kombinierter Ausdauersport: Schwimmen, Radfahren und Laufen." },
+        "es": { "name": "Triatlón", "description": "Deporte de resistencia combinado: natación, ciclismo y carrera." }
+      }
+    },
+    {
+      "name": "Aviron",
+      "translations": {
+        "en": { "name": "Rowing", "description": "Olympic rowing events for single, double and team boats on a 2000m course." },
+        "de": { "name": "Rudern", "description": "Olympische Ruderwettbewerbe für Einzel-, Doppel- und Mannschaftsboote über 2000m." },
+        "es": { "name": "Remo", "description": "Pruebas olímpicas de remo individual, doble y de equipo en un recorrido de 2000m." }
+      }
+    },
+    {
+      "name": "Canoë-kayak sprint",
+      "translations": {
+        "en": { "name": "Canoe Sprint", "description": "Sprint racing in canoe and kayak on a flat 200m or 1000m course." },
+        "de": { "name": "Kanu-Sprint", "description": "Sprintrennen im Kanu und Kajak auf einer flachen 200-m- oder 1000-m-Strecke." },
+        "es": { "name": "Piragüismo sprint", "description": "Carreras de sprint en canoa y kayak sobre un recorrido plano de 200m o 1000m." }
+      }
+    },
+    {
+      "name": "Canoë-kayak slalom",
+      "translations": {
+        "en": { "name": "Canoe Slalom", "description": "Technical disciplines navigating whitewater gates in canoe and kayak." },
+        "de": { "name": "Kanu-Slalom", "description": "Technische Disziplinen im Wildwasser-Torfahren mit Kanu und Kajak." },
+        "es": { "name": "Piragüismo slalom", "description": "Disciplinas técnicas navegando puertas de aguas bravas en canoa y kayak." }
+      }
+    },
+    {
+      "name": "Water-polo",
+      "translations": {
+        "en": { "name": "Water Polo", "description": "Team aquatic sport where two teams compete to score goals in each other's net." },
+        "de": { "name": "Wasserball", "description": "Mannschaftssport im Wasser, bei dem zwei Teams gegeneinander Tore erzielen." },
+        "es": { "name": "Waterpolo", "description": "Deporte acuático de equipo en el que dos equipos compiten por marcar goles en la portería rival." }
+      }
+    },
+    {
+      "name": "Plongeon",
+      "translations": {
+        "en": { "name": "Diving", "description": "Artistic dives from springboard and platform, judged on technique and execution." },
+        "de": { "name": "Kunstspringen", "description": "Kunststürze vom Sprungbrett und Plattform, bewertet nach Technik und Ausführung." },
+        "es": { "name": "Saltos", "description": "Saltos artísticos desde trampolín y plataforma, juzgados por técnica y ejecución." }
+      }
+    },
+    {
+      "name": "Voile",
+      "translations": {
+        "en": { "name": "Sailing", "description": "Olympic sailing races in various boat classes on open water." },
+        "de": { "name": "Segeln", "description": "Olympische Segelrennen in verschiedenen Bootsklassen auf dem offenen Wasser." },
+        "es": { "name": "Vela", "description": "Regatas olímpicas de vela en varias clases de embarcaciones en aguas abiertas." }
+      }
+    },
+    {
+      "name": "Surf",
+      "translations": {
+        "en": { "name": "Surfing", "description": "Athletes compete on ocean waves, judged on maneuvers and wave reading." },
+        "de": { "name": "Surfen", "description": "Athleten konkurrieren auf Meereswellen und werden nach Manövern und Wellenlesen bewertet." },
+        "es": { "name": "Surf", "description": "Los atletas compiten en olas del océano, puntuados por maniobras y lectura de las olas." }
+      }
+    },
+    {
+      "name": "Gymnastique artistique",
+      "translations": {
+        "en": { "name": "Artistic Gymnastics", "description": "Events on various apparatus including floor, vault, rings, bars and beam." },
+        "de": { "name": "Kunstturnen", "description": "Wettkämpfe an verschiedenen Geräten wie Boden, Sprung, Ringen, Barren und Balken." },
+        "es": { "name": "Gimnasia artística", "description": "Pruebas en diversos aparatos como suelo, salto, anillas, barras y barra de equilibrio." }
+      }
+    },
+    {
+      "name": "Gymnastique rythmique",
+      "translations": {
+        "en": { "name": "Rhythmic Gymnastics", "description": "Elegant choreography with apparatus: ribbon, hoop, ball, clubs and rope." },
+        "de": { "name": "Rhythmische Sportgymnastik", "description": "Elegante Choreografien mit Geräten: Band, Reifen, Ball, Keulen und Seil." },
+        "es": { "name": "Gimnasia rítmica", "description": "Coreografías elegantes con aparatos: cinta, aro, pelota, mazas y cuerda." }
+      }
+    },
+    {
+      "name": "Trampoline",
+      "translations": {
+        "en": { "name": "Trampoline", "description": "Gymnasts perform acrobatic sequences in the air after bouncing on a trampoline." },
+        "de": { "name": "Trampolinturnen", "description": "Turner führen akrobatische Sequenzen in der Luft nach Absprung vom Trampolin aus." },
+        "es": { "name": "Trampolín", "description": "Los gimnastas realizan secuencias acrobáticas en el aire tras rebotar en el trampolín." }
+      }
+    },
+    {
+      "name": "Basketball",
+      "translations": {
+        "en": { "name": "Basketball", "description": "Team sport where players score by shooting a ball through a hoop 3.05m high." },
+        "de": { "name": "Basketball", "description": "Mannschaftssport, bei dem Spieler durch Wurf des Balls in einen 3,05 m hohen Korb punkten." },
+        "es": { "name": "Baloncesto", "description": "Deporte de equipo donde los jugadores anotan lanzando un balón a una canasta a 3,05m de altura." }
+      }
+    },
+    {
+      "name": "Basketball 3x3",
+      "translations": {
+        "en": { "name": "3x3 Basketball", "description": "Fast-paced format played 3-on-3 on a half court with a single basket." },
+        "de": { "name": "3x3-Basketball", "description": "Schnelles Format, das 3 gegen 3 auf einem Halbfeld mit einem Korb gespielt wird." },
+        "es": { "name": "Baloncesto 3x3", "description": "Formato ágil jugado 3 contra 3 en medio campo con una sola canasta." }
+      }
+    },
+    {
+      "name": "Volleyball",
+      "translations": {
+        "en": { "name": "Volleyball", "description": "Indoor team sport where two teams of six players compete to hit a ball over a net." },
+        "de": { "name": "Volleyball", "description": "Hallenmannschaftssport, bei dem zwei Sechserteams um den Ball über ein Netz kämpfen." },
+        "es": { "name": "Voleibol", "description": "Deporte de equipo en sala donde dos equipos de seis jugadores compiten golpeando un balón sobre una red." }
+      }
+    },
+    {
+      "name": "Beach volley",
+      "translations": {
+        "en": { "name": "Beach Volleyball", "description": "Volleyball played on sand by teams of two, combining athleticism and strategy." },
+        "de": { "name": "Beach-Volleyball", "description": "Volleyball auf Sand, gespielt von Zweierteams, verbindet Athletik und Taktik." },
+        "es": { "name": "Vóley playa", "description": "Voleibol jugado en la arena por equipos de dos, combinando atletismo y estrategia." }
+      }
+    },
+    {
+      "name": "Rugby à 7",
+      "translations": {
+        "en": { "name": "Rugby Sevens", "description": "Seven-a-side rugby played over two 7-minute halves, known for its speed and intensity." },
+        "de": { "name": "Rugby Sevens", "description": "Rugby mit sieben Spielern pro Seite über zwei 7-Minuten-Hälften, bekannt für Tempo und Intensität." },
+        "es": { "name": "Rugby 7", "description": "Rugby de siete jugadores disputado en dos tiempos de 7 minutos, conocido por su velocidad e intensidad." }
+      }
+    },
+    {
+      "name": "Tennis",
+      "translations": {
+        "en": { "name": "Tennis", "description": "Individual and doubles tennis played on hard courts at Roland-Garros." },
+        "de": { "name": "Tennis", "description": "Einzel- und Doppeltennis auf Hartplätzen in Roland-Garros." },
+        "es": { "name": "Tenis", "description": "Tenis individual y de dobles en pistas duras en Roland-Garros." }
+      }
+    },
+    {
+      "name": "Badminton",
+      "translations": {
+        "en": { "name": "Badminton", "description": "Racquet sport where players hit a shuttlecock over a net in individual or doubles." },
+        "de": { "name": "Badminton", "description": "Rückschlagsport, bei dem ein Federball über ein Netz im Einzel oder Doppel gespielt wird." },
+        "es": { "name": "Bádminton", "description": "Deporte de raqueta donde los jugadores golpean un volante sobre una red en individual o dobles." }
+      }
+    },
+    {
+      "name": "Tennis de table",
+      "translations": {
+        "en": { "name": "Table Tennis", "description": "Indoor racquet sport played on a table, known for its speed and spin." },
+        "de": { "name": "Tischtennis", "description": "Rückschlagsport auf einem Tisch in der Halle, bekannt für Geschwindigkeit und Drall." },
+        "es": { "name": "Tenis de mesa", "description": "Deporte de raqueta en sala jugado sobre una mesa, conocido por su velocidad y efecto." }
+      }
+    },
+    {
+      "name": "Football",
+      "translations": {
+        "en": { "name": "Football", "description": "Olympic football tournament featuring under-23 national teams plus three overage players." },
+        "de": { "name": "Fußball", "description": "Olympisches Fußballturnier mit U23-Nationalmannschaften plus drei Überzähligen." },
+        "es": { "name": "Fútbol", "description": "Torneo olímpico de fútbol con selecciones sub-23 más tres jugadores mayores de edad." }
+      }
+    },
+    {
+      "name": "Handball",
+      "translations": {
+        "en": { "name": "Handball", "description": "Fast-paced indoor team sport where two teams score by throwing a ball into a goal." },
+        "de": { "name": "Handball", "description": "Schneller Hallenmannschaftssport, bei dem zwei Teams durch Einwurf des Balls ins Tor punkten." },
+        "es": { "name": "Balonmano", "description": "Deporte de equipo en sala de ritmo rápido donde dos equipos anotan lanzando un balón a la portería." }
+      }
+    },
+    {
+      "name": "Hockey sur gazon",
+      "translations": {
+        "en": { "name": "Field Hockey", "description": "Team sport played on a synthetic grass pitch with sticks and a hard ball." },
+        "de": { "name": "Feldhockey", "description": "Mannschaftssport auf Kunstrasen mit Schläger und Hartball." },
+        "es": { "name": "Hockey hierba", "description": "Deporte de equipo jugado en césped artificial con palos y pelota dura." }
+      }
+    },
+    {
+      "name": "Judo",
+      "translations": {
+        "en": { "name": "Judo", "description": "Japanese martial art and Olympic combat sport focusing on throws and groundwork." },
+        "de": { "name": "Judo", "description": "Japanische Kampfkunst und olympischer Kampfsport mit Schwerpunkt auf Würfen und Bodenarbeit." },
+        "es": { "name": "Judo", "description": "Arte marcial japonés y deporte de combate olímpico centrado en proyecciones y trabajo en el suelo." }
+      }
+    },
+    {
+      "name": "Boxe",
+      "translations": {
+        "en": { "name": "Boxing", "description": "Combat sport where two athletes compete by delivering punches in a ring." },
+        "de": { "name": "Boxen", "description": "Kampfsport, bei dem zwei Athleten sich durch Schläge im Ring messen." },
+        "es": { "name": "Boxeo", "description": "Deporte de combate en el que dos atletas compiten intercambiando golpes en un ring." }
+      }
+    },
+    {
+      "name": "Taekwondo",
+      "translations": {
+        "en": { "name": "Taekwondo", "description": "Korean martial art featuring high kicks and fast striking techniques." },
+        "de": { "name": "Taekwondo", "description": "Koreanische Kampfkunst mit hohen Tritten und schnellen Schlagtechniken." },
+        "es": { "name": "Taekwondo", "description": "Arte marcial coreano con patadas altas y técnicas de golpe rápidas." }
+      }
+    },
+    {
+      "name": "Lutte",
+      "translations": {
+        "en": { "name": "Wrestling", "description": "Combat sport including freestyle and Greco-Roman disciplines." },
+        "de": { "name": "Ringen", "description": "Kampfsport mit den Disziplinen Freistil und griechisch-römisch." },
+        "es": { "name": "Lucha", "description": "Deporte de combate que incluye las disciplinas de lucha libre y grecolatina." }
+      }
+    },
+    {
+      "name": "Escrime",
+      "translations": {
+        "en": { "name": "Fencing", "description": "Olympic combat sport using three weapons: foil, épée and sabre." },
+        "de": { "name": "Fechten", "description": "Olympischer Kampfsport mit drei Waffen: Florett, Degen und Säbel." },
+        "es": { "name": "Esgrima", "description": "Deporte de combate olímpico con tres armas: florete, espada y sable." }
+      }
+    },
+    {
+      "name": "Tir à l'arc",
+      "translations": {
+        "en": { "name": "Archery", "description": "Precision sport where archers shoot arrows at targets from 70 metres." },
+        "de": { "name": "Bogenschießen", "description": "Präzisionssport, bei dem Bogenschützen Pfeile aus 70 Metern auf Ziele schießen." },
+        "es": { "name": "Tiro con arco", "description": "Deporte de precisión donde los arqueros disparan flechas a dianas desde 70 metros." }
+      }
+    },
+    {
+      "name": "Tir sportif",
+      "translations": {
+        "en": { "name": "Shooting", "description": "Precision disciplines including rifle, pistol and shotgun events." },
+        "de": { "name": "Schießen", "description": "Präzisionsdisziplinen mit Gewehr, Pistole und Schrotflinte." },
+        "es": { "name": "Tiro deportivo", "description": "Disciplinas de precisión con rifle, pistola y escopeta." }
+      }
+    },
+    {
+      "name": "Cyclisme sur route",
+      "translations": {
+        "en": { "name": "Road Cycling", "description": "Road race and time trial events through the streets of Paris and surroundings." },
+        "de": { "name": "Straßenradsport", "description": "Straßenrennen und Zeitfahren durch die Straßen von Paris und Umgebung." },
+        "es": { "name": "Ciclismo en ruta", "description": "Pruebas de carrera en ruta y contrarreloj por las calles de París y alrededores." }
+      }
+    },
+    {
+      "name": "Cyclisme sur piste",
+      "translations": {
+        "en": { "name": "Track Cycling", "description": "Velodrome events including sprint, keirin, team pursuit and madison." },
+        "de": { "name": "Bahnradsport", "description": "Velodrom-Wettbewerbe wie Sprint, Keirin, Mannschaftsverfolgung und Madison." },
+        "es": { "name": "Ciclismo en pista", "description": "Pruebas en velódromo como sprint, keirin, persecución por equipos y madison." }
+      }
+    },
+    {
+      "name": "VTT",
+      "translations": {
+        "en": { "name": "Mountain Bike", "description": "Cross-country and downhill races on rugged off-road terrain." },
+        "de": { "name": "Mountainbike", "description": "Querfeldein- und Downhill-Rennen auf anspruchsvollem Geländekurs." },
+        "es": { "name": "Mountain bike", "description": "Carreras de campo a través y descenso en terreno accidentado fuera de la carretera." }
+      }
+    },
+    {
+      "name": "BMX Racing",
+      "translations": {
+        "en": { "name": "BMX Racing", "description": "High-speed races on a purpose-built track with jumps and banked corners." },
+        "de": { "name": "BMX Racing", "description": "Hochgeschwindigkeitsrennen auf einem speziell gebauten Kurs mit Sprüngen und Steilkurven." },
+        "es": { "name": "BMX Racing", "description": "Carreras a alta velocidad en una pista diseñada con saltos y curvas peraltadas." }
+      }
+    },
+    {
+      "name": "BMX Freestyle",
+      "translations": {
+        "en": { "name": "BMX Freestyle", "description": "Park and flatland disciplines showcasing tricks and creative riding on a BMX bike." },
+        "de": { "name": "BMX Freestyle", "description": "Park- und Flatlend-Disziplinen mit Tricks und kreativem Fahren auf einem BMX-Rad." },
+        "es": { "name": "BMX Freestyle", "description": "Disciplinas de parque y flatland que muestran trucos y conducción creativa en bicicleta BMX." }
+      }
+    },
+    {
+      "name": "Skateboard",
+      "translations": {
+        "en": { "name": "Skateboarding", "description": "Street and park disciplines where athletes perform technical tricks on a skateboard." },
+        "de": { "name": "Skateboarden", "description": "Street- und Park-Disziplinen, bei denen Athleten technische Tricks auf einem Skateboard ausführen." },
+        "es": { "name": "Skateboarding", "description": "Disciplinas de street y park donde los atletas realizan trucos técnicos en monopatín." }
+      }
+    },
+    {
+      "name": "Breaking",
+      "translations": {
+        "en": { "name": "Breaking", "description": "Street dance discipline making its Olympic debut, judged on originality and technique." },
+        "de": { "name": "Breaking", "description": "Straßentanzdisziplin mit olympischem Debüt, bewertet nach Originalität und Technik." },
+        "es": { "name": "Breaking", "description": "Disciplina de danza urbana en su debut olímpico, juzgada por originalidad y técnica." }
+      }
+    },
+    {
+      "name": "Escalade sportive",
+      "translations": {
+        "en": { "name": "Sport Climbing", "description": "Speed, bouldering and lead climbing disciplines on artificial walls." },
+        "de": { "name": "Sportklettern", "description": "Speed-, Boulder- und Vorstieg-Disziplinen an Kunstwänden." },
+        "es": { "name": "Escalada deportiva", "description": "Disciplinas de velocidad, boulder y dificultad en paredes artificiales." }
+      }
+    },
+    {
+      "name": "Équitation",
+      "translations": {
+        "en": { "name": "Equestrian", "description": "Dressage, show jumping and eventing disciplines combining horse and rider." },
+        "de": { "name": "Reiten", "description": "Dressur, Springreiten und Vielseitigkeitsreiten als Verbindung von Pferd und Reiter." },
+        "es": { "name": "Equitación", "description": "Disciplinas de doma, salto y concurso completo que combinan caballo y jinete." }
+      }
+    },
+    {
+      "name": "Golf",
+      "translations": {
+        "en": { "name": "Golf", "description": "Stroke play tournament on a championship course over 72 holes for men and women." },
+        "de": { "name": "Golf", "description": "Zählspiel-Turnier auf einem Meisterschaftsplatz über 72 Löcher für Männer und Frauen." },
+        "es": { "name": "Golf", "description": "Torneo de stroke play en un campo de campeonato en 72 hoyos para hombres y mujeres." }
+      }
+    },
+    {
+      "name": "Haltérophilie",
+      "translations": {
+        "en": { "name": "Weightlifting", "description": "Athletes compete in the snatch and clean & jerk, aiming for maximum combined total." },
+        "de": { "name": "Gewichtheben", "description": "Athleten wetteifern im Reißen und Stoßen und streben ein maximales Gesamtergebnis an." },
+        "es": { "name": "Halterofilia", "description": "Los atletas compiten en arrancada y dos tiempos, buscando el máximo total combinado." }
+      }
+    },
+    {
+      "name": "Pentathlon moderne",
+      "translations": {
+        "en": { "name": "Modern Pentathlon", "description": "Five-discipline event: fencing, swimming, equestrian, laser-run (shooting + running)." },
+        "de": { "name": "Moderner Fünfkampf", "description": "Fünf-Disziplin-Wettbewerb: Fechten, Schwimmen, Reiten, Laser-Run (Schießen + Laufen)." },
+        "es": { "name": "Pentatlón moderno", "description": "Competición de cinco disciplinas: esgrima, natación, equitación, laser-run (tiro + carrera)." }
+      }
+    }
+  ]
+}

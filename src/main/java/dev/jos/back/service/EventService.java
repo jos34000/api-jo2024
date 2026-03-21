@@ -3,22 +3,22 @@ package dev.jos.back.service;
 import dev.jos.back.dto.event.CreateEventDTO;
 import dev.jos.back.dto.event.EventResponseDTO;
 import dev.jos.back.entities.Event;
+import dev.jos.back.entities.EventTranslation;
 import dev.jos.back.entities.Sport;
 import dev.jos.back.exceptions.event.EventAlreadyExistsException;
 import dev.jos.back.exceptions.event.EventNotFoundException;
 import dev.jos.back.exceptions.sport.SportNotFoundException;
 import dev.jos.back.mapper.EventMapper;
 import dev.jos.back.repository.EventRepository;
+import dev.jos.back.repository.EventTranslationRepository;
 import dev.jos.back.repository.SportRepository;
+import dev.jos.back.util.LocaleResolver;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -29,10 +29,24 @@ public class EventService {
     private final EventRepository eventRepository;
     private final EventMapper eventMapper;
     private final SportRepository sportRepository;
+    private final EventTranslationRepository eventTranslationRepository;
+
+    private Map<Long, EventTranslation> getTranslationMap(List<Event> events, String locale) {
+        if ("fr".equals(locale)) return Collections.emptyMap();
+        List<Long> ids = events.stream().map(Event::getId).toList();
+        return eventTranslationRepository.findByEventIdsAndLocale(ids, locale).stream()
+                .collect(Collectors.toMap(t -> t.getEvent().getId(), t -> t));
+    }
+
+    private EventResponseDTO mapWithLocale(Event event, Map<Long, EventTranslation> translationMap) {
+        EventTranslation t = translationMap.get(event.getId());
+        String name = (t != null && t.getName() != null) ? t.getName() : event.getName();
+        String description = t != null ? t.getDescription() : event.getDescription();
+        return eventMapper.toResponseDTO(event, name, description);
+    }
 
     @Transactional
     public List<EventResponseDTO> createEventsBulk(List<CreateEventDTO> eventsDto) {
-
         Map<String, Sport> sportsByName = sportRepository.findAll()
                 .stream()
                 .collect(Collectors.toMap(Sport::getName, s -> s));
@@ -89,39 +103,46 @@ public class EventService {
         return eventMapper.toResponseDTO(saved);
     }
 
-    public List<EventResponseDTO> getAllEvents() {
-        return eventRepository.findAll().stream()
-                .map(eventMapper::toResponseDTO)
-                .toList();
+    public List<EventResponseDTO> getAllEvents(String locale) {
+        String lang = LocaleResolver.resolve(locale);
+        List<Event> events = eventRepository.findAll();
+        Map<Long, EventTranslation> translations = getTranslationMap(events, lang);
+        return events.stream().map(e -> mapWithLocale(e, translations)).toList();
     }
 
-    public List<EventResponseDTO> getActiveEvents() {
-        return eventRepository.findByIsActiveTrue().stream()
-                .map(eventMapper::toResponseDTO)
-                .toList();
+    public List<EventResponseDTO> getActiveEvents(String locale) {
+        String lang = LocaleResolver.resolve(locale);
+        List<Event> events = eventRepository.findByIsActiveTrue();
+        Map<Long, EventTranslation> translations = getTranslationMap(events, lang);
+        return events.stream().map(e -> mapWithLocale(e, translations)).toList();
     }
 
-    public List<EventResponseDTO> getAvailableEvents() {
-        return eventRepository.findAvailableEvents().stream()
-                .map(eventMapper::toResponseDTO)
-                .toList();
+    public List<EventResponseDTO> getAvailableEvents(String locale) {
+        String lang = LocaleResolver.resolve(locale);
+        List<Event> events = eventRepository.findAvailableEvents();
+        Map<Long, EventTranslation> translations = getTranslationMap(events, lang);
+        return events.stream().map(e -> mapWithLocale(e, translations)).toList();
     }
 
-    public EventResponseDTO getEventById(Long id) {
+    public EventResponseDTO getEventById(Long id, String locale) {
+        String lang = LocaleResolver.resolve(locale);
         Event event = eventRepository.findById(id)
                 .orElseThrow(() -> new EventNotFoundException("Événement non trouvé"));
-        return eventMapper.toResponseDTO(event);
+        EventTranslation t = "fr".equals(lang) ? null :
+                eventTranslationRepository.findByEvent_IdAndLocale(event.getId(), lang).orElse(null);
+        String name = (t != null && t.getName() != null) ? t.getName() : event.getName();
+        String description = t != null ? t.getDescription() : event.getDescription();
+        return eventMapper.toResponseDTO(event, name, description);
     }
 
-    public List<EventResponseDTO> getAll() {
-        return eventRepository.findAll().stream()
-                .map(eventMapper::toResponseDTO)
-                .toList();
+    public List<EventResponseDTO> getAll(String locale) {
+        return getAllEvents(locale);
     }
 
-    public List<EventResponseDTO> getEventsBySport(String sport) {
-        return eventRepository.findBySportName(sport).stream()
-                .map(eventMapper::toResponseDTO)
-                .toList();
+    public List<EventResponseDTO> getEventsBySport(String sport, String locale) {
+        String lang = LocaleResolver.resolve(locale);
+        List<Event> events = eventRepository.findBySportName(sport);
+        Map<Long, EventTranslation> translations = getTranslationMap(events, lang);
+        return events.stream().map(e -> mapWithLocale(e, translations)).toList();
     }
 }

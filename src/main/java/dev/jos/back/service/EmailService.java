@@ -17,20 +17,50 @@ import java.time.format.DateTimeFormatter;
 import java.util.Base64;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
 public class EmailService {
 
-    private static final DateTimeFormatter DATE_FMT =
-            DateTimeFormatter.ofPattern("d MMMM yyyy 'à' HH:mm", Locale.FRENCH);
+    private static final Map<String, DateTimeFormatter> DATE_FORMATTERS = Map.of(
+            "fr", DateTimeFormatter.ofPattern("d MMMM yyyy 'à' HH:mm", Locale.FRENCH),
+            "en", DateTimeFormatter.ofPattern("MMMM d, yyyy 'at' HH:mm", Locale.ENGLISH),
+            "de", DateTimeFormatter.ofPattern("d. MMMM yyyy 'um' HH:mm", Locale.GERMAN),
+            "es", DateTimeFormatter.ofPattern("d 'de' MMMM 'de' yyyy 'a las' HH:mm", new Locale("es"))
+    );
+
+    private static final Map<String, String> TICKET_SUBJECTS = Map.of(
+            "fr", "Vos billets Paris 2024 — ",
+            "en", "Your Paris 2024 tickets — ",
+            "de", "Ihre Paris 2024-Tickets — ",
+            "es", "Sus entradas para París 2024 — "
+    );
+
+    private static final Map<String, String> AMOUNT_FORMATS = Map.of(
+            "fr", "%.2f\u00a0€",
+            "en", "%.2f\u00a0€",
+            "de", "%.2f\u00a0€",
+            "es", "%.2f\u00a0€"
+    );
 
     private final SpringTemplateEngine templateEngine;
+
     @Value("${resend.api-key}")
     private String apiKey;
+
     @Value("${resend.from}")
     private String from;
+
+    // -------------------------------------------------------------------------
+    // Internal helpers
+    // -------------------------------------------------------------------------
+
+    private String resolveLocale(String locale) {
+        if (locale == null || locale.isBlank()) return "fr";
+        return locale.split("[,;\\-]")[0].trim().toLowerCase();
+    }
 
     private void sendEmail(String to, String subject, String html) {
         CreateEmailOptions params = CreateEmailOptions.builder()
@@ -65,6 +95,10 @@ public class EmailService {
         }
     }
 
+    // -------------------------------------------------------------------------
+    // Public API
+    // -------------------------------------------------------------------------
+
     public void sendPasswordResetEmail(String to, String name, String resetLink) {
         Context context = new Context();
         context.setVariable("name", name);
@@ -83,10 +117,25 @@ public class EmailService {
     }
 
     public void sendTicketsEmail(String to, String name, TransactionResponseDTO transaction, byte[] pdfBytes) {
+        sendTicketsEmail(to, name, transaction, pdfBytes, "fr");
+    }
+
+    public void sendTicketsEmail(String to, String name, TransactionResponseDTO transaction,
+                                 byte[] pdfBytes, String locale) {
+        String lang = resolveLocale(locale);
+
+        DateTimeFormatter dateFmt = DATE_FORMATTERS.getOrDefault(lang, DATE_FORMATTERS.get("fr"));
         String formattedDate = transaction.payedDate() != null
-                ? transaction.payedDate().format(DATE_FMT)
+                ? transaction.payedDate().format(dateFmt)
                 : "—";
-        String formattedAmount = String.format(Locale.FRENCH, "%.2f\u00a0€", transaction.amount());
+
+        Locale priceLocale = switch (lang) {
+            case "en" -> Locale.ENGLISH;
+            case "de" -> Locale.GERMAN;
+            case "es" -> new Locale("es");
+            default -> Locale.FRENCH;
+        };
+        String formattedAmount = String.format(priceLocale, "%.2f\u00a0€", transaction.amount());
 
         Context context = new Context();
         context.setVariable("name", name);
@@ -103,6 +152,7 @@ public class EmailService {
                 .content(Base64.getEncoder().encodeToString(pdfBytes))
                 .build();
 
-        sendEmailWithAttachment(to, "Vos billets Paris 2024 — " + transaction.paymentReference(), html, attachment);
+        String subjectPrefix = TICKET_SUBJECTS.getOrDefault(lang, TICKET_SUBJECTS.get("fr"));
+        sendEmailWithAttachment(to, subjectPrefix + transaction.paymentReference(), html, attachment);
     }
 }

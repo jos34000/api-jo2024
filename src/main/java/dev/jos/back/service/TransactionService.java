@@ -97,8 +97,9 @@ public class TransactionService {
         TransactionResponseDTO responseDTO = ticketMapper.toTransactionResponseDTO(transaction, tickets);
 
         try {
-            byte[] pdf = pdfTicketService.generate(responseDTO);
-            emailService.sendTicketsEmail(user.getEmail(), user.getFirstName(), responseDTO, pdf);
+            String userLocale = user.getLocale() != null ? user.getLocale() : "fr";
+            byte[] pdf = pdfTicketService.generate(responseDTO, userLocale);
+            emailService.sendTicketsEmail(user.getEmail(), user.getFirstName(), responseDTO, pdf, userLocale);
         } catch (Exception e) {
             log.warn("Envoi email billets échoué pour transaction {} : {}", responseDTO.id(), e.getMessage());
         }
@@ -117,6 +118,9 @@ public class TransactionService {
 
     @Transactional(readOnly = true)
     public byte[] getTicketsPdf(String email, Long transactionId) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UserNotFoundException("Utilisateur introuvable"));
+
         Transaction transaction = transactionRepository.findByIdAndUser_Email(transactionId, email)
                 .orElseThrow(() -> new TransactionNotFoundException("Transaction introuvable"));
 
@@ -129,7 +133,8 @@ public class TransactionService {
         }
 
         TransactionResponseDTO dto = ticketMapper.toTransactionResponseDTO(transaction, validTickets);
-        return pdfTicketService.generate(dto);
+        String userLocale = user.getLocale() != null ? user.getLocale() : "fr";
+        return pdfTicketService.generate(dto, userLocale);
     }
 
     @Transactional(readOnly = true)

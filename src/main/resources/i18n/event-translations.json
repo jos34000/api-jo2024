@@ -1,0 +1,828 @@
+{
+  "events": [
+    {
+      "name": "Natation 100m Nage Libre Hommes",
+      "translations": {
+        "en": "The men's 100m freestyle, the flagship event of aquatic sprinting, will see the fastest swimmers in the world compete for the gold medal.",
+        "de": "Die 100 m Freistil der Männer, das Prestigeereignis des Schwimmsports, bringt die schnellsten Schwimmer der Welt im Kampf um die Goldmedaille zusammen.",
+        "es": "Los 100 m estilo libre masculinos, la prueba reina del sprint acuático, reunirá a los nadadores más veloces del mundo en la lucha por la medalla de oro."
+      }
+    },
+    {
+      "name": "Natation 200m Dos Femmes",
+      "translations": {
+        "en": "The women's 200m backstroke promises a showcase of technique and endurance, with the world's best female swimmers on the starting blocks.",
+        "de": "Die 200 m Rücken der Frauen verspricht eine Demonstration von Technik und Ausdauer, mit den weltbesten Schwimmerinnen an den Startblöcken.",
+        "es": "Los 200 m espalda femeninos prometen un espectáculo de técnica y resistencia, con las mejores nadadoras del mundo en la línea de salida."
+      }
+    },
+    {
+      "name": "Natation 400m Quatre Nages Hommes",
+      "translations": {
+        "en": "The men's 400m individual medley combines backstroke, breaststroke, butterfly and freestyle in a complete challenge of endurance and versatility.",
+        "de": "Die 400 m Lagen der Männer kombiniert Rücken, Brust, Schmetterling und Freistil in einer umfassenden Prüfung von Ausdauer und Vielseitigkeit.",
+        "es": "Los 400 m estilos masculinos combinan espalda, braza, mariposa y crol en un completo desafío de resistencia y versatilidad."
+      }
+    },
+    {
+      "name": "Aviron Deux de Couple Poids Léger Femmes",
+      "translations": {
+        "en": "The women's lightweight double sculls rowing event celebrates the technique and coordination of duos competing on the Olympic course.",
+        "de": "Der Leichtgewichts-Doppelzweier der Frauen im Rudern würdigt Technik und Koordination der Duos auf der olympischen Rennstrecke.",
+        "es": "La prueba de doble scull en categoría ligera femenino de remo pone en valor la técnica y la coordinación de los dúos en el canal olímpico."
+      }
+    },
+    {
+      "name": "Aviron Quatre de Pointe Sans Barreur Hommes",
+      "translations": {
+        "en": "The men's coxless four is a test of collective power, where four rowers must synchronize their effort over the Olympic distance.",
+        "de": "Der Männer-Vierer ohne Steuermann ist eine Prüfung kollektiver Kraft, bei der vier Ruderer ihre Anstrengungen über die olympische Distanz synchronisieren müssen.",
+        "es": "El cuatro sin timonel masculino de remo es una prueba de potencia colectiva, donde cuatro remeros deben sincronizar su esfuerzo durante la distancia olímpica."
+      }
+    },
+    {
+      "name": "Boxe 54kg Femmes",
+      "translations": {
+        "en": "The women's 54kg boxing category promises intense technical exchanges, highlighting speed, precision and strategy.",
+        "de": "Die Boxkategorie der Frauen bis 54 kg verspricht intensive technische Kämpfe mit Betonung von Schnelligkeit, Präzision und Taktik.",
+        "es": "La categoría femenina de boxeo de 54 kg promete intensos intercambios técnicos, poniendo en valor la velocidad, la precisión y la estrategia."
+      }
+    },
+    {
+      "name": "Boxe 80kg Hommes",
+      "translations": {
+        "en": "The men's 80kg boxing category will see the best fighters in the world compete in this highly contested intermediate weight class.",
+        "de": "Die Boxkategorie der Männer bis 80 kg bringt die weltbesten Kämpfer in dieser hart umkämpften Mittelklasse zusammen.",
+        "es": "La categoría masculina de boxeo de 80 kg reunirá a los mejores púgiles del mundo en esta muy disputada categoría intermedia."
+      }
+    },
+    {
+      "name": "Tir à l'Arc Individuel Femmes",
+      "translations": {
+        "en": "The women's individual archery event showcases precision, concentration and emotional control, with archers aiming for perfection at 70 metres.",
+        "de": "Das individuelle Bogenschießen der Frauen stellt Präzision, Konzentration und Emotionskontrolle in den Vordergrund, wobei die Athletinnen aus 70 Metern nach Perfektion streben.",
+        "es": "El tiro con arco individual femenino pone en escena la precisión, la concentración y el control de las emociones, con arqueras apuntando a la perfección a 70 metros."
+      }
+    },
+    {
+      "name": "Tir à l'Arc Par Équipe Mixte",
+      "translations": {
+        "en": "The mixed team archery event brings together one man and one woman per nation, combining their talents for a tactical and precise competition.",
+        "de": "Das Mixed-Team-Bogenschießen vereint einen Mann und eine Frau pro Nation und verbindet ihre Talente für einen taktischen und präzisen Wettkampf.",
+        "es": "La prueba de tiro con arco por equipos mixtos reúne a un hombre y una mujer por nación, combinando sus talentos para una competición táctica y precisa."
+      }
+    },
+    {
+      "name": "Athlétisme 100m Hommes",
+      "translations": {
+        "en": "The men's 100 metres, the most prestigious event at the Games, will determine the fastest man in the world on the Paris athletics track.",
+        "de": "Die 100 m der Männer, das prestigeträchtigste Ereignis der Spiele, bestimmt den schnellsten Mann der Welt auf der Pariser Leichtathletikbahn.",
+        "es": "Los 100 m masculinos, la prueba más prestigiosa de los Juegos, determinará al hombre más rápido del mundo en la pista de atletismo de París."
+      }
+    },
+    {
+      "name": "Athlétisme Marathon Femmes",
+      "translations": {
+        "en": "The women's marathon will lead runners through the streets of Paris, a 42.195-kilometre challenge blending legendary endurance and race tactics.",
+        "de": "Der Frauen-Marathon führt die Läuferinnen durch die Straßen von Paris, eine 42,195-Kilometer-Herausforderung, die legendäre Ausdauer und Renntaktik vereint.",
+        "es": "El maratón femenino llevará a las corredoras por las calles de París, un desafío de 42,195 kilómetros que combina la resistencia legendaria con la táctica de carrera."
+      }
+    },
+    {
+      "name": "Athlétisme Saut en Hauteur Mixte",
+      "translations": {
+        "en": "The mixed high jump event will see men and women compete to clear the highest bars possible, each in their respective category.",
+        "de": "Der gemischte Hochsprungwettbewerb bringt Männer und Frauen zusammen, um die höchsten Latte zu überwinden, jeder in seiner eigenen Kategorie.",
+        "es": "La prueba mixta de salto de altura verá a hombres y mujeres rivalizar para superar los listones más altos posibles, cada uno en su categoría."
+      }
+    },
+    {
+      "name": "Badminton Simple Femmes",
+      "translations": {
+        "en": "The women's badminton singles promises lightning-fast rallies, with the world's best players competing for the Olympic gold medal.",
+        "de": "Das Damen-Einzelturnier im Badminton verspricht blitzschnelle Ballwechsel, mit den weltbesten Spielerinnen im Kampf um die olympische Goldmedaille.",
+        "es": "El bádminton individual femenino promete intercambios fulgurantes, con las mejores jugadoras del mundo enfrentándose por la medalla de oro olímpica."
+      }
+    },
+    {
+      "name": "Badminton Double Hommes",
+      "translations": {
+        "en": "The men's badminton doubles will see the world's best pairs deliver fast-paced and tactical rallies in pursuit of the gold medal.",
+        "de": "Das Herren-Doppel im Badminton bringt die weltbesten Paare zusammen, die schnelle und taktische Ballwechsel im Kampf um die Goldmedaille liefern werden.",
+        "es": "El doble masculino de bádminton verá a las mejores parejas del mundo protagonizar intercambios rápidos y tácticos para hacerse con la medalla de oro."
+      }
+    },
+    {
+      "name": "Basketball 3x3 Femmes",
+      "translations": {
+        "en": "Women's 3x3 basketball brings an urban and spectacular dimension to the Games, with intense matches played on a half-court outdoors.",
+        "de": "3x3-Basketball der Frauen verleiht den Spielen eine urbane und spektakuläre Dimension, mit intensiven Spielen auf einem Halbfeld im Freien.",
+        "es": "El baloncesto 3x3 femenino aporta una dimensión urbana y espectacular a los Juegos, con partidos intensos disputados en una media cancha al aire libre."
+      }
+    },
+    {
+      "name": "Basketball 3x3 Hommes",
+      "translations": {
+        "en": "Men's 3x3 basketball, an Olympic discipline since Tokyo, promises intense and spectacular matches with teams of three players per side.",
+        "de": "3x3-Basketball der Männer, seit Tokio eine olympische Disziplin, verspricht intensive und spektakuläre Spiele mit Mannschaften von drei Spielern pro Seite.",
+        "es": "El baloncesto 3x3 masculino, disciplina olímpica desde Tokio, promete partidos intensos y espectaculares con equipos de tres jugadores por bando."
+      }
+    },
+    {
+      "name": "Volleyball de Plage Femmes",
+      "translations": {
+        "en": "Women's beach volleyball is played on the sand of the Champ-de-Mars, with the Eiffel Tower as a backdrop for a unique and majestic setting.",
+        "de": "Damen-Beachvolleyball wird auf dem Sand des Champ-de-Mars gespielt, mit dem Eiffelturm als Kulisse für eine einzigartige und majestätische Umgebung.",
+        "es": "El vóley playa femenino se disputa sobre la arena del Campo de Marte, con la Torre Eiffel como telón de fondo en un marco único y majestuoso."
+      }
+    },
+    {
+      "name": "Volleyball de Plage Hommes",
+      "translations": {
+        "en": "Men's beach volleyball at the Champ-de-Mars promises an exceptional sporting spectacle in one of Paris's most iconic settings.",
+        "de": "Herren-Beachvolleyball auf dem Champ-de-Mars verspricht ein außergewöhnliches sportliches Spektakel in einer der ikonischsten Kulissen von Paris.",
+        "es": "El vóley playa masculino en el Campo de Marte promete un espectáculo deportivo excepcional en uno de los escenarios más emblemáticos de París."
+      }
+    },
+    {
+      "name": "Canoë Kayak Slalom K1 Femmes",
+      "translations": {
+        "en": "The women's K1 kayak slalom will see paddlers tackle the gates of the artificial course, combining technique, power and current management.",
+        "de": "Der K1-Kanu-Slalom der Frauen bringt Paddlerinnen an die Tore des Kunstwasserparcours, wobei Technik, Kraft und Strömungsmanagement gefragt sind.",
+        "es": "El eslalom en kayak K1 femenino verá a las palistas atacar las puertas del recorrido artificial, combinando técnica, potencia y gestión de la corriente."
+      }
+    },
+    {
+      "name": "Canoë Kayak Slalom C1 Hommes",
+      "translations": {
+        "en": "The men's C1 canoe slalom demands absolute mastery of the craft on the artificial rapids, in a display of strength and precision.",
+        "de": "Der C1-Kanu-Slalom der Männer erfordert absolute Beherrschung des Bootes auf den Kunstwasserrapiden, in einer Demonstration von Kraft und Präzision.",
+        "es": "El eslalom en canoa C1 masculino exige un dominio absoluto de la embarcación en los rápidos artificiales, en una demostración de fuerza y precisión."
+      }
+    },
+    {
+      "name": "Cyclisme sur Route Contre-la-Montre Hommes",
+      "translations": {
+        "en": "The men's road time trial will see cyclists set off alone against the clock through the streets of Paris, aiming to record the best time.",
+        "de": "Das Männer-Einzelzeitfahren auf der Straße schickt die Radfahrer alleine gegen die Uhr durch die Straßen von Paris, um die beste Zeit zu erzielen.",
+        "es": "La contrarreloj masculina en ruta verá a los ciclistas salir en solitario contra el reloj por las calles de París, buscando registrar el mejor tiempo."
+      }
+    },
+    {
+      "name": "Cyclisme sur Route Course en Ligne Femmes",
+      "translations": {
+        "en": "The women's road race passes through the most beautiful monuments of Paris and its surroundings, for a spectacular outdoor event.",
+        "de": "Das Damen-Straßenrennen führt an den schönsten Sehenswürdigkeiten von Paris und seiner Umgebung vorbei, für ein spektakuläres Rennen an der frischen Luft.",
+        "es": "La carrera en línea femenina en ruta recorre los monumentos más bellos de París y sus alrededores, para una prueba espectacular al aire libre."
+      }
+    },
+    {
+      "name": "Cyclisme sur Piste Vitesse par Équipe Hommes",
+      "translations": {
+        "en": "The men's team sprint on the track is one of the most spectacular events at the velodrome, with speeds exceeding 70 km/h.",
+        "de": "Der Männer-Teamsprint auf der Bahn ist eines der spektakulärsten Ereignisse im Velodrom, mit Geschwindigkeiten von über 70 km/h.",
+        "es": "La velocidad por equipos masculina en pista es una de las pruebas más espectaculares del velódromo, con velocidades que superan los 70 km/h."
+      }
+    },
+    {
+      "name": "Plongeon Plateforme 10m Femmes",
+      "translations": {
+        "en": "The women's 10m platform diving rewards grace, courage and precision, with breathtaking figures that leave the crowd in awe.",
+        "de": "Das Damen-Turmspringen vom 10-Meter-Turm belohnt Anmut, Mut und Präzision, mit atemberaubenden Figuren, die das Publikum in Staunen versetzen.",
+        "es": "El salto de trampolín femenino desde la plataforma de 10 metros premia la gracia, el coraje y la precisión, con figuras impresionantes que cortan la respiración."
+      }
+    },
+    {
+      "name": "Plongeon Synchro Tremplin 3m Hommes",
+      "translations": {
+        "en": "The men's synchronised 3m springboard diving requires perfect coordination between the two divers to maximise their scores.",
+        "de": "Das synchronisierte 3-Meter-Kunstspringen der Männer erfordert eine perfekte Koordination zwischen den beiden Springern, um maximale Punkte zu erzielen.",
+        "es": "El salto sincronizado desde el trampolín de 3 metros masculino requiere una coordinación perfecta entre los dos saltadores para maximizar la puntuación."
+      }
+    },
+    {
+      "name": "Équitation Dressage Grand Prix",
+      "translations": {
+        "en": "The Olympic Grand Prix dressage is the ultimate demonstration of harmony between rider and horse, through a precise and elegant choreography.",
+        "de": "Der olympische Dressur Grand Prix ist die ultimative Demonstration der Harmonie zwischen Reiter und Pferd, durch eine präzise und elegante Choreografie.",
+        "es": "El Grand Prix de doma olímpico es la demostración máxima de la armonía entre jinete y caballo, a través de una coreografía precisa y elegante."
+      }
+    },
+    {
+      "name": "Équitation Saut d'Obstacles Individuel",
+      "translations": {
+        "en": "The individual showjumping event tests the partnership between horse and rider, with a technical course demanding precision and boldness.",
+        "de": "Das Einzel-Springreiten prüft die Verbindung zwischen Pferd und Reiter auf einem technischen Parcours, der Präzision und Kühnheit fordert.",
+        "es": "El salto de obstáculos individual pone a prueba la complicidad entre caballo y jinete, con un recorrido técnico que exige precisión y audacia."
+      }
+    },
+    {
+      "name": "Escrime Fleuret Individuel Femmes",
+      "translations": {
+        "en": "The women's individual foil fencing is a discipline combining elegance and strategy, with rapid exchanges and precise touches on the target.",
+        "de": "Das individuelle Damen-Florettfechten ist eine Disziplin, die Eleganz und Strategie vereint, mit schnellen Gefechten und präzisen Treffern auf die Zielzone.",
+        "es": "El florete individual femenino de esgrima es una disciplina que combina elegancia y estrategia, con intercambios rápidos y tocados precisos en la zona válida."
+      }
+    },
+    {
+      "name": "Escrime Épée Par Équipe Hommes",
+      "translations": {
+        "en": "The men's team épée fencing pits the best nations against each other in a relay format where each duel is crucial to the final result.",
+        "de": "Das Herren-Mannschaftsdegen im Fechten stellt die besten Nationen in einem Staffelformat gegeneinander, bei dem jedes Duell entscheidend für das Endergebnis ist.",
+        "es": "La espada por equipos masculina de esgrima enfrenta a las mejores naciones en un formato de relevos donde cada duelo es crucial para el resultado final."
+      }
+    },
+    {
+      "name": "Football Femmes",
+      "translations": {
+        "en": "The women's Olympic football tournament brings together the best national teams in the world in one of the most watched and anticipated events of the Games.",
+        "de": "Das olympische Damen-Fußballturnier vereint die besten Nationalmannschaften der Welt bei einem der meistgesehenen und meisterwarteten Ereignisse der Spiele.",
+        "es": "El torneo de fútbol femenino olímpico reúne a los mejores equipos nacionales del mundo en una de las pruebas más seguidas y esperadas de los Juegos."
+      }
+    },
+    {
+      "name": "Football Hommes",
+      "translations": {
+        "en": "The men's Olympic football tournament, played across several French stadiums, attracts worldwide attention with its high-level matches.",
+        "de": "Das olympische Herren-Fußballturnier, das in mehreren französischen Stadien ausgetragen wird, zieht die Aufmerksamkeit der ganzen Welt auf hochkarätige Spiele.",
+        "es": "El torneo de fútbol masculino olímpico, disputado en varios estadios franceses, atrae las miradas del mundo entero con partidos de alto nivel."
+      }
+    },
+    {
+      "name": "Golf Individuel Femmes",
+      "translations": {
+        "en": "The women's individual golf event is played on the legendary Golf National course, a test of precision, strategy and mental composure.",
+        "de": "Das individuelle Damen-Golfturnier findet auf dem legendären Golf National-Kurs statt, ein Test für Präzision, Strategie und mentale Stärke.",
+        "es": "La prueba individual femenina de golf se disputa en el legendario recorrido del Golf National, un test de precisión, estrategia y dominio mental."
+      }
+    },
+    {
+      "name": "Golf Individuel Hommes",
+      "translations": {
+        "en": "The men's individual golf at Golf National is a four-round competition that will see the world's best golfers compete for the gold medal.",
+        "de": "Das individuelle Herren-Golf am Golf National ist ein Vier-Runden-Wettbewerb, bei dem die weltbesten Golfer um die Goldmedaille kämpfen.",
+        "es": "El golf individual masculino en el Golf National es una competición de cuatro vueltas en la que los mejores golfistas del mundo concursarán por la medalla de oro."
+      }
+    },
+    {
+      "name": "Handball Femmes",
+      "translations": {
+        "en": "The women's Olympic handball tournament promises intense and spectacular matches, with the best nations competing at Paris La Défense Arena.",
+        "de": "Das olympische Damen-Handballturnier verspricht intensive und spektakuläre Spiele, mit den besten Nationen in der Paris La Défense Arena.",
+        "es": "El torneo de balonmano femenino olímpico promete partidos intensos y espectaculares, con las mejores naciones enfrentándose en Paris La Défense Arena."
+      }
+    },
+    {
+      "name": "Handball Hommes",
+      "translations": {
+        "en": "Olympic men's handball, very popular in France, will see the world's best teams deliver high-intensity matches in front of an enthusiastic crowd.",
+        "de": "Olympischer Herren-Handball, in Frankreich sehr beliebt, bringt die weltbesten Mannschaften in hochintensiven Spielen vor einem begeisterten Publikum zusammen.",
+        "es": "El balonmano masculino olímpico, muy popular en Francia, verá a los mejores equipos del mundo disputar partidos de alta intensidad ante un público entusiasta."
+      }
+    },
+    {
+      "name": "Hockey sur Gazon Femmes",
+      "translations": {
+        "en": "The women's Olympic field hockey tournament will be held at Yves-du-Manoir, with the world's best teams delivering tactical and intense matches.",
+        "de": "Das olympische Damen-Feldhockeyturnier findet im Yves-du-Manoir statt, mit den weltbesten Mannschaften in taktischen und intensiven Spielen.",
+        "es": "El torneo de hockey hierba femenino olímpico se disputará en el Yves-du-Manoir, con los mejores equipos del mundo protagonizando partidos tácticos e intensos."
+      }
+    },
+    {
+      "name": "Hockey sur Gazon Hommes",
+      "translations": {
+        "en": "Men's Olympic field hockey brings together the best national teams in the world for a high-level tournament combining speed and technique.",
+        "de": "Olympisches Herren-Feldhockey vereint die weltbesten Nationalmannschaften für ein hochkarätiges Turnier, das Schnelligkeit und Technik verbindet.",
+        "es": "El hockey hierba masculino en los Juegos olímpicos reúne a las mejores selecciones del mundo para un torneo de alto nivel que combina velocidad y técnica."
+      }
+    },
+    {
+      "name": "Judo -48kg Femmes",
+      "translations": {
+        "en": "The women's -48kg judo category is the lightest in the competition, showcasing rapid techniques and great agility.",
+        "de": "Die Damen-Judokategorie bis 48 kg ist die leichteste des Wettkampfs und stellt schnelle Techniken und große Agilität in den Vordergrund.",
+        "es": "La categoría femenina de judo de -48 kg es la más ligera de la competición, poniendo en valor técnicas rápidas y una gran agilidad."
+      }
+    },
+    {
+      "name": "Judo -100kg Hommes",
+      "translations": {
+        "en": "The men's -100kg judo category brings together powerful and technical judokas, promising high-intensity bouts with spectacular throws.",
+        "de": "Die Herren-Judokategorie bis 100 kg vereint kraftvolle und technisch versierte Judoka, und verspricht Kämpfe von hoher Intensität mit spektakulären Würfen.",
+        "es": "La categoría masculina de judo de -100 kg reúne a judocas poderosos y técnicos, prometiendo combates de alta intensidad con proyecciones espectaculares."
+      }
+    },
+    {
+      "name": "Judo Par Équipe Mixte",
+      "translations": {
+        "en": "The mixed team judo event brings together men and women from each nation for cross-category duels, in a dynamic and gripping format.",
+        "de": "Das gemischte Judo-Mannschaftsevent vereint Männer und Frauen aus jeder Nation für Duelle unterschiedlicher Kategorien, in einem dynamischen und fesselnden Format.",
+        "es": "La prueba por equipos mixtos de judo reúne a hombres y mujeres de cada nación para duelos cruzados, en un formato dinámico y emocionante."
+      }
+    },
+    {
+      "name": "Pentathlon Moderne Femmes",
+      "translations": {
+        "en": "The women's modern pentathlon combines fencing, swimming, equestrian, shooting and running in a complete event that tests athletes across five disciplines.",
+        "de": "Der Damen-Moderne Fünfkampf vereint Fechten, Schwimmen, Reiten, Schießen und Laufen in einem vollständigen Wettkampf, der Athletinnen in fünf Disziplinen testet.",
+        "es": "El pentatlón moderno femenino combina esgrima, natación, equitación, tiro y carrera a pie en una prueba completa que pone a prueba a las atletas en cinco disciplinas."
+      }
+    },
+    {
+      "name": "Pentathlon Moderne Hommes",
+      "translations": {
+        "en": "The men's modern pentathlon is the ultimate test of the complete athlete, combining five very different sports in a single day of intense competition.",
+        "de": "Der Herren-Moderner Fünfkampf ist die ultimative Prüfung des Allround-Athleten, der fünf sehr unterschiedliche Sportarten an einem einzigen Tag intensiven Wettkampfs vereint.",
+        "es": "El pentatlón moderno masculino es la prueba definitiva del atleta completo, combinando cinco deportes muy distintos en un único día de competición intensa."
+      }
+    },
+    {
+      "name": "Handball de Plage Femmes",
+      "translations": {
+        "en": "Women's beach handball, recently added to the Olympic programme, offers a dynamic and acrobatic spectacle on the sand, with rules designed to maximise entertainment.",
+        "de": "Damen-Beachhandball, kürzlich in das olympische Programm aufgenommen, bietet ein dynamisches und akrobatisches Spektakel im Sand, mit Regeln, die das Spektakel fördern.",
+        "es": "El balonmano playa femenino, recientemente incorporado al programa olímpico, ofrece un espectáculo dinámico y acrobático sobre la arena, con reglas que favorecen el espectáculo."
+      }
+    },
+    {
+      "name": "Handball de Plage Hommes",
+      "translations": {
+        "en": "Men's beach handball brings dynamism and acrobatics to the sand, in a fast-paced and spectacular game format appreciated by the general public.",
+        "de": "Herren-Beachhandball bringt Dynamik und Akrobatik in den Sand, in einem schnellen und spektakulären Spielformat, das vom breiten Publikum geschätzt wird.",
+        "es": "El balonmano playa masculino aporta dinamismo y acrobacias sobre la arena, en un formato de juego rápido y espectacular apreciado por el gran público."
+      }
+    },
+    {
+      "name": "Escalade Combiné Femmes",
+      "translations": {
+        "en": "The women's combined climbing event brings together two disciplines, bouldering and lead, to crown the most versatile female climber at the Olympic Games.",
+        "de": "Der kombinierte Damen-Kletterwettkampf vereint zwei Disziplinen, Bouldern und Vorstieg, um die vielseitigste Klettererin bei den Olympischen Spielen zu küren.",
+        "es": "La escalada combinada femenina agrupa dos disciplinas, el boulder y la dificultad, para designar a la mejor escaladora polivalente de los Juegos olímpicos."
+      }
+    },
+    {
+      "name": "Escalade Combiné Hommes",
+      "translations": {
+        "en": "The men's combined climbing event, combining bouldering and lead, tests the versatility and technical skill of the world's most complete climbers.",
+        "de": "Der kombinierte Herren-Kletterwettkampf, der Bouldern und Vorstieg kombiniert, testet die Vielseitigkeit und technischen Fähigkeiten der vielseitigsten Kletterer der Welt.",
+        "es": "La escalada combinada masculina, que combina el boulder y la dificultad, pone a prueba la polivalencia y la tecnicidad de los escaladores más completos del mundo."
+      }
+    },
+    {
+      "name": "Skateboard Street Femmes",
+      "translations": {
+        "en": "Women's street skateboarding takes place in a spectacular urban setting, with skaters performing technical tricks on stairs, ramps and rails.",
+        "de": "Damen-Street-Skateboarding findet in einer spektakulären urbanen Kulisse statt, mit Skaterinnen, die technische Tricks auf Treppen, Rampen und Rails ausführen.",
+        "es": "El skateboard street femenino tiene lugar en un espectacular escenario urbano, con patinadoras realizando figuras técnicas sobre escaleras, rampas y barandillas."
+      }
+    },
+    {
+      "name": "Skateboard Street Hommes",
+      "translations": {
+        "en": "Men's street skateboarding offers an exceptional visual spectacle, with the world's best skaters expressing themselves freely on an urban course.",
+        "de": "Herren-Street-Skateboarding bietet ein außergewöhnliches visuelles Spektakel, mit den weltbesten Skatern, die sich frei auf einem urbanen Parcours ausdrücken.",
+        "es": "El skateboard street masculino ofrece un espectáculo visual excepcional, con los mejores patinadores del mundo expresándose libremente en un recorrido urbano."
+      }
+    },
+    {
+      "name": "Skateboard Park Femmes",
+      "translations": {
+        "en": "Women's park skateboarding sees the skaters ride a large bowl, performing impressive aerial tricks at high speed.",
+        "de": "Damen-Park-Skateboarding sieht die Skaterinnen in einer großen Bowl fahren und beeindruckende Lufttricks bei hoher Geschwindigkeit ausführen.",
+        "es": "El skateboard park femenino ve a las patinadoras evolucionar en un gran bowl, realizando impresionantes figuras aéreas a gran velocidad."
+      }
+    },
+    {
+      "name": "Skateboard Park Hommes",
+      "translations": {
+        "en": "Men's park skateboarding is a demonstration of creativity and technical skill, with aerial tricks performed at high speed in a spectacular bowl.",
+        "de": "Herren-Park-Skateboarding ist eine Demonstration von Kreativität und technischem Können, mit Lufttricks bei hoher Geschwindigkeit in einer spektakulären Bowl.",
+        "es": "El skateboard park masculino es una demostración de creatividad y tecnicidad, con figuras aéreas realizadas a gran velocidad en un espectacular bowl."
+      }
+    },
+    {
+      "name": "Surf Femmes",
+      "translations": {
+        "en": "Women's surfing takes place at Teahupo'o in French Polynesia, on one of the most powerful and spectacular waves in international competition.",
+        "de": "Damen-Surfen findet in Teahupo'o in Französisch-Polynesien statt, auf einer der kraftvollsten und spektakulärsten Wellen im internationalen Wettbewerb.",
+        "es": "El surf femenino se celebra en Teahupo'o, en la Polinesia francesa, sobre una de las olas más poderosas y espectaculares del mundo de la competición internacional."
+      }
+    },
+    {
+      "name": "Surf Hommes",
+      "translations": {
+        "en": "Men's surfing at Teahupo'o features the world's best surfers on legendary waves, in a natural setting of exceptional beauty.",
+        "de": "Herren-Surfen in Teahupo'o präsentiert die weltbesten Surfer auf legendären Wellen, in einer Naturkulisse von außergewöhnlicher Schönheit.",
+        "es": "El surf masculino en Teahupo'o reúne a los mejores surfistas del planeta sobre olas míticas, en un entorno natural de una belleza excepcional."
+      }
+    },
+    {
+      "name": "Natation Artistique Duo",
+      "translations": {
+        "en": "Artistic swimming duet is a fusion of aquatic grace and artistic performance, where two swimmers perform in perfect synchronisation to music.",
+        "de": "Synchronschwimmen im Duett ist eine Fusion aus aquatischer Anmut und künstlerischer Darbietung, bei der zwei Schwimmerinnen in perfekter Synchronisation zur Musik auftreten.",
+        "es": "La natación artística en dúo es una fusión de gracia acuática y actuación artística, donde dos nadadoras se sincronizan a la perfección al ritmo de la música."
+      }
+    },
+    {
+      "name": "Natation Artistique Par Équipe",
+      "translations": {
+        "en": "The team artistic swimming event brings together eight swimmers in a demonstration of perfect synchronisation, artistic creativity and aquatic endurance.",
+        "de": "Das Team-Synchronschwimmen vereint acht Schwimmerinnen in einer Demonstration perfekter Synchronisation, künstlerischer Kreativität und aquatischer Ausdauer.",
+        "es": "La natación artística por equipos reúne a ocho nadadoras en una demostración de sincronización perfecta, creatividad artística y resistencia acuática."
+      }
+    },
+    {
+      "name": "Tennis Simple Femmes",
+      "translations": {
+        "en": "The women's Olympic tennis singles is played at Roland-Garros, bringing the world's best players together in the magnificent setting of the Porte d'Auteuil.",
+        "de": "Das olympische Damen-Einzel im Tennis wird in Roland-Garros ausgetragen und bringt die weltbesten Spielerinnen in der herrlichen Umgebung der Porte d'Auteuil zusammen.",
+        "es": "El tenis individual femenino olímpico se disputa en Roland-Garros, reuniendo a las mejores jugadoras del mundo en el suntuoso marco de la Porte d'Auteuil."
+      }
+    },
+    {
+      "name": "Tennis Simple Hommes",
+      "translations": {
+        "en": "The men's Olympic tennis singles at Roland-Garros is one of the highlights of the Games, with the world's best players competing on the Parisian clay.",
+        "de": "Das olympische Herren-Einzel im Tennis in Roland-Garros ist eines der Highlights der Spiele, mit den weltbesten Spielern im Wettkampf auf dem Pariser Sandplatz.",
+        "es": "El tenis individual masculino olímpico en Roland-Garros es uno de los momentos estelares de los Juegos, con los mejores jugadores del mundo compitiendo sobre la tierra batida parisina."
+      }
+    },
+    {
+      "name": "Tennis Double Mixte",
+      "translations": {
+        "en": "The mixed doubles tennis brings together one man and one woman per team for tactical matches on the courts of Roland-Garros, in a dynamic and gripping format.",
+        "de": "Das gemischte Tennis-Doppel vereint einen Mann und eine Frau pro Team für taktische Matches auf den Plätzen von Roland-Garros, in einem dynamischen und fesselnden Format.",
+        "es": "El doble mixto de tenis reúne a un hombre y una mujer por equipo para partidos tácticos en las pistas de Roland-Garros, en un formato dinámico y emocionante."
+      }
+    },
+    {
+      "name": "Tennis de Table Simple Femmes",
+      "translations": {
+        "en": "The women's Olympic table tennis singles promises lightning-fast rallies, with balls travelling at incredible speeds and constant changes of momentum.",
+        "de": "Das olympische Damen-Tischtennis-Einzel verspricht blitzschnelle Ballwechsel, mit Bällen, die sich mit unglaublicher Geschwindigkeit bewegen und ständigen Wendungen.",
+        "es": "El tenis de mesa individual femenino olímpico promete intercambios fulgurantes, con pelotas a velocidades increíbles y continuos cambios en el juego."
+      }
+    },
+    {
+      "name": "Tennis de Table Simple Hommes",
+      "translations": {
+        "en": "The men's table tennis singles will see the world's best players compete at an incredible speed, with seemingly impossible returns and devastating smashes.",
+        "de": "Das Herren-Tischtennis-Einzel bringt die weltbesten Spieler in einem unglaublichen Tempo zusammen, mit scheinbar unmöglichen Rückschlägen und verheerenden Schmetterschlägen.",
+        "es": "El tenis de mesa individual masculino verá a los mejores jugadores del mundo enfrentarse a una velocidad increíble, con devoluciones imposibles y mates devastadores."
+      }
+    },
+    {
+      "name": "Tennis de Table Double Mixte",
+      "translations": {
+        "en": "The mixed doubles table tennis pairs one man and one woman per team in high-speed exchanges, combining mutual understanding and instant reflexes.",
+        "de": "Das gemischte Tischtennis-Doppel verbindet einen Mann und eine Frau pro Team in schnellen Ballwechseln, kombiniert gegenseitiges Verständnis und sofortige Reflexe.",
+        "es": "El doble mixto de tenis de mesa asocia a un hombre y una mujer por equipo en intercambios a alta velocidad, combinando complicidad y reactividad instantánea."
+      }
+    },
+    {
+      "name": "Taekwondo -49kg Femmes",
+      "translations": {
+        "en": "The women's -49kg taekwondo category highlights speed of execution, precision of strikes and agility among the lightest athletes in the competition.",
+        "de": "Die Damen-Taekwondo-Kategorie bis 49 kg betont Ausführungsgeschwindigkeit, Präzision der Schläge und Agilität bei den leichtesten Athletinnen des Wettkampfs.",
+        "es": "La categoría femenina de taekwondo de -49 kg pone en valor la velocidad de ejecución, la precisión de los golpes y la agilidad de las atletas más ligeras de la competición."
+      }
+    },
+    {
+      "name": "Taekwondo -80kg Hommes",
+      "translations": {
+        "en": "The men's -80kg taekwondo category promises intense bouts with powerful kicks and technical exchanges of the highest level.",
+        "de": "Die Herren-Taekwondo-Kategorie bis 80 kg verspricht intensive Kämpfe mit kraftvollen Tritten und technischen Gefechten auf höchstem Niveau.",
+        "es": "La categoría masculina de taekwondo de -80 kg promete combates intensos con patadas poderosas e intercambios técnicos de muy alto nivel."
+      }
+    },
+    {
+      "name": "Triathlon Femmes",
+      "translations": {
+        "en": "The women's triathlon in Paris chains together a swim in the Seine, cycling through the capital's streets and a run, for a test of endurance and versatility.",
+        "de": "Der Damen-Triathlon in Paris verbindet einen Schwimmlauf in der Seine, Radfahren durch die Straßen der Hauptstadt und einen Lauf, für eine Prüfung von Ausdauer und Vielseitigkeit.",
+        "es": "El triatlón femenino en París encadena la natación en el Sena, el ciclismo por las calles de la capital y la carrera a pie, en una prueba de resistencia y polivalencia."
+      }
+    },
+    {
+      "name": "Triathlon Hommes",
+      "translations": {
+        "en": "The men's triathlon in Paris is a sporting journey across the capital, from swimming in the Seine to a final sprint near Les Invalides, via the cycling leg.",
+        "de": "Der Herren-Triathlon in Paris ist eine sportliche Reise durch die Hauptstadt, vom Schwimmen in der Seine bis zum Schlusssprint nahe den Invalides, über die Radstrecke.",
+        "es": "El triatlón masculino en París es un recorrido deportivo por la capital, desde la natación en el Sena hasta el sprint final cerca de los Inválidos, pasando por la etapa ciclista."
+      }
+    },
+    {
+      "name": "Triathlon Par Équipe Mixte",
+      "translations": {
+        "en": "The mixed team relay triathlon is an Olympic innovation where mixed national teams compete in a relay format combining swimming, cycling and running.",
+        "de": "Der gemischte Mannschafts-Triathlon ist eine olympische Neuheit, bei der gemischte Nationalteams in einem Staffelformat mit Schwimmen, Radfahren und Laufen gegeneinander antreten.",
+        "es": "El triatlón por equipos mixtos es una novedad olímpica donde naciones mixtas se enfrentan en un formato de relevos que combina natación, ciclismo y carrera a pie."
+      }
+    },
+    {
+      "name": "Volleyball Femmes",
+      "translations": {
+        "en": "The women's Olympic volleyball tournament brings together the world's best teams for intense and spectacular five-set matches at Arena Paris Sud.",
+        "de": "Das olympische Damen-Volleyballturnier vereint die weltbesten Mannschaften für intensive und spektakuläre Fünf-Satz-Spiele in der Arena Paris Sud.",
+        "es": "El torneo de voleibol femenino olímpico reúne a los mejores equipos del mundo para partidos intensos y espectaculares al mejor de cinco sets en Arena Paris Sud."
+      }
+    },
+    {
+      "name": "Volleyball Hommes",
+      "translations": {
+        "en": "The men's Olympic volleyball will see the most decorated nations compete for gold, with technical rallies and impressive spikes throughout.",
+        "de": "Olympisches Herren-Volleyball bringt die erfolgreichsten Nationen im Kampf um Gold zusammen, mit technischen Ballwechseln und beeindruckenden Schmetterschlägen.",
+        "es": "El voleibol masculino olímpico verá a las naciones más laureadas enfrentarse por la medalla de oro, con intercambios técnicos y remates impresionantes."
+      }
+    },
+    {
+      "name": "Haltérophilie -59kg Femmes",
+      "translations": {
+        "en": "The women's -59kg weightlifting category combines the snatch and clean and jerk to determine the strongest woman in her weight class at the Games.",
+        "de": "Die Damen-Gewichtheberkategorie bis 59 kg kombiniert Reißen und Stoßen, um die stärkste Frau ihrer Gewichtsklasse bei den Spielen zu ermitteln.",
+        "es": "La categoría femenina de halterofilia de -59 kg combina el arranque y el dos tiempos para designar a la mujer más fuerte de su categoría en los Juegos."
+      }
+    },
+    {
+      "name": "Haltérophilie -89kg Hommes",
+      "translations": {
+        "en": "The men's -89kg weightlifting category promises spectacular performances, with combined totals approaching world records.",
+        "de": "Die Herren-Gewichtheberkategorie bis 89 kg verspricht spektakuläre Leistungen, mit kombinierten Gesamtwerten nahe an Weltrekorden.",
+        "es": "La categoría masculina de halterofilia de -89 kg promete actuaciones espectaculares, con totales combinados que se acercan a los récords del mundo."
+      }
+    },
+    {
+      "name": "Lutte Libre 65kg Femmes",
+      "translations": {
+        "en": "The women's freestyle wrestling in the 65kg category will see the world's best wrestlers compete in a discipline of strength, technique and strategy.",
+        "de": "Das Damen-Freistilringen in der 65-kg-Kategorie bringt die weltbesten Ringerinnen in einer Disziplin aus Kraft, Technik und Taktik zusammen.",
+        "es": "La lucha libre femenina en la categoría de 65 kg verá a las mejores luchadoras del mundo enfrentarse en una disciplina de fuerza, técnica y estrategia."
+      }
+    },
+    {
+      "name": "Lutte Gréco-Romaine 77kg Hommes",
+      "translations": {
+        "en": "Men's Greco-Roman wrestling in the 77kg category is one of the most ancient disciplines at the Games, prohibiting holds below the waist to favour upper-body strength.",
+        "de": "Das griechisch-römische Ringen der Männer in der 77-kg-Kategorie ist eine der ältesten Disziplinen der Spiele, bei der Griffe unterhalb der Gürtellinie verboten sind.",
+        "es": "La lucha grecorromana masculina en la categoría de 77 kg es una disciplina ancestral en los Juegos, que prohíbe los agarres por debajo de la cintura para favorecer la fuerza superior."
+      }
+    },
+    {
+      "name": "Tir Pistolet 10m Femmes",
+      "translations": {
+        "en": "The women's 10m air pistol is a discipline of absolute precision, where athletes must control their breathing, concentration and tremors to hit the centre of the target.",
+        "de": "Die Damen-10-m-Luftpistole ist eine Disziplin absoluter Präzision, bei der die Athletinnen Atmung, Konzentration und Zittern kontrollieren müssen, um die Zielmitte zu treffen.",
+        "es": "El tiro con pistola de aire a 10 m femenino es una disciplina de precisión absoluta, donde las atletas deben controlar la respiración, la concentración y los temblores para alcanzar el centro."
+      }
+    },
+    {
+      "name": "Tir Fusil 50m Trois Positions Hommes",
+      "translations": {
+        "en": "The men's 50m rifle three positions is one of the most technically demanding shooting events, combining prone, kneeling and standing positions.",
+        "de": "Das Herren-50-m-Dreistellungskampf mit Gewehr ist eine der technisch anspruchsvollsten Schießdisziplinen, kombiniert liegend, kniend und stehend.",
+        "es": "El rifle de 50 m en tres posiciones masculino es una de las pruebas técnicamente más exigentes del tiro deportivo, combinando tiro tendido, de rodillas y de pie."
+      }
+    },
+    {
+      "name": "Tir Trap Mixte",
+      "translations": {
+        "en": "The mixed trap shooting event pits the best clay target shooters against each other, combining the performances of one man and one woman per national team.",
+        "de": "Der gemischte Trap-Wettbewerb stellt die besten Tontaubenschützen gegeneinander, kombiniert die Leistungen eines Mannes und einer Frau pro Nationalteam.",
+        "es": "La prueba de foso mixto en tiro deportivo enfrenta a los mejores tiradores sobre blancos volantes, combinando las actuaciones de un hombre y una mujer por equipo nacional."
+      }
+    },
+    {
+      "name": "Cyclisme BMX Racing Femmes",
+      "translations": {
+        "en": "Women's BMX racing is an explosive and spectacular discipline, with riders launching from a start ramp and competing over a course filled with bumps and tight corners.",
+        "de": "Damen-BMX-Racing ist eine explosive und spektakuläre Disziplin, bei der die Fahrerinnen von einer Startrampe starten und auf einem Parcours voller Buckelpisten und enger Kurven gegeneinander antreten.",
+        "es": "El BMX racing femenino es una disciplina explosiva y espectacular, con corredoras lanzándose desde una rampa de salida y enfrentándose en un recorrido lleno de baches y curvas cerradas."
+      }
+    },
+    {
+      "name": "Cyclisme BMX Racing Hommes",
+      "translations": {
+        "en": "Men's BMX racing features explosive and spectacular races, with eight riders competing on a bumpy course at high speed to cross the finish line first.",
+        "de": "Herren-BMX-Racing bietet explosive und spektakuläre Rennen, mit acht Fahrern, die auf einem holprigen Kurs mit hoher Geschwindigkeit als Erster die Ziellinie überqueren wollen.",
+        "es": "El BMX racing masculino ofrece carreras explosivas y espectaculares, con ocho corredores disputándose el primer lugar en un accidentado recorrido a gran velocidad."
+      }
+    },
+    {
+      "name": "Cyclisme VTT Cross-Country Femmes",
+      "translations": {
+        "en": "The women's mountain bike cross-country is a forest endurance event, where competitors must manage their effort over multiple laps of a technical and hilly circuit.",
+        "de": "Das Damen-Mountainbike-Cross-Country ist eine Ausdauerprüfung im Wald, bei der die Fahrerinnen ihre Kräfte über mehrere Runden eines technischen und hügeligen Kurses einteilen müssen.",
+        "es": "El cross-country de montaña femenino es una prueba de resistencia en el bosque, donde las participantes deben gestionar su esfuerzo durante varias vueltas a un circuito técnico y con desnivel."
+      }
+    },
+    {
+      "name": "Cyclisme VTT Cross-Country Hommes",
+      "translations": {
+        "en": "The men's mountain bike cross-country takes place on a demanding forest circuit, testing the technique, power and stamina of the world's best mountain bikers.",
+        "de": "Das Herren-Mountainbike-Cross-Country findet auf einem anspruchsvollen Waldkurs statt, der Technik, Kraft und Ausdauer der weltbesten Mountainbiker auf die Probe stellt.",
+        "es": "El cross-country de montaña masculino se desarrolla en un circuito forestal exigente, poniendo a prueba la técnica, la potencia y la resistencia de los mejores ciclistas de montaña del mundo."
+      }
+    },
+    {
+      "name": "Gymnastic Artistique Sol Hommes",
+      "translations": {
+        "en": "The men's floor exercise in artistic gymnastics is a demonstration of power, flexibility and creativity, performed to music chosen by the gymnast.",
+        "de": "Die Bodenübung der Männer in der Kunstturnen ist eine Demonstration von Kraft, Flexibilität und Kreativität, aufgeführt zu vom Turnen selbst gewählter Musik.",
+        "es": "El ejercicio de suelo masculino en gimnasia artística es una demostración de potencia, flexibilidad y creatividad, realizado con una música elegida por el gimnasta."
+      }
+    },
+    {
+      "name": "Gymnasique Artistique Barres Asymétriques Femmes",
+      "translations": {
+        "en": "The women's uneven bars in artistic gymnastics are one of the most spectacular disciplines at the Games, with gymnasts spinning at great speed.",
+        "de": "Die Stufenbarren der Frauen im Kunstturnen sind eine der spektakulärsten Disziplinen der Spiele, mit Turnerinnen, die sich mit großer Geschwindigkeit drehen.",
+        "es": "Las barras asimétricas femeninas en gimnasia artística son una de las disciplinas más espectaculares de los Juegos, con gimnastas girando a gran velocidad."
+      }
+    },
+    {
+      "name": "Gymnasique Artistique Poutre Femmes",
+      "translations": {
+        "en": "The women's balance beam in artistic gymnastics tests the balance, precision and nerves of gymnasts on a bar only 10 cm wide, 1.25 metres above the ground.",
+        "de": "Der Schwebebalken der Frauen im Kunstturnen testet das Gleichgewicht, die Präzision und die Nerven der Turnerinnen auf einem nur 10 cm breiten Balken, 1,25 Meter über dem Boden.",
+        "es": "La barra de equilibrio femenina en gimnasia artística pone a prueba el equilibrio, la precisión y los nervios de las gimnastas sobre una barra de solo 10 cm de ancho, a 1,25 metros del suelo."
+      }
+    },
+    {
+      "name": "Gymnasique Artistique Barres Parallèles Hommes",
+      "translations": {
+        "en": "The men's parallel bars in artistic gymnastics demand strength, balance and fluidity, with impressive acrobatic elements performed at great height.",
+        "de": "Die Parallelbarren der Männer im Kunstturnen erfordern Kraft, Gleichgewicht und Flüssigkeit, mit beeindruckenden akrobatischen Elementen, die in großer Höhe ausgeführt werden.",
+        "es": "Las barras paralelas masculinas en gimnasia artística exigen fuerza, equilibrio y fluidez, con impresionantes elementos acrobáticos ejecutados a gran altura."
+      }
+    },
+    {
+      "name": "Gymnasique Rythmique Individuel",
+      "translations": {
+        "en": "Individual rhythmic gymnastics combines dance, acrobatics and apparatus handling for an artistic and athletic performance of great beauty.",
+        "de": "Das individuelle Rhythmische Sportgymnastik kombiniert Tanz, Akrobatik und Geräthandhabung für eine künstlerische und athletische Darbietung von großer Schönheit.",
+        "es": "La gimnasia rítmica individual combina danza, acrobacias y manejo de aparatos para una actuación artística y atlética de gran belleza."
+      }
+    },
+    {
+      "name": "Gymnasique Rythmique Par Équipe",
+      "translations": {
+        "en": "The rhythmic gymnastics team event brings together five gymnasts in a synchronised performance of ballet and acrobatics, manipulating apparatus with perfect precision.",
+        "de": "Der Rhythmische Sportgymnastik-Mannschaftswettkampf vereint fünf Turnerinnen in einer synchronisierten Darbietung aus Ballett und Akrobatik und manipuliert Geräte mit perfekter Präzision.",
+        "es": "La gimnasia rítmica por equipos reúne a cinco gimnastas en una actuación sincronizada de ballet y acrobacias, manipulando los aparatos con una precisión perfecta."
+      }
+    },
+    {
+      "name": "Trampoline Hommes",
+      "translations": {
+        "en": "The men's trampoline will see athletes soar several metres into the air to perform acrobatic figures of extreme precision and difficulty.",
+        "de": "Das Herren-Trampolinturnen bringt Athleten dazu, mehrere Meter in die Luft zu steigen, um akrobatische Figuren von extremer Präzision und Schwierigkeit auszuführen.",
+        "es": "El trampolín masculino verá a los atletas elevarse varios metros en el aire para encadenar figuras acrobáticas de una precisión y dificultad extremas."
+      }
+    },
+    {
+      "name": "Trampoline Femmes",
+      "translations": {
+        "en": "The women's trampoline is a discipline in which gymnasts perform acrobatic figures at great height, combining technical difficulty and artistic grace.",
+        "de": "Das Damen-Trampolinturnen ist eine Disziplin, in der Turnerinnen akrobatische Figuren in großer Höhe ausführen und dabei technische Schwierigkeit und künstlerische Anmut vereinen.",
+        "es": "El trampolín femenino es una disciplina en la que las gimnastas realizan figuras acrobáticas a gran altura, combinando dificultad técnica y gracia artística."
+      }
+    },
+    {
+      "name": "Natation en Eau Libre 10km Femmes",
+      "translations": {
+        "en": "The women's 10km open water swim takes place in the Seine, an exceptional endurance challenge in the heart of Paris, facing potential currents and fatigue.",
+        "de": "Das Damen-10-km-Freiwasserschwimmen findet in der Seine statt, eine außergewöhnliche Ausdauerprüfung im Herzen von Paris, mit möglichen Strömungen und Erschöpfung.",
+        "es": "La natación en aguas abiertas de 10 km femenina se disputa en el Sena, un excepcional desafío de resistencia en pleno París, frente a eventuales corrientes y al cansancio."
+      }
+    },
+    {
+      "name": "Natation en Eau Libre 10km Hommes",
+      "translations": {
+        "en": "The men's 10km open water swimming in the Seine is an event of endurance and strategy, with swimmers navigating and competing tactically throughout the course.",
+        "de": "Das Herren-10-km-Freiwasserschwimmen in der Seine ist eine Ausdauer- und Strategieprüfung, bei der die Schwimmer taktisch navigieren und sich gegenseitig herausfordern.",
+        "es": "La natación en aguas abiertas de 10 km masculina en el Sena es una prueba de resistencia y estrategia, con nadadores navegando y compitiendo tácticamente a lo largo del recorrido."
+      }
+    },
+    {
+      "name": "Canoe Kayak Sprint K4 1000m Hommes",
+      "translations": {
+        "en": "The men's K4 1000m kayak is the flagship sprint canoe-kayak event, with four paddlers synchronising their power to reach impressive speeds over the full distance.",
+        "de": "Das Herren-K4-1000-m-Kajak ist das Flaggschiff-Sprintevent im Kanurennsport, mit vier Paddlern, die ihre Kraft synchronisieren, um beeindruckende Geschwindigkeiten über die gesamte Distanz zu erreichen.",
+        "es": "El kayak K4 de 1000 m masculino es la prueba reina del sprint en piragüismo, con cuatro palistas sincronizando su potencia para alcanzar velocidades impresionantes a lo largo de la distancia."
+      }
+    },
+    {
+      "name": "Canoe Kayak Sprint C2 500m Femmes",
+      "translations": {
+        "en": "The women's C2 500m canoe is an event of explosiveness and coordination, with two paddlers in a Canadian canoe covering the distance as fast as possible.",
+        "de": "Das Damen-C2-500-m-Kanu ist eine Prüfung von Explosivität und Koordination, mit zwei Paddlerinnen in einem Kanadier, die die Strecke so schnell wie möglich zurücklegen.",
+        "es": "La canoa C2 de 500 m femenina es una prueba de explosividad y coordinación, con dos palistas en una canoa canadiense para cubrir la distancia lo más rápido posible."
+      }
+    },
+    {
+      "name": "Voile iQFOiL Hommes",
+      "translations": {
+        "en": "The men's iQFOiL is the new Olympic foil windsurfing discipline, with riders reaching impressive speeds as their board flies above the water.",
+        "de": "Das Herren-iQFOiL ist die neue olympische Foil-Windsurfdisziplin, mit Fahrern, die beeindruckende Geschwindigkeiten erreichen, während ihr Board über das Wasser fliegt.",
+        "es": "El iQFOiL masculino es la nueva disciplina olímpica de windsurf en foil, con riders que alcanzan velocidades impresionantes gracias a su tabla que vuela sobre el agua."
+      }
+    },
+    {
+      "name": "Voile iQFOiL Femmes",
+      "translations": {
+        "en": "The women's iQFOiL is a spectacular foil windsurfing discipline, showcasing the mastery of windsurfers on boards gliding above the surface of the water.",
+        "de": "Das Damen-iQFOiL ist eine spektakuläre Foil-Windsurfdisziplin, die die Beherrschung der Windsurferinnen auf Boards, die über die Wasseroberfläche gleiten, unter Beweis stellt.",
+        "es": "El iQFOiL femenino es una espectacular disciplina de windsurf en foil, que pone en valor el dominio de las windsurfistas sobre tablas que navegan por encima de la superficie del agua."
+      }
+    },
+    {
+      "name": "Voile 470 Mixte",
+      "translations": {
+        "en": "The mixed 470 is the Olympic sailing class for mixed crews, with a skipper and crew member sailing together to optimise the performance of the dinghy.",
+        "de": "Der gemischte 470er ist die olympische Segelklasse für gemischte Besatzungen, mit einem Skipper und einem Crewmitglied, die gemeinsam segeln, um die Leistung des Bootes zu optimieren.",
+        "es": "El 470 mixto es la clase olímpica de vela para tripulaciones mixtas, con un patrón y un tripulante navegando juntos para optimizar el rendimiento del velero."
+      }
+    },
+    {
+      "name": "Rugby à 7 Femmes",
+      "translations": {
+        "en": "Women's rugby sevens, with its pace and compact match format, promises explosive encounters between the best nations at the Stade de France.",
+        "de": "Damen-Rugby-Sieben, mit seinem Tempo und kompakten Spielformat, verspricht explosive Begegnungen zwischen den besten Nationen im Stade de France.",
+        "es": "El rugby 7 femenino, con su velocidad y su formato compacto de partidos, promete encuentros explosivos entre las mejores naciones en el Stade de France."
+      }
+    },
+    {
+      "name": "Rugby à 7 Hommes",
+      "translations": {
+        "en": "Men's rugby sevens is one of the most popular events at the Olympic Games, with fast-paced and spectacular matches at the Stade de France in Saint-Denis.",
+        "de": "Herren-Rugby-Sieben ist eines der beliebtesten Ereignisse bei den Olympischen Spielen, mit temporeichen und spektakulären Spielen im Stade de France in Saint-Denis.",
+        "es": "El rugby 7 masculino es una de las pruebas más populares de los Juegos Olímpicos, con partidos rápidos y espectaculares en el Stade de France de Saint-Denis."
+      }
+    },
+    {
+      "name": "Tennis Court Annexe",
+      "translations": {
+        "en": "The outer courts at Roland-Garros host tennis matches in the early rounds, offering privileged access to matches in an intimate and welcoming atmosphere.",
+        "de": "Die Nebenplätze in Roland-Garros beherbergen Tennismatches in den frühen Runden und bieten privilegierten Zugang zu Spielen in einer intimen und einladenden Atmosphäre.",
+        "es": "Las pistas anexas de Roland-Garros acogen los partidos de tenis de las primeras rondas, ofreciendo un acceso privilegiado a los encuentros en un ambiente íntimo y acogedor."
+      }
+    },
+    {
+      "name": "Natation 4x100m Relais Mixte",
+      "translations": {
+        "en": "The mixed 4x100m swimming relay pairs two men and two women in a spectacular relay race, a symbol of the inclusive spirit of the modern Games.",
+        "de": "Die gemischte 4x100-m-Schwimmstaffel verbindet zwei Männer und zwei Frauen in einem spektakulären Staffelrennen, ein Symbol des inklusiven Geistes der modernen Spiele.",
+        "es": "El relevo mixto 4x100 m de natación asocia a dos hombres y dos mujeres en una espectacular carrera de relevos, símbolo del espíritu inclusivo de los Juegos modernos."
+      }
+    },
+    {
+      "name": "Cyclisme sur Piste Omnium Femmes",
+      "translations": {
+        "en": "The women's omnium on the track is a multi-event track cycling competition, rewarding the most versatile rider on the Olympic velodrome.",
+        "de": "Das Damen-Omnium auf der Bahn ist ein Mehrkampf-Bahnradsportwettbewerb, der die vielseitigste Fahrerin auf dem olympischen Velodrom belohnt.",
+        "es": "El omnium femenino en pista es una competición de ciclismo en pista con varias pruebas, que premia a la atleta más polivalente del velódromo olímpico."
+      }
+    },
+    {
+      "name": "Cyclisme sur Piste Keirin Hommes",
+      "translations": {
+        "en": "The men's keirin on the track is a spectacular cycling event in which riders race behind a motorised pacer before an explosive final sprint.",
+        "de": "Das Herren-Keirin auf der Bahn ist ein spektakuläres Radsportereignis, bei dem die Fahrer hinter einem motorisierten Anführer fahren, bevor ein explosiver Schlusssprint folgt.",
+        "es": "El keirin masculino en pista es una espectacular prueba de ciclismo en la que los corredores se enfrentan tras un ciclomotor antes de un sprint final explosivo."
+      }
+    },
+    {
+      "name": "Boxe 57kg Femmes",
+      "translations": {
+        "en": "The women's 57kg boxing category is a highly competitive weight class with fast and precise exchanges between the world's best female boxers.",
+        "de": "Die Damen-Boxkategorie bis 57 kg ist eine sehr wettbewerbsfähige Gewichtsklasse mit schnellen und präzisen Gefechten zwischen den weltbesten Boxerinnen.",
+        "es": "La categoría femenina de boxeo de 57 kg es una categoría muy competitiva, con intercambios rápidos y precisos entre las mejores boxeadoras del mundo."
+      }
+    },
+    {
+      "name": "Boxe 92kg Hommes",
+      "translations": {
+        "en": "The men's 92kg boxing category pits powerful fighters against each other in this heavyweight class, promising intense bouts with potential knockdowns.",
+        "de": "Die Herren-Boxkategorie bis 92 kg stellt kraftvolle Kämpfer in dieser Schwergewichtsklasse gegeneinander, mit intensiven Kämpfen und möglichen Niederschlägen.",
+        "es": "La categoría masculina de boxeo de 92 kg enfrenta a poderosos boxeadores en esta categoría pesada, prometiendo combates intensos con posibles derribos."
+      }
+    },
+    {
+      "name": "Lutte Libre 76kg Hommes",
+      "translations": {
+        "en": "The men's freestyle wrestling in the 76kg category is one of the most competitive at the Games, with wrestlers combining brute force and technical subtlety.",
+        "de": "Das Herren-Freistilringen in der 76-kg-Kategorie ist eines der wettbewerbsfähigsten bei den Spielen, mit Ringern, die rohe Kraft und technische Finesse kombinieren.",
+        "es": "La lucha libre masculina en la categoría de 76 kg es una de las más competitivas de los Juegos, con luchadores que combinan la fuerza bruta y la sutileza técnica."
+      }
+    },
+    {
+      "name": "Athlétisme 400m Haies Femmes",
+      "translations": {
+        "en": "The women's 400m hurdles is an exhausting race that combines speed, hurdle clearance technique and effort management over one full lap of the track.",
+        "de": "Die 400 m Hürden der Frauen ist ein erschöpfendes Rennen, das Geschwindigkeit, Hürdentechnik und Krafteinteilung über eine vollständige Runde der Bahn kombiniert.",
+        "es": "Los 400 m vallas femeninos es una carrera agotadora que combina velocidad, técnica de paso de vallas y gestión del esfuerzo durante una vuelta completa a la pista."
+      }
+    }
+  ]
+}

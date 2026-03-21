@@ -96,6 +96,14 @@ public class UserService {
         emailService.sendPasswordResetEmail(user.getEmail(), user.getFirstName(), resetLink);
     }
 
+    @Transactional
+    public void updateLocale(String email, String locale) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UsernameNotFoundException("Utilisateur introuvable"));
+        user.setLocale(locale);
+        userRepository.saveAndFlush(user);
+    }
+
     public TokenValidationResult validateResetToken(String token) {
         List<PasswordResetToken> allTokens = passwordResetTokenRepository.findAll();
         Optional<PasswordResetToken> matchingToken = allTokens.stream()

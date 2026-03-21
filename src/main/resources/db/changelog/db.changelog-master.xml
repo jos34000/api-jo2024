@@ -12,4 +12,13 @@
     <include file="db/changelog/changes/004-remove-type-on-offer-name.xml"/>
     <include file="db/changelog/changes/005-cart-model-refactor.xml"/>
     <include file="db/changelog/changes/006-normalize-payment-method.xml"/>
+    <include file="db/changelog/changes/007-add-locale-to-users.xml"/>
+    <include file="db/changelog/changes/008-add-event-translations.xml"/>
+    <include file="db/changelog/changes/009-seed-sports.xml"/>
+    <include file="db/changelog/changes/010-add-name-to-event-translations.xml"/>
+    <include file="db/changelog/changes/011-add-sport-translations.xml"/>
+    <include file="db/changelog/changes/012-add-offer-translations.xml"/>
+    <include file="db/changelog/changes/013-seed-offers.xml"/>
+    <include file="db/changelog/changes/014-seed-offer-translations.xml"/>
+    <include file="db/changelog/changes/015-seed-sport-translations.xml"/>
 </databaseChangeLog>
