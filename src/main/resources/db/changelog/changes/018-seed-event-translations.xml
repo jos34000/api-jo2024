@@ -1964,6 +1964,1769 @@
                    'Final olímpica del torneo de hockey sobre hierba femenino.'
             FROM events
             WHERE name = 'Hockey sur gazon Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'en', 'Men''s 200m Final', 'Olympic final of the men''s 200m sprint at Paris 2024.'
+            FROM events
+            WHERE name = '200m Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', '200m Herren - Finale', 'Olympisches Finale über 200 m der Herren.'
+            FROM events
+            WHERE name = '200m Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', '200m Masculino - Final', 'Final olímpica de los 200 m masculinos.'
+            FROM events
+            WHERE name = '200m Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'en', 'Women''s 200m Final', 'Olympic final of the women''s 200m sprint at Paris 2024.'
+            FROM events
+            WHERE name = '200m Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', '200m Damen - Finale', 'Olympisches Finale über 200 m der Damen.'
+            FROM events
+            WHERE name = '200m Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', '200m Femenino - Final', 'Final olímpica de los 200 m femeninos.'
+            FROM events
+            WHERE name = '200m Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'en', 'Men''s 800m Final', 'Olympic final of the men''s 800m at Stade de France, Paris 2024.'
+            FROM events
+            WHERE name = '800m Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', '800m Herren - Finale', 'Olympisches Finale über 800 m der Herren.'
+            FROM events
+            WHERE name = '800m Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', '800m Masculino - Final', 'Final olímpica de los 800 m masculinos.'
+            FROM events
+            WHERE name = '800m Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s 1500m Final',
+                   'Olympic final of the women''s 1500m at Stade de France, Paris 2024.'
+            FROM events
+            WHERE name = '1500m Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', '1500m Damen - Finale', 'Olympisches Finale über 1500 m der Damen.'
+            FROM events
+            WHERE name = '1500m Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', '1500m Femenino - Final', 'Final olímpica de los 1500 m femeninos.'
+            FROM events
+            WHERE name = '1500m Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'en', 'Men''s 5000m Final', 'Olympic final of the men''s 5000m at Stade de France, Paris 2024.'
+            FROM events
+            WHERE name = '5000m Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', '5000m Herren - Finale', 'Olympisches Finale über 5000 m der Herren.'
+            FROM events
+            WHERE name = '5000m Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', '5000m Masculino - Final', 'Final olímpica de los 5000 m masculinos.'
+            FROM events
+            WHERE name = '5000m Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s 10000m Final',
+                   'Olympic final of the women''s 10000m at Stade de France, Paris 2024.'
+            FROM events
+            WHERE name = '10000m Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', '10000m Damen - Finale', 'Olympisches Finale über 10 000 m der Damen.'
+            FROM events
+            WHERE name = '10000m Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', '10000m Femenino - Final', 'Final olímpica de los 10 000 m femeninos.'
+            FROM events
+            WHERE name = '10000m Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'en', 'Men''s 110m Hurdles Final', 'Olympic final of the men''s 110m hurdles at Stade de France.'
+            FROM events
+            WHERE name = '110m Haies Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', '110m Hürden Herren - Finale', 'Olympisches Finale über 110 m Hürden der Herren.'
+            FROM events
+            WHERE name = '110m Haies Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', '110m Vallas Masculino - Final', 'Final olímpica de los 110 m vallas masculinos.'
+            FROM events
+            WHERE name = '110m Haies Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Triple Jump Final',
+                   'Olympic final of the men''s triple jump at Stade de France, Paris 2024.'
+            FROM events
+            WHERE name = 'Triple Saut Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Dreisprung Herren - Finale', 'Olympisches Finale im Dreisprung der Herren.'
+            FROM events
+            WHERE name = 'Triple Saut Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Triple Salto Masculino - Final', 'Final olímpica del triple salto masculino.'
+            FROM events
+            WHERE name = 'Triple Saut Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Pole Vault Final',
+                   'Olympic final of the men''s pole vault at Stade de France, Paris 2024.'
+            FROM events
+            WHERE name = 'Saut à la Perche Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Stabhochsprung Herren - Finale', 'Olympisches Finale im Stabhochsprung der Herren.'
+            FROM events
+            WHERE name = 'Saut à la Perche Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Salto con Pértiga Masculino - Final', 'Final olímpica del salto con pértiga masculino.'
+            FROM events
+            WHERE name = 'Saut à la Perche Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Pole Vault Final',
+                   'Olympic final of the women''s pole vault at Stade de France, Paris 2024.'
+            FROM events
+            WHERE name = 'Saut à la Perche Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Stabhochsprung Damen - Finale', 'Olympisches Finale im Stabhochsprung der Damen.'
+            FROM events
+            WHERE name = 'Saut à la Perche Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Salto con Pértiga Femenino - Final', 'Final olímpica del salto con pértiga femenino.'
+            FROM events
+            WHERE name = 'Saut à la Perche Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Javelin Final',
+                   'Olympic final of the women''s javelin throw at Stade de France, Paris 2024.'
+            FROM events
+            WHERE name = 'Lancer du Javelot Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Speerwurf Damen - Finale', 'Olympisches Finale im Speerwurf der Damen.'
+            FROM events
+            WHERE name = 'Lancer du Javelot Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Lanzamiento de Jabalina Femenino - Final',
+                   'Final olímpica del lanzamiento de jabalina femenino.'
+            FROM events
+            WHERE name = 'Lancer du Javelot Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s 20km Race Walk Final',
+                   'Olympic final of the men''s 20km race walk, finishing at Trocadéro, Paris 2024.'
+            FROM events
+            WHERE name = 'Marche 20km Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', '20km Gehen Herren - Finale', 'Olympisches Finale im 20-km-Gehen der Herren.'
+            FROM events
+            WHERE name = 'Marche 20km Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Marcha 20km Masculino - Final', 'Final olímpica de la marcha 20 km masculina.'
+            FROM events
+            WHERE name = 'Marche 20km Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s 4x400m Relay Final',
+                   'Olympic final of the men''s 4x400m relay at Stade de France, Paris 2024.'
+            FROM events
+            WHERE name = '4x400m Relais Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', '4x400m Staffel Herren - Finale', 'Olympisches Finale der 4x400-m-Staffel der Herren.'
+            FROM events
+            WHERE name = '4x400m Relais Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Relevo 4x400m Masculino - Final', 'Final olímpica del relevo 4x400 m masculino.'
+            FROM events
+            WHERE name = '4x400m Relais Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s 4x400m Relay Final',
+                   'Olympic final of the women''s 4x400m relay at Stade de France, Paris 2024.'
+            FROM events
+            WHERE name = '4x400m Relais Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', '4x400m Staffel Damen - Finale', 'Olympisches Finale der 4x400-m-Staffel der Damen.'
+            FROM events
+            WHERE name = '4x400m Relais Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Relevo 4x400m Femenino - Final', 'Final olímpica del relevo 4x400 m femenino.'
+            FROM events
+            WHERE name = '4x400m Relais Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Decathlon',
+                   'Olympic men''s decathlon combined event over two days at Stade de France.'
+            FROM events
+            WHERE name = 'Décathlon Hommes - Classement';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Zehnkampf Herren', 'Olympischer Zehnkampf der Herren über zwei Tage.'
+            FROM events
+            WHERE name = 'Décathlon Hommes - Classement';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Decatlón Masculino', 'Decatlón masculino olímpico en dos jornadas.'
+            FROM events
+            WHERE name = 'Décathlon Hommes - Classement';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s 200m Freestyle Final',
+                   'Olympic final of the women''s 200m freestyle at Paris La Défense Arena.'
+            FROM events
+            WHERE name = '200m Nage Libre Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', '200m Freistil Damen - Finale', 'Olympisches Finale über 200 m Freistil der Damen.'
+            FROM events
+            WHERE name = '200m Nage Libre Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', '200m Estilo Libre Femenino - Final', 'Final olímpica de los 200 m estilo libre femenino.'
+            FROM events
+            WHERE name = '200m Nage Libre Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s 400m Freestyle Final',
+                   'Olympic final of the women''s 400m freestyle at Paris La Défense Arena.'
+            FROM events
+            WHERE name = '400m Nage Libre Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', '400m Freistil Damen - Finale', 'Olympisches Finale über 400 m Freistil der Damen.'
+            FROM events
+            WHERE name = '400m Nage Libre Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', '400m Estilo Libre Femenino - Final', 'Final olímpica de los 400 m estilo libre femenino.'
+            FROM events
+            WHERE name = '400m Nage Libre Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s 1500m Freestyle Final',
+                   'Olympic final of the men''s 1500m freestyle at Paris La Défense Arena.'
+            FROM events
+            WHERE name = '1500m Nage Libre Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', '1500m Freistil Herren - Finale', 'Olympisches Finale über 1500 m Freistil der Herren.'
+            FROM events
+            WHERE name = '1500m Nage Libre Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   '1500m Estilo Libre Masculino - Final',
+                   'Final olímpica de los 1500 m estilo libre masculino.'
+            FROM events
+            WHERE name = '1500m Nage Libre Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s 800m Freestyle Final',
+                   'Olympic final of the women''s 800m freestyle at Paris La Défense Arena.'
+            FROM events
+            WHERE name = '800m Nage Libre Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', '800m Freistil Damen - Finale', 'Olympisches Finale über 800 m Freistil der Damen.'
+            FROM events
+            WHERE name = '800m Nage Libre Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', '800m Estilo Libre Femenino - Final', 'Final olímpica de los 800 m estilo libre femenino.'
+            FROM events
+            WHERE name = '800m Nage Libre Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s 200m Backstroke Final',
+                   'Olympic final of the men''s 200m backstroke at Paris La Défense Arena.'
+            FROM events
+            WHERE name = '200m Dos Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', '200m Rücken Herren - Finale', 'Olympisches Finale über 200 m Rücken der Herren.'
+            FROM events
+            WHERE name = '200m Dos Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', '200m Espalda Masculino - Final', 'Final olímpica de los 200 m espalda masculino.'
+            FROM events
+            WHERE name = '200m Dos Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s 100m Backstroke Final',
+                   'Olympic final of the women''s 100m backstroke at Paris La Défense Arena.'
+            FROM events
+            WHERE name = '100m Dos Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', '100m Rücken Damen - Finale', 'Olympisches Finale über 100 m Rücken der Damen.'
+            FROM events
+            WHERE name = '100m Dos Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', '100m Espalda Femenino - Final', 'Final olímpica de los 100 m espalda femenino.'
+            FROM events
+            WHERE name = '100m Dos Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s 200m Breaststroke Final',
+                   'Olympic final of the men''s 200m breaststroke at Paris La Défense Arena.'
+            FROM events
+            WHERE name = '200m Brasse Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', '200m Brust Herren - Finale', 'Olympisches Finale über 200 m Brust der Herren.'
+            FROM events
+            WHERE name = '200m Brasse Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', '200m Braza Masculino - Final', 'Final olímpica de los 200 m braza masculino.'
+            FROM events
+            WHERE name = '200m Brasse Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s 100m Breaststroke Final',
+                   'Olympic final of the women''s 100m breaststroke at Paris La Défense Arena.'
+            FROM events
+            WHERE name = '100m Brasse Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', '100m Brust Damen - Finale', 'Olympisches Finale über 100 m Brust der Damen.'
+            FROM events
+            WHERE name = '100m Brasse Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', '100m Braza Femenino - Final', 'Final olímpica de los 100 m braza femenino.'
+            FROM events
+            WHERE name = '100m Brasse Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s 200m Butterfly Final',
+                   'Olympic final of the women''s 200m butterfly at Paris La Défense Arena.'
+            FROM events
+            WHERE name = '200m Papillon Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   '200m Schmetterling Damen - Finale',
+                   'Olympisches Finale über 200 m Schmetterling der Damen.'
+            FROM events
+            WHERE name = '200m Papillon Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', '200m Mariposa Femenino - Final', 'Final olímpica de los 200 m mariposa femenino.'
+            FROM events
+            WHERE name = '200m Papillon Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s 400m Individual Medley Final',
+                   'Olympic final of the men''s 400m individual medley at Paris La Défense Arena.'
+            FROM events
+            WHERE name = '400m Quatre Nages Individuel Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   '400m Lagen Einzel Herren - Finale',
+                   'Olympisches Finale über 400 m Lagen Einzel der Herren.'
+            FROM events
+            WHERE name = '400m Quatre Nages Individuel Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   '400m Estilos Individual Masculino - Final',
+                   'Final olímpica de los 400 m estilos individual masculino.'
+            FROM events
+            WHERE name = '400m Quatre Nages Individuel Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s 400m Individual Medley Final',
+                   'Olympic final of the women''s 400m individual medley at Paris La Défense Arena.'
+            FROM events
+            WHERE name = '400m Quatre Nages Individuel Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', '400m Lagen Einzel Damen - Finale', 'Olympisches Finale über 400 m Lagen Einzel der Damen.'
+            FROM events
+            WHERE name = '400m Quatre Nages Individuel Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   '400m Estilos Individual Femenino - Final',
+                   'Final olímpica de los 400 m estilos individual femenino.'
+            FROM events
+            WHERE name = '400m Quatre Nages Individuel Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s 4x100m Medley Relay Final',
+                   'Olympic final of the women''s 4x100m medley relay at Paris La Défense Arena.'
+            FROM events
+            WHERE name = '4x100m Relais Medley Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   '4x100m Lagen Staffel Damen - Finale',
+                   'Olympisches Finale der 4x100-m-Lagen-Staffel der Damen.'
+            FROM events
+            WHERE name = '4x100m Relais Medley Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Relevo 4x100m Estilos Femenino - Final',
+                   'Final olímpica del relevo 4x100 m estilos femenino.'
+            FROM events
+            WHERE name = '4x100m Relais Medley Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s 4x200m Freestyle Relay Final',
+                   'Olympic final of the men''s 4x200m freestyle relay at Paris La Défense Arena.'
+            FROM events
+            WHERE name = '4x200m Relais Nage Libre Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   '4x200m Freistil Staffel Herren - Finale',
+                   'Olympisches Finale der 4x200-m-Freistil-Staffel der Herren.'
+            FROM events
+            WHERE name = '4x200m Relais Nage Libre Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Relevo 4x200m Estilo Libre Masculino - Final',
+                   'Final olímpica del relevo 4x200 m estilo libre masculino.'
+            FROM events
+            WHERE name = '4x200m Relais Nage Libre Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'en', 'Men''s Judo -66kg Final', 'Olympic final of the men''s judo -66kg at Arena Champ-de-Mars.'
+            FROM events
+            WHERE name = 'Judo -66kg Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Judo -66 kg Herren - Finale', 'Olympisches Finale im Judo -66 kg der Herren.'
+            FROM events
+            WHERE name = 'Judo -66kg Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Judo -66 kg Masculino - Final', 'Final olímpica del judo -66 kg masculino.'
+            FROM events
+            WHERE name = 'Judo -66kg Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Judo -52kg Final',
+                   'Olympic final of the women''s judo -52kg at Arena Champ-de-Mars.'
+            FROM events
+            WHERE name = 'Judo -52kg Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Judo -52 kg Damen - Finale', 'Olympisches Finale im Judo -52 kg der Damen.'
+            FROM events
+            WHERE name = 'Judo -52kg Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Judo -52 kg Femenino - Final', 'Final olímpica del judo -52 kg femenino.'
+            FROM events
+            WHERE name = 'Judo -52kg Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'en', 'Men''s Judo -81kg Final', 'Olympic final of the men''s judo -81kg at Arena Champ-de-Mars.'
+            FROM events
+            WHERE name = 'Judo -81kg Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Judo -81 kg Herren - Finale', 'Olympisches Finale im Judo -81 kg der Herren.'
+            FROM events
+            WHERE name = 'Judo -81kg Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Judo -81 kg Masculino - Final', 'Final olímpica del judo -81 kg masculino.'
+            FROM events
+            WHERE name = 'Judo -81kg Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Judo -63kg Final',
+                   'Olympic final of the women''s judo -63kg at Arena Champ-de-Mars.'
+            FROM events
+            WHERE name = 'Judo -63kg Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Judo -63 kg Damen - Finale', 'Olympisches Finale im Judo -63 kg der Damen.'
+            FROM events
+            WHERE name = 'Judo -63kg Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Judo -63 kg Femenino - Final', 'Final olímpica del judo -63 kg femenino.'
+            FROM events
+            WHERE name = 'Judo -63kg Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'en', 'Men''s Judo -90kg Final', 'Olympic final of the men''s judo -90kg at Arena Champ-de-Mars.'
+            FROM events
+            WHERE name = 'Judo -90kg Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Judo -90 kg Herren - Finale', 'Olympisches Finale im Judo -90 kg der Herren.'
+            FROM events
+            WHERE name = 'Judo -90kg Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Judo -90 kg Masculino - Final', 'Final olímpica del judo -90 kg masculino.'
+            FROM events
+            WHERE name = 'Judo -90kg Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Judo -70kg Final',
+                   'Olympic final of the women''s judo -70kg at Arena Champ-de-Mars.'
+            FROM events
+            WHERE name = 'Judo -70kg Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Judo -70 kg Damen - Finale', 'Olympisches Finale im Judo -70 kg der Damen.'
+            FROM events
+            WHERE name = 'Judo -70kg Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Judo -70 kg Femenino - Final', 'Final olímpica del judo -70 kg femenino.'
+            FROM events
+            WHERE name = 'Judo -70kg Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Judo +100kg Final',
+                   'Olympic final of the men''s judo +100kg heavyweight at Arena Champ-de-Mars.'
+            FROM events
+            WHERE name = 'Judo +100kg Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Judo +100 kg Herren - Finale', 'Olympisches Finale im Judo +100 kg der Herren.'
+            FROM events
+            WHERE name = 'Judo +100kg Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Judo +100 kg Masculino - Final', 'Final olímpica del judo +100 kg masculino.'
+            FROM events
+            WHERE name = 'Judo +100kg Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Boxing -63.5kg Final',
+                   'Olympic final of the men''s boxing -63.5kg lightweight at Roland-Garros.'
+            FROM events
+            WHERE name = 'Boxe -63.5kg Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Boxen -63,5 kg Herren - Finale', 'Olympisches Finale im Boxen -63,5 kg der Herren.'
+            FROM events
+            WHERE name = 'Boxe -63.5kg Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Boxeo -63,5 kg Masculino - Final', 'Final olímpica del boxeo -63,5 kg masculino.'
+            FROM events
+            WHERE name = 'Boxe -63.5kg Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Boxing -71kg Final',
+                   'Olympic final of the men''s boxing -71kg welterweight at Roland-Garros.'
+            FROM events
+            WHERE name = 'Boxe -71kg Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Boxen -71 kg Herren - Finale', 'Olympisches Finale im Boxen -71 kg der Herren.'
+            FROM events
+            WHERE name = 'Boxe -71kg Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Boxeo -71 kg Masculino - Final', 'Final olímpica del boxeo -71 kg masculino.'
+            FROM events
+            WHERE name = 'Boxe -71kg Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Boxing -60kg Final',
+                   'Olympic final of the women''s boxing -60kg lightweight at Roland-Garros.'
+            FROM events
+            WHERE name = 'Boxe -60kg Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Boxen -60 kg Damen - Finale', 'Olympisches Finale im Boxen -60 kg der Damen.'
+            FROM events
+            WHERE name = 'Boxe -60kg Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Boxeo -60 kg Femenino - Final', 'Final olímpica del boxeo -60 kg femenino.'
+            FROM events
+            WHERE name = 'Boxe -60kg Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Boxing -75kg Final',
+                   'Olympic final of the women''s boxing -75kg middleweight at Roland-Garros.'
+            FROM events
+            WHERE name = 'Boxe -75kg Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Boxen -75 kg Damen - Finale', 'Olympisches Finale im Boxen -75 kg der Damen.'
+            FROM events
+            WHERE name = 'Boxe -75kg Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Boxeo -75 kg Femenino - Final', 'Final olímpica del boxeo -75 kg femenino.'
+            FROM events
+            WHERE name = 'Boxe -75kg Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Boxing +81kg Final',
+                   'Olympic final of the women''s boxing +81kg heavyweight at Roland-Garros.'
+            FROM events
+            WHERE name = 'Boxe +81kg Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Boxen +81 kg Damen - Finale', 'Olympisches Finale im Boxen +81 kg der Damen.'
+            FROM events
+            WHERE name = 'Boxe +81kg Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Boxeo +81 kg Femenino - Final', 'Final olímpica del boxeo +81 kg femenino.'
+            FROM events
+            WHERE name = 'Boxe +81kg Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Individual Foil Final',
+                   'Olympic final of the women''s individual foil fencing at Grand Palais.'
+            FROM events
+            WHERE name = 'Fleuret Individuel Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Florett Einzel Damen - Finale', 'Olympisches Finale im Florett Einzel der Damen.'
+            FROM events
+            WHERE name = 'Fleuret Individuel Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Florete Individual Femenino - Final', 'Final olímpica del florete individual femenino.'
+            FROM events
+            WHERE name = 'Fleuret Individuel Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Individual Sabre Final',
+                   'Olympic final of the women''s individual sabre fencing at Grand Palais.'
+            FROM events
+            WHERE name = 'Sabre Individuel Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Säbel Einzel Damen - Finale', 'Olympisches Finale im Säbel Einzel der Damen.'
+            FROM events
+            WHERE name = 'Sabre Individuel Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Sable Individual Femenino - Final', 'Final olímpica del sable individual femenino.'
+            FROM events
+            WHERE name = 'Sabre Individuel Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Team Foil Final',
+                   'Olympic final of the women''s team foil fencing at Grand Palais.'
+            FROM events
+            WHERE name = 'Fleuret par équipes Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Florett Mannschaft Damen - Finale', 'Olympisches Finale im Florett Mannschaft der Damen.'
+            FROM events
+            WHERE name = 'Fleuret par équipes Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Florete por Equipos Femenino - Final', 'Final olímpica del florete por equipos femenino.'
+            FROM events
+            WHERE name = 'Fleuret par équipes Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Team Sabre Final',
+                   'Olympic final of the men''s team sabre fencing at Grand Palais.'
+            FROM events
+            WHERE name = 'Sabre par équipes Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Säbel Mannschaft Herren - Finale', 'Olympisches Finale im Säbel Mannschaft der Herren.'
+            FROM events
+            WHERE name = 'Sabre par équipes Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Sable por Equipos Masculino - Final', 'Final olímpica del sable por equipos masculino.'
+            FROM events
+            WHERE name = 'Sabre par équipes Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Team Épée Final',
+                   'Olympic final of the women''s team épée fencing at Grand Palais.'
+            FROM events
+            WHERE name = 'Épée par équipes Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Degen Mannschaft Damen - Finale', 'Olympisches Finale im Degen Mannschaft der Damen.'
+            FROM events
+            WHERE name = 'Épée par équipes Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Espada por Equipos Femenino - Final', 'Final olímpica de la espada por equipos femenino.'
+            FROM events
+            WHERE name = 'Épée par équipes Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Freestyle Wrestling 74kg Final',
+                   'Olympic final of the men''s freestyle wrestling 74kg at Arena Champ-de-Mars.'
+            FROM events
+            WHERE name = 'Lutte 74kg Libre Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   'Ringen Freistil 74 kg Herren - Finale',
+                   'Olympisches Finale im Ringen Freistil 74 kg der Herren.'
+            FROM events
+            WHERE name = 'Lutte 74kg Libre Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Lucha Libre 74 kg Masculino - Final', 'Final olímpica de la lucha libre 74 kg masculina.'
+            FROM events
+            WHERE name = 'Lutte 74kg Libre Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Freestyle Wrestling 86kg Final',
+                   'Olympic final of the men''s freestyle wrestling 86kg at Arena Champ-de-Mars.'
+            FROM events
+            WHERE name = 'Lutte 86kg Libre Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   'Ringen Freistil 86 kg Herren - Finale',
+                   'Olympisches Finale im Ringen Freistil 86 kg der Herren.'
+            FROM events
+            WHERE name = 'Lutte 86kg Libre Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Lucha Libre 86 kg Masculino - Final', 'Final olímpica de la lucha libre 86 kg masculina.'
+            FROM events
+            WHERE name = 'Lutte 86kg Libre Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Greco-Roman Wrestling 130kg Final',
+                   'Olympic final of the men''s Greco-Roman wrestling 130kg at Arena Champ-de-Mars.'
+            FROM events
+            WHERE name = 'Lutte 130kg Gréco-romaine Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   'Ringen Griechisch-Römisch 130 kg Herren - Finale',
+                   'Olympisches Finale im Griechisch-Römischen Ringen 130 kg der Herren.'
+            FROM events
+            WHERE name = 'Lutte 130kg Gréco-romaine Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Lucha Grecorromana 130 kg Masculino - Final',
+                   'Final olímpica de la lucha grecorromana 130 kg masculina.'
+            FROM events
+            WHERE name = 'Lutte 130kg Gréco-romaine Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Greco-Roman Wrestling 62kg Final',
+                   'Olympic final of the men''s Greco-Roman wrestling 62kg at Arena Champ-de-Mars.'
+            FROM events
+            WHERE name = 'Lutte 62kg Gréco-romaine Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   'Ringen Griechisch-Römisch 62 kg Herren - Finale',
+                   'Olympisches Finale im Griechisch-Römischen Ringen 62 kg der Herren.'
+            FROM events
+            WHERE name = 'Lutte 62kg Gréco-romaine Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Lucha Grecorromana 62 kg Masculino - Final',
+                   'Final olímpica de la lucha grecorromana 62 kg masculina.'
+            FROM events
+            WHERE name = 'Lutte 62kg Gréco-romaine Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Freestyle Wrestling 68kg Final',
+                   'Olympic final of the women''s freestyle wrestling 68kg at Arena Champ-de-Mars.'
+            FROM events
+            WHERE name = 'Lutte 68kg Libre Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   'Ringen Freistil 68 kg Damen - Finale',
+                   'Olympisches Finale im Ringen Freistil 68 kg der Damen.'
+            FROM events
+            WHERE name = 'Lutte 68kg Libre Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Lucha Libre 68 kg Femenino - Final', 'Final olímpica de la lucha libre 68 kg femenina.'
+            FROM events
+            WHERE name = 'Lutte 68kg Libre Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Freestyle Wrestling 50kg Final',
+                   'Olympic final of the women''s freestyle wrestling 50kg at Arena Champ-de-Mars.'
+            FROM events
+            WHERE name = 'Lutte 50kg Libre Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   'Ringen Freistil 50 kg Damen - Finale',
+                   'Olympisches Finale im Ringen Freistil 50 kg der Damen.'
+            FROM events
+            WHERE name = 'Lutte 50kg Libre Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Lucha Libre 50 kg Femenino - Final', 'Final olímpica de la lucha libre 50 kg femenina.'
+            FROM events
+            WHERE name = 'Lutte 50kg Libre Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Weightlifting -73kg Final',
+                   'Olympic final of the men''s weightlifting -73kg at Arena Champ-de-Mars.'
+            FROM events
+            WHERE name = 'Haltérophilie -73kg Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   'Gewichtheben -73 kg Herren - Finale',
+                   'Olympisches Finale im Gewichtheben -73 kg der Herren.'
+            FROM events
+            WHERE name = 'Haltérophilie -73kg Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Halterofilia -73 kg Masculino - Final',
+                   'Final olímpica de la halterofilia -73 kg masculina.'
+            FROM events
+            WHERE name = 'Haltérophilie -73kg Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Weightlifting -59kg Final',
+                   'Olympic final of the women''s weightlifting -59kg at Arena Champ-de-Mars.'
+            FROM events
+            WHERE name = 'Haltérophilie -59kg Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   'Gewichtheben -59 kg Damen - Finale',
+                   'Olympisches Finale im Gewichtheben -59 kg der Damen.'
+            FROM events
+            WHERE name = 'Haltérophilie -59kg Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Halterofilia -59 kg Femenino - Final',
+                   'Final olímpica de la halterofilia -59 kg femenina.'
+            FROM events
+            WHERE name = 'Haltérophilie -59kg Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Weightlifting -102kg Final',
+                   'Olympic final of the men''s weightlifting -102kg at Arena Champ-de-Mars.'
+            FROM events
+            WHERE name = 'Haltérophilie -102kg Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   'Gewichtheben -102 kg Herren - Finale',
+                   'Olympisches Finale im Gewichtheben -102 kg der Herren.'
+            FROM events
+            WHERE name = 'Haltérophilie -102kg Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Halterofilia -102 kg Masculino - Final',
+                   'Final olímpica de la halterofilia -102 kg masculina.'
+            FROM events
+            WHERE name = 'Haltérophilie -102kg Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Weightlifting -71kg Final',
+                   'Olympic final of the women''s weightlifting -71kg at Arena Champ-de-Mars.'
+            FROM events
+            WHERE name = 'Haltérophilie -71kg Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   'Gewichtheben -71 kg Damen - Finale',
+                   'Olympisches Finale im Gewichtheben -71 kg der Damen.'
+            FROM events
+            WHERE name = 'Haltérophilie -71kg Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Halterofilia -71 kg Femenino - Final',
+                   'Final olímpica de la halterofilia -71 kg femenina.'
+            FROM events
+            WHERE name = 'Haltérophilie -71kg Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Team Pursuit Final',
+                   'Olympic final of the men''s team pursuit at Vélodrome National, Paris 2024.'
+            FROM events
+            WHERE name = 'Poursuite par équipes Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   'Mannschaftsverfolgung Herren - Finale',
+                   'Olympisches Finale in der Mannschaftsverfolgung der Herren.'
+            FROM events
+            WHERE name = 'Poursuite par équipes Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Persecución por Equipos Masculino - Final',
+                   'Final olímpica de la persecución por equipos masculina.'
+            FROM events
+            WHERE name = 'Poursuite par équipes Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Team Pursuit Final',
+                   'Olympic final of the women''s team pursuit at Vélodrome National, Paris 2024.'
+            FROM events
+            WHERE name = 'Poursuite par équipes Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   'Mannschaftsverfolgung Damen - Finale',
+                   'Olympisches Finale in der Mannschaftsverfolgung der Damen.'
+            FROM events
+            WHERE name = 'Poursuite par équipes Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Persecución por Equipos Femenino - Final',
+                   'Final olímpica de la persecución por equipos femenina.'
+            FROM events
+            WHERE name = 'Poursuite par équipes Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Madison Final',
+                   'Olympic final of the men''s madison track cycling at Vélodrome National.'
+            FROM events
+            WHERE name = 'Madison Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Madison Herren - Finale', 'Olympisches Finale im Madison der Herren.'
+            FROM events
+            WHERE name = 'Madison Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Madison Masculino - Final', 'Final olímpica del madison masculino.'
+            FROM events
+            WHERE name = 'Madison Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Omnium Final',
+                   'Olympic final of the women''s omnium track cycling at Vélodrome National.'
+            FROM events
+            WHERE name = 'Omnium Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Omnium Damen - Finale', 'Olympisches Finale im Omnium der Damen.'
+            FROM events
+            WHERE name = 'Omnium Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Omnium Femenino - Final', 'Final olímpica del omnium femenino.'
+            FROM events
+            WHERE name = 'Omnium Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Sprint Final',
+                   'Olympic final of the men''s sprint track cycling at Vélodrome National.'
+            FROM events
+            WHERE name = 'Sprint Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Sprint Herren - Finale', 'Olympisches Finale im Sprint der Herren.'
+            FROM events
+            WHERE name = 'Sprint Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Sprint Masculino - Final', 'Final olímpica del sprint masculino en pista.'
+            FROM events
+            WHERE name = 'Sprint Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Keirin Final',
+                   'Olympic final of the women''s keirin track cycling at Vélodrome National.'
+            FROM events
+            WHERE name = 'Keirin Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Keirin Damen - Finale', 'Olympisches Finale im Keirin der Damen.'
+            FROM events
+            WHERE name = 'Keirin Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Keirin Femenino - Final', 'Final olímpica del keirin femenino.'
+            FROM events
+            WHERE name = 'Keirin Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Doubles Badminton Final',
+                   'Olympic final of the men''s doubles badminton at Porte de La Chapelle Arena.'
+            FROM events
+            WHERE name = 'Badminton Double Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Badminton Doppel Herren - Finale', 'Olympisches Finale im Badminton Doppel der Herren.'
+            FROM events
+            WHERE name = 'Badminton Double Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Bádminton Dobles Masculino - Final', 'Final olímpica del bádminton dobles masculino.'
+            FROM events
+            WHERE name = 'Badminton Double Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Doubles Badminton Final',
+                   'Olympic final of the women''s doubles badminton at Porte de La Chapelle Arena.'
+            FROM events
+            WHERE name = 'Badminton Double Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Badminton Doppel Damen - Finale', 'Olympisches Finale im Badminton Doppel der Damen.'
+            FROM events
+            WHERE name = 'Badminton Double Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Bádminton Dobles Femenino - Final', 'Final olímpica del bádminton dobles femenino.'
+            FROM events
+            WHERE name = 'Badminton Double Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s 10m Air Pistol Final',
+                   'Olympic final of the men''s 10m air pistol shooting at Châteauroux.'
+            FROM events
+            WHERE name = 'Tir Pistolet 10m Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Luftpistole 10m Herren - Finale', 'Olympisches Finale in der Luftpistole 10 m der Herren.'
+            FROM events
+            WHERE name = 'Tir Pistolet 10m Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Pistola de Aire 10m Masculino - Final',
+                   'Final olímpica de la pistola de aire 10 m masculina.'
+            FROM events
+            WHERE name = 'Tir Pistolet 10m Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s 10m Air Rifle Final',
+                   'Olympic final of the women''s 10m air rifle shooting at Châteauroux.'
+            FROM events
+            WHERE name = 'Tir Carabine 10m Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Luftgewehr 10m Damen - Finale', 'Olympisches Finale im Luftgewehr 10 m der Damen.'
+            FROM events
+            WHERE name = 'Tir Carabine 10m Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Rifle de Aire 10m Femenino - Final', 'Final olímpica del rifle de aire 10 m femenino.'
+            FROM events
+            WHERE name = 'Tir Carabine 10m Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s 25m Rapid Fire Pistol Final',
+                   'Olympic final of the men''s 25m rapid fire pistol shooting at Châteauroux.'
+            FROM events
+            WHERE name = 'Tir Pistolet à Tir Rapide Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   'Schnellfeuerpistole 25m Herren - Finale',
+                   'Olympisches Finale in der Schnellfeuerpistole 25 m der Herren.'
+            FROM events
+            WHERE name = 'Tir Pistolet à Tir Rapide Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Pistola de Fuego Rápido 25m Masculino - Final',
+                   'Final olímpica de la pistola de fuego rápido 25 m masculina.'
+            FROM events
+            WHERE name = 'Tir Pistolet à Tir Rapide Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'en', 'Men''s Skeet Final', 'Olympic final of the men''s skeet shooting at Châteauroux.'
+            FROM events
+            WHERE name = 'Tir Skeet Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Skeet Herren - Finale', 'Olympisches Finale im Skeet der Herren.'
+            FROM events
+            WHERE name = 'Tir Skeet Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Skeet Masculino - Final', 'Final olímpica del skeet masculino.'
+            FROM events
+            WHERE name = 'Tir Skeet Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'en', 'Women''s Trap Final', 'Olympic final of the women''s trap shooting at Châteauroux.'
+            FROM events
+            WHERE name = 'Tir Trap Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Trap Damen - Finale', 'Olympisches Finale im Trap der Damen.'
+            FROM events
+            WHERE name = 'Tir Trap Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Trampa Femenino - Final', 'Final olímpica del trap femenino.'
+            FROM events
+            WHERE name = 'Tir Trap Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Archery Team Final',
+                   'Olympic final of the men''s recurve team archery at Esplanade des Invalides.'
+            FROM events
+            WHERE name = 'Tir à l''arc Équipe Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   'Bogenschießen Mannschaft Herren - Finale',
+                   'Olympisches Finale im Bogenschießen Mannschaft der Herren.'
+            FROM events
+            WHERE name = 'Tir à l''arc Équipe Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Tiro con Arco por Equipos Masculino - Final',
+                   'Final olímpica del tiro con arco por equipos masculino.'
+            FROM events
+            WHERE name = 'Tir à l''arc Équipe Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Archery Team Final',
+                   'Olympic final of the women''s recurve team archery at Esplanade des Invalides.'
+            FROM events
+            WHERE name = 'Tir à l''arc Équipe Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   'Bogenschießen Mannschaft Damen - Finale',
+                   'Olympisches Finale im Bogenschießen Mannschaft der Damen.'
+            FROM events
+            WHERE name = 'Tir à l''arc Équipe Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Tiro con Arco por Equipos Femenino - Final',
+                   'Final olímpica del tiro con arco por equipos femenino.'
+            FROM events
+            WHERE name = 'Tir à l''arc Équipe Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Handball Semi-Final',
+                   'Olympic semi-final of the men''s handball tournament at Bercy Arena.'
+            FROM events
+            WHERE name = 'Handball Hommes - Demi-finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Handball Herren - Halbfinale', 'Olympisches Halbfinale im Handball der Herren.'
+            FROM events
+            WHERE name = 'Handball Hommes - Demi-finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Balonmano Masculino - Semifinal', 'Semifinal olímpica del torneo de balonmano masculino.'
+            FROM events
+            WHERE name = 'Handball Hommes - Demi-finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Handball Semi-Final',
+                   'Olympic semi-final of the women''s handball tournament at Bercy Arena.'
+            FROM events
+            WHERE name = 'Handball Femmes - Demi-finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Handball Damen - Halbfinale', 'Olympisches Halbfinale im Handball der Damen.'
+            FROM events
+            WHERE name = 'Handball Femmes - Demi-finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Balonmano Femenino - Semifinal', 'Semifinal olímpica del torneo de balonmano femenino.'
+            FROM events
+            WHERE name = 'Handball Femmes - Demi-finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Volleyball Semi-Final',
+                   'Olympic semi-final of the men''s volleyball tournament at Bercy Arena.'
+            FROM events
+            WHERE name = 'Volleyball Hommes - Demi-finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Volleyball Herren - Halbfinale', 'Olympisches Halbfinale im Volleyball der Herren.'
+            FROM events
+            WHERE name = 'Volleyball Hommes - Demi-finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Voleibol Masculino - Semifinal', 'Semifinal olímpica del torneo de voleibol masculino.'
+            FROM events
+            WHERE name = 'Volleyball Hommes - Demi-finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Volleyball Semi-Final',
+                   'Olympic semi-final of the women''s volleyball tournament at Bercy Arena.'
+            FROM events
+            WHERE name = 'Volleyball Femmes - Demi-finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Volleyball Damen - Halbfinale', 'Olympisches Halbfinale im Volleyball der Damen.'
+            FROM events
+            WHERE name = 'Volleyball Femmes - Demi-finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Voleibol Femenino - Semifinal', 'Semifinal olímpica del torneo de voleibol femenino.'
+            FROM events
+            WHERE name = 'Volleyball Femmes - Demi-finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Football Semi-Final',
+                   'Olympic semi-final of the women''s football tournament at Parc des Princes.'
+            FROM events
+            WHERE name = 'Football Femmes - Demi-finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Fußball Damen - Halbfinale', 'Olympisches Halbfinale im Fußball der Damen.'
+            FROM events
+            WHERE name = 'Football Femmes - Demi-finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Fútbol Femenino - Semifinal', 'Semifinal olímpica del torneo de fútbol femenino.'
+            FROM events
+            WHERE name = 'Football Femmes - Demi-finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Football Group Stage',
+                   'Men''s football group stage match at Stade de Bordeaux during Paris 2024.'
+            FROM events
+            WHERE name = 'Football Hommes - Phase de groupes';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   'Fußball Herren - Gruppenphase',
+                   'Gruppenspiel im Fußball der Herren bei den Olympischen Spielen Paris 2024.'
+            FROM events
+            WHERE name = 'Football Hommes - Phase de groupes';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Fútbol Masculino - Fase de Grupos',
+                   'Partido de la fase de grupos del fútbol masculino olímpico.'
+            FROM events
+            WHERE name = 'Football Hommes - Phase de groupes';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Rugby Sevens Semi-Final',
+                   'Olympic semi-final of the women''s rugby sevens tournament at Stade de France.'
+            FROM events
+            WHERE name = 'Rugby à 7 Femmes - Demi-finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Rugby Sevens Damen - Halbfinale', 'Olympisches Halbfinale im Rugby Sevens der Damen.'
+            FROM events
+            WHERE name = 'Rugby à 7 Femmes - Demi-finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Rugby 7 Femenino - Semifinal', 'Semifinal olímpica del torneo de rugby 7 femenino.'
+            FROM events
+            WHERE name = 'Rugby à 7 Femmes - Demi-finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Doubles Tennis Final',
+                   'Olympic final of the men''s doubles tennis at Roland-Garros, Paris 2024.'
+            FROM events
+            WHERE name = 'Tennis Double Messieurs - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Tennis Doppel Herren - Finale', 'Olympisches Finale im Tennis Doppel der Herren.'
+            FROM events
+            WHERE name = 'Tennis Double Messieurs - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Tenis Dobles Masculino - Final', 'Final olímpica del tenis dobles masculino.'
+            FROM events
+            WHERE name = 'Tennis Double Messieurs - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Doubles Tennis Final',
+                   'Olympic final of the women''s doubles tennis at Roland-Garros, Paris 2024.'
+            FROM events
+            WHERE name = 'Tennis Double Dames - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Tennis Doppel Damen - Finale', 'Olympisches Finale im Tennis Doppel der Damen.'
+            FROM events
+            WHERE name = 'Tennis Double Dames - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Tenis Dobles Femenino - Final', 'Final olímpica del tenis dobles femenino.'
+            FROM events
+            WHERE name = 'Tennis Double Dames - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Equestrian Eventing Team Final',
+                   'Olympic final of the equestrian eventing team at Château de Versailles.'
+            FROM events
+            WHERE name = 'Équitation Complet par équipes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   'Reiten Vielseitigkeit Mannschaft - Finale',
+                   'Olympisches Finale in der Vielseitigkeit Mannschaft.'
+            FROM events
+            WHERE name = 'Équitation Complet par équipes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Ecuestre Completo por Equipos - Final',
+                   'Final olímpica del completo ecuestre por equipos.'
+            FROM events
+            WHERE name = 'Équitation Complet par équipes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Equestrian Individual Dressage Final',
+                   'Olympic final of the individual equestrian dressage at Château de Versailles.'
+            FROM events
+            WHERE name = 'Équitation Dressage Individuel - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Reiten Dressur Einzel - Finale', 'Olympisches Finale in der Dressur Einzel.'
+            FROM events
+            WHERE name = 'Équitation Dressage Individuel - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Ecuestre Dressage Individual - Final', 'Final olímpica del dressage ecuestre individual.'
+            FROM events
+            WHERE name = 'Équitation Dressage Individuel - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s ILCA 7 Sailing Final',
+                   'Olympic final of the men''s ILCA 7 sailing class at Marina Roucas-Blanc, Marseille.'
+            FROM events
+            WHERE name = 'Voile ILCA 7 Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Segeln ILCA 7 Herren - Finale', 'Olympisches Finale in der Segelklasse ILCA 7 der Herren.'
+            FROM events
+            WHERE name = 'Voile ILCA 7 Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Vela ILCA 7 Masculino - Final', 'Final olímpica de la clase ILCA 7 masculina en vela.'
+            FROM events
+            WHERE name = 'Voile ILCA 7 Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s 49er Sailing Final',
+                   'Olympic final of the men''s 49er skiff sailing at Marina Roucas-Blanc, Marseille.'
+            FROM events
+            WHERE name = 'Voile 49er Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Segeln 49er Herren - Finale', 'Olympisches Finale im Segeln 49er der Herren.'
+            FROM events
+            WHERE name = 'Voile 49er Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Vela 49er Masculino - Final', 'Final olímpica del 49er masculino en vela.'
+            FROM events
+            WHERE name = 'Voile 49er Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s iQFoil Sailing Final',
+                   'Olympic final of the men''s iQFoil windsurfer foiling at Marina Roucas-Blanc, Marseille.'
+            FROM events
+            WHERE name = 'Voile iQFoil Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Segeln iQFoil Herren - Finale', 'Olympisches Finale im iQFoil-Windsurfen der Herren.'
+            FROM events
+            WHERE name = 'Voile iQFoil Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Vela iQFoil Masculino - Final', 'Final olímpica del iQFoil masculino en vela.'
+            FROM events
+            WHERE name = 'Voile iQFoil Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Field Hockey Semi-Final',
+                   'Olympic semi-final of the men''s field hockey tournament at Stade Yves-du-Manoir.'
+            FROM events
+            WHERE name = 'Hockey sur gazon Hommes - Demi-finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Hockey Herren - Halbfinale', 'Olympisches Halbfinale im Hockey der Herren.'
+            FROM events
+            WHERE name = 'Hockey sur gazon Hommes - Demi-finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Hockey sobre hierba Masculino - Semifinal',
+                   'Semifinal olímpica del torneo de hockey sobre hierba masculino.'
+            FROM events
+            WHERE name = 'Hockey sur gazon Hommes - Demi-finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Field Hockey Semi-Final',
+                   'Olympic semi-final of the women''s field hockey tournament at Stade Yves-du-Manoir.'
+            FROM events
+            WHERE name = 'Hockey sur gazon Femmes - Demi-finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Hockey Damen - Halbfinale', 'Olympisches Halbfinale im Hockey der Damen.'
+            FROM events
+            WHERE name = 'Hockey sur gazon Femmes - Demi-finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Hockey sobre hierba Femenino - Semifinal',
+                   'Semifinal olímpica del torneo de hockey sobre hierba femenino.'
+            FROM events
+            WHERE name = 'Hockey sur gazon Femmes - Demi-finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Basketball Semi-Final',
+                   'Olympic semi-final of the women''s basketball tournament at Accor Arena, Paris.'
+            FROM events
+            WHERE name = 'Basketball Femmes - Demi-finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Basketball Damen - Halbfinale', 'Olympisches Halbfinale im Basketball der Damen.'
+            FROM events
+            WHERE name = 'Basketball Femmes - Demi-finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Baloncesto Femenino - Semifinal', 'Semifinal olímpica del torneo de baloncesto femenino.'
+            FROM events
+            WHERE name = 'Basketball Femmes - Demi-finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Mixed C2 Canoe Slalom Final',
+                   'Olympic final of the mixed C2 canoe slalom at Stade Nautique, Vaires-sur-Marne.'
+            FROM events
+            WHERE name = 'Canoë Slalom C2 Mixte - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Kanuslalom C2 Gemischt - Finale', 'Olympisches Finale im Kanuslalom C2 Gemischt.'
+            FROM events
+            WHERE name = 'Canoë Slalom C2 Mixte - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Eslalon en Canoa C2 Mixto - Final', 'Final olímpica del eslalon en canoa C2 mixto.'
+            FROM events
+            WHERE name = 'Canoë Slalom C2 Mixte - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s K1 Kayak Slalom Final',
+                   'Olympic final of the men''s K1 kayak slalom at Stade Nautique, Vaires-sur-Marne.'
+            FROM events
+            WHERE name = 'Kayak Slalom K1 Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Kajak Slalom K1 Herren - Finale', 'Olympisches Finale im Kajak-Slalom K1 der Herren.'
+            FROM events
+            WHERE name = 'Kayak Slalom K1 Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Eslalon en Kayak K1 Masculino - Final',
+                   'Final olímpica del eslalon en kayak K1 masculino.'
+            FROM events
+            WHERE name = 'Kayak Slalom K1 Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Kayak Cross Final',
+                   'Olympic final of the men''s kayak cross at Stade Nautique, Vaires-sur-Marne.'
+            FROM events
+            WHERE name = 'Kayak Cross Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Kajak Cross Herren - Finale', 'Olympisches Finale im Kajak Cross der Herren.'
+            FROM events
+            WHERE name = 'Kayak Cross Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Kayak Cross Masculino - Final', 'Final olímpica del kayak cross masculino.'
+            FROM events
+            WHERE name = 'Kayak Cross Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s C1 1000m Canoe Sprint Final',
+                   'Olympic final of the women''s C1 1000m canoe sprint at Stade Nautique, Vaires-sur-Marne.'
+            FROM events
+            WHERE name = 'Canoë Sprint C1 1000m Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   'Kanu Sprint C1 1000m Damen - Finale',
+                   'Olympisches Finale im Kanu-Sprint C1 1000 m der Damen.'
+            FROM events
+            WHERE name = 'Canoë Sprint C1 1000m Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Sprint en Canoa C1 1000m Femenino - Final',
+                   'Final olímpica del sprint en canoa C1 1000 m femenino.'
+            FROM events
+            WHERE name = 'Canoë Sprint C1 1000m Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s K4 500m Kayak Sprint Final',
+                   'Olympic final of the men''s K4 500m kayak sprint at Stade Nautique, Vaires-sur-Marne.'
+            FROM events
+            WHERE name = 'Kayak Sprint K4 500m Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   'Kajak Sprint K4 500m Herren - Finale',
+                   'Olympisches Finale im Kajak-Sprint K4 500 m der Herren.'
+            FROM events
+            WHERE name = 'Kayak Sprint K4 500m Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Sprint en Kayak K4 500m Masculino - Final',
+                   'Final olímpica del sprint en kayak K4 500 m masculino.'
+            FROM events
+            WHERE name = 'Kayak Sprint K4 500m Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Pair Rowing Final',
+                   'Olympic final of the men''s coxless pair rowing at Stade Nautique, Vaires-sur-Marne.'
+            FROM events
+            WHERE name = 'Aviron Deux sans Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   'Rudern Zweier ohne Steuermann Herren - Finale',
+                   'Olympisches Finale im Rudern Zweier ohne Steuermann der Herren.'
+            FROM events
+            WHERE name = 'Aviron Deux sans Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Remo Dos Sin Timonel Masculino - Final',
+                   'Final olímpica del remo dos sin timonel masculino.'
+            FROM events
+            WHERE name = 'Aviron Deux sans Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Eight Rowing Final',
+                   'Olympic final of the men''s eight rowing at Stade Nautique, Vaires-sur-Marne.'
+            FROM events
+            WHERE name = 'Aviron Huit Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Rudern Achter Herren - Finale', 'Olympisches Finale im Rudern Achter der Herren.'
+            FROM events
+            WHERE name = 'Aviron Huit Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Remo Ocho Masculino - Final', 'Final olímpica del remo ocho masculino.'
+            FROM events
+            WHERE name = 'Aviron Huit Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Quadruple Scull Final',
+                   'Olympic final of the women''s quadruple scull rowing at Stade Nautique, Vaires-sur-Marne.'
+            FROM events
+            WHERE name = 'Aviron Quatre de couple Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   'Rudern Vierer mit Doppelriemen Damen - Finale',
+                   'Olympisches Finale im Rudern Vierer mit Doppelriemen der Damen.'
+            FROM events
+            WHERE name = 'Aviron Quatre de couple Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Remo Cuádruple Scull Femenino - Final', 'Final olímpica del cuádruple scull femenino.'
+            FROM events
+            WHERE name = 'Aviron Quatre de couple Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Water Polo Semi-Final',
+                   'Olympic semi-final of the men''s water polo tournament at Paris La Défense Arena.'
+            FROM events
+            WHERE name = 'Water-polo Hommes - Demi-finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Wasserball Herren - Halbfinale', 'Olympisches Halbfinale im Wasserball der Herren.'
+            FROM events
+            WHERE name = 'Water-polo Hommes - Demi-finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Waterpolo Masculino - Semifinal', 'Semifinal olímpica del torneo de waterpolo masculino.'
+            FROM events
+            WHERE name = 'Water-polo Hommes - Demi-finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Water Polo Semi-Final',
+                   'Olympic semi-final of the women''s water polo tournament at Paris La Défense Arena.'
+            FROM events
+            WHERE name = 'Water-polo Femmes - Demi-finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'de', 'Wasserball Damen - Halbfinale', 'Olympisches Halbfinale im Wasserball der Damen.'
+            FROM events
+            WHERE name = 'Water-polo Femmes - Demi-finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id, 'es', 'Waterpolo Femenino - Semifinal', 'Semifinal olímpica del torneo de waterpolo femenino.'
+            FROM events
+            WHERE name = 'Water-polo Femmes - Demi-finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s 3m Springboard Diving Final',
+                   'Olympic final of the men''s 3m springboard diving at Paris La Défense Arena.'
+            FROM events
+            WHERE name = 'Plongeon Tremplin 3m Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   'Wasserspringen 3m Sprungbrett Herren - Finale',
+                   'Olympisches Finale im Wasserspringen 3 m Sprungbrett der Herren.'
+            FROM events
+            WHERE name = 'Plongeon Tremplin 3m Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Saltos 3m Trampolín Masculino - Final',
+                   'Final olímpica de saltos trampolín 3 m masculino.'
+            FROM events
+            WHERE name = 'Plongeon Tremplin 3m Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s 10m Platform Diving Final',
+                   'Olympic final of the women''s 10m platform diving at Paris La Défense Arena.'
+            FROM events
+            WHERE name = 'Plongeon Haut Plateau 10m Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   'Wasserspringen 10m Plattform Damen - Finale',
+                   'Olympisches Finale im Wasserspringen 10 m Plattform der Damen.'
+            FROM events
+            WHERE name = 'Plongeon Haut Plateau 10m Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Saltos 10m Plataforma Femenino - Final',
+                   'Final olímpica de saltos plataforma 10 m femenino.'
+            FROM events
+            WHERE name = 'Plongeon Haut Plateau 10m Femmes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Men''s Synchronised 3m Springboard Final',
+                   'Olympic final of the men''s synchronised 3m springboard diving at Paris La Défense Arena.'
+            FROM events
+            WHERE name = 'Plongeon Synchro Tremplin 3m Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   'Synchronspringen 3m Sprungbrett Herren - Finale',
+                   'Olympisches Finale im Synchronspringen 3 m Sprungbrett der Herren.'
+            FROM events
+            WHERE name = 'Plongeon Synchro Tremplin 3m Hommes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Saltos Sincronizados 3m Trampolín Masculino - Final',
+                   'Final olímpica de saltos sincronizados trampolín 3 m masculino.'
+            FROM events
+            WHERE name = 'Plongeon Synchro Tremplin 3m Hommes - Finale';
+
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'en',
+                   'Women''s Synchronised 10m Platform Final',
+                   'Olympic final of the women''s synchronised 10m platform diving at Paris La Défense Arena.'
+            FROM events
+            WHERE name = 'Plongeon Synchro Haut Plateau 10m Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'de',
+                   'Synchronspringen 10m Plattform Damen - Finale',
+                   'Olympisches Finale im Synchronspringen 10 m Plattform der Damen.'
+            FROM events
+            WHERE name = 'Plongeon Synchro Haut Plateau 10m Femmes - Finale';
+            INSERT INTO event_translations (event_id, locale, name, description)
+            SELECT id,
+                   'es',
+                   'Saltos Sincronizados 10m Plataforma Femenino - Final',
+                   'Final olímpica de saltos sincronizados plataforma 10 m femenino.'
+            FROM events
+            WHERE name = 'Plongeon Synchro Haut Plateau 10m Femmes - Finale';
         </sql>
     </changeSet>
 
