@@ -78,7 +78,8 @@ public class OfferController {
      * de toutes les offres
      */
     @GetMapping("/all")
-    public ResponseEntity<List<OfferResponseDTO>> getAllOfferTypes() {
-        return ResponseEntity.ok(offerService.getAllOfferTypes());
+    public ResponseEntity<List<OfferResponseDTO>> getAllOfferTypes(
+            @RequestHeader(value = "Accept-Language", defaultValue = "fr") String locale) {
+        return ResponseEntity.ok(offerService.getAllOfferTypes(locale));
     }
 }

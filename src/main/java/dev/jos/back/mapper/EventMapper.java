@@ -8,10 +8,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class EventMapper {
     public EventResponseDTO toResponseDTO(Event event) {
+        return toResponseDTO(event, event.getName(), event.getDescription());
+    }
+
+    public EventResponseDTO toResponseDTO(Event event, String name, String description) {
         return EventResponseDTO.builder()
                 .id(event.getId())
-                .name(event.getName())
-                .description(event.getDescription())
+                .name(name)
+                .description(description)
                 .icon(event.getIcon())
                 .category(event.getCategory())
                 .phase(event.getPhase())

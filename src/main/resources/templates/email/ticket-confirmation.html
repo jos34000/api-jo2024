@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Confirmation de commande</title>
+    <title th:text="#{email.ticket.title}">Confirmation de commande</title>
 </head>
 <body style="margin:0;padding:0;background-color:#f5f5f7;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
 
@@ -25,7 +25,8 @@
                         <p style="margin:0 0 6px 0;font-size:26px;font-weight:900;color:#ffffff;letter-spacing:3px;">
                             PARIS 2024
                         </p>
-                        <p style="margin:0;font-size:10px;color:#ffffff;letter-spacing:3px;text-transform:uppercase;">
+                        <p style="margin:0;font-size:10px;color:#ffffff;letter-spacing:3px;text-transform:uppercase;"
+                           th:text="#{email.ticket.header.subtitle}">
                             Jeux Olympiques &middot; Billetterie Officielle
                         </p>
                     </td>
@@ -39,7 +40,7 @@
                                 <td align="center"
                                     style="background-color:#dcfce7;border:1.5px solid #86efac;border-radius:50px;padding:10px 24px;">
                                     <p style="margin:0;font-size:14px;font-weight:700;color:#166534;">
-                                        &#10003; &nbsp;Paiement confirmé
+                                        &#10003; &nbsp;<span th:text="#{email.ticket.badge}">Paiement confirmé</span>
                                     </p>
                                 </td>
                             </tr>
@@ -50,13 +51,14 @@
                 <!-- Greeting -->
                 <tr>
                     <td style="padding:28px 48px 0 48px;">
-                        <h1 style="margin:0 0 8px 0;font-size:21px;font-weight:800;color:#111111;letter-spacing:-0.5px;">
+                        <h1 style="margin:0 0 8px 0;font-size:21px;font-weight:800;color:#111111;letter-spacing:-0.5px;"
+                            th:text="#{email.ticket.title}">
                             Vos billets sont prêts&nbsp;!
                         </h1>
                         <p style="margin:0;font-size:15px;color:#555555;line-height:1.7;">
-                            Bonjour <strong style="color:#003DA5;" th:text="${name}">Prénom</strong>,
-                            votre commande a bien été enregistrée. Retrouvez vos billets en pièce jointe
-                            de cet email au format PDF.
+                            <span th:text="#{email.greeting}">Bonjour</span>
+                            <strong style="color:#003DA5;" th:text="${name}">Prénom</strong>,
+                            <span th:text="#{email.ticket.body}">votre commande a bien été enregistrée.</span>
                         </p>
                     </td>
                 </tr>
@@ -73,7 +75,8 @@
                 <!-- Transaction summary -->
                 <tr>
                     <td style="padding:24px 48px 0 48px;">
-                        <p style="margin:0 0 12px 0;font-size:11px;font-weight:700;color:#999999;text-transform:uppercase;letter-spacing:1.5px;">
+                        <p style="margin:0 0 12px 0;font-size:11px;font-weight:700;color:#999999;text-transform:uppercase;letter-spacing:1.5px;"
+                           th:text="#{email.ticket.summary}">
                             Récapitulatif de la commande
                         </p>
                         <table border="0" cellpadding="0" cellspacing="0"
@@ -82,24 +85,27 @@
                                 <td style="padding:16px 20px;">
                                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
                                         <tr>
-                                            <td style="padding:4px 0;font-size:13px;color:#777777;">Référence</td>
+                                            <td style="padding:4px 0;font-size:13px;color:#777777;"
+                                                th:text="#{email.ticket.ref}">Référence</td>
                                             <td align="right"
                                                 style="padding:4px 0;font-size:13px;font-weight:700;color:#111111;font-family:monospace;"
                                                 th:text="${paymentReference}">REF-XXXXXXXX
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td style="padding:4px 0;font-size:13px;color:#777777;">Date</td>
+                                            <td style="padding:4px 0;font-size:13px;color:#777777;"
+                                                th:text="#{email.ticket.date}">Date</td>
                                             <td align="right"
                                                 style="padding:4px 0;font-size:13px;color:#111111;"
                                                 th:text="${payedDate}">01 janvier 2026
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td style="padding:4px 0;font-size:13px;color:#777777;">Billets générés</td>
+                                            <td style="padding:4px 0;font-size:13px;color:#777777;"
+                                                th:text="#{email.ticket.tickets}">Billets générés</td>
                                             <td align="right"
                                                 style="padding:4px 0;font-size:13px;color:#111111;"
-                                                th:text="${ticketCount} + ' billet(s)'">1 billet(s)
+                                                th:text="#{email.ticket.ticketCount(${ticketCount})}">1 billet(s)
                                             </td>
                                         </tr>
                                         <tr>
@@ -110,7 +116,8 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td style="padding:4px 0;font-size:14px;font-weight:700;color:#111111;">
+                                            <td style="padding:4px 0;font-size:14px;font-weight:700;color:#111111;"
+                                                th:text="#{email.ticket.total}">
                                                 Total payé
                                             </td>
                                             <td align="right"
@@ -131,9 +138,9 @@
                         <table border="0" cellpadding="0" cellspacing="0" width="100%">
                             <tr>
                                 <td style="background-color:#f8f8f8;border-left:4px solid #C8A84B;border-radius:0 8px 8px 0;padding:14px 18px;">
-                                    <p style="margin:0;font-size:12px;color:#444444;line-height:1.6;">
-                                        &#128206; &nbsp;Vos billets sont joints à cet email en PDF. Imprimez-les ou
-                                        présentez-les sur votre téléphone à l'entrée du stade.
+                                    <p style="margin:0;font-size:12px;color:#444444;line-height:1.6;"
+                                       th:text="#{email.ticket.notice}">
+                                        📎 &nbsp;Vos billets sont joints à cet email en PDF.
                                     </p>
                                 </td>
                             </tr>
@@ -153,10 +160,12 @@
                 <!-- Footer -->
                 <tr>
                     <td align="center" style="padding:20px 48px 32px 48px;">
-                        <p style="margin:0 0 6px 0;font-size:12px;color:#aaaaaa;">
+                        <p style="margin:0 0 6px 0;font-size:12px;color:#aaaaaa;"
+                           th:text="#{email.footer.auto}">
                             Cet email a été envoyé automatiquement, merci de ne pas y répondre.
                         </p>
-                        <p style="margin:0;font-size:11px;color:#cccccc;">
+                        <p style="margin:0;font-size:11px;color:#cccccc;"
+                           th:text="#{email.ticket.footer.rights}">
                             &copy; 2026 Paris 2024 &middot; Comité d'Organisation des Jeux Olympiques
                         </p>
                     </td>

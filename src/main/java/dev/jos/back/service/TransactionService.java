@@ -12,6 +12,7 @@ import dev.jos.back.exceptions.payment.PaymentDeclinedException;
 import dev.jos.back.exceptions.payment.TransactionNotFoundException;
 import dev.jos.back.exceptions.user.UserNotFoundException;
 import dev.jos.back.repository.CartRepository;
+import dev.jos.back.repository.EventRepository;
 import dev.jos.back.repository.TicketRepository;
 import dev.jos.back.repository.TransactionRepository;
 import dev.jos.back.repository.UserRepository;
@@ -37,6 +38,7 @@ public class TransactionService {
     private final CartRepository cartRepository;
     private final TransactionRepository transactionRepository;
     private final TicketRepository ticketRepository;
+    private final EventRepository eventRepository;
     private final PaymentMockService paymentMockService;
     private final PdfTicketService pdfTicketService;
     private final EmailService emailService;
@@ -91,14 +93,22 @@ public class TransactionService {
         List<Ticket> tickets = generateTickets(cart, transaction, user);
         ticketRepository.saveAll(tickets);
 
+        Map<Event, Long> ticketsPerEvent = tickets.stream()
+                .collect(Collectors.groupingBy(Ticket::getEvent, Collectors.counting()));
+        ticketsPerEvent.forEach((event, count) -> {
+            event.setAvailableSlots(Math.max(0, event.getAvailableSlots() - count.intValue()));
+            eventRepository.save(event);
+        });
+
         cart.setStatus(CartStatus.CONVERTED);
         cartRepository.save(cart);
 
         TransactionResponseDTO responseDTO = ticketMapper.toTransactionResponseDTO(transaction, tickets);
 
         try {
-            byte[] pdf = pdfTicketService.generate(responseDTO);
-            emailService.sendTicketsEmail(user.getEmail(), user.getFirstName(), responseDTO, pdf);
+            String userLocale = user.getLocale() != null ? user.getLocale() : "fr";
+            byte[] pdf = pdfTicketService.generate(responseDTO, userLocale);
+            emailService.sendTicketsEmail(user.getEmail(), user.getFirstName(), responseDTO, pdf, userLocale);
         } catch (Exception e) {
             log.warn("Envoi email billets échoué pour transaction {} : {}", responseDTO.id(), e.getMessage());
         }
@@ -117,6 +127,9 @@ public class TransactionService {
 
     @Transactional(readOnly = true)
     public byte[] getTicketsPdf(String email, Long transactionId) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UserNotFoundException("Utilisateur introuvable"));
+
         Transaction transaction = transactionRepository.findByIdAndUser_Email(transactionId, email)
                 .orElseThrow(() -> new TransactionNotFoundException("Transaction introuvable"));
 
@@ -129,7 +142,8 @@ public class TransactionService {
         }
 
         TransactionResponseDTO dto = ticketMapper.toTransactionResponseDTO(transaction, validTickets);
-        return pdfTicketService.generate(dto);
+        String userLocale = user.getLocale() != null ? user.getLocale() : "fr";
+        return pdfTicketService.generate(dto, userLocale);
     }
 
     @Transactional(readOnly = true)

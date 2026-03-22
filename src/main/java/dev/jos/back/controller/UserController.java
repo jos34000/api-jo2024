@@ -2,6 +2,7 @@ package dev.jos.back.controller;
 
 import dev.jos.back.dto.user.ChangePasswordRequestDTO;
 import dev.jos.back.dto.user.ForgetPasswordRequestDTO;
+import dev.jos.back.dto.user.UpdateLocaleRequestDTO;
 import dev.jos.back.dto.user.UpdateUserRequestDTO;
 import dev.jos.back.dto.user.UserResponseDTO;
 import dev.jos.back.exceptions.user.InvalidPasswordException;
@@ -140,5 +141,21 @@ public class UserController {
         boolean twoFactor = request.twoFactor();
         UserResponseDTO response = userService.updateUser(email, newEmail, newFirstName, newLastName, twoFactor);
         return ResponseEntity.ok(response);
+    }
+
+    /**
+     * Met à jour la locale préférée de l'utilisateur connecté.
+     * Utilisé par le sélecteur de langue du frontend pour persister le choix côté serveur
+     * (PDF, emails de confirmation).
+     *
+     * @param auth    l'objet d'authentification Spring Security
+     * @param request contient la nouvelle locale (fr, en, de, es)
+     * @return {@code ResponseEntity<Void>} vide (204 No Content) en cas de succès
+     */
+    @PatchMapping("/locale")
+    public ResponseEntity<Void> updateLocale(Authentication auth,
+                                             @Valid @RequestBody UpdateLocaleRequestDTO request) {
+        userService.updateLocale(auth.getName(), request.locale());
+        return ResponseEntity.noContent().build();
     }
 }

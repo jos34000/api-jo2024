@@ -33,8 +33,9 @@ public class SportController {
      * @return {@code ResponseEntity<List<SportResponseDTO>>} contenant la liste complète des sports
      */
     @GetMapping
-    public ResponseEntity<List<SportResponseDTO>> getAllSports() {
-        return ResponseEntity.ok(sportService.getAllSports());
+    public ResponseEntity<List<SportResponseDTO>> getAllSports(
+            @RequestHeader(value = "Accept-Language", defaultValue = "fr") String locale) {
+        return ResponseEntity.ok(sportService.getAllSports(locale));
     }
 
     /**
@@ -44,8 +45,10 @@ public class SportController {
      * @return {@code ResponseEntity<SportResponseDTO>} contenant les détails complets du sport
      */
     @GetMapping("/{id}")
-    public ResponseEntity<SportResponseDTO> getSport(@PathVariable Long id) {
-        SportResponseDTO sport = sportService.getSportById(id);
+    public ResponseEntity<SportResponseDTO> getSport(
+            @PathVariable Long id,
+            @RequestHeader(value = "Accept-Language", defaultValue = "fr") String locale) {
+        SportResponseDTO sport = sportService.getSportById(id, locale);
         return ResponseEntity.ok(sport);
     }
 

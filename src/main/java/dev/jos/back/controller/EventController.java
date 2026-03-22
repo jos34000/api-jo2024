@@ -16,6 +16,7 @@ import java.util.List;
 /**
  * Contrôleur REST pour la gestion des événements.
  * Fournit des endpoints pour créer, consulter et filtrer les événements.
+ * Supporte l'internationalisation via l'en-tête {@code Accept-Language}.
  *
  * @see EventService
  * @see EventResponseDTO
@@ -30,14 +31,6 @@ public class EventController {
     /**
      * Crée plusieurs événements en une seule opération.
      * Réservé aux administrateurs.
-     *
-     * @param events liste des événements à créer
-     * @return {@code ResponseEntity<BulkEventResponseDTO>} contenant le résumé de la création
-     * (nombre total d'événements créés et liste détaillée des événements)
-     * @throws jakarta.validation.ConstraintViolationException           si un ou plusieurs événements
-     *                                                                   contiennent des données invalides
-     * @throws org.springframework.security.access.AccessDeniedException si l'utilisateur
-     *                                                                   n'a pas le rôle ADMIN
      */
     @PostMapping("/bulk")
     @PreAuthorize("hasRole('ADMIN')")
@@ -57,12 +50,6 @@ public class EventController {
     /**
      * Crée un nouvel événement.
      * Réservé aux administrateurs.
-     *
-     * @param event les informations de l'événement à créer (titre, description, dates, etc.)
-     * @return {@code ResponseEntity<EventResponseDTO>} contenant l'événement créé avec son identifiant généré
-     * @throws jakarta.validation.ConstraintViolationException           si les données de l'événement sont invalides
-     * @throws org.springframework.security.access.AccessDeniedException si l'utilisateur
-     *                                                                   n'a pas le rôle ADMIN
      */
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
@@ -74,64 +61,66 @@ public class EventController {
     }
 
     /**
-     * Récupère tous les événements pour les utilisateurs publics.
+     * Récupère tous les événements.
      *
-     * @return {@code ResponseEntity<List<EventResponseDTO>>} contenant la liste complète
-     * de tous les événements
+     * @param locale locale extraite de l'en-tête {@code Accept-Language} (ex. {@code fr}, {@code en-US})
      */
     @GetMapping("/all")
-    public ResponseEntity<List<EventResponseDTO>> getAll() {
-        List<EventResponseDTO> events = eventService.getAll();
+    public ResponseEntity<List<EventResponseDTO>> getAll(
+            @RequestHeader(value = "Accept-Language", defaultValue = "fr") String locale) {
+        List<EventResponseDTO> events = eventService.getAll(locale);
         return ResponseEntity.ok(events);
     }
 
     /**
      * Récupère uniquement les événements actifs.
      *
-     * @return {@code ResponseEntity<List<EventResponseDTO>>} contenant la liste des événements actifs
-     *
+     * @param locale locale extraite de l'en-tête {@code Accept-Language}
      */
     @GetMapping("/active")
-    public ResponseEntity<List<EventResponseDTO>> getActiveEvents() {
-        List<EventResponseDTO> events = eventService.getActiveEvents();
+    public ResponseEntity<List<EventResponseDTO>> getActiveEvents(
+            @RequestHeader(value = "Accept-Language", defaultValue = "fr") String locale) {
+        List<EventResponseDTO> events = eventService.getActiveEvents(locale);
         return ResponseEntity.ok(events);
     }
 
     /**
      * Récupère uniquement les événements disponibles.
      *
-     * @return {@code ResponseEntity<List<EventResponseDTO>>} contenant la liste des événements disponibles
-     *
+     * @param locale locale extraite de l'en-tête {@code Accept-Language}
      */
     @GetMapping("/available")
-    public ResponseEntity<List<EventResponseDTO>> getAvailableEvents() {
-        List<EventResponseDTO> events = eventService.getAvailableEvents();
+    public ResponseEntity<List<EventResponseDTO>> getAvailableEvents(
+            @RequestHeader(value = "Accept-Language", defaultValue = "fr") String locale) {
+        List<EventResponseDTO> events = eventService.getAvailableEvents(locale);
         return ResponseEntity.ok(events);
     }
 
     /**
      * Récupère un événement par son identifiant.
      *
-     * @param id l'identifiant unique de l'événement
-     * @return {@code ResponseEntity<EventResponseDTO>} contenant les détails complets de l'événement
-     * @throws dev.jos.back.exceptions.event.EventNotFoundException si aucun événement
-     *                                                              ne correspond à cet identifiant
+     * @param id     l'identifiant unique de l'événement
+     * @param locale locale extraite de l'en-tête {@code Accept-Language}
      */
     @GetMapping("/{id}")
-    public ResponseEntity<EventResponseDTO> getEventById(@PathVariable Long id) {
-        EventResponseDTO event = eventService.getEventById(id);
+    public ResponseEntity<EventResponseDTO> getEventById(
+            @PathVariable Long id,
+            @RequestHeader(value = "Accept-Language", defaultValue = "fr") String locale) {
+        EventResponseDTO event = eventService.getEventById(id, locale);
         return ResponseEntity.ok(event);
     }
 
     /**
      * Récupère la liste des événements du même sport.
      *
-     * @param sport le nom du sport recherché
-     * @return {@code ResponseEntity<List<EventResponseDTO>>} contenant la liste des événements correspondant au sport
+     * @param sport  le nom du sport recherché
+     * @param locale locale extraite de l'en-tête {@code Accept-Language}
      */
     @GetMapping("/sport/{sport}")
-    public ResponseEntity<List<EventResponseDTO>> getEventsBySport(@PathVariable String sport) {
-        List<EventResponseDTO> events = eventService.getEventsBySport(sport);
+    public ResponseEntity<List<EventResponseDTO>> getEventsBySport(
+            @PathVariable String sport,
+            @RequestHeader(value = "Accept-Language", defaultValue = "fr") String locale) {
+        List<EventResponseDTO> events = eventService.getEventsBySport(sport, locale);
         return ResponseEntity.ok(events);
     }
 }

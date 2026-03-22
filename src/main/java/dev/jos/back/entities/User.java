@@ -37,6 +37,9 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @Column(length = 5, nullable = false)
+    private String locale = "fr";
+
     @CreationTimestamp
     private LocalDateTime createdDate;
     @UpdateTimestamp

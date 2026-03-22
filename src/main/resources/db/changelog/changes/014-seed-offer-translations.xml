@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <changeSet id="014-seed-offer-translations" author="jos">
+
+        <!-- Solo -->
+        <sql>
+            INSERT INTO offer_translations (offer_id, locale, name, description, features)
+            SELECT id, 'en', 'Solo',
+                'Perfect for experiencing your passion in total freedom.',
+                '["Access to all events","1 guaranteed seat","Mobile e-ticket","Access to common areas"]'
+            FROM offers WHERE name = 'Solo';
+        </sql>
+        <sql>
+            INSERT INTO offer_translations (offer_id, locale, name, description, features)
+            SELECT id, 'de', 'Solo',
+                'Perfekt, um Ihre Leidenschaft in völliger Freiheit zu erleben.',
+                '["Zugang zu allen Veranstaltungen","1 garantierter Sitzplatz","E-Ticket auf dem Handy","Zugang zu Gemeinschaftsbereichen"]'
+            FROM offers WHERE name = 'Solo';
+        </sql>
+        <sql>
+            INSERT INTO offer_translations (offer_id, locale, name, description, features)
+            SELECT id, 'es', 'Solo',
+                'Perfecto para vivir tu pasión con total libertad.',
+                '["Acceso a todos los eventos","1 asiento garantizado","E-entrada en móvil","Acceso a zonas comunes"]'
+            FROM offers WHERE name = 'Solo';
+        </sql>
+
+        <!-- Duo -->
+        <sql>
+            INSERT INTO offer_translations (offer_id, locale, name, description, features)
+            SELECT id, 'en', 'Duo',
+                'Share unique moments for two, side by side.',
+                '["Access to all events","2 guaranteed side-by-side seats","Mobile e-tickets","Access to common areas"]'
+            FROM offers WHERE name = 'Duo';
+        </sql>
+        <sql>
+            INSERT INTO offer_translations (offer_id, locale, name, description, features)
+            SELECT id, 'de', 'Duo',
+                'Teilen Sie einzigartige Momente zu zweit, Seite an Seite.',
+                '["Zugang zu allen Veranstaltungen","2 garantierte nebeneinander liegende Sitzplätze","E-Tickets auf dem Handy","Zugang zu Gemeinschaftsbereichen"]'
+            FROM offers WHERE name = 'Duo';
+        </sql>
+        <sql>
+            INSERT INTO offer_translations (offer_id, locale, name, description, features)
+            SELECT id, 'es', 'Duo',
+                'Comparte momentos únicos de dos, lado a lado.',
+                '["Acceso a todos los eventos","2 asientos garantizados juntos","E-entradas en móvil","Acceso a zonas comunes"]'
+            FROM offers WHERE name = 'Duo';
+        </sql>
+
+        <!-- Famille -->
+        <sql>
+            INSERT INTO offer_translations (offer_id, locale, name, description, features)
+            SELECT id, 'en', 'Family',
+                'Experience the Games as a family with grouped seats.',
+                '["Access to all events","4 guaranteed grouped seats","Mobile e-tickets","Access to common areas","Paris 2024 souvenir bag included"]'
+            FROM offers WHERE name = 'Famille';
+        </sql>
+        <sql>
+            INSERT INTO offer_translations (offer_id, locale, name, description, features)
+            SELECT id, 'de', 'Familie',
+                'Erleben Sie die Spiele als Familie mit zusammenliegenden Plätzen.',
+                '["Zugang zu allen Veranstaltungen","4 garantierte nebeneinander liegende Sitzplätze","E-Tickets auf dem Handy","Zugang zu Gemeinschaftsbereichen","Paris 2024 Souvenir-Tasche inklusive"]'
+            FROM offers WHERE name = 'Famille';
+        </sql>
+        <sql>
+            INSERT INTO offer_translations (offer_id, locale, name, description, features)
+            SELECT id, 'es', 'Familia',
+                'Vive los Juegos en familia con asientos agrupados.',
+                '["Acceso a todos los eventos","4 asientos agrupados garantizados","E-entradas en móvil","Acceso a zonas comunes","Bolsa de recuerdo París 2024 incluida"]'
+            FROM offers WHERE name = 'Famille';
+        </sql>
+
+    </changeSet>
+
+</databaseChangeLog>

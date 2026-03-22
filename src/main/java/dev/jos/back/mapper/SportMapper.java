@@ -11,6 +11,10 @@ import java.util.List;
 @Component
 public class SportMapper {
     public SportResponseDTO toDto(Sport sport) {
+        return toDto(sport, sport.getName(), sport.getDescription());
+    }
+
+    public SportResponseDTO toDto(Sport sport, String name, String description) {
         List<Event> events = sport.getEvents() != null ? sport.getEvents() : List.of();
 
         List<String> locations = events.stream()
@@ -21,8 +25,8 @@ public class SportMapper {
 
         return SportResponseDTO.builder()
                 .id(sport.getId())
-                .name(sport.getName())
-                .description(sport.getDescription())
+                .name(name)
+                .description(description)
                 .icon(sport.getIcon())
                 .phases(sport.getPhases())
                 .eventCount(events.size())

@@ -20,15 +20,19 @@ public class OfferMapper {
     }
 
     public OfferResponseDTO toResponseDTO(Offer entity) {
+        return toResponseDTO(entity, entity.getName(), entity.getDescription(), entity.getFeatures());
+    }
+
+    public OfferResponseDTO toResponseDTO(Offer entity, String name, String description, java.util.List<String> features) {
         return OfferResponseDTO.builder()
                 .id(entity.getId())
-                .name(entity.getName())
-                .description(entity.getDescription())
+                .name(name)
+                .description(description)
                 .price(entity.getPrice())
                 .numberOfTickets(entity.getNumberOfTickets())
                 .isActive(entity.getIsActive())
                 .displayOrder(entity.getDisplayOrder())
-                .features(entity.getFeatures())
+                .features(features)
                 .build();
     }
 }
