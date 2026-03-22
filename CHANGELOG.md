@@ -1,3 +1,10 @@
+## [0.9.1](https://github.com/jos34000/api-jo2024/compare/v0.9.0...v0.9.1) (2026-03-22)
+
+
+### Bug Fixes
+
+* **workflow:** Add docker variables ([87eb67e](https://github.com/jos34000/api-jo2024/commit/87eb67ecdb012f117c9384e1dc840a5257005722))
+
 # [0.9.0](https://github.com/jos34000/api-jo2024/compare/v0.8.0...v0.9.0) (2026-03-22)
 
 
