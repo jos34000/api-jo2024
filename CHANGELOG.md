@@ -1,3 +1,18 @@
+# [0.8.0](https://github.com/jos34000/api-jo2024/compare/v0.7.0...v0.8.0) (2026-03-22)
+
+
+### Bug Fixes
+
+* **events:** Translate descriptions of events ([244a2a8](https://github.com/jos34000/api-jo2024/commit/244a2a89eee5b9187a30a49ec47d39b7a3d7eb34))
+* **reservation:** Decrement available seats on checkout ([f614a20](https://github.com/jos34000/api-jo2024/commit/f614a208c3141373d67edc6a3eac798386982cc2))
+
+
+### Features
+
+* [DJ-107] - Add translation to persisted datas ([07303ca](https://github.com/jos34000/api-jo2024/commit/07303cabe2a36ac035dd8079e66ade7400694dd4))
+* **events:** add more events & translations ([acd8510](https://github.com/jos34000/api-jo2024/commit/acd85107b694b717285c2294e5bfcb7c4c14ee8e))
+* **tickets:** Translate mail & pdf contents ([a810504](https://github.com/jos34000/api-jo2024/commit/a810504bc8c4ddf2df6e6945c4dc70418ff28faf))
+
 # [0.7.0](https://github.com/jos34000/api-jo2024/compare/v0.6.0...v0.7.0) (2026-03-20)
 
 
