@@ -21,12 +21,12 @@ import java.util.Optional;
 public class HmacResetTokenStore implements ResetTokenStore {
 
     private final PasswordResetTokenRepository repository;
-    private final String secret;
+    private final SecretKeySpec signingKey;
 
     public HmacResetTokenStore(PasswordResetTokenRepository repository,
                                 @Value("${app.reset-token.secret}") String secret) {
         this.repository = repository;
-        this.secret = secret;
+        this.signingKey = new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256");
     }
 
     @Override
@@ -64,7 +64,7 @@ public class HmacResetTokenStore implements ResetTokenStore {
     private String hmac(String token) {
         try {
             Mac mac = Mac.getInstance("HmacSHA256");
-            mac.init(new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), "HmacSHA256"));
+            mac.init(signingKey);
             byte[] raw = mac.doFinal(token.getBytes(StandardCharsets.UTF_8));
             return HexFormat.of().formatHex(raw);
         } catch (Exception e) {
