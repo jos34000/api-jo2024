@@ -24,3 +24,7 @@ logging:
     dev:
       jos:
         back: INFO
+
+app:
+  reset-token:
+    secret: test-secret-key-for-unit-tests-only
