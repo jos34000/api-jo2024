@@ -3,7 +3,7 @@ package dev.jos.back.controller;
 import dev.jos.back.dto.cart.CartItemRequestDTO;
 import dev.jos.back.dto.cart.CartItemUpdateDTO;
 import dev.jos.back.dto.cart.CartResponseDTO;
-import dev.jos.back.service.CartService;
+import dev.jos.back.service.ICartService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,14 +22,14 @@ import org.springframework.web.bind.annotation.RestController;
  * Contrôleur REST pour la gestion du panier d'achat.
  * Fournit des endpoints pour consulter et modifier le panier de l'utilisateur authentifié.
  *
- * @see CartService
+ * @see ICartService
  */
 @RestController
 @RequestMapping("/api/cart")
 @RequiredArgsConstructor
 public class CartController {
 
-    private final CartService cartService;
+    private final ICartService cartService;
 
     /**
      * Récupère le panier actif de l'utilisateur authentifié avec l'ensemble de ses articles.
