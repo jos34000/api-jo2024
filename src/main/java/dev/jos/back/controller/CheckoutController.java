@@ -8,7 +8,7 @@ import dev.jos.back.exceptions.payment.CartAlreadyConvertedException;
 import dev.jos.back.exceptions.payment.CartEmptyException;
 import dev.jos.back.exceptions.payment.PaymentDeclinedException;
 import dev.jos.back.exceptions.payment.TransactionNotFoundException;
-import dev.jos.back.service.TransactionService;
+import dev.jos.back.service.ICheckoutService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -26,14 +26,14 @@ import java.util.List;
  * d'une transaction et de la liste des billets de l'utilisateur connecté.
  * L'ensemble des endpoints requiert une authentification valide.
  *
- * @see TransactionService
+ * @see ICheckoutService
  */
 @RestController
 @RequestMapping("/api/checkout")
 @RequiredArgsConstructor
 public class CheckoutController {
 
-    private final TransactionService transactionService;
+    private final ICheckoutService transactionService;
 
     /**
      * Traite le paiement du panier actif de l'utilisateur authentifié.
