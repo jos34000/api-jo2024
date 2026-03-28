@@ -28,8 +28,10 @@ logs/
 .env.dev
 .env.test
 .env
+application-secret-*.yml
 
 http
 
 TODO.md
 RESPONSABILITIES.md
+CLAUDE.md
