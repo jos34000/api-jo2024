@@ -12,6 +12,8 @@ import java.util.Optional;
 public interface PasswordResetTokenRepository extends JpaRepository<PasswordResetToken, Long> {
     Optional<PasswordResetToken> findByExpiryAfter(LocalDateTime date);
 
+    Optional<PasswordResetToken> findByHashedToken(String hashedToken);
+
     @Modifying
     @Query("DELETE FROM PasswordResetToken t WHERE t.expiry < :threshold")
     void deleteExpired(@Param("threshold") LocalDateTime threshold);
