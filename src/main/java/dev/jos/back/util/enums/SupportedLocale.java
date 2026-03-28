@@ -6,7 +6,7 @@ public enum SupportedLocale {
     FR("fr", Locale.FRENCH),
     EN("en", Locale.ENGLISH),
     DE("de", Locale.GERMAN),
-    ES("es", new Locale("es"));
+    ES("es", Locale.of("es"));
 
     public final String code;
     public final Locale javaLocale;
@@ -17,6 +17,11 @@ public enum SupportedLocale {
         this.javaLocale = javaLocale;
     }
 
+    /**
+     * Returns the SupportedLocale matching the first language tag in {@code raw}.
+     * Splits on {@code ,}, {@code ;}, and {@code -} and matches the first token.
+     * Returns {@link #DEFAULT} for null, blank, or unrecognised input.
+     */
     public static SupportedLocale from(String raw) {
         if (raw == null || raw.isBlank()) return DEFAULT;
         String tag = raw.split("[,;\\-]")[0].trim().toLowerCase();

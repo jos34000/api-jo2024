@@ -31,7 +31,7 @@ class SupportedLocaleTest {
     }
 
     @Test
-    void from_parsesAcceptLanguageHeader() {
+    void from_takesFirstTagFromMultiValueString() {
         assertThat(SupportedLocale.from("fr,en;q=0.9")).isEqualTo(SupportedLocale.FR);
         assertThat(SupportedLocale.from("en;q=0.8,de;q=0.7")).isEqualTo(SupportedLocale.EN);
     }
