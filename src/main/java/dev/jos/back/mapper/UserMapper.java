@@ -26,6 +26,7 @@ public class UserMapper {
                 .mfaEnabled(user.isMfaEnabled())
                 .createdDate(user.getCreatedDate())
                 .locale(user.getLocale())
+                .role(user.getRole())
                 .build();
     }
 }

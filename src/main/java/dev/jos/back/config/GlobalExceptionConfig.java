@@ -19,6 +19,7 @@ import dev.jos.back.exceptions.twofactor.TwoFactorCodeNotFoundException;
 import dev.jos.back.exceptions.twofactor.TwoFactorMaxAttemptsException;
 import dev.jos.back.exceptions.user.InvalidPasswordException;
 import dev.jos.back.exceptions.user.UserAlreadyExistsException;
+import dev.jos.back.exceptions.user.UserNotFoundException;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtException;
 import lombok.extern.slf4j.Slf4j;
@@ -60,7 +61,8 @@ public class GlobalExceptionConfig {
             Map.entry(PaymentDeclinedException.class, HttpStatus.PAYMENT_REQUIRED),
             Map.entry(CartAlreadyConvertedException.class, HttpStatus.CONFLICT),
             Map.entry(CartEmptyException.class, HttpStatus.BAD_REQUEST),
-            Map.entry(TransactionNotFoundException.class, HttpStatus.NOT_FOUND)
+            Map.entry(TransactionNotFoundException.class, HttpStatus.NOT_FOUND),
+            Map.entry(UserNotFoundException.class, HttpStatus.NOT_FOUND)
     );
 
     @ExceptionHandler(Exception.class)

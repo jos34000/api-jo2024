@@ -8,7 +8,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,7 +32,6 @@ public class EventController {
      * Réservé aux administrateurs.
      */
     @PostMapping("/bulk")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<BulkEventResponseDTO> createEventsBulk(
             @Valid @RequestBody List<CreateEventDTO> events) {
 
@@ -52,7 +50,6 @@ public class EventController {
      * Réservé aux administrateurs.
      */
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<EventResponseDTO> createEvent(
             @Valid @RequestBody CreateEventDTO event) {
 
