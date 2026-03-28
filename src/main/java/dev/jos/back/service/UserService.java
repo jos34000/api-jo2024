@@ -2,32 +2,28 @@ package dev.jos.back.service;
 
 import dev.jos.back.dto.user.CreateUserDTO;
 import dev.jos.back.dto.user.UserResponseDTO;
-import dev.jos.back.entities.PasswordResetToken;
 import dev.jos.back.entities.User;
 import dev.jos.back.exceptions.user.InvalidPasswordException;
 import dev.jos.back.exceptions.user.UserAlreadyExistsException;
 import dev.jos.back.mapper.UserMapper;
-import dev.jos.back.repository.PasswordResetTokenRepository;
 import dev.jos.back.repository.UserRepository;
+import dev.jos.back.service.ResetTokenStore;
 import dev.jos.back.util.enums.Role;
 import dev.jos.back.util.enums.TokenValidationResult;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository userRepository;
-    private final PasswordResetTokenRepository passwordResetTokenRepository;
+    private final ResetTokenStore resetTokenStore;
     private final PasswordEncoder passwordEncoder;
     private final EmailService emailService;
     private final UserMapper userMapper;
@@ -86,11 +82,9 @@ public class UserService {
         if (user == null) return;
 
         String token = UUID.randomUUID().toString();
-        String hashedToken = BCrypt.hashpw(token, BCrypt.gensalt());
         LocalDateTime expiry = LocalDateTime.now().plusHours(1);
 
-        PasswordResetToken resetToken = new PasswordResetToken(user, hashedToken, expiry);
-        passwordResetTokenRepository.save(resetToken);
+        resetTokenStore.store(user, token, expiry);
 
         String resetLink = "http://localhost:3000/reset-password?token=" + token;
         emailService.sendPasswordResetEmail(user.getEmail(), user.getFirstName(), resetLink, user.getLocale());
@@ -105,19 +99,6 @@ public class UserService {
     }
 
     public TokenValidationResult validateResetToken(String token) {
-        List<PasswordResetToken> allTokens = passwordResetTokenRepository.findAll();
-        Optional<PasswordResetToken> matchingToken = allTokens.stream()
-                .filter(t -> BCrypt.checkpw(token, t.getHashedToken()))
-                .findFirst();
-
-        if (matchingToken.isEmpty()) {
-            return TokenValidationResult.NOT_FOUND;
-        }
-
-        if (matchingToken.get().getExpiry().isBefore(LocalDateTime.now())) {
-            return TokenValidationResult.EXPIRED;
-        }
-
-        return TokenValidationResult.VALID;
+        return resetTokenStore.validate(token);
     }
 }
