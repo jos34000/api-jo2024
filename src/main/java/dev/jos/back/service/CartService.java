@@ -13,8 +13,6 @@ import dev.jos.back.exceptions.user.UserNotFoundException;
 import dev.jos.back.mapper.CartMapper;
 import dev.jos.back.repository.*;
 import dev.jos.back.util.enums.CartStatus;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,7 +22,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class CartService {
+public class CartService implements ICartService {
 
     private final CartRepository cartRepository;
     private final CartItemsRepository cartItemsRepository;
@@ -32,9 +30,6 @@ public class CartService {
     private final EventRepository eventRepository;
     private final OfferRepository offerRepository;
     private final CartMapper cartMapper;
-
-    @PersistenceContext
-    private EntityManager entityManager;
 
     @Transactional
     public CartResponseDTO getActiveCart(String email) {
@@ -85,8 +80,9 @@ public class CartService {
             cartItemsRepository.save(item);
         }
 
-        entityManager.refresh(cart);
-        return cartMapper.toCartResponseDTO(cart);
+        Cart refreshed = cartRepository.findByIdWithItems(cart.getId())
+                .orElseThrow(() -> new CartNotFoundException("Panier introuvable"));
+        return cartMapper.toCartResponseDTO(refreshed);
     }
 
     @Transactional
@@ -103,9 +99,9 @@ public class CartService {
 
         Cart cart = item.getCart();
         cartItemsRepository.delete(item);
-        entityManager.flush();
-        entityManager.refresh(cart);
-        return cartMapper.toCartResponseDTO(cart);
+        Cart refreshed = cartRepository.findByIdWithItems(cart.getId())
+                .orElseThrow(() -> new CartNotFoundException("Panier introuvable"));
+        return cartMapper.toCartResponseDTO(refreshed);
     }
 
     @Transactional
@@ -129,9 +125,9 @@ public class CartService {
             cartItemsRepository.save(item);
         }
 
-        entityManager.flush();
-        entityManager.refresh(cart);
-        return cartMapper.toCartResponseDTO(cart);
+        Cart refreshed = cartRepository.findByIdWithItems(cart.getId())
+                .orElseThrow(() -> new CartNotFoundException("Panier introuvable"));
+        return cartMapper.toCartResponseDTO(refreshed);
     }
 
     @Transactional
@@ -143,9 +139,9 @@ public class CartService {
                 .orElseThrow(() -> new CartNotFoundException("Aucun panier actif"));
 
         cartItemsRepository.deleteAll(cart.getCartItems());
-        entityManager.flush();
-        entityManager.refresh(cart);
-        return cartMapper.toCartResponseDTO(cart);
+        Cart refreshed = cartRepository.findByIdWithItems(cart.getId())
+                .orElseThrow(() -> new CartNotFoundException("Panier introuvable"));
+        return cartMapper.toCartResponseDTO(refreshed);
     }
 
     private Cart getOrCreateActiveCart(User user) {
