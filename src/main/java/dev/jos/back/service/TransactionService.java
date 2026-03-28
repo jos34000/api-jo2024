@@ -16,6 +16,7 @@ import dev.jos.back.repository.EventRepository;
 import dev.jos.back.repository.TicketRepository;
 import dev.jos.back.repository.TransactionRepository;
 import dev.jos.back.repository.UserRepository;
+import dev.jos.back.util.PaymentResult;
 import dev.jos.back.util.enums.CartStatus;
 import dev.jos.back.util.enums.TransactionStatus;
 import lombok.RequiredArgsConstructor;
@@ -32,14 +33,14 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class TransactionService {
+public class TransactionService implements ICheckoutService {
 
     private final UserRepository userRepository;
     private final CartRepository cartRepository;
     private final TransactionRepository transactionRepository;
     private final TicketRepository ticketRepository;
     private final EventRepository eventRepository;
-    private final PaymentMockService paymentMockService;
+    private final PaymentGateway paymentGateway;
     private final PdfTicketService pdfTicketService;
     private final EmailService emailService;
     private final TicketMapper ticketMapper;
@@ -69,7 +70,7 @@ public class TransactionService {
                 .map(item -> BigDecimal.valueOf(item.getUnitPrice() * item.getQuantity()))
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-        PaymentMockService.PaymentResult result = paymentMockService.processPayment(dto.cardNumber());
+        PaymentResult result = paymentGateway.processPayment(dto.cardNumber());
 
         if (!result.succeeded()) {
             throw new PaymentDeclinedException(result.declineReason());
