@@ -40,4 +40,13 @@ public class Cart {
 
     @OneToOne(mappedBy = "cart")
     private Transaction transaction;
+
+    public boolean expireIfNeeded() {
+        if (expiresAt == null) return false;
+        if (LocalDateTime.now().isAfter(expiresAt)) {
+            this.status = CartStatus.ABANDONED;
+            return true;
+        }
+        return false;
+    }
 }
