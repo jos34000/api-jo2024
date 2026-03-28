@@ -52,8 +52,7 @@ public class TransactionService {
         Cart cart = cartRepository.findByUserAndStatus(user, CartStatus.ACTIVE)
                 .orElseThrow(() -> new CartNotFoundException("Aucun panier actif"));
 
-        if (LocalDateTime.now().isAfter(cart.getExpiresAt())) {
-            cart.setStatus(CartStatus.ABANDONED);
+        if (cart.expireIfNeeded()) {
             cartRepository.save(cart);
             throw new CartNotFoundException("Le panier a expiré");
         }
