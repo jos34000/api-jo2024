@@ -1,25 +1,20 @@
 package dev.jos.back.controller;
 
-import dev.jos.back.dto.user.ChangePasswordRequestDTO;
-import dev.jos.back.dto.user.ForgetPasswordRequestDTO;
-import dev.jos.back.dto.user.UpdateLocaleRequestDTO;
-import dev.jos.back.dto.user.UpdateUserRequestDTO;
-import dev.jos.back.dto.user.UpdateUserRoleDTO;
-import dev.jos.back.dto.user.UserResponseDTO;
+import dev.jos.back.dto.user.*;
 import dev.jos.back.exceptions.user.InvalidPasswordException;
 import dev.jos.back.exceptions.user.UserAlreadyExistsException;
 import dev.jos.back.exceptions.user.UserNotFoundException;
 import dev.jos.back.service.UserService;
-import dev.jos.back.util.enums.Role;
 import dev.jos.back.util.enums.TokenValidationResult;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Valid;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Contrôleur REST pour la gestion des utilisateurs.

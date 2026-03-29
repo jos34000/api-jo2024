@@ -74,13 +74,12 @@ public class CheckoutController {
     }
 
     /**
-     * Récupère le détail d'une transaction par son identifiant pour la page de confirmation.
-     * L'utilisateur ne peut accéder qu'à ses propres transactions.
+     * Récupère les billets déjà achetés
+     * L'utilisateur ne peut accéder qu'à ses propres billets.
      *
      * @param authentication l'objet d'authentification Spring Security injecté automatiquement
      * @param transactionId  l'identifiant de la transaction à récupérer
-     * @return {@code ResponseEntity<TransactionResponseDTO>} contenant la transaction et ses billets (200 OK)
-     * @throws TransactionNotFoundException si la transaction est introuvable ou n'appartient pas à l'utilisateur
+     * @return {@code ResponseEntity<byte[]>} contenant les billets (200 OK)
      */
     @GetMapping("/{transactionId}/pdf")
     public ResponseEntity<byte[]> downloadTicketsPdf(
@@ -96,6 +95,15 @@ public class CheckoutController {
                 .body(pdf);
     }
 
+    /**
+     * Récupère le détail d'une transaction par son identifiant pour la page de confirmation.
+     * L'utilisateur ne peut accéder qu'à ses propres transactions.
+     *
+     * @param authentication l'objet d'authentification Spring Security injecté automatiquement
+     * @param transactionId  l'identifiant de la transaction à récupérer
+     * @return {@code ResponseEntity<TransactionResponseDTO>} contenant la transaction et ses billets (200 OK)
+     * @throws TransactionNotFoundException si la transaction est introuvable ou n'appartient pas à l'utilisateur
+     */
     @GetMapping("/{transactionId}")
     public ResponseEntity<TransactionResponseDTO> getTransaction(
             Authentication authentication,

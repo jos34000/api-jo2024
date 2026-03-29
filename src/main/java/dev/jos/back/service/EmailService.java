@@ -15,11 +15,7 @@ import org.thymeleaf.context.Context;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 
 import java.time.format.DateTimeFormatter;
-import java.util.Base64;
-import java.util.EnumMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 
 @Slf4j
 @Service
@@ -66,10 +62,6 @@ public class EmailService {
     @Value("${resend.from}")
     private String from;
 
-    // -------------------------------------------------------------------------
-    // Internal helpers
-    // -------------------------------------------------------------------------
-
     private void sendEmail(String to, String subject, String html) {
         CreateEmailOptions params = CreateEmailOptions.builder()
                 .from(from)
@@ -103,13 +95,6 @@ public class EmailService {
         }
     }
 
-    // -------------------------------------------------------------------------
-    // Public API
-    // -------------------------------------------------------------------------
-
-    /**
-     * Sends a password reset email in the user's locale.
-     */
     public void sendPasswordResetEmail(String to, String name, String resetLink, String locale) {
         SupportedLocale sl = SupportedLocale.from(locale);
         Context context = new Context(sl.javaLocale);
@@ -118,9 +103,6 @@ public class EmailService {
         sendEmail(to, RESET_SUBJECTS.get(sl), templateEngine.process("email/forget-password", context));
     }
 
-    /**
-     * Sends a 2FA OTP email in the user's locale.
-     */
     public void sendTwoFactorEmail(String email, String name, String code, int expirationMinutes, String locale) {
         SupportedLocale sl = SupportedLocale.from(locale);
         Context context = new Context(sl.javaLocale);
@@ -133,10 +115,7 @@ public class EmailService {
     public void sendTicketsEmail(String to, String name, TransactionResponseDTO transaction, byte[] pdfBytes) {
         sendTicketsEmail(to, name, transaction, pdfBytes, "fr");
     }
-
-    /**
-     * Sends a ticket confirmation email with a PDF attachment in the user's locale.
-     */
+    
     public void sendTicketsEmail(String to, String name, TransactionResponseDTO transaction,
                                  byte[] pdfBytes, String locale) {
         SupportedLocale sl = SupportedLocale.from(locale);
