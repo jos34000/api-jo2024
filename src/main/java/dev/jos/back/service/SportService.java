@@ -2,6 +2,7 @@ package dev.jos.back.service;
 
 import dev.jos.back.dto.sport.CreateSportDTO;
 import dev.jos.back.dto.sport.SportResponseDTO;
+import dev.jos.back.dto.sport.UpdateSportDTO;
 import dev.jos.back.entities.Sport;
 import dev.jos.back.entities.SportTranslation;
 import dev.jos.back.exceptions.sport.SportNotFoundException;
@@ -91,5 +92,25 @@ public class SportService {
         return savedSports.stream()
                 .map(sportMapper::toDto)
                 .toList();
+    }
+
+    @Transactional
+    public SportResponseDTO updateSport(Long id, UpdateSportDTO dto) {
+        Sport sport = sportRepository.findById(id)
+                .orElseThrow(() -> new SportNotFoundException("Sport non trouvé"));
+        if (dto.name() != null) sport.setName(dto.name());
+        if (dto.description() != null) sport.setDescription(dto.description());
+        if (dto.icon() != null) sport.setIcon(dto.icon());
+        if (dto.phases() != null) sport.setPhases(dto.phases());
+        if (dto.places() != null) sport.setPlaces(dto.places());
+        return sportMapper.toDto(sportRepository.saveAndFlush(sport));
+    }
+
+    @Transactional
+    public void deleteSport(Long id) {
+        if (!sportRepository.existsById(id)) {
+            throw new SportNotFoundException("Sport non trouvé");
+        }
+        sportRepository.deleteById(id);
     }
 }
