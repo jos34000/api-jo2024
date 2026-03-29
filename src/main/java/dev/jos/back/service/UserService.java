@@ -5,6 +5,7 @@ import dev.jos.back.dto.user.UserResponseDTO;
 import dev.jos.back.entities.User;
 import dev.jos.back.exceptions.user.InvalidPasswordException;
 import dev.jos.back.exceptions.user.UserAlreadyExistsException;
+import dev.jos.back.exceptions.user.UserNotFoundException;
 import dev.jos.back.mapper.UserMapper;
 import dev.jos.back.repository.UserRepository;
 import dev.jos.back.service.ResetTokenStore;
@@ -17,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -100,5 +102,27 @@ public class UserService {
 
     public TokenValidationResult validateResetToken(String token) {
         return resetTokenStore.validate(token);
+    }
+
+    public List<UserResponseDTO> getAllUsers() {
+        return userRepository.findAll().stream()
+                .map(userMapper::toResponseDTO)
+                .toList();
+    }
+
+    @Transactional
+    public void deleteUser(Long id) {
+        if (!userRepository.existsById(id)) {
+            throw new UserNotFoundException("Utilisateur non trouvé");
+        }
+        userRepository.deleteById(id);
+    }
+
+    @Transactional
+    public UserResponseDTO updateUserRole(Long id, Role role) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new UserNotFoundException("Utilisateur non trouvé"));
+        user.setRole(role);
+        return userMapper.toResponseDTO(userRepository.saveAndFlush(user));
     }
 }
