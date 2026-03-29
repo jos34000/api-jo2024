@@ -23,9 +23,6 @@ public class SecurityConfig {
 
     String[] publicEndpoints = {
             "/api/auth/**",
-            "/api/events/**",
-            "/api/sport/**",
-            "/api/offer/**",
             "/api/users/forget-password",
             "/api/users/validate-reset-token",
             "/api/2fa/send",
@@ -45,6 +42,7 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(publicEndpoints).permitAll()
+                        .requestMatchers(HttpMethod.GET,    "/api/events/**", "/api/offer/**", "/api/sport/**").permitAll()
                         .requestMatchers(HttpMethod.POST,   "/api/events/**", "/api/offer/**", "/api/sport/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT,    "/api/events/**", "/api/offer/**", "/api/sport/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/api/events/**", "/api/offer/**", "/api/sport/**").hasRole("ADMIN")

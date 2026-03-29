@@ -11,7 +11,7 @@ import dev.jos.back.repository.UserRepository;
 import dev.jos.back.service.ResetTokenStore;
 import dev.jos.back.util.enums.Role;
 import dev.jos.back.util.enums.TokenValidationResult;
-import jakarta.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
