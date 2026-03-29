@@ -3,6 +3,7 @@ package dev.jos.back.controller;
 import dev.jos.back.dto.offer.BulkOfferResponseDTO;
 import dev.jos.back.dto.offer.CreateOfferDTO;
 import dev.jos.back.dto.offer.OfferResponseDTO;
+import dev.jos.back.dto.offer.UpdateOfferDTO;
 import dev.jos.back.service.OfferService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -78,5 +79,27 @@ public class OfferController {
     public ResponseEntity<List<OfferResponseDTO>> getAllOfferTypes(
             @RequestHeader(value = "Accept-Language", defaultValue = "fr") String locale) {
         return ResponseEntity.ok(offerService.getAllOfferTypes(locale));
+    }
+
+    /**
+     * Met à jour une offre existante.
+     * Réservé aux administrateurs.
+     */
+    @PutMapping("/{id}")
+    public ResponseEntity<OfferResponseDTO> updateOffer(
+            @PathVariable Long id,
+            @Valid @RequestBody UpdateOfferDTO dto) {
+        OfferResponseDTO updated = offerService.updateOffer(id, dto);
+        return ResponseEntity.ok(updated);
+    }
+
+    /**
+     * Supprime une offre par son identifiant.
+     * Réservé aux administrateurs.
+     */
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteOffer(@PathVariable Long id) {
+        offerService.deleteOffer(id);
+        return ResponseEntity.noContent().build();
     }
 }

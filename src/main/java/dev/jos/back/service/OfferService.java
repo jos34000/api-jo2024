@@ -6,6 +6,8 @@ import dev.jos.back.dto.offer.CreateOfferDTO;
 import dev.jos.back.dto.offer.OfferResponseDTO;
 import dev.jos.back.entities.Offer;
 import dev.jos.back.entities.OfferTranslation;
+import dev.jos.back.dto.offer.UpdateOfferDTO;
+import dev.jos.back.exceptions.offertype.OfferNotFoundException;
 import dev.jos.back.exceptions.offertype.OfferTypeAlreadyExistsException;
 import dev.jos.back.mapper.OfferMapper;
 import dev.jos.back.repository.OfferRepository;
@@ -14,6 +16,7 @@ import dev.jos.back.util.LocaleResolver;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -76,5 +79,27 @@ public class OfferService {
         dtoRequest.forEach(dto -> offersToSave.add(mapper.toEntity(dto)));
         List<Offer> savedOfferTypes = repository.saveAll(offersToSave);
         return savedOfferTypes.stream().map(mapper::toResponseDTO).toList();
+    }
+
+    @Transactional
+    public OfferResponseDTO updateOffer(Long id, UpdateOfferDTO dto) {
+        Offer offer = repository.findById(id)
+                .orElseThrow(() -> new OfferNotFoundException("Offre non trouvée"));
+        if (dto.name() != null) offer.setName(dto.name());
+        if (dto.description() != null) offer.setDescription(dto.description());
+        if (dto.price() != null) offer.setPrice(dto.price());
+        if (dto.numberOfTickets() != null) offer.setNumberOfTickets(dto.numberOfTickets());
+        if (dto.isActive() != null) offer.setIsActive(dto.isActive());
+        if (dto.displayOrder() != null) offer.setDisplayOrder(dto.displayOrder());
+        if (dto.features() != null) offer.setFeatures(dto.features());
+        return mapper.toResponseDTO(repository.saveAndFlush(offer));
+    }
+
+    @Transactional
+    public void deleteOffer(Long id) {
+        if (!repository.existsById(id)) {
+            throw new OfferNotFoundException("Offre non trouvée");
+        }
+        repository.deleteById(id);
     }
 }
