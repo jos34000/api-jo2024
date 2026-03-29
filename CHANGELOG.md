@@ -1,3 +1,31 @@
+# [0.10.0](https://github.com/jos34000/api-jo2024/compare/v0.9.1...v0.10.0) (2026-03-29)
+
+
+### Bug Fixes
+
+* **locale:** use Locale.of() for Java 21, clarify from() contract in test ([a731022](https://github.com/jos34000/api-jo2024/commit/a731022785384920b9c4daa269d75e44bea38069))
+* **security:** replace wildcards with per-method matchers, fix Transactional import in UserService ([97f5d8d](https://github.com/jos34000/api-jo2024/commit/97f5d8d3fb2418f0732903875661f0c906dce561))
+
+
+### Features
+
+* **admin:** Add admin actions ([98ec5b6](https://github.com/jos34000/api-jo2024/commit/98ec5b6297f6f0cabbe6bffb35dc809ef6ad2d5d))
+* **cart:** add expireIfNeeded() domain method to Cart entity ([4dc68cb](https://github.com/jos34000/api-jo2024/commit/4dc68cbb44e2bf23dd48ba5c821fe6f08808f1c1))
+* **cart:** add ICartService interface ([43c5a51](https://github.com/jos34000/api-jo2024/commit/43c5a5181b2814a4ede7562b964d42170ec09c54))
+* **checkout:** add ICheckoutService interface ([3c89dc6](https://github.com/jos34000/api-jo2024/commit/3c89dc66f3fcf9c1888103390d06e134e8efe73a))
+* **db:** add used column and index to password_reset_token ([7c9d0ea](https://github.com/jos34000/api-jo2024/commit/7c9d0eaf28e2e0f53d5ef5e2cac068817d3a166d))
+* **dto:** add Update DTOs for event, offer, sport, user role ([af82437](https://github.com/jos34000/api-jo2024/commit/af82437b996ae435a3bfe82bf7190245b29e9006))
+* **event:** add update and delete admin endpoints ([c7981d5](https://github.com/jos34000/api-jo2024/commit/c7981d50cb07accceaea4810156dd20300d5896d))
+* **locale:** add SupportedLocale enum with from() factory ([9a65d6a](https://github.com/jos34000/api-jo2024/commit/9a65d6ad0c42b841ae794ec5b8dba7d7b98ca983))
+* **offer:** add update and delete admin endpoints ([0edcc17](https://github.com/jos34000/api-jo2024/commit/0edcc17523efd76617d5249cca5ae401b9e96e20))
+* **payment:** add PaymentResult record and PaymentGateway interface ([0423264](https://github.com/jos34000/api-jo2024/commit/042326445bc3844afcb4187f296cd7b8df93398a))
+* **payment:** implement MockPaymentGateway wrapping PaymentMockService ([430adf3](https://github.com/jos34000/api-jo2024/commit/430adf3de3c52e5790173ab73788f6c58bdcd5c1))
+* **sport:** add update and delete admin endpoints ([b2d41c2](https://github.com/jos34000/api-jo2024/commit/b2d41c2e1cc596fff99c6081e258e9bcf3b9d3e8))
+* **token:** add ResetTokenStore interface and HmacResetTokenStore ([f732e7e](https://github.com/jos34000/api-jo2024/commit/f732e7e2266f0b8e3bd586f8fe20c4d2f6c272c6))
+* **token:** add used field to PasswordResetToken, add findByHashedToken query ([d6b6f58](https://github.com/jos34000/api-jo2024/commit/d6b6f58e60cfdf70538167a9b17167eb5fdc5139))
+* **user:** add admin endpoints — list all, delete, update role ([b8e59f2](https://github.com/jos34000/api-jo2024/commit/b8e59f210bb435379427811644696168b8215a8b))
+* **user:** expose id in UserResponseDTO ([7c8dced](https://github.com/jos34000/api-jo2024/commit/7c8dced186d9753d198cc6be99927ca1aa5fd2d8))
+
 ## [0.9.1](https://github.com/jos34000/api-jo2024/compare/v0.9.0...v0.9.1) (2026-03-22)
 
 
