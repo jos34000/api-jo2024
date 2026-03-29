@@ -3,12 +3,12 @@ package dev.jos.back.controller;
 import dev.jos.back.dto.event.BulkEventResponseDTO;
 import dev.jos.back.dto.event.CreateEventDTO;
 import dev.jos.back.dto.event.EventResponseDTO;
+import dev.jos.back.dto.event.UpdateEventDTO;
 import dev.jos.back.service.EventService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,7 +33,6 @@ public class EventController {
      * Réservé aux administrateurs.
      */
     @PostMapping("/bulk")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<BulkEventResponseDTO> createEventsBulk(
             @Valid @RequestBody List<CreateEventDTO> events) {
 
@@ -52,7 +51,6 @@ public class EventController {
      * Réservé aux administrateurs.
      */
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<EventResponseDTO> createEvent(
             @Valid @RequestBody CreateEventDTO event) {
 
@@ -122,5 +120,27 @@ public class EventController {
             @RequestHeader(value = "Accept-Language", defaultValue = "fr") String locale) {
         List<EventResponseDTO> events = eventService.getEventsBySport(sport, locale);
         return ResponseEntity.ok(events);
+    }
+
+    /**
+     * Met à jour un événement existant.
+     * Réservé aux administrateurs.
+     */
+    @PutMapping("/{id}")
+    public ResponseEntity<EventResponseDTO> updateEvent(
+            @PathVariable Long id,
+            @Valid @RequestBody UpdateEventDTO dto) {
+        EventResponseDTO updated = eventService.updateEvent(id, dto);
+        return ResponseEntity.ok(updated);
+    }
+
+    /**
+     * Supprime un événement par son identifiant.
+     * Réservé aux administrateurs.
+     */
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteEvent(@PathVariable Long id) {
+        eventService.deleteEvent(id);
+        return ResponseEntity.noContent().build();
     }
 }

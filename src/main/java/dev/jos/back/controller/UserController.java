@@ -1,10 +1,6 @@
 package dev.jos.back.controller;
 
-import dev.jos.back.dto.user.ChangePasswordRequestDTO;
-import dev.jos.back.dto.user.ForgetPasswordRequestDTO;
-import dev.jos.back.dto.user.UpdateLocaleRequestDTO;
-import dev.jos.back.dto.user.UpdateUserRequestDTO;
-import dev.jos.back.dto.user.UserResponseDTO;
+import dev.jos.back.dto.user.*;
 import dev.jos.back.exceptions.user.InvalidPasswordException;
 import dev.jos.back.exceptions.user.UserAlreadyExistsException;
 import dev.jos.back.exceptions.user.UserNotFoundException;
@@ -17,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Contrôleur REST pour la gestion des utilisateurs.
@@ -157,5 +155,47 @@ public class UserController {
                                              @Valid @RequestBody UpdateLocaleRequestDTO request) {
         userService.updateLocale(auth.getName(), request.locale());
         return ResponseEntity.noContent().build();
+    }
+
+    /**
+     * Récupère la liste de tous les utilisateurs.
+     * Réservé aux administrateurs.
+     *
+     * @return {@code ResponseEntity<List<UserResponseDTO>>} contenant tous les utilisateurs
+     */
+    @GetMapping("/all")
+    public ResponseEntity<List<UserResponseDTO>> getAllUsers() {
+        return ResponseEntity.ok(userService.getAllUsers());
+    }
+
+    /**
+     * Supprime un utilisateur par son identifiant.
+     * Réservé aux administrateurs.
+     *
+     * @param id l'identifiant de l'utilisateur à supprimer
+     * @return {@code ResponseEntity<Void>} vide (204 No Content) en cas de succès
+     * @throws dev.jos.back.exceptions.user.UserNotFoundException si l'utilisateur n'existe pas
+     */
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    /**
+     * Modifie le rôle d'un utilisateur.
+     * Réservé aux administrateurs.
+     *
+     * @param id      l'identifiant de l'utilisateur
+     * @param request le nouveau rôle à attribuer
+     * @return {@code ResponseEntity<UserResponseDTO>} contenant l'utilisateur mis à jour
+     * @throws dev.jos.back.exceptions.user.UserNotFoundException si l'utilisateur n'existe pas
+     */
+    @PatchMapping("/{id}/role")
+    public ResponseEntity<UserResponseDTO> updateUserRole(
+            @PathVariable Long id,
+            @Valid @RequestBody UpdateUserRoleDTO request) {
+        UserResponseDTO updated = userService.updateUserRole(id, request.role());
+        return ResponseEntity.ok(updated);
     }
 }

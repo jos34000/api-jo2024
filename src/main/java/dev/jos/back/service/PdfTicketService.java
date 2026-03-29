@@ -14,6 +14,7 @@ import com.lowagie.text.pdf.PdfWriter;
 import dev.jos.back.dto.payment.TicketResponseDTO;
 import dev.jos.back.dto.payment.TransactionResponseDTO;
 import dev.jos.back.util.enums.Phases;
+import dev.jos.back.util.enums.SupportedLocale;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.time.format.DateTimeFormatter;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -53,60 +55,63 @@ public class PdfTicketService {
     private static final Font FONT_REF_VALUE = new Font(Font.HELVETICA, 8f, Font.BOLD, DARK);
     private static final Font FONT_FOOTER = new Font(Font.HELVETICA, 7f, Font.NORMAL, MID_GRAY);
 
-    private static final Map<String, PdfLabels> LABELS = Map.of(
+    private static final EnumMap<SupportedLocale, PdfLabels> LABELS;
 
-            "fr", new PdfLabels(
-                    "Jeux Olympiques · Billet officiel",
-                    "BILLET", "ÉPREUVE", "CATÉGORIE", "PLACES INCLUSES", "PHASE",
-                    "CODE-BARRE", "INSTRUCTIONS",
-                    "Présentez ce QR code à l'entrée du stade.\nValable pour la date indiquée uniquement.",
-                    "Référence de paiement", "Montant du billet",
-                    "© Paris 2024 · Comité d'Organisation des Jeux Olympiques",
-                    "Ce billet est personnel et non cessible.",
-                    DateTimeFormatter.ofPattern("EEEE d MMMM yyyy 'à' HH:mm", Locale.FRENCH),
-                    Locale.FRENCH,
-                    phaseMapFr()
-            ),
+    static {
+        LABELS = new EnumMap<>(SupportedLocale.class);
 
-            "en", new PdfLabels(
-                    "Olympic Games · Official Ticket",
-                    "TICKET", "EVENT", "CATEGORY", "INCLUDED SEATS", "PHASE",
-                    "BARCODE", "INSTRUCTIONS",
-                    "Present this QR code at the stadium entrance.\nValid for the indicated date only.",
-                    "Payment reference", "Ticket price",
-                    "© Paris 2024 · Paris 2024 Organising Committee",
-                    "This ticket is personal and non-transferable.",
-                    DateTimeFormatter.ofPattern("EEEE, MMMM d yyyy 'at' HH:mm", Locale.ENGLISH),
-                    Locale.ENGLISH,
-                    phaseMapEn()
-            ),
+        LABELS.put(SupportedLocale.FR, new PdfLabels(
+                "Jeux Olympiques · Billet officiel",
+                "BILLET", "ÉPREUVE", "CATÉGORIE", "PLACES INCLUSES", "PHASE",
+                "CODE-BARRE", "INSTRUCTIONS",
+                "Présentez ce QR code à l'entrée du stade.\nValable pour la date indiquée uniquement.",
+                "Référence de paiement", "Montant du billet",
+                "© Paris 2024 · Comité d'Organisation des Jeux Olympiques",
+                "Ce billet est personnel et non cessible.",
+                DateTimeFormatter.ofPattern("EEEE d MMMM yyyy 'à' HH:mm", Locale.FRENCH),
+                Locale.FRENCH,
+                phaseMapFr()
+        ));
 
-            "de", new PdfLabels(
-                    "Olympische Spiele · Offizielles Ticket",
-                    "TICKET", "WETTKAMPF", "KATEGORIE", "ENTHALTENE PLÄTZE", "PHASE",
-                    "BARCODE", "HINWEISE",
-                    "Zeigen Sie diesen QR-Code am Stadioneingang vor.\nNur für das angegebene Datum gültig.",
-                    "Zahlungsreferenz", "Ticketpreis",
-                    "© Paris 2024 · Organisationskomitee Paris 2024",
-                    "Dieses Ticket ist persönlich und nicht übertragbar.",
-                    DateTimeFormatter.ofPattern("EEEE, d. MMMM yyyy 'um' HH:mm", Locale.GERMAN),
-                    Locale.GERMAN,
-                    phaseMapDe()
-            ),
+        LABELS.put(SupportedLocale.EN, new PdfLabels(
+                "Olympic Games · Official Ticket",
+                "TICKET", "EVENT", "CATEGORY", "INCLUDED SEATS", "PHASE",
+                "BARCODE", "INSTRUCTIONS",
+                "Present this QR code at the stadium entrance.\nValid for the indicated date only.",
+                "Payment reference", "Ticket price",
+                "© Paris 2024 · Paris 2024 Organising Committee",
+                "This ticket is personal and non-transferable.",
+                DateTimeFormatter.ofPattern("EEEE, MMMM d yyyy 'at' HH:mm", Locale.ENGLISH),
+                Locale.ENGLISH,
+                phaseMapEn()
+        ));
 
-            "es", new PdfLabels(
-                    "Juegos Olímpicos · Entrada oficial",
-                    "ENTRADA", "EVENTO", "CATEGORÍA", "PLAZAS INCLUIDAS", "FASE",
-                    "CÓDIGO DE BARRAS", "INSTRUCCIONES",
-                    "Presente este código QR en la entrada del estadio.\nVálido únicamente para la fecha indicada.",
-                    "Referencia de pago", "Precio de la entrada",
-                    "© París 2024 · Comité Organizador de París 2024",
-                    "Esta entrada es personal e intransferible.",
-                    DateTimeFormatter.ofPattern("EEEE, d 'de' MMMM 'de' yyyy 'a las' HH:mm", new Locale("es")),
-                    new Locale("es"),
-                    phaseMapEs()
-            )
-    );
+        LABELS.put(SupportedLocale.DE, new PdfLabels(
+                "Olympische Spiele · Offizielles Ticket",
+                "TICKET", "WETTKAMPF", "KATEGORIE", "ENTHALTENE PLÄTZE", "PHASE",
+                "BARCODE", "HINWEISE",
+                "Zeigen Sie diesen QR-Code am Stadioneingang vor.\nNur für das angegebene Datum gültig.",
+                "Zahlungsreferenz", "Ticketpreis",
+                "© Paris 2024 · Organisationskomitee Paris 2024",
+                "Dieses Ticket ist persönlich und nicht übertragbar.",
+                DateTimeFormatter.ofPattern("EEEE, d. MMMM yyyy 'um' HH:mm", Locale.GERMAN),
+                Locale.GERMAN,
+                phaseMapDe()
+        ));
+
+        LABELS.put(SupportedLocale.ES, new PdfLabels(
+                "Juegos Olímpicos · Entrada oficial",
+                "ENTRADA", "EVENTO", "CATEGORÍA", "PLAZAS INCLUIDAS", "FASE",
+                "CÓDIGO DE BARRAS", "INSTRUCCIONES",
+                "Presente este código QR en la entrada del estadio.\nVálido únicamente para la fecha indicada.",
+                "Referencia de pago", "Precio de la entrada",
+                "© París 2024 · Comité Organizador de París 2024",
+                "Esta entrada es personal e intransferible.",
+                DateTimeFormatter.ofPattern("EEEE, d 'de' MMMM 'de' yyyy 'a las' HH:mm", Locale.of("es")),
+                Locale.of("es"),
+                phaseMapEs()
+        ));
+    }
 
     private static Map<Phases, String> phaseMapFr() {
         return Map.ofEntries(
@@ -197,9 +202,11 @@ public class PdfTicketService {
     }
 
     private PdfLabels getLabels(String locale) {
-        if (locale == null || locale.isBlank()) return LABELS.get("fr");
-        String lang = locale.split("[,;\\-]")[0].trim().toLowerCase();
-        return LABELS.getOrDefault(lang, LABELS.get("fr"));
+        return LABELS.get(SupportedLocale.from(locale));
+    }
+
+    static PdfLabels labelsFor(String locale) {
+        return LABELS.get(SupportedLocale.from(locale));
     }
 
     public byte[] generate(TransactionResponseDTO dto) {

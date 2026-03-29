@@ -8,7 +8,7 @@ import dev.jos.back.exceptions.payment.CartAlreadyConvertedException;
 import dev.jos.back.exceptions.payment.CartEmptyException;
 import dev.jos.back.exceptions.payment.PaymentDeclinedException;
 import dev.jos.back.exceptions.payment.TransactionNotFoundException;
-import dev.jos.back.service.TransactionService;
+import dev.jos.back.service.ICheckoutService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -26,14 +26,14 @@ import java.util.List;
  * d'une transaction et de la liste des billets de l'utilisateur connecté.
  * L'ensemble des endpoints requiert une authentification valide.
  *
- * @see TransactionService
+ * @see ICheckoutService
  */
 @RestController
 @RequestMapping("/api/checkout")
 @RequiredArgsConstructor
 public class CheckoutController {
 
-    private final TransactionService transactionService;
+    private final ICheckoutService transactionService;
 
     /**
      * Traite le paiement du panier actif de l'utilisateur authentifié.
@@ -74,13 +74,12 @@ public class CheckoutController {
     }
 
     /**
-     * Récupère le détail d'une transaction par son identifiant pour la page de confirmation.
-     * L'utilisateur ne peut accéder qu'à ses propres transactions.
+     * Récupère les billets déjà achetés
+     * L'utilisateur ne peut accéder qu'à ses propres billets.
      *
      * @param authentication l'objet d'authentification Spring Security injecté automatiquement
      * @param transactionId  l'identifiant de la transaction à récupérer
-     * @return {@code ResponseEntity<TransactionResponseDTO>} contenant la transaction et ses billets (200 OK)
-     * @throws TransactionNotFoundException si la transaction est introuvable ou n'appartient pas à l'utilisateur
+     * @return {@code ResponseEntity<byte[]>} contenant les billets (200 OK)
      */
     @GetMapping("/{transactionId}/pdf")
     public ResponseEntity<byte[]> downloadTicketsPdf(
@@ -96,6 +95,15 @@ public class CheckoutController {
                 .body(pdf);
     }
 
+    /**
+     * Récupère le détail d'une transaction par son identifiant pour la page de confirmation.
+     * L'utilisateur ne peut accéder qu'à ses propres transactions.
+     *
+     * @param authentication l'objet d'authentification Spring Security injecté automatiquement
+     * @param transactionId  l'identifiant de la transaction à récupérer
+     * @return {@code ResponseEntity<TransactionResponseDTO>} contenant la transaction et ses billets (200 OK)
+     * @throws TransactionNotFoundException si la transaction est introuvable ou n'appartient pas à l'utilisateur
+     */
     @GetMapping("/{transactionId}")
     public ResponseEntity<TransactionResponseDTO> getTransaction(
             Authentication authentication,

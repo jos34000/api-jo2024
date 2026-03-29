@@ -2,6 +2,7 @@ package dev.jos.back.service;
 
 import dev.jos.back.dto.event.CreateEventDTO;
 import dev.jos.back.dto.event.EventResponseDTO;
+import dev.jos.back.dto.event.UpdateEventDTO;
 import dev.jos.back.entities.Event;
 import dev.jos.back.entities.EventTranslation;
 import dev.jos.back.entities.Sport;
@@ -144,5 +145,36 @@ public class EventService {
         List<Event> events = eventRepository.findBySportName(sport);
         Map<Long, EventTranslation> translations = getTranslationMap(events, lang);
         return events.stream().map(e -> mapWithLocale(e, translations)).toList();
+    }
+
+    @Transactional
+    public EventResponseDTO updateEvent(Long id, UpdateEventDTO dto) {
+        Event event = eventRepository.findById(id)
+                .orElseThrow(() -> new EventNotFoundException("Événement non trouvé"));
+        if (dto.name() != null) event.setName(dto.name());
+        if (dto.description() != null) event.setDescription(dto.description());
+        if (dto.icon() != null) event.setIcon(dto.icon());
+        if (dto.category() != null) event.setCategory(dto.category());
+        if (dto.phase() != null) event.setPhase(dto.phase());
+        if (dto.location() != null) event.setLocation(dto.location());
+        if (dto.city() != null) event.setCity(dto.city());
+        if (dto.eventDate() != null) event.setEventDate(dto.eventDate());
+        if (dto.capacity() != null) event.setCapacity(dto.capacity());
+        if (dto.availableSlots() != null) event.setAvailableSlots(dto.availableSlots());
+        if (dto.isActive() != null) event.setIsActive(dto.isActive());
+        if (dto.sport() != null) {
+            Sport sport = sportRepository.findByName(dto.sport())
+                    .orElseThrow(() -> new SportNotFoundException("Sport non trouvé : " + dto.sport()));
+            event.setSport(sport);
+        }
+        return eventMapper.toResponseDTO(eventRepository.saveAndFlush(event));
+    }
+
+    @Transactional
+    public void deleteEvent(Long id) {
+        if (!eventRepository.existsById(id)) {
+            throw new EventNotFoundException("Événement non trouvé");
+        }
+        eventRepository.deleteById(id);
     }
 }

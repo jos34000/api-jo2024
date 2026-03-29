@@ -3,12 +3,12 @@ package dev.jos.back.controller;
 import dev.jos.back.dto.sport.BulkSportResponseDTO;
 import dev.jos.back.dto.sport.CreateSportDTO;
 import dev.jos.back.dto.sport.SportResponseDTO;
+import dev.jos.back.dto.sport.UpdateSportDTO;
 import dev.jos.back.service.SportService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -65,7 +65,6 @@ public class SportController {
      *                                                                   n'a pas le rôle ADMIN
      */
     @PostMapping("/bulk")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<BulkSportResponseDTO> createSportsBulk(
             @Valid @RequestBody List<CreateSportDTO> sports) {
 
@@ -77,5 +76,27 @@ public class SportController {
         );
 
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    /**
+     * Met à jour un sport existant.
+     * Réservé aux administrateurs.
+     */
+    @PutMapping("/{id}")
+    public ResponseEntity<SportResponseDTO> updateSport(
+            @PathVariable Long id,
+            @Valid @RequestBody UpdateSportDTO dto) {
+        SportResponseDTO updated = sportService.updateSport(id, dto);
+        return ResponseEntity.ok(updated);
+    }
+
+    /**
+     * Supprime un sport par son identifiant.
+     * Réservé aux administrateurs.
+     */
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteSport(@PathVariable Long id) {
+        sportService.deleteSport(id);
+        return ResponseEntity.noContent().build();
     }
 }

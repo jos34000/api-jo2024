@@ -6,11 +6,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor
 public class PasswordResetToken {
     @Id
@@ -19,7 +21,7 @@ public class PasswordResetToken {
 
     private String hashedToken;
     private LocalDateTime expiry;
-
+    private boolean used = false;
 
     @ManyToOne
     private User user;
@@ -28,5 +30,6 @@ public class PasswordResetToken {
         this.user = user;
         this.hashedToken = hashedToken;
         this.expiry = expiry;
+        this.used = false;
     }
 }

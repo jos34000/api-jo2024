@@ -20,12 +20,14 @@ public class UserMapper {
 
     public UserResponseDTO toResponseDTO(User user) {
         return UserResponseDTO.builder()
+                .id(user.getId())
                 .email(user.getEmail())
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
                 .mfaEnabled(user.isMfaEnabled())
                 .createdDate(user.getCreatedDate())
                 .locale(user.getLocale())
+                .role(user.getRole())
                 .build();
     }
 }

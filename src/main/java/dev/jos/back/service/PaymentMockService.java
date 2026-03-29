@@ -15,21 +15,12 @@ public class PaymentMockService {
             default -> PaymentResult.success();
         };
     }
-    
-    public record PaymentResult(boolean succeeded, String declineReason) {
 
-        /**
-         * Crée un résultat de paiement accepté.
-         */
+    public record PaymentResult(boolean succeeded, String declineReason) {
         public static PaymentResult success() {
             return new PaymentResult(true, null);
         }
 
-        /**
-         * Crée un résultat de paiement refusé avec le motif associé.
-         *
-         * @param reason le motif du refus
-         */
         public static PaymentResult failure(String reason) {
             return new PaymentResult(false, reason);
         }

@@ -3,6 +3,7 @@ package dev.jos.back.config;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -22,9 +23,6 @@ public class SecurityConfig {
 
     String[] publicEndpoints = {
             "/api/auth/**",
-            "/api/events/**",
-            "/api/sport/**",
-            "/api/offer/**",
             "/api/users/forget-password",
             "/api/users/validate-reset-token",
             "/api/2fa/send",
@@ -35,7 +33,7 @@ public class SecurityConfig {
     };
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) {
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .cors(cors -> cors.configurationSource(corsConfigurationSource))
                 .csrf(AbstractHttpConfigurer::disable)
@@ -44,10 +42,16 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(publicEndpoints).permitAll()
+                        .requestMatchers(HttpMethod.GET,    "/api/events/**", "/api/offer/**", "/api/sport/**").permitAll()
+                        .requestMatchers(HttpMethod.POST,   "/api/events/**", "/api/offer/**", "/api/sport/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT,    "/api/events/**", "/api/offer/**", "/api/sport/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/events/**", "/api/offer/**", "/api/sport/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET,    "/api/user/all").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/user/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PATCH,  "/api/user/*/role").hasRole("ADMIN")
                         .anyRequest().authenticated()
                 ).addFilterBefore(jwtAuthenticationFilter,
                         UsernamePasswordAuthenticationFilter.class);
-
 
         return http.build();
     }
