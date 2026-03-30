@@ -11,20 +11,43 @@ spring:
     hibernate:
       ddl-auto: create-drop
     database-platform: org.hibernate.dialect.H2Dialect
+  liquibase:
+    enabled: false
 
 jwt:
   secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
-  expiration: 3600000
+  access-token:
+    expiration: 900000
+    cookie-name: access_token
+  refresh-token:
+    expiration: 604800000
+    cookie-name: refresh_token
+
+cookie:
+  domain: ""
+  secure: false
+  same-site: Lax
+
+two-factor:
+  expiration: 5
+  max-attempts: 3
 
 cors:
-  allowed-origins: *
+  allowed-origins: http://localhost:3000
+  allowed-methods: GET,POST,PUT,PATCH,DELETE,OPTIONS
+  allowed-headers: Content-Type,Authorization
+  allow-credentials: true
+
+resend:
+  api-key: test-api-key
+  from: test@example.com
+
+app:
+  reset-token:
+    secret: test-secret-key-for-unit-tests-only
 
 logging:
   level:
     dev:
       jos:
         back: INFO
-
-app:
-  reset-token:
-    secret: test-secret-key-for-unit-tests-only
