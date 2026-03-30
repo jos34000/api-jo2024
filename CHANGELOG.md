@@ -1,3 +1,15 @@
+# [1.0.0](https://github.com/jos34000/api-jo2024/compare/v0.10.0...v1.0.0) (2026-03-30)
+
+
+### Features
+
+* **test:** Implement test for non regression ([f9f450d](https://github.com/jos34000/api-jo2024/commit/f9f450d51b8c7bf26616d871424ec896a0de4d32))
+
+
+### BREAKING CHANGES
+
+* **test:** Add comprehensive non-regression test suite covering all service layers
+
 # [0.10.0](https://github.com/jos34000/api-jo2024/compare/v0.9.1...v0.10.0) (2026-03-29)
 
 
