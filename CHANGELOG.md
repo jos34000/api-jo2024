@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/jos34000/api-jo2024/compare/v1.3.0...v1.3.1) (2026-04-17)
+
+
+### Bug Fixes
+
+* remove expiry date check from ticket scan ([7b5e518](https://github.com/jos34000/api-jo2024/commit/7b5e518a059c58560188018a73ff932a6f7567c0))
+
 # [1.3.0](https://github.com/jos34000/api-jo2024/compare/v1.2.0...v1.3.0) (2026-04-17)
 
 
