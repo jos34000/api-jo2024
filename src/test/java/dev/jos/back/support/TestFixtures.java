@@ -6,6 +6,7 @@ import dev.jos.back.dto.payment.TicketResponseDTO;
 import dev.jos.back.dto.payment.TransactionResponseDTO;
 import dev.jos.back.entities.Event;
 import dev.jos.back.entities.Offer;
+import dev.jos.back.entities.Ticket;
 import dev.jos.back.entities.User;
 import dev.jos.back.util.enums.Phases;
 import dev.jos.back.util.enums.Role;
@@ -53,6 +54,17 @@ public final class TestFixtures {
                 .isActive(true)
                 .displayOrder(1)
                 .build();
+    }
+
+    public static Ticket ticketEntity(String barcode) {
+        Ticket t = new Ticket();
+        t.setId(1L);
+        t.setBarcode(barcode);
+        t.setIsValid(true);
+        t.setIsScanned(false);
+        t.setPrice(50.0);
+        t.setExpiryAt(LocalDateTime.of(2030, 7, 26, 23, 59));
+        return t;
     }
 
     public static TicketResponseDTO ticket(String key, double price) {
