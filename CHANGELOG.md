@@ -1,3 +1,11 @@
+# [1.2.0](https://github.com/jos34000/api-jo2024/compare/v1.1.0...v1.2.0) (2026-04-17)
+
+
+### Features
+
+* [DJ-110] - Scan response ([314e4d5](https://github.com/jos34000/api-jo2024/commit/314e4d52ae6829e4da54c47f9d06780be9ed2153))
+* [DJ-282] - Can login as a staff member ([c93830d](https://github.com/jos34000/api-jo2024/commit/c93830d4c2d174b7364b46cbde41ec15edf9eab1))
+
 # [1.1.0](https://github.com/jos34000/api-jo2024/compare/v1.0.0...v1.1.0) (2026-04-17)
 
 
