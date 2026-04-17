@@ -28,10 +28,6 @@ public class TicketValidationService {
             throw new TicketNotValidException("Ce billet a été annulé");
         }
 
-        if (ticket.getExpiryAt() != null && ticket.getExpiryAt().isBefore(LocalDateTime.now())) {
-            throw new TicketNotValidException("Ce billet est expiré");
-        }
-
         if (Boolean.TRUE.equals(ticket.getIsScanned())) {
             return ticketMapper.toScanResponseDTO(ticket, "ALREADY_USED");
         }

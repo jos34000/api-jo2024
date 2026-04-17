@@ -98,26 +98,4 @@ class TicketValidationServiceTest {
                 .hasMessage("Ce billet a été annulé");
     }
 
-    @Test
-    void scan_throwsTicketNotValidException_whenExpired() {
-        Ticket ticket = TestFixtures.ticketEntity("JO2024-ABCD1234");
-        ticket.setExpiryAt(LocalDateTime.now().minusDays(1));
-        when(ticketRepository.findByCombinedKey(COMBINED_KEY)).thenReturn(Optional.of(ticket));
-
-        assertThatThrownBy(() -> ticketValidationService.scan(COMBINED_KEY, AGENT_EMAIL))
-                .isInstanceOf(TicketNotValidException.class)
-                .hasMessage("Ce billet est expiré");
-    }
-
-    @Test
-    void scan_doesNotThrow_whenExpiryAtIsNull() {
-        Ticket ticket = TestFixtures.ticketEntity("JO2024-ABCD1234");
-        ticket.setExpiryAt(null);
-        when(ticketRepository.findByCombinedKey(COMBINED_KEY)).thenReturn(Optional.of(ticket));
-        when(ticketMapper.toScanResponseDTO(any(), eq("SUCCESS"))).thenReturn(ScanResponseDTO.builder().outcome("SUCCESS").build());
-
-        ticketValidationService.scan(COMBINED_KEY, AGENT_EMAIL);
-
-        verify(ticketRepository).save(ticket);
-    }
 }
