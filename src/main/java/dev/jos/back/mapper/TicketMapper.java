@@ -5,6 +5,7 @@ import dev.jos.back.dto.cart.CartOfferSummaryDTO;
 import dev.jos.back.dto.payment.TicketGroupResponseDTO;
 import dev.jos.back.dto.payment.TicketResponseDTO;
 import dev.jos.back.dto.payment.TransactionResponseDTO;
+import dev.jos.back.dto.ticket.ScanResponseDTO;
 import dev.jos.back.entities.Ticket;
 import dev.jos.back.entities.Transaction;
 import org.springframework.stereotype.Component;
@@ -18,9 +19,28 @@ public class TicketMapper {
         return TicketResponseDTO.builder()
                 .id(t.getId())
                 .ticketKey(t.getTicketKey())
+                .combinedKey(t.getCombinedKey())
                 .barcode(t.getBarcode())
                 .price(t.getPrice())
                 .status(computeStatus(t))
+                .createdAt(t.getCreatedAt())
+                .event(toEventSummary(t))
+                .offer(toOfferSummary(t))
+                .build();
+    }
+
+    public ScanResponseDTO toScanResponseDTO(Ticket t, String outcome) {
+        return ScanResponseDTO.builder()
+                .outcome(outcome)
+                .barcode(t.getBarcode())
+                .status(computeStatus(t))
+                .holderFirstName(t.getUser().getFirstName())
+                .holderLastName(t.getUser().getLastName())
+                .holderEmail(t.getUser().getEmail())
+                .scannedAt(t.getScannedAt())
+                .scannedBy(t.getScannedBy())
+                .price(t.getPrice())
+                .expiryAt(t.getExpiryAt())
                 .createdAt(t.getCreatedAt())
                 .event(toEventSummary(t))
                 .offer(toOfferSummary(t))

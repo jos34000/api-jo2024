@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <!--
+        Recalcule combined_key comme SHA-256(user_key || ':' || ticket_key).
+        Nécessite l'extension pgcrypto sur PostgreSQL.
+        Cette migration est ignorée sur H2 (tests) grâce au préconditionnel onFail=MARK_RAN.
+    -->
+    <changeSet id="020-update-combined-key-sha256" author="jos" dbms="postgresql">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="1">
+                SELECT COUNT(*) FROM pg_extension WHERE extname = 'pgcrypto'
+            </sqlCheck>
+        </preConditions>
+        <sql>
+            UPDATE tickets
+            SET combined_key = encode(digest(user_key || ':' || ticket_key, 'sha256'), 'hex')
+            WHERE combined_key IS NOT NULL;
+        </sql>
+        <rollback/>
+    </changeSet>
+
+</databaseChangeLog>

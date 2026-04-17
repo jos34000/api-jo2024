@@ -3,6 +3,9 @@ package dev.jos.back.config;
 import dev.jos.back.dto.ErrorResponseDTO;
 import dev.jos.back.exceptions.cart.CartItemNotFoundException;
 import dev.jos.back.exceptions.cart.CartNotFoundException;
+import dev.jos.back.exceptions.ticket.TicketAlreadyScannedException;
+import dev.jos.back.exceptions.ticket.TicketNotFoundException;
+import dev.jos.back.exceptions.ticket.TicketNotValidException;
 import dev.jos.back.exceptions.email.EmailNotSentException;
 import dev.jos.back.exceptions.payment.CartAlreadyConvertedException;
 import dev.jos.back.exceptions.payment.CartEmptyException;
@@ -62,7 +65,10 @@ public class GlobalExceptionConfig {
             Map.entry(CartAlreadyConvertedException.class, HttpStatus.CONFLICT),
             Map.entry(CartEmptyException.class, HttpStatus.BAD_REQUEST),
             Map.entry(TransactionNotFoundException.class, HttpStatus.NOT_FOUND),
-            Map.entry(UserNotFoundException.class, HttpStatus.NOT_FOUND)
+            Map.entry(UserNotFoundException.class, HttpStatus.NOT_FOUND),
+            Map.entry(TicketNotFoundException.class, HttpStatus.NOT_FOUND),
+            Map.entry(TicketAlreadyScannedException.class, HttpStatus.CONFLICT),
+            Map.entry(TicketNotValidException.class, HttpStatus.UNPROCESSABLE_ENTITY)
     );
 
     @ExceptionHandler(Exception.class)

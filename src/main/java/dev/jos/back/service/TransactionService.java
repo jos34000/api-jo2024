@@ -25,6 +25,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -174,10 +177,11 @@ public class TransactionService implements ICheckoutService {
                 String ticketKey = UUID.randomUUID().toString();
 
                 Ticket ticket = new Ticket();
-                ticket.setUserKey(UUID.randomUUID().toString());
+                String userKey = UUID.randomUUID().toString();
+                ticket.setUserKey(userKey);
                 ticket.setTransactionKey(transaction.getTransactionKey());
                 ticket.setTicketKey(ticketKey);
-                ticket.setCombinedKey(UUID.randomUUID().toString());
+                ticket.setCombinedKey(computeCombinedKey(userKey, ticketKey));
                 ticket.setBarcode("JO2024-" + ticketKey.substring(0, 8).toUpperCase());
                 ticket.setPrice(pricePerTicket);
                 ticket.setExpiryAt(item.getEvent().getEventDate());
@@ -192,6 +196,16 @@ public class TransactionService implements ICheckoutService {
         }
 
         return tickets;
+    }
+
+    private String computeCombinedKey(String userKey, String ticketKey) {
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hash = digest.digest((userKey + ":" + ticketKey).getBytes(StandardCharsets.UTF_8));
+            return HexFormat.of().formatHex(hash);
+        } catch (NoSuchAlgorithmException e) {
+            throw new IllegalStateException(e);
+        }
     }
 
 }

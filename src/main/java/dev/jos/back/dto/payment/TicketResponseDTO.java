@@ -8,8 +8,9 @@ import lombok.Builder;
  * DTO représentant un billet généré après un paiement réussi.
  *
  * @param id         l'identifiant technique du billet
- * @param ticketKey  la clé unique du billet (UUID)
- * @param barcode    le code-barre du billet au format JO2024-XXXXXXXX
+ * @param ticketKey   la clé unique du billet (UUID)
+ * @param combinedKey la clé combinée SHA-256 (userKey + ticketKey) encodée dans le QR code
+ * @param barcode     le code-barre du billet au format JO2024-XXXXXXXX
  * @param price      le prix unitaire du billet
  * @param status     l'état du billet : {@code VALID}, {@code USED}, {@code EXPIRED} ou {@code CANCELLED}
  * @param createdAt  la date de création du billet
@@ -20,6 +21,7 @@ import lombok.Builder;
 public record TicketResponseDTO(
         Long id,
         String ticketKey,
+        String combinedKey,
         String barcode,
         Double price,
         String status,
