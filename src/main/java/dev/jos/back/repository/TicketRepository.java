@@ -11,4 +11,6 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
     List<Ticket> findAllByUser_EmailOrderByCreatedAtDesc(String email);
 
     Optional<Ticket> findByBarcode(String barcode);
+
+    Optional<Ticket> findByCombinedKey(String combinedKey);
 }

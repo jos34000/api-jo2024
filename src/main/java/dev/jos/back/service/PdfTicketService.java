@@ -332,7 +332,7 @@ public class PdfTicketService {
     }
 
     private PdfPTable buildQrSection(TicketResponseDTO ticket, PdfLabels labels) throws Exception {
-        byte[] qrBytes = generateQrCode(ticket.barcode());
+        byte[] qrBytes = generateQrCode(ticket.combinedKey());
         Image qrImage = Image.getInstance(qrBytes);
         qrImage.scaleAbsolute(100f, 100f);
 

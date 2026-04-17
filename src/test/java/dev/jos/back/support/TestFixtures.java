@@ -60,10 +60,16 @@ public final class TestFixtures {
         Ticket t = new Ticket();
         t.setId(1L);
         t.setBarcode(barcode);
+        t.setUserKey("user-key-uuid");
+        t.setTicketKey("ticket-key-uuid");
+        t.setCombinedKey("a".repeat(64));
         t.setIsValid(true);
         t.setIsScanned(false);
         t.setPrice(50.0);
         t.setExpiryAt(LocalDateTime.of(2030, 7, 26, 23, 59));
+        t.setUser(user("alice@jo2024.fr"));
+        t.setEvent(event("100m Finale", 100));
+        t.setOffer(offer("Solo", 50.0, 1));
         return t;
     }
 
@@ -71,6 +77,7 @@ public final class TestFixtures {
         return TicketResponseDTO.builder()
                 .id(1L)
                 .ticketKey(key)
+                .combinedKey("a".repeat(64))
                 .barcode("JO2024-" + key)
                 .price(price)
                 .status("VALID")

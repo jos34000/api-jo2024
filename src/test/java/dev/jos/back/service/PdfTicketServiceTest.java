@@ -89,7 +89,7 @@ class PdfTicketServiceTest {
                 .phase(null)
                 .build();
         TicketResponseDTO ticket = TicketResponseDTO.builder()
-                .id(1L).ticketKey("T1").barcode("JO2024-T1").price(50.0).status("VALID")
+                .id(1L).ticketKey("T1").combinedKey("a".repeat(64)).barcode("JO2024-T1").price(50.0).status("VALID")
                 .createdAt(java.time.LocalDateTime.of(2024, 7, 1, 10, 0))
                 .event(eventNoPhase).offer(TestFixtures.offerSummary())
                 .build();

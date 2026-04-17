@@ -1,8 +1,7 @@
 package dev.jos.back.service;
 
-import dev.jos.back.dto.payment.TicketResponseDTO;
+import dev.jos.back.dto.ticket.ScanResponseDTO;
 import dev.jos.back.entities.Ticket;
-import dev.jos.back.exceptions.ticket.TicketAlreadyScannedException;
 import dev.jos.back.exceptions.ticket.TicketNotFoundException;
 import dev.jos.back.exceptions.ticket.TicketNotValidException;
 import dev.jos.back.mapper.TicketMapper;
@@ -21,20 +20,20 @@ public class TicketValidationService {
     private final TicketRepository ticketRepository;
     private final TicketMapper ticketMapper;
 
-    public TicketResponseDTO scan(String barcode, String agentEmail) {
-        Ticket ticket = ticketRepository.findByBarcode(barcode)
+    public ScanResponseDTO scan(String combinedKey, String agentEmail) {
+        Ticket ticket = ticketRepository.findByCombinedKey(combinedKey)
                 .orElseThrow(() -> new TicketNotFoundException("Billet introuvable"));
 
         if (!Boolean.TRUE.equals(ticket.getIsValid())) {
             throw new TicketNotValidException("Ce billet a été annulé");
         }
 
-        if (Boolean.TRUE.equals(ticket.getIsScanned())) {
-            throw new TicketAlreadyScannedException("Ce billet a déjà été scanné");
-        }
-
         if (ticket.getExpiryAt() != null && ticket.getExpiryAt().isBefore(LocalDateTime.now())) {
             throw new TicketNotValidException("Ce billet est expiré");
+        }
+
+        if (Boolean.TRUE.equals(ticket.getIsScanned())) {
+            return ticketMapper.toScanResponseDTO(ticket, "ALREADY_USED");
         }
 
         ticket.setIsScanned(true);
@@ -42,6 +41,6 @@ public class TicketValidationService {
         ticket.setScannedBy(agentEmail);
         ticketRepository.save(ticket);
 
-        return ticketMapper.toTicketResponseDTO(ticket);
+        return ticketMapper.toScanResponseDTO(ticket, "SUCCESS");
     }
 }
