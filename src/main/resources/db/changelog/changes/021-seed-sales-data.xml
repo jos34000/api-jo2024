@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+    <changeSet id="021-seed-sales-data" author="jos">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">
+                SELECT COUNT(*) FROM users WHERE email = 'demo1@jo2024.fr'
+            </sqlCheck>
+        </preConditions>
+
+        <!-- 5 demo users (password = Demo1234!) -->
+        <sql>
+            INSERT INTO users (email, password_hash, first_name, last_name, role, mfa_enabled, locale, created_date, last_modified_date)
+            VALUES
+                ('demo1@jo2024.fr', '$2a$12$sI8pFoEGFcxKG.VxGkHZbeVAoauyiS3O09aTXUwFbA4shnQvbpDKK', 'Alice', 'Martin', 'ROLE_USER', false, 'fr', '2024-06-15 09:00:00', '2024-06-15 09:00:00'),
+                ('demo2@jo2024.fr', '$2a$12$sI8pFoEGFcxKG.VxGkHZbeVAoauyiS3O09aTXUwFbA4shnQvbpDKK', 'Bruno', 'Lemaire', 'ROLE_USER', false, 'fr', '2024-06-16 10:00:00', '2024-06-16 10:00:00'),
+                ('demo3@jo2024.fr', '$2a$12$sI8pFoEGFcxKG.VxGkHZbeVAoauyiS3O09aTXUwFbA4shnQvbpDKK', 'Clara', 'Dubois', 'ROLE_USER', false, 'fr', '2024-06-17 11:00:00', '2024-06-17 11:00:00'),
+                ('demo4@jo2024.fr', '$2a$12$sI8pFoEGFcxKG.VxGkHZbeVAoauyiS3O09aTXUwFbA4shnQvbpDKK', 'David', 'Roux', 'ROLE_USER', false, 'fr', '2024-06-18 12:00:00', '2024-06-18 12:00:00'),
+                ('demo5@jo2024.fr', '$2a$12$sI8pFoEGFcxKG.VxGkHZbeVAoauyiS3O09aTXUwFbA4shnQvbpDKK', 'Emma', 'Bernard', 'ROLE_USER', false, 'fr', '2024-06-19 13:00:00', '2024-06-19 13:00:00');
+        </sql>
+
+        <!-- 14 transactions (12 COMPLETED, 1 CANCELED, 1 FAILED) — cart_id NULL (seeded data has no carts) -->
+        <sql>
+            INSERT INTO transactions (transaction_key, status, amount, payment_method, payment_reference, created_date, payed_date, user_id)
+            VALUES
+                ('tx-seed-001', 'COMPLETED', 40.00,  'CREDIT_CARD',   'REF-SEED0001', '2024-07-15 10:00:00', '2024-07-15 10:01:00', (SELECT id FROM users WHERE email = 'demo1@jo2024.fr')),
+                ('tx-seed-002', 'COMPLETED', 75.00,  'CREDIT_CARD',   'REF-SEED0002', '2024-07-16 11:00:00', '2024-07-16 11:01:00', (SELECT id FROM users WHERE email = 'demo1@jo2024.fr')),
+                ('tx-seed-003', 'COMPLETED', 135.00, 'BANK_TRANSFER', 'REF-SEED0003', '2024-07-17 14:00:00', '2024-07-17 14:02:00', (SELECT id FROM users WHERE email = 'demo2@jo2024.fr')),
+                ('tx-seed-004', 'COMPLETED', 80.00,  'CREDIT_CARD',   'REF-SEED0004', '2024-07-18 09:30:00', '2024-07-18 09:31:00', (SELECT id FROM users WHERE email = 'demo2@jo2024.fr')),
+                ('tx-seed-005', 'COMPLETED', 150.00, 'CREDIT_CARD',   'REF-SEED0005', '2024-07-19 16:00:00', '2024-07-19 16:01:00', (SELECT id FROM users WHERE email = 'demo3@jo2024.fr')),
+                ('tx-seed-006', 'COMPLETED', 40.00,  'BANK_TRANSFER', 'REF-SEED0006', '2024-07-20 08:00:00', '2024-07-20 08:02:00', (SELECT id FROM users WHERE email = 'demo3@jo2024.fr')),
+                ('tx-seed-007', 'COMPLETED', 135.00, 'CREDIT_CARD',   'REF-SEED0007', '2024-07-22 13:00:00', '2024-07-22 13:01:00', (SELECT id FROM users WHERE email = 'demo4@jo2024.fr')),
+                ('tx-seed-008', 'COMPLETED', 40.00,  'CREDIT_CARD',   'REF-SEED0008', '2024-07-23 17:00:00', '2024-07-23 17:01:00', (SELECT id FROM users WHERE email = 'demo4@jo2024.fr')),
+                ('tx-seed-009', 'COMPLETED', 75.00,  'BANK_TRANSFER', 'REF-SEED0009', '2024-07-25 10:00:00', '2024-07-25 10:02:00', (SELECT id FROM users WHERE email = 'demo5@jo2024.fr')),
+                ('tx-seed-010', 'COMPLETED', 120.00, 'CREDIT_CARD',   'REF-SEED0010', '2024-07-27 15:00:00', '2024-07-27 15:01:00', (SELECT id FROM users WHERE email = 'demo5@jo2024.fr')),
+                ('tx-seed-011', 'COMPLETED', 80.00,  'CREDIT_CARD',   'REF-SEED0011', '2024-07-29 11:00:00', '2024-07-29 11:01:00', (SELECT id FROM users WHERE email = 'demo1@jo2024.fr')),
+                ('tx-seed-012', 'COMPLETED', 75.00,  'CREDIT_CARD',   'REF-SEED0012', '2024-08-01 19:00:00', '2024-08-01 19:01:00', (SELECT id FROM users WHERE email = 'demo3@jo2024.fr')),
+                ('tx-seed-013', 'CANCELED',  75.00,  'CREDIT_CARD',   'REF-SEED0013', '2024-07-20 14:00:00', NULL,                  (SELECT id FROM users WHERE email = 'demo2@jo2024.fr')),
+                ('tx-seed-014', 'FAILED',    40.00,  'BANK_TRANSFER', 'REF-SEED0014', '2024-07-22 11:00:00', NULL,                  (SELECT id FROM users WHERE email = 'demo4@jo2024.fr'));
+        </sql>
+
+        <!-- Tickets — TX-001: Solo on 100m Hommes - Finale → 1 ticket @ 40.00 -->
+        <sql>
+            INSERT INTO tickets (user_key, transaction_key, ticket_key, combined_key, barcode, price, is_valid, is_scanned, created_at, expiry_at, transaction_id, user_id, event_id, offer_id)
+            VALUES (
+                'usr-seed-0001', 'tx-seed-001', 'tkt-seed-0001', 'combined-seed-0001', 'JO2024-SEED0001',
+                40.00, true, false, '2024-07-15 10:01:00', '2024-08-04 21:30:00',
+                (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-001'),
+                (SELECT id FROM users WHERE email = 'demo1@jo2024.fr'),
+                (SELECT id FROM events WHERE name = '100m Hommes - Finale'),
+                (SELECT id FROM offers WHERE name = 'Solo')
+            );
+        </sql>
+
+        <!-- TX-002: Duo on Football Hommes - Finale → 2 tickets @ 37.50 each -->
+        <sql>
+            INSERT INTO tickets (user_key, transaction_key, ticket_key, combined_key, barcode, price, is_valid, is_scanned, created_at, expiry_at, transaction_id, user_id, event_id, offer_id)
+            VALUES (
+                'usr-seed-0002', 'tx-seed-002', 'tkt-seed-0002', 'combined-seed-0002', 'JO2024-SEED0002',
+                37.50, true, false, '2024-07-16 11:01:00', '2024-08-09 21:00:00',
+                (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-002'),
+                (SELECT id FROM users WHERE email = 'demo1@jo2024.fr'),
+                (SELECT id FROM events WHERE name = 'Football Hommes - Finale'),
+                (SELECT id FROM offers WHERE name = 'Duo')
+            );
+            INSERT INTO tickets (user_key, transaction_key, ticket_key, combined_key, barcode, price, is_valid, is_scanned, created_at, expiry_at, transaction_id, user_id, event_id, offer_id)
+            VALUES (
+                'usr-seed-0003', 'tx-seed-002', 'tkt-seed-0003', 'combined-seed-0003', 'JO2024-SEED0003',
+                37.50, true, false, '2024-07-16 11:01:00', '2024-08-09 21:00:00',
+                (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-002'),
+                (SELECT id FROM users WHERE email = 'demo1@jo2024.fr'),
+                (SELECT id FROM events WHERE name = 'Football Hommes - Finale'),
+                (SELECT id FROM offers WHERE name = 'Duo')
+            );
+        </sql>
+
+        <!-- TX-003: Famille on 100m Nage Libre Hommes - Finale → 4 tickets @ 33.75 each -->
+        <sql>
+            INSERT INTO tickets (user_key, transaction_key, ticket_key, combined_key, barcode, price, is_valid, is_scanned, created_at, expiry_at, transaction_id, user_id, event_id, offer_id)
+            VALUES
+                ('usr-seed-0004', 'tx-seed-003', 'tkt-seed-0004', 'combined-seed-0004', 'JO2024-SEED0004', 33.75, true, false, '2024-07-17 14:02:00', '2024-07-30 21:30:00', (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-003'), (SELECT id FROM users WHERE email = 'demo2@jo2024.fr'), (SELECT id FROM events WHERE name = '100m Nage Libre Hommes - Finale'), (SELECT id FROM offers WHERE name = 'Famille')),
+                ('usr-seed-0005', 'tx-seed-003', 'tkt-seed-0005', 'combined-seed-0005', 'JO2024-SEED0005', 33.75, true, false, '2024-07-17 14:02:00', '2024-07-30 21:30:00', (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-003'), (SELECT id FROM users WHERE email = 'demo2@jo2024.fr'), (SELECT id FROM events WHERE name = '100m Nage Libre Hommes - Finale'), (SELECT id FROM offers WHERE name = 'Famille')),
+                ('usr-seed-0006', 'tx-seed-003', 'tkt-seed-0006', 'combined-seed-0006', 'JO2024-SEED0006', 33.75, true, false, '2024-07-17 14:02:00', '2024-07-30 21:30:00', (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-003'), (SELECT id FROM users WHERE email = 'demo2@jo2024.fr'), (SELECT id FROM events WHERE name = '100m Nage Libre Hommes - Finale'), (SELECT id FROM offers WHERE name = 'Famille')),
+                ('usr-seed-0007', 'tx-seed-003', 'tkt-seed-0007', 'combined-seed-0007', 'JO2024-SEED0007', 33.75, true, false, '2024-07-17 14:02:00', '2024-07-30 21:30:00', (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-003'), (SELECT id FROM users WHERE email = 'demo2@jo2024.fr'), (SELECT id FROM events WHERE name = '100m Nage Libre Hommes - Finale'), (SELECT id FROM offers WHERE name = 'Famille'));
+        </sql>
+
+        <!-- TX-004: Solo x2 on Judo -66kg Hommes - Finale → 2 tickets @ 40.00 each -->
+        <sql>
+            INSERT INTO tickets (user_key, transaction_key, ticket_key, combined_key, barcode, price, is_valid, is_scanned, created_at, expiry_at, transaction_id, user_id, event_id, offer_id)
+            VALUES
+                ('usr-seed-0008', 'tx-seed-004', 'tkt-seed-0008', 'combined-seed-0008', 'JO2024-SEED0008', 40.00, true, false, '2024-07-18 09:31:00', '2024-08-01 12:00:00', (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-004'), (SELECT id FROM users WHERE email = 'demo2@jo2024.fr'), (SELECT id FROM events WHERE name = 'Judo -66kg Hommes - Finale'), (SELECT id FROM offers WHERE name = 'Solo')),
+                ('usr-seed-0009', 'tx-seed-004', 'tkt-seed-0009', 'combined-seed-0009', 'JO2024-SEED0009', 40.00, true, false, '2024-07-18 09:31:00', '2024-08-01 12:00:00', (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-004'), (SELECT id FROM users WHERE email = 'demo2@jo2024.fr'), (SELECT id FROM events WHERE name = 'Judo -66kg Hommes - Finale'), (SELECT id FROM offers WHERE name = 'Solo'));
+        </sql>
+
+        <!-- TX-005: Duo x2 on Basketball Hommes - Finale → 4 tickets @ 37.50 each -->
+        <sql>
+            INSERT INTO tickets (user_key, transaction_key, ticket_key, combined_key, barcode, price, is_valid, is_scanned, created_at, expiry_at, transaction_id, user_id, event_id, offer_id)
+            VALUES
+                ('usr-seed-0010', 'tx-seed-005', 'tkt-seed-0010', 'combined-seed-0010', 'JO2024-SEED0010', 37.50, true, false, '2024-07-19 16:01:00', '2024-08-10 20:00:00', (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-005'), (SELECT id FROM users WHERE email = 'demo3@jo2024.fr'), (SELECT id FROM events WHERE name = 'Basketball Hommes - Finale'), (SELECT id FROM offers WHERE name = 'Duo')),
+                ('usr-seed-0011', 'tx-seed-005', 'tkt-seed-0011', 'combined-seed-0011', 'JO2024-SEED0011', 37.50, true, false, '2024-07-19 16:01:00', '2024-08-10 20:00:00', (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-005'), (SELECT id FROM users WHERE email = 'demo3@jo2024.fr'), (SELECT id FROM events WHERE name = 'Basketball Hommes - Finale'), (SELECT id FROM offers WHERE name = 'Duo')),
+                ('usr-seed-0012', 'tx-seed-005', 'tkt-seed-0012', 'combined-seed-0012', 'JO2024-SEED0012', 37.50, true, false, '2024-07-19 16:01:00', '2024-08-10 20:00:00', (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-005'), (SELECT id FROM users WHERE email = 'demo3@jo2024.fr'), (SELECT id FROM events WHERE name = 'Basketball Hommes - Finale'), (SELECT id FROM offers WHERE name = 'Duo')),
+                ('usr-seed-0013', 'tx-seed-005', 'tkt-seed-0013', 'combined-seed-0013', 'JO2024-SEED0013', 37.50, true, false, '2024-07-19 16:01:00', '2024-08-10 20:00:00', (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-005'), (SELECT id FROM users WHERE email = 'demo3@jo2024.fr'), (SELECT id FROM events WHERE name = 'Basketball Hommes - Finale'), (SELECT id FROM offers WHERE name = 'Duo'));
+        </sql>
+
+        <!-- TX-006: Solo on Tennis Simple Messieurs - Finale → 1 ticket @ 40.00 -->
+        <sql>
+            INSERT INTO tickets (user_key, transaction_key, ticket_key, combined_key, barcode, price, is_valid, is_scanned, created_at, expiry_at, transaction_id, user_id, event_id, offer_id)
+            VALUES (
+                'usr-seed-0014', 'tx-seed-006', 'tkt-seed-0014', 'combined-seed-0014', 'JO2024-SEED0014',
+                40.00, true, false, '2024-07-20 08:02:00', '2024-08-04 14:00:00',
+                (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-006'),
+                (SELECT id FROM users WHERE email = 'demo3@jo2024.fr'),
+                (SELECT id FROM events WHERE name = 'Tennis Simple Messieurs - Finale'),
+                (SELECT id FROM offers WHERE name = 'Solo')
+            );
+        </sql>
+
+        <!-- TX-007: Famille on Saut en hauteur Femmes - Finale → 4 tickets @ 33.75 each -->
+        <sql>
+            INSERT INTO tickets (user_key, transaction_key, ticket_key, combined_key, barcode, price, is_valid, is_scanned, created_at, expiry_at, transaction_id, user_id, event_id, offer_id)
+            VALUES
+                ('usr-seed-0015', 'tx-seed-007', 'tkt-seed-0015', 'combined-seed-0015', 'JO2024-SEED0015', 33.75, true, false, '2024-07-22 13:01:00', '2024-08-04 20:35:00', (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-007'), (SELECT id FROM users WHERE email = 'demo4@jo2024.fr'), (SELECT id FROM events WHERE name = 'Saut en hauteur Femmes - Finale'), (SELECT id FROM offers WHERE name = 'Famille')),
+                ('usr-seed-0016', 'tx-seed-007', 'tkt-seed-0016', 'combined-seed-0016', 'JO2024-SEED0016', 33.75, true, false, '2024-07-22 13:01:00', '2024-08-04 20:35:00', (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-007'), (SELECT id FROM users WHERE email = 'demo4@jo2024.fr'), (SELECT id FROM events WHERE name = 'Saut en hauteur Femmes - Finale'), (SELECT id FROM offers WHERE name = 'Famille')),
+                ('usr-seed-0017', 'tx-seed-007', 'tkt-seed-0017', 'combined-seed-0017', 'JO2024-SEED0017', 33.75, true, false, '2024-07-22 13:01:00', '2024-08-04 20:35:00', (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-007'), (SELECT id FROM users WHERE email = 'demo4@jo2024.fr'), (SELECT id FROM events WHERE name = 'Saut en hauteur Femmes - Finale'), (SELECT id FROM offers WHERE name = 'Famille')),
+                ('usr-seed-0018', 'tx-seed-007', 'tkt-seed-0018', 'combined-seed-0018', 'JO2024-SEED0018', 33.75, true, false, '2024-07-22 13:01:00', '2024-08-04 20:35:00', (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-007'), (SELECT id FROM users WHERE email = 'demo4@jo2024.fr'), (SELECT id FROM events WHERE name = 'Saut en hauteur Femmes - Finale'), (SELECT id FROM offers WHERE name = 'Famille'));
+        </sql>
+
+        <!-- TX-008: Solo on Football Femmes - Finale → 1 ticket @ 40.00 -->
+        <sql>
+            INSERT INTO tickets (user_key, transaction_key, ticket_key, combined_key, barcode, price, is_valid, is_scanned, created_at, expiry_at, transaction_id, user_id, event_id, offer_id)
+            VALUES (
+                'usr-seed-0019', 'tx-seed-008', 'tkt-seed-0019', 'combined-seed-0019', 'JO2024-SEED0019',
+                40.00, true, false, '2024-07-23 17:01:00', '2024-08-10 21:00:00',
+                (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-008'),
+                (SELECT id FROM users WHERE email = 'demo4@jo2024.fr'),
+                (SELECT id FROM events WHERE name = 'Football Femmes - Finale'),
+                (SELECT id FROM offers WHERE name = 'Solo')
+            );
+        </sql>
+
+        <!-- TX-009: Duo on 400m Haies Hommes - Finale → 2 tickets @ 37.50 each -->
+        <sql>
+            INSERT INTO tickets (user_key, transaction_key, ticket_key, combined_key, barcode, price, is_valid, is_scanned, created_at, expiry_at, transaction_id, user_id, event_id, offer_id)
+            VALUES
+                ('usr-seed-0020', 'tx-seed-009', 'tkt-seed-0020', 'combined-seed-0020', 'JO2024-SEED0020', 37.50, true, false, '2024-07-25 10:02:00', '2024-08-09 21:35:00', (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-009'), (SELECT id FROM users WHERE email = 'demo5@jo2024.fr'), (SELECT id FROM events WHERE name = '400m Haies Hommes - Finale'), (SELECT id FROM offers WHERE name = 'Duo')),
+                ('usr-seed-0021', 'tx-seed-009', 'tkt-seed-0021', 'combined-seed-0021', 'JO2024-SEED0021', 37.50, true, false, '2024-07-25 10:02:00', '2024-08-09 21:35:00', (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-009'), (SELECT id FROM users WHERE email = 'demo5@jo2024.fr'), (SELECT id FROM events WHERE name = '400m Haies Hommes - Finale'), (SELECT id FROM offers WHERE name = 'Duo'));
+        </sql>
+
+        <!-- TX-010: Solo x3 on Marathon Hommes - Finale → 3 tickets @ 40.00 each -->
+        <sql>
+            INSERT INTO tickets (user_key, transaction_key, ticket_key, combined_key, barcode, price, is_valid, is_scanned, created_at, expiry_at, transaction_id, user_id, event_id, offer_id)
+            VALUES
+                ('usr-seed-0022', 'tx-seed-010', 'tkt-seed-0022', 'combined-seed-0022', 'JO2024-SEED0022', 40.00, true, false, '2024-07-27 15:01:00', '2024-08-10 06:00:00', (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-010'), (SELECT id FROM users WHERE email = 'demo5@jo2024.fr'), (SELECT id FROM events WHERE name = 'Marathon Hommes - Finale'), (SELECT id FROM offers WHERE name = 'Solo')),
+                ('usr-seed-0023', 'tx-seed-010', 'tkt-seed-0023', 'combined-seed-0023', 'JO2024-SEED0023', 40.00, true, false, '2024-07-27 15:01:00', '2024-08-10 06:00:00', (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-010'), (SELECT id FROM users WHERE email = 'demo5@jo2024.fr'), (SELECT id FROM events WHERE name = 'Marathon Hommes - Finale'), (SELECT id FROM offers WHERE name = 'Solo')),
+                ('usr-seed-0024', 'tx-seed-010', 'tkt-seed-0024', 'combined-seed-0024', 'JO2024-SEED0024', 40.00, true, false, '2024-07-27 15:01:00', '2024-08-10 06:00:00', (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-010'), (SELECT id FROM users WHERE email = 'demo5@jo2024.fr'), (SELECT id FROM events WHERE name = 'Marathon Hommes - Finale'), (SELECT id FROM offers WHERE name = 'Solo'));
+        </sql>
+
+        <!-- TX-011: Solo x2 on Basketball Femmes - Finale → 2 tickets @ 40.00 each -->
+        <sql>
+            INSERT INTO tickets (user_key, transaction_key, ticket_key, combined_key, barcode, price, is_valid, is_scanned, created_at, expiry_at, transaction_id, user_id, event_id, offer_id)
+            VALUES
+                ('usr-seed-0025', 'tx-seed-011', 'tkt-seed-0025', 'combined-seed-0025', 'JO2024-SEED0025', 40.00, true, false, '2024-07-29 11:01:00', '2024-08-11 20:00:00', (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-011'), (SELECT id FROM users WHERE email = 'demo1@jo2024.fr'), (SELECT id FROM events WHERE name = 'Basketball Femmes - Finale'), (SELECT id FROM offers WHERE name = 'Solo')),
+                ('usr-seed-0026', 'tx-seed-011', 'tkt-seed-0026', 'combined-seed-0026', 'JO2024-SEED0026', 40.00, true, false, '2024-07-29 11:01:00', '2024-08-11 20:00:00', (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-011'), (SELECT id FROM users WHERE email = 'demo1@jo2024.fr'), (SELECT id FROM events WHERE name = 'Basketball Femmes - Finale'), (SELECT id FROM offers WHERE name = 'Solo'));
+        </sql>
+
+        <!-- TX-012: Duo on Judo -73kg Hommes - Finale → 2 tickets @ 37.50 each -->
+        <sql>
+            INSERT INTO tickets (user_key, transaction_key, ticket_key, combined_key, barcode, price, is_valid, is_scanned, created_at, expiry_at, transaction_id, user_id, event_id, offer_id)
+            VALUES
+                ('usr-seed-0027', 'tx-seed-012', 'tkt-seed-0027', 'combined-seed-0027', 'JO2024-SEED0027', 37.50, true, false, '2024-08-01 19:01:00', '2024-08-02 12:00:00', (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-012'), (SELECT id FROM users WHERE email = 'demo3@jo2024.fr'), (SELECT id FROM events WHERE name = 'Judo -73kg Hommes - Finale'), (SELECT id FROM offers WHERE name = 'Duo')),
+                ('usr-seed-0028', 'tx-seed-012', 'tkt-seed-0028', 'combined-seed-0028', 'JO2024-SEED0028', 37.50, true, false, '2024-08-01 19:01:00', '2024-08-02 12:00:00', (SELECT id FROM transactions WHERE transaction_key = 'tx-seed-012'), (SELECT id FROM users WHERE email = 'demo3@jo2024.fr'), (SELECT id FROM events WHERE name = 'Judo -73kg Hommes - Finale'), (SELECT id FROM offers WHERE name = 'Duo'));
+        </sql>
+    </changeSet>
+</databaseChangeLog>
