@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/jos34000/api-jo2024/compare/v1.2.0...v1.3.0) (2026-04-17)
+
+
+### Features
+
+* [DJ-114] - Add admin sales datas ([e7db069](https://github.com/jos34000/api-jo2024/commit/e7db0693fe280ae6e4d6af17dc91150edf0a2640))
+
 # [1.2.0](https://github.com/jos34000/api-jo2024/compare/v1.1.0...v1.2.0) (2026-04-17)
 
 
