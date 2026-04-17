@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/jos34000/api-jo2024/compare/v1.0.0...v1.1.0) (2026-04-17)
+
+
+### Features
+
+* **test:** expand service layer coverage with JaCoCo enforcement ([c6990ed](https://github.com/jos34000/api-jo2024/commit/c6990eda55b03de944844b456c828f87d268d02b))
+
 # [1.0.0](https://github.com/jos34000/api-jo2024/compare/v0.10.0...v1.0.0) (2026-03-30)
 
 
