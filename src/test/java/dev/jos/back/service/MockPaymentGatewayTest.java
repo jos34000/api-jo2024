@@ -29,4 +29,22 @@ class MockPaymentGatewayTest {
         assertThat(result.succeeded()).isFalse();
         assertThat(result.declineReason()).isEqualTo(expectedReason);
     }
+
+    @Test
+    void processPayment_propagatesDecline_whenCardIsFormattedWithSpaces() {
+        PaymentResult result = gateway.processPayment("4000 0000 0000 0002");
+
+        assertThat(result.succeeded()).isFalse();
+        assertThat(result.declineReason()).isEqualTo("Carte déclinée");
+    }
+
+    @Test
+    void processPayment_doesNotMatchByPrefix_onlyExactDigits() {
+        // "4000000000000020" differs from any decline card by digit position;
+        // confirms the gateway is not prefix-matching its decline list.
+        PaymentResult result = gateway.processPayment("4000000000000020");
+
+        assertThat(result.succeeded()).isTrue();
+        assertThat(result.declineReason()).isNull();
+    }
 }

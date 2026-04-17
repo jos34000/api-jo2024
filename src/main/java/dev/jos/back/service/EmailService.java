@@ -55,9 +55,7 @@ public class EmailService {
             ));
 
     private final SpringTemplateEngine templateEngine;
-
-    @Value("${resend.api-key}")
-    private String apiKey;
+    private final Resend resend;
 
     @Value("${resend.from}")
     private String from;
@@ -70,7 +68,6 @@ public class EmailService {
                 .html(html)
                 .build();
         try {
-            Resend resend = new Resend(apiKey);
             resend.emails().send(params);
         } catch (ResendException e) {
             log.error("Échec envoi email à {}: {}", to, e.getMessage(), e);
@@ -87,7 +84,6 @@ public class EmailService {
                 .attachments(List.of(attachment))
                 .build();
         try {
-            Resend resend = new Resend(apiKey);
             resend.emails().send(params);
         } catch (ResendException e) {
             log.error("Échec envoi email avec PJ à {}: {}", to, e.getMessage(), e);
