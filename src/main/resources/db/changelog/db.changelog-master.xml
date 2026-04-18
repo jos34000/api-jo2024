@@ -27,4 +27,5 @@
     <include file="db/changelog/changes/019-add-used-to-reset-token.xml"/>
     <include file="db/changelog/changes/020-update-combined-key-sha256.xml"/>
     <include file="db/changelog/changes/021-seed-sales-data.xml"/>
+    <include file="db/changelog/changes/022-seed-user-datas.xml"/>
 </databaseChangeLog>
