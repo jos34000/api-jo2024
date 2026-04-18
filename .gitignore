@@ -31,9 +31,3 @@ logs/
 application-secret-*.yml
 
 http
-
-TODO.md
-RESPONSABILITIES.md
-CLAUDE.md
-.worktrees/
-docs/*
