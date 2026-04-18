@@ -8,14 +8,13 @@ import dev.jos.back.exceptions.user.UserAlreadyExistsException;
 import dev.jos.back.exceptions.user.UserNotFoundException;
 import dev.jos.back.mapper.UserMapper;
 import dev.jos.back.repository.UserRepository;
-import dev.jos.back.service.ResetTokenStore;
 import dev.jos.back.util.enums.Role;
 import dev.jos.back.util.enums.TokenValidationResult;
-import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -37,7 +36,7 @@ public class UserService {
 
         User user = userMapper.toEntity(dto);
         user.setPasswordHash(passwordEncoder.encode(dto.password()));
-        user.setRole(Role.ROLE_ADMIN);
+        user.setRole(Role.ROLE_USER);
 
         User savedUser = userRepository.save(user);
         return userMapper.toResponseDTO(savedUser);
