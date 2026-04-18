@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/jos34000/api-jo2024/compare/v1.3.1...v1.4.0) (2026-04-18)
+
+
+### Features
+
+* **db:** seed default staff, admin and user accounts ([baac330](https://github.com/jos34000/api-jo2024/commit/baac330757897a608af259e2982fd2a79fc14def))
+
 ## [1.3.1](https://github.com/jos34000/api-jo2024/compare/v1.3.0...v1.3.1) (2026-04-17)
 
 
