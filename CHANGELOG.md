@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/jos34000/api-jo2024/compare/v1.4.0...v1.5.0) (2026-04-18)
+
+
+### Features
+
+* **tests:** Tests on mappers for non regression ([5b88c78](https://github.com/jos34000/api-jo2024/commit/5b88c7873ad337ec05278094c4e61c6204abb0b3))
+
 # [1.4.0](https://github.com/jos34000/api-jo2024/compare/v1.3.1...v1.4.0) (2026-04-18)
 
 
