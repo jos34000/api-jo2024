@@ -61,7 +61,7 @@ class UserServiceTest {
 
     @Test
     void createUser_setsAdminRole() {
-        CreateUserDTO dto = new CreateUserDTO("john@example.com", "pass1234", "John", "Doe", false, null, null);
+        CreateUserDTO dto = new CreateUserDTO("john@example.com", "pass1234", "John", "Doe", false, Role.ROLE_ADMIN, null);
         User user = new User();
 
         when(userRepository.existsByEmail("john@example.com")).thenReturn(false);
