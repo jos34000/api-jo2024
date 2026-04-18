@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="022-seed-users" author="admin">
+        <insert tableName="users">
+            <column name="email" value="staff@jo.com"/>
+            <column name="password_hash" value="$2a$12$jdwL98MGpPSDU7z/35qwTO95AtoDJp9ugzXUofu6IubHA8kXL0fq6"/>
+            <column name="role" value="ROLE_STAFF"/>
+            <column name="first_name" value="Staff"/>
+            <column name="last_name" value="Jo"/>
+            <column name="mfa_enabled" valueBoolean="false"/>
+            <column name="locale" value="fr"/>
+            <column name="created_date" valueDate="2026-04-18T00:00:00"/>
+            <column name="last_modified_date" valueDate="2026-04-18T00:00:00"/>
+        </insert>
+        <insert tableName="users">
+            <column name="email" value="admin@jo.com"/>
+            <column name="password_hash" value="$2a$12$LDMXFr8S1u4Hqsrii0/GeeFIp8gV.C3aM./naAaxbrvl1HLOfIFcO"/>
+            <column name="role" value="ROLE_ADMIN"/>
+            <column name="first_name" value="Admin"/>
+            <column name="last_name" value="Jo"/>
+            <column name="mfa_enabled" valueBoolean="false"/>
+            <column name="locale" value="fr"/>
+            <column name="created_date" valueDate="2026-04-18T00:00:00"/>
+            <column name="last_modified_date" valueDate="2026-04-18T00:00:00"/>
+        </insert>
+        <insert tableName="users">
+            <column name="email" value="user@jo.com"/>
+            <column name="password_hash" value="$2a$12$rskMz1q2Xyg9Q2FQZWhbj.Bm75wIW8SrJcd92atBTx4VPpTlabGee"/>
+            <column name="role" value="ROLE_USER"/>
+            <column name="first_name" value="User"/>
+            <column name="last_name" value="Jo"/>
+            <column name="mfa_enabled" valueBoolean="false"/>
+            <column name="locale" value="fr"/>
+            <column name="created_date" valueDate="2026-04-18T00:00:00"/>
+            <column name="last_modified_date" valueDate="2026-04-18T00:00:00"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
